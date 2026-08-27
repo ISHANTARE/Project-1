@@ -1,0 +1,974 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "type": "DOMAIN",
+      "label": "Tech",
+      "id": "Domain_Tech"
+    },
+    {
+      "type": "DOMAIN",
+      "label": "Business",
+      "id": "Domain_Business"
+    },
+    {
+      "type": "DOMAIN",
+      "label": "Academic",
+      "id": "Domain_Academic"
+    },
+    {
+      "type": "DOMAIN",
+      "label": "Medical",
+      "id": "Domain_Medical"
+    },
+    {
+      "type": "DOMAIN",
+      "label": "Finance",
+      "id": "Domain_Finance"
+    },
+    {
+      "type": "DOMAIN",
+      "label": "General",
+      "id": "Domain_General"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.4771,
+      "f_borrow": 0.95,
+      "borrowing_ratio": 1.991,
+      "id": "viva"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "moukhik_pariksha"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6143,
+      "f_borrow": 0.9,
+      "borrowing_ratio": 1.465,
+      "id": "calendar"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "panchang"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.3629,
+      "f_borrow": 0.9,
+      "borrowing_ratio": 2.48,
+      "id": "calender"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.5971,
+      "f_borrow": 0.92,
+      "borrowing_ratio": 1.541,
+      "id": "assignment"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "karya"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.4771,
+      "f_borrow": 0.88,
+      "borrowing_ratio": 1.844,
+      "id": "syllabus"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "pathyakram"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.5914,
+      "f_borrow": 0.86,
+      "borrowing_ratio": 1.454,
+      "id": "lecture"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "vyakhyan"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6086,
+      "f_borrow": 0.9,
+      "borrowing_ratio": 1.479,
+      "id": "exam"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "pariksha"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7414,
+      "f_borrow": 0.89,
+      "borrowing_ratio": 1.2,
+      "id": "test"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "janch"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6857,
+      "f_borrow": 0.85,
+      "borrowing_ratio": 1.24,
+      "id": "grade"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "sreni"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7214,
+      "f_borrow": 0.88,
+      "borrowing_ratio": 1.22,
+      "id": "mark"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "ank"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7057,
+      "f_borrow": 0.85,
+      "borrowing_ratio": 1.204,
+      "id": "degree"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "upadhi"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7129,
+      "f_borrow": 0.96,
+      "borrowing_ratio": 1.347,
+      "id": "link"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "kadi"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6371,
+      "f_borrow": 0.94,
+      "borrowing_ratio": 1.475,
+      "id": "server"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "sewak"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7257,
+      "f_borrow": 0.95,
+      "borrowing_ratio": 1.309,
+      "id": "code"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "koot"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.4086,
+      "f_borrow": 0.91,
+      "borrowing_ratio": 2.227,
+      "id": "debug"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "truti_sudhar"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.5286,
+      "f_borrow": 0.89,
+      "borrowing_ratio": 1.684,
+      "id": "deploy"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "tainat"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6157,
+      "f_borrow": 0.92,
+      "borrowing_ratio": 1.494,
+      "id": "database"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "tathya_sangrah"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.5257,
+      "f_borrow": 0.97,
+      "borrowing_ratio": 1.845,
+      "id": "api"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "anuprayog_dwar"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6814,
+      "f_borrow": 0.96,
+      "borrowing_ratio": 1.409,
+      "id": "software"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "softwear"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6943,
+      "f_borrow": 0.95,
+      "borrowing_ratio": 1.368,
+      "id": "app"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "anuprayog"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7271,
+      "f_borrow": 0.93,
+      "borrowing_ratio": 1.279,
+      "id": "website"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "jalsthal"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7357,
+      "f_borrow": 0.95,
+      "borrowing_ratio": 1.291,
+      "id": "meeting"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "baithak"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6486,
+      "f_borrow": 0.93,
+      "borrowing_ratio": 1.434,
+      "id": "client"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "grahak"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7457,
+      "f_borrow": 0.94,
+      "borrowing_ratio": 1.261,
+      "id": "project"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "pariyojana"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.4971,
+      "f_borrow": 0.85,
+      "borrowing_ratio": 1.71,
+      "id": "postpone"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "sthagit"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6671,
+      "f_borrow": 0.88,
+      "borrowing_ratio": 1.319,
+      "id": "schedule"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "anusuchee"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.5886,
+      "f_borrow": 0.9,
+      "borrowing_ratio": 1.529,
+      "id": "deadline"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "antim_tithi"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.71,
+      "f_borrow": 0.92,
+      "borrowing_ratio": 1.296,
+      "id": "manager"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "prabandhak"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6157,
+      "f_borrow": 0.89,
+      "borrowing_ratio": 1.446,
+      "id": "presentation"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "prastutikaran"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7143,
+      "f_borrow": 0.9,
+      "borrowing_ratio": 1.26,
+      "id": "hi"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "namaste"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.6743,
+      "f_borrow": 0.92,
+      "borrowing_ratio": 1.364,
+      "id": "hello"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7757,
+      "f_borrow": 0.88,
+      "borrowing_ratio": 1.134,
+      "id": "thanks"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "dhanyawad"
+    },
+    {
+      "type": "ENGLISH_LOANWORD",
+      "language": "EN",
+      "f_mono_en": 0.7343,
+      "f_borrow": 0.98,
+      "borrowing_ratio": 1.335,
+      "id": "ok"
+    },
+    {
+      "type": "NATIVE_HINDI",
+      "language": "HI",
+      "id": "theek_hai"
+    }
+  ],
+  "links": [
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "viva",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.25,
+      "naturalness_penalty": 0.85,
+      "meaning_drift": 0.75,
+      "source": "viva",
+      "target": "moukhik_pariksha"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "viva",
+      "target": "calendar"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "viva",
+      "target": "link"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "viva",
+      "target": "assignment"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "calendar",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.3,
+      "naturalness_penalty": 0.8,
+      "meaning_drift": 0.7,
+      "source": "calendar",
+      "target": "panchang"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "calender",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.3,
+      "naturalness_penalty": 0.8,
+      "meaning_drift": 0.7,
+      "source": "calender",
+      "target": "panchang"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "assignment",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.35,
+      "naturalness_penalty": 0.75,
+      "meaning_drift": 0.65,
+      "source": "assignment",
+      "target": "karya"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "syllabus",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.7,
+      "meaning_drift": 0.6,
+      "source": "syllabus",
+      "target": "pathyakram"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "lecture",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.75,
+      "meaning_drift": 0.6,
+      "source": "lecture",
+      "target": "vyakhyan"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "exam",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.7,
+      "naturalness_penalty": 0.4,
+      "meaning_drift": 0.3,
+      "source": "exam",
+      "target": "pariksha"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "test",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.65,
+      "naturalness_penalty": 0.45,
+      "meaning_drift": 0.35,
+      "source": "test",
+      "target": "janch"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "grade",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.5,
+      "naturalness_penalty": 0.6,
+      "meaning_drift": 0.5,
+      "source": "grade",
+      "target": "sreni"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "mark",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.6,
+      "naturalness_penalty": 0.5,
+      "meaning_drift": 0.4,
+      "source": "mark",
+      "target": "ank"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "degree",
+      "target": "Domain_Academic"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.7,
+      "meaning_drift": 0.6,
+      "source": "degree",
+      "target": "upadhi"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "link",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.2,
+      "naturalness_penalty": 0.9,
+      "meaning_drift": 0.8,
+      "source": "link",
+      "target": "kadi"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "server",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.15,
+      "naturalness_penalty": 0.95,
+      "meaning_drift": 0.85,
+      "source": "server",
+      "target": "sewak"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "server",
+      "target": "debug"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "code",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.2,
+      "naturalness_penalty": 0.92,
+      "meaning_drift": 0.8,
+      "source": "code",
+      "target": "koot"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "code",
+      "target": "deploy"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "debug",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.15,
+      "naturalness_penalty": 0.9,
+      "meaning_drift": 0.85,
+      "source": "debug",
+      "target": "truti_sudhar"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "deploy",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.25,
+      "naturalness_penalty": 0.85,
+      "meaning_drift": 0.75,
+      "source": "deploy",
+      "target": "tainat"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "database",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.2,
+      "naturalness_penalty": 0.9,
+      "meaning_drift": 0.8,
+      "source": "database",
+      "target": "tathya_sangrah"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "database",
+      "target": "api"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "api",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.1,
+      "naturalness_penalty": 0.98,
+      "meaning_drift": 0.9,
+      "source": "api",
+      "target": "anuprayog_dwar"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "software",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.3,
+      "naturalness_penalty": 0.85,
+      "meaning_drift": 0.7,
+      "source": "software",
+      "target": "softwear"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "app",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.8,
+      "meaning_drift": 0.6,
+      "source": "app",
+      "target": "anuprayog"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "website",
+      "target": "Domain_Tech"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.25,
+      "naturalness_penalty": 0.9,
+      "meaning_drift": 0.75,
+      "source": "website",
+      "target": "jalsthal"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "meeting",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.3,
+      "naturalness_penalty": 0.85,
+      "meaning_drift": 0.7,
+      "source": "meeting",
+      "target": "baithak"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "meeting",
+      "target": "schedule"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "meeting",
+      "target": "postpone"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "client",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.35,
+      "naturalness_penalty": 0.8,
+      "meaning_drift": 0.65,
+      "source": "client",
+      "target": "grahak"
+    },
+    {
+      "relation": "CO_OCCURS_WITH",
+      "weight": 0.85,
+      "source": "client",
+      "target": "meeting"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "project",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.75,
+      "meaning_drift": 0.6,
+      "source": "project",
+      "target": "pariyojana"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "postpone",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.6,
+      "naturalness_penalty": 0.5,
+      "meaning_drift": 0.4,
+      "source": "postpone",
+      "target": "sthagit"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "schedule",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.5,
+      "naturalness_penalty": 0.6,
+      "meaning_drift": 0.5,
+      "source": "schedule",
+      "target": "anusuchee"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "deadline",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.25,
+      "naturalness_penalty": 0.85,
+      "meaning_drift": 0.75,
+      "source": "deadline",
+      "target": "antim_tithi"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "manager",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.45,
+      "naturalness_penalty": 0.7,
+      "meaning_drift": 0.55,
+      "source": "manager",
+      "target": "prabandhak"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "presentation",
+      "target": "Domain_Business"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.4,
+      "naturalness_penalty": 0.75,
+      "meaning_drift": 0.6,
+      "source": "presentation",
+      "target": "prastutikaran"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "hi",
+      "target": "Domain_General"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.8,
+      "naturalness_penalty": 0.3,
+      "meaning_drift": 0.2,
+      "source": "hi",
+      "target": "namaste"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "hello",
+      "target": "Domain_General"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.8,
+      "naturalness_penalty": 0.3,
+      "meaning_drift": 0.2,
+      "source": "hello",
+      "target": "namaste"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "thanks",
+      "target": "Domain_General"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.7,
+      "naturalness_penalty": 0.4,
+      "meaning_drift": 0.3,
+      "source": "thanks",
+      "target": "dhanyawad"
+    },
+    {
+      "relation": "BELONGS_TO",
+      "weight": 0.9,
+      "source": "ok",
+      "target": "Domain_General"
+    },
+    {
+      "relation": "TRANSLATES_TO",
+      "equivalence": 0.9,
+      "naturalness_penalty": 0.2,
+      "meaning_drift": 0.1,
+      "source": "ok",
+      "target": "theek_hai"
+    }
+  ]
+}

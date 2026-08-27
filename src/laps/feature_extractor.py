@@ -144,23 +144,53 @@ def _tb_score(token_lower: str) -> float:
     return 0.85 if token_lower in verbs_modifiers else 0.15
 
 
+from src.laps.graph_engine import get_graph_engine
+
 def extract_features(token: str, all_tokens: list[str], index: int) -> dict:
     """
-    Extract 6 feature vectors for a candidate token using neural similarity & loanword lexicons.
+    Extract 6 feature vectors for a candidate token by querying the Bilingual Code-Mixed Knowledge Graph.
     """
-    bf_dict = _load_bf_dict()
+    kg = get_graph_engine()
     tok_low = token.lower()
 
-    # Context window
+    # Window context
     window = [all_tokens[i] for i in range(max(0, index - 2), min(len(all_tokens), index + 3)) if i != index]
 
+    # Query Knowledge Graph Node & Edges
+    node_attrs  = kg.get_node_attributes(tok_low)
+    trans_edge  = kg.get_translation_edge(tok_low)
+
+    # 1. Borrowing Frequency (BF)
+    bf = node_attrs.get("f_borrow", _bf_score(tok_low, _load_bf_dict()))
+
+    # 2. Domain Specificity (DS) via Neural Vectors + Graph
+    ds_neural = _ds_score_neural(tok_low)
+    ds_graph  = kg.get_domain_specificity(tok_low)
+    ds = round(max(ds_neural, ds_graph), 4)
+
+    # 3. Semantic Importance (SI) & Translation Benefit (TB)
+    si_drift = trans_edge.get("meaning_drift", 0.50)
+    si = round(max(si_drift, _si_score(tok_low)), 4)
+
+    tb_penalty = trans_edge.get("naturalness_penalty", 0.50)
+    # Higher naturalness penalty on translating loanword means LOWER benefit of translating it
+    tb = round(max(0.10, 1.0 - tb_penalty), 4) if tb_penalty > 0.50 else _tb_score(tok_low)
+
+    # 4. Context Consistency (CC)
+    cc_graph  = kg.get_context_cooccurrence(tok_low, window)
+    cc_window = _cc_score(tok_low, window, _load_bf_dict())
+    cc = round((cc_graph + cc_window) / 2.0, 4)
+
+    # 5. Audience Familiarity (AF)
+    af = node_attrs.get("f_mono_en", _af_score(tok_low))
+
     return {
-        "BF": _bf_score(tok_low, bf_dict),
-        "DS": _ds_score_neural(tok_low),
-        "SI": _si_score(tok_low),
-        "CC": _cc_score(tok_low, window, bf_dict),
-        "AF": _af_score(tok_low),
-        "TB": _tb_score(tok_low),
+        "BF": round(bf, 4),
+        "DS": round(ds, 4),
+        "SI": round(si, 4),
+        "CC": round(cc, 4),
+        "AF": round(af, 4),
+        "TB": round(tb, 4),
     }
 
 
