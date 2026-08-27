@@ -1,1 +1,5 @@
 /Original-docs
+.pytest_cache
+.agents
+__pycache__
+scripts\__pycache__
