@@ -1,0 +1,8 @@
+streamlit
+python-docx
+python-pptx
+openai
+sentence-transformers
+pandas
+plotly
+pytest
