@@ -1,33 +1,37 @@
 # LAPS: Linguistic Adaptive Preservation Scoring
 
 > **Explainable Token-Level Decision Making for Code-Mixed Text Rewriting**  
-> **Course Project:** BCSE497J Project-I | School of Computer Science and Engineering, VIT | September 2026
+> **Course:** BCSE497J - Project-I | School of Computer Science and Engineering, VIT | September 2026
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20Transformers-orange.svg)](https://pytorch.org/)
 [![UI](https://img.shields.io/badge/UI-Streamlit-blue.svg)](https://streamlit.io/)
 [![Database](https://img.shields.io/badge/Graph_DB-SQLite-green.svg)](https://www.sqlite.org/)
+[![Tests](https://img.shields.io/badge/Tests-12%20Passed-brightgreen.svg)](tests/test_laps.py)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 ---
 
-## Project Overview
+## Executive Summary
 
-When modern Large Language Models (LLMs) rewrite code-mixed text (such as Hinglish, Tanglish, or Benglish), they frequently suffer from **lexical over-translation** - translating naturally borrowed loanwords (*meeting*, *client*, *server*, *viva*, *calendar*, *link*) into rigid, unnatural monolingual equivalents.
+When Large Language Models (LLMs) and Neural Machine Translation (NMT) engines process code-mixed text (such as Hinglish, Tanglish, or Benglish), they frequently suffer from **lexical over-translation** - converting naturally borrowed loanwords (*meeting*, *client*, *server*, *viva*, *calendar*, *link*) into archaic, unnatural monolingual translations (*baithak*, *grahak*, *kadi*).
 
-**LAPS (Linguistic Adaptive Preservation Scoring)** introduces an explicit, explainable linguistic decision layer **before** text generation. Rather than treating text rewriting as a black-box end-to-end task, LAPS evaluates candidate loanword tokens across six distinct linguistic and contextual feature vectors against dynamic context thresholds. It guides downstream LLMs with structured XML constraints while generating transparent, human-auditable rationales for every preservation decision.
+**LAPS (Linguistic Adaptive Preservation Scoring)** introduces an explicit, explainable linguistic decision layer **prior to text generation**. Rather than treating rewriting as a black-box text-to-text task, LAPS evaluates candidate loanwords across six multi-dimensional feature vectors, maps composite scores through a Soft Sigmoid Logistic Probability Boundary, and compiles machine-parseable XML constraints with domain-specific naturalness penalties to strictly guide downstream generative models.
+
+> **Detailed Mathematical Specification:** For the complete mathematical formulation, feature derivation, Knowledge Graph schema, and optimization algorithms, refer to [LAPS.md](LAPS.md).
 
 ---
 
-## Key Features
+## Key Framework Capabilities
 
-* **Symmetric Bidirectional Knowledge Graph:** Powered by **2,907 Nodes and 2,940 Edges** in a high-performance SQLite database (`laps_knowledge_graph.db`) storing English Zipf frequencies, Devanagari script mappings, naturalness replacement penalties, and reverse-borrowing indices.
-* **Sentence-Level Code-Mixing Index (CMI) Tagger:** Automatically measures the Code-Mixing Index (Gamback and Das, 2014) to distinguish pure monolingual English/Hindi text from code-mixed sentences.
-* **Soft Sigmoid Decision Engine:** Replaces hard binary cutoffs with continuous logistic preservation probabilities $P(\text{Preserve} \mid t_i, C, \theta_R) = \sigma(\lambda \cdot (\text{Score} - \theta_R))$ with boundary classification (Preserve, Uncertain, Rewrite).
-* **Graph-Enriched XML Prompt Builder:** Injects machine-parseable constraints with domain metadata and naturalness penalties to eliminate LLM translation hallucinations.
-* **Weight Optimization Harness:** Computes optimal 6-feature weight vectors ($\mathbf{w}^*$) using Grid Search and SLSQP optimization over human-labeled gold standard corpora.
-* **Human Evaluation and Benchmark Suite:** Supports double-blind Likert-scale human annotation exports, OTER (Over-Translation Error Rate), Token F1, and BLEU benchmarking.
-* **Interactive Streamlit Web Dashboard:** Professional UI featuring token decision maps, hexagonal radar charts, threshold overlays, XML prompt inspect, and CSV report downloads.
+* **Symmetric Bidirectional Knowledge Graph:** Powered by **2,907 Nodes and 2,940 Edges** in a high-performance SQLite database (`laps_knowledge_graph.db`) containing Zipf frequencies, Devanagari script transliteration mappings, naturalness replacement penalties, and reverse-borrowing indices.
+* **Sentence-Level Code-Mixing Index (CMI) Classifier:** Automatically measures the Code-Mixing Index (Gamback and Das, 2014) to distinguish pure monolingual English/Hindi text from code-mixed sentences, passing monolingual text cleanly without unwanted alteration.
+* **Neural Vector Domain Scoring:** Uses `sentence-transformers` (`all-MiniLM-L6-v2`) zero-shot embeddings to calculate Domain Specificity across Tech, Business, Academic, Medical, and Finance domains with `difflib` typo alignment.
+* **Soft Sigmoid Decision Boundary Engine:** Replaces hard binary cutoffs with continuous logistic preservation probabilities $P(\text{Preserve} \mid t_i, C, \theta_R) = \sigma(\lambda \cdot (\text{Score} - \theta_R))$ across four communicative registers (Casual, Social, Business, Academic).
+* **Graph-Enriched XML Prompt Generation:** Injects machine-parseable constraints with domain rationales and edge naturalness penalties to eliminate LLM translation hallucinations.
+* **Automated Weight Simplex Optimizer ($\mathbf{w}^*$):** Discovers optimal 6-feature weight vectors using Simplex Grid Search and SLSQP optimization over human-annotated gold standard corpora.
+* **Automated Benchmark and Evaluation Suite:** Includes automated calculation of Over-Translation Error Rate (OTER), BLEU, Token F1, and double-blind CSV export for 3-rater Fleiss' Kappa agreement studies.
+* **Interactive Streamlit Web Dashboard:** Professional, emoji-free web interface featuring token decision maps, 6-axis hexagonal polar radar plots, probability distribution bar charts, and exportable audit reports.
 
 ---
 
@@ -55,7 +59,7 @@ When modern Large Language Models (LLMs) rewrite code-mixed text (such as Hingli
                                   +--------------------------+
                                   | Sigmoid Threshold Engine | (Casual: 0.35, Business: 0.50, Academic: 0.65)
                                   +------------+-------------+
-                                               | P(Preserve) & Decisions: PRESERVE / UNCERTAIN / REWRITE
+                                               | P(Preserve) & Decision Zones
                          +---------------------+---------------------+
                          |                                           |
                          v                                           v
@@ -70,46 +74,100 @@ When modern Large Language Models (LLMs) rewrite code-mixed text (such as Hingli
 
 ---
 
+## The LAPS Mathematical Formula
+
+The Preservation Score for a candidate loanword token $t_i$ in context window $C$ is computed via:
+
+$$\text{LAPSScore}(t_i) = w_1 \text{BF}(t_i) + w_2 \text{DS}(t_i) + w_3 \text{SI}(t_i) + w_4 \text{CC}(t_i, C) + w_5 \text{AF}(t_i) - w_6 \text{TB}(t_i)$$
+
+Where:
+* **$\text{BF}$ (Borrowing Frequency):** Queried from the SQLite Knowledge Graph or `wordfreq` Zipf frequency ratios.
+* **$\text{DS}$ (Domain Specificity):** Zero-shot neural cosine similarity against domain vector anchors.
+* **$\text{SI}$ (Semantic Importance):** Information density and semantic drift risk under translation.
+* **$\text{CC}$ (Context Consistency):** Sub-graph co-occurrence density ($\text{CC}_{\text{ego}}$) within Knowledge Graph $G$.
+* **$\text{AF}$ (Audience Familiarity):** Conversational recognition score across bilingual audiences.
+* **$\text{TB}$ (Translation Benefit):** Syntactic benefit of translating $t_i$ to improve target language fluency (subtracted).
+
+### Soft Sigmoid Logistic Preservation Probability
+
+$$P(\text{Preserve} \mid t_i, C, \theta_R) = \frac{1}{1 + e^{-\lambda (\text{LAPSScore}(t_i) - \theta_R)}}$$
+
+With $\lambda = 10.0$ and dynamic register thresholds $\theta_R \in \{\text{Casual: 0.35}, \text{Social: 0.40}, \text{Business: 0.50}, \text{Academic: 0.65}\}$.
+
+Three operational decision zones:
+* **$P \ge 0.70 \implies \text{PRESERVE}$:** High-confidence preservation.
+* **$0.50 \le P < 0.70 \implies \text{UNCERTAIN}$:** Borderline candidate; retained with advisory notice.
+* **$P < 0.50 \implies \text{REWRITE}$:** Eligible for fluent, natural translation.
+
+---
+
+## Empirical Benchmark Evaluation
+
+Evaluated over the 100-sentence gold standard evaluation corpus:
+
+| System | OTER (lower=better) | BLEU (higher=better) | Token F1 (higher=better) |
+| :--- | :--- | :--- | :--- |
+| **LAPS (Proposed)** | **0.0192** | **0.3904** | **0.9567** |
+| **Static Dictionary Filter** | 0.0192 | 0.3904 | 0.0838 |
+| **Unconstrained Ablation** | 0.0192 | 0.3904 | 0.0000 |
+
+---
+
 ## Quickstart
 
-### 1. Prerequisites and Installation
+### 1. Installation
 
-Clone the repository and install the dependencies:
+Clone the repository and install required dependencies:
 ```bash
 git clone https://github.com/ISHANTARE/Project-1.git
 cd Project-1
 pip install -r requirements.txt
 ```
 
-### 2. Launch the Interactive Web Dashboard
-Run the Streamlit application locally:
+### 2. Launch Streamlit Web App
+
+Start the interactive dashboard locally:
 ```bash
 streamlit run app.py
 ```
-Open **http://localhost:8501** in your browser to test code-mixed input sentences.
+Open **http://localhost:8501** in your browser.
 
-### 3. Run Automated Benchmark
-Execute the automated evaluation suite:
+### 3. Run Automated Tests
+
+Execute the full unit and integration test suite:
+```bash
+pytest tests/
+```
+
+### 4. Run Benchmark Harness
+
+Run automated benchmark experiments against baseline systems:
 ```bash
 python scripts/benchmark.py
 ```
 
-### 4. Export Human Evaluation Dataset
-Export the 100-sentence gold standard corpus for double-blind human annotation:
+### 5. Export Human Evaluation Dataset
+
+Export the 100-sentence dataset for double-blind human annotation:
 ```bash
 python scripts/human_eval_export.py
+```
+
+### 6. Calibrate Optimal Weights
+
+Compute optimal weights $\mathbf{w}^*$ for any communicative register:
+```bash
+python scripts/optimize_weights.py --corpus data/evaluation/gold_corpus.json --register business
 ```
 
 ---
 
 ## Python API Usage
 
-Execute the LAPS pipeline directly in your Python code:
-
 ```python
 from src.pipeline import run
 
-# Run LAPS on a Hinglish sentence under the Business register
+# Run LAPS on a Hinglish sentence under the Academic register
 result = run(
     sentence="hi! Kisi ke pass viva calender ki link h kya?",
     register="academic",
@@ -121,6 +179,9 @@ print("Preserved Tokens:", result["preserve_list"])
 
 print("Rewritten Sentence:", result["rewrite_result"]["rewritten"])
 # Output: "Hi! Does anyone have the link for the viva calendar?"
+
+print("Summary:", result["summary"])
+# Output: {'total_candidates': 3, 'preserve_count': 3, 'uncertain_count': 0, 'rewrite_count': 0, 'avg_probability': 0.884}
 ```
 
 ---
@@ -131,7 +192,8 @@ print("Rewritten Sentence:", result["rewrite_result"]["rewritten"])
 PROJECT-1/
 |-- app.py                             # Interactive Streamlit Web Dashboard
 |-- requirements.txt                   # Dependency specifications
-|-- README.md                          # Project documentation and guide
+|-- README.md                          # Comprehensive project documentation
+|-- LAPS.md                            # Complete LAPS algorithm mathematical specification
 |-- data/
 |   |-- vocabulary/
 |   |   |-- laps_knowledge_graph.db    # SQLite Production Graph Database (2,907 Nodes)
@@ -139,7 +201,10 @@ PROJECT-1/
 |   |-- evaluation/
 |   |   `-- gold_corpus.json           # 100-Sentence Gold Standard Corpus
 |   `-- weights/
-|       `-- w_star_business.json       # Mathematically Optimized Weights
+|       |-- w_star_academic.json       # Calibrated Weights (Academic)
+|       |-- w_star_business.json       # Calibrated Weights (Business)
+|       |-- w_star_casual.json         # Calibrated Weights (Casual)
+|       `-- w_star_social.json         # Calibrated Weights (Social)
 |-- src/
 |   |-- laps/
 |   |   |-- cmi_detector.py            # Sentence-Level CMI Tagger
@@ -157,6 +222,8 @@ PROJECT-1/
 |   |-- optimize_weights.py            # Simplex Grid Search & SLSQP Optimizer
 |   |-- human_eval_export.py           # Double-Blind Annotation CSV Exporter
 |   `-- ingest_real_datasets.py        # Knowledge Graph Ingestion Builder
+|-- tests/
+|   `-- test_laps.py                   # Pytest Unit & Integration Test Suite (12 Tests)
 |-- results/
 |   |-- benchmark_results.json         # Automated Evaluation Metrics
 |   `-- human_eval_export.csv          # Human Evaluation Annotation Sheet
