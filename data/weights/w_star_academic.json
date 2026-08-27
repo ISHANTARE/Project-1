@@ -1,0 +1,21 @@
+{
+  "register": "academic",
+  "optimised_weights": {
+    "w1": 0.0,
+    "w2": 0.2,
+    "w3": 0.2,
+    "w4": 0.4,
+    "w5": 0.2,
+    "w6": 0.0
+  },
+  "achieved_f1": 0.969206,
+  "description": "Optimised LAPS weight vector w* for the specified register. Produced by scripts/optimize_weights.py via Grid Search + SLSQP.",
+  "weight_semantics": {
+    "w1": "Borrowing Frequency (BF)",
+    "w2": "Domain Specificity (DS)",
+    "w3": "Semantic Importance (SI)",
+    "w4": "Context Consistency (CC)",
+    "w5": "Audience Familiarity (AF)",
+    "w6": "Translation Benefit (TB) [subtracted]"
+  }
+}

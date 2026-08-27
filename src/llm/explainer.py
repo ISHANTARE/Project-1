@@ -76,43 +76,64 @@ def explain_token(token_result: dict) -> dict:
         token_result : a fully-scored token dict from pipeline.run()
 
     Returns:
-        {
-            "token":       str,
-            "decision":    str,
-            "score":       float | None,
-            "threshold":   float | None,
-            "primary":     str,
-            "supporting":  list[str]
-        }
+        Explanation dict with keys: token, decision, score, threshold,
+        probability, is_borderline, ego_density_bonus, naturalness_penalty,
+        domain, primary, supporting
     """
-    decision = token_result.get("decision", "NATIVE")
-    features = token_result.get("features", {})
-    score    = token_result.get("laps_score")
-    thresh   = token_result.get("threshold")
+    decision      = token_result.get("decision", "NATIVE")
+    features      = token_result.get("features", {})
+    score         = token_result.get("laps_score")
+    thresh        = token_result.get("threshold")
+    probability   = token_result.get("probability")
+    is_borderline = token_result.get("is_borderline", False)
+    ego_bonus     = token_result.get("ego_density_bonus", 0.0)
+    nat_penalty   = token_result.get("naturalness_penalty", 0.0)
+    domain        = token_result.get("domain", "General")
 
     if decision == "NATIVE":
         return {
-            "token":      token_result["token"],
-            "decision":   "NATIVE",
-            "score":      None,
-            "threshold":  None,
-            "primary":    "Token identified as native Hindi — not subject to LAPS scoring.",
-            "supporting": [],
+            "token":              token_result["token"],
+            "decision":           "NATIVE",
+            "score":              None,
+            "threshold":          None,
+            "probability":        None,
+            "is_borderline":      False,
+            "ego_density_bonus":  0.0,
+            "naturalness_penalty": 0.0,
+            "domain":             "N/A",
+            "primary":            "Token identified as native Hindi — not subject to LAPS scoring.",
+            "supporting":         [],
         }
 
+    # Determine primary reason based on decision type
+    if decision == "UNCERTAIN":
+        primary = (
+            f"Borderline token: P(Preserve)={probability:.3f} falls between "
+            f"0.50 and 0.70 for {token_result.get('register','business')} register. "
+            "Retained to avoid over-translation."
+        ) if probability is not None else "Near-boundary score; decision deferred to preservation."
+    else:
+        primary = _primary_reason(features, decision)
+
     return {
-        "token":      token_result["token"],
-        "decision":   decision,
-        "score":      score,
-        "threshold":  thresh,
-        "primary":    _primary_reason(features, decision),
-        "supporting": _supporting_features(features, decision),
+        "token":              token_result["token"],
+        "decision":           decision,
+        "score":              score,
+        "threshold":          thresh,
+        "probability":        probability,
+        "is_borderline":      is_borderline,
+        "ego_density_bonus":  ego_bonus,
+        "naturalness_penalty": nat_penalty,
+        "domain":             domain,
+        "primary":            primary,
+        "supporting":         _supporting_features(features, decision),
     }
 
 
 def explain_all(scored_tokens: list[dict]) -> list[dict]:
     """Return explanations for every token in the sentence."""
     return [explain_token(t) for t in scored_tokens]
+
 
 
 def format_explanation_table(explanations: list[dict]) -> str:

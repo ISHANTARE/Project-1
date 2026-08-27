@@ -1,0 +1,26 @@
+{
+  "corpus": "C:\\Users\\Admin\\VIT_Projects\\PROJECT-1\\data\\evaluation\\gold_corpus.json",
+  "metrics": {
+    "LAPS (Proposed)": {
+      "oter": 0.0192,
+      "bleu_approx": 0.3904,
+      "token_f1": 0.9567,
+      "bertscore_f1": null,
+      "n_sentences": 100
+    },
+    "LAPS Ablation (No Constraints)": {
+      "oter": 0.0192,
+      "bleu_approx": 0.3904,
+      "token_f1": 0.0,
+      "bertscore_f1": null,
+      "n_sentences": 100
+    },
+    "Static Dictionary Filter": {
+      "oter": 0.0192,
+      "bleu_approx": 0.3904,
+      "token_f1": 0.0838,
+      "bertscore_f1": null,
+      "n_sentences": 100
+    }
+  }
+}

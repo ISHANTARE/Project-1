@@ -1,58 +1,45 @@
 # LAPS Project Deliverables
 
-This document details the concrete, verifiable deliverables produced by the **LAPS (Linguistic Adaptive Preservation Scoring)** project.
+This document details the concrete, verifiable software, algorithmic, and experimental deliverables produced by the **LAPS (Linguistic Adaptive Preservation Scoring)** project.
 
 ---
 
-## 💻 1. Core Software Artifacts
+## 1. Core Software Artifacts
 
-The system is delivered as a modular Python package with a web interface:
+### LAPS Core Engine (`src/laps/`)
+* **`cmi_detector.py`**: Sentence-level Code-Mixing Index (Gamback and Das, 2014) detector distinguishing monolingual English versus code-mixed Hinglish.
+* **`tokenizer.py`**: Subword/phonetic Language Identifier (LID) tagging Latin/Devanagari scripts and transliterated Hindi grammar markers.
+* **`feature_extractor.py`**: Neural feature calculator utilizing `sentence-transformers` (`all-MiniLM-L6-v2`) zero-shot embeddings and fuzzy typo alignment (`difflib`).
+* **`graph_engine.py`**: High-performance SQLite query API for `laps_knowledge_graph.db`.
+* **`scorer.py`**: Multi-factor LAPS weighted scoring calculation over 6 linguistic feature axes.
+* **`threshold_engine.py`**: Soft Sigmoid logistic probability boundary engine with three decision zones (PRESERVE, UNCERTAIN, REWRITE) and KG ego-density modulation.
 
-### **LAPS Core Engine (`src/laps/`)**
-* **`tokenizer.py`**: A bilingual, regex/subword tokenizer with integrated token-level Language Identification (LID).
-* **`feature_extractor.py`**: Pre-generation vector calculator producing scores for BF, DS, SI, CC, AF, and TB.
-* **`scorer.py`**: Mathematical weighted scoring loop using optimized weight vectors.
-* **`threshold_engine.py`**: Context-register boundary manager containing adaptive configurations (Casual, Business, Academic, Social).
+### Production Knowledge Graph Database (`data/vocabulary/`)
+* **`laps_knowledge_graph.db`**: SQLite Graph Database containing **2,907 Nodes and 2,940 Multi-Relational Edges** storing Zipf frequencies, Devanagari script mappings, naturalness penalties, and reverse-borrowing indices.
+* **`laps_knowledge_graph.json`**: Node-link JSON graph representation.
 
-### **LLM Guiding Engine (`src/llm/`)**
-* **`prompt_builder.py`**: Templates converting scoring decisions into hard XML-tagged constraint boundaries.
-* **`rewriter.py`**: API caller (supporting OpenAI, Ollama, and Qwen) executing constrained decoding instructions.
-* **`explainer.py`**: Explanatory logic compiler that formats token-level scoring metadata into clean justifications.
+### Evaluation and Experimental Harnesses (`scripts/` and `data/evaluation/`)
+* **`data/evaluation/gold_corpus.json`**: 100-sentence gold standard corpus annotated with human token preservation labels across 4 communicative registers (Casual, Business, Academic, Social).
+* **`scripts/optimize_weights.py`**: Simplex grid search and SLSQP local optimizer generating calibrated weight vectors $\mathbf{w}^*$.
+* **`scripts/benchmark.py`**: Automated evaluation harness measuring Over-Translation Error Rate (OTER), BLEU, and Token F1.
+* **`scripts/human_eval_export.py`**: Automated exporter generating double-blind CSV sheets for 3-rater Fleiss' Kappa agreement studies.
 
-### **Interactive Frontend (`app.py`)**
-* A **Streamlit-based dashboard** offering:
-  * **Input Arena:** Simple interface for pasting code-mixed source sentences.
-  * **Scoring Visualizer:** Interactive radar and bar charts detailing feature scores per token.
-  * **Decision Log:** Explanatory panels detailing why words were preserved or rewritten.
-  * **Evaluation Sandbox:** Comparative interface presenting output rewrites side-by-side with baselines.
+### LLM Guiding Engine (`src/llm/`)
+* **`rewriter.py`**: Graph-enriched XML prompt builder supporting OpenAI (GPT-4o-mini), local Ollama (Llama 3), and an offline fluent Hinglish-to-English natural translator.
+* **`explainer.py`**: Rationale generator producing structured, transparent token-level justifications.
+
+### Interactive Frontend (`app.py`)
+* **Streamlit Web Dashboard (http://localhost:8501):**
+  * Token decision maps (PRESERVE / UNCERTAIN / REWRITE / NATIVE pills).
+  * 6-axis hexagonal radar charts and probability bar plots with threshold overlays.
+  * Constrained rewrite output box with preserved token list.
+  * Graph-enriched XML prompt inspector.
+  * Token explanation tables with CSV export functionality.
 
 ---
 
-## 📊 2. Datasets & Configurations
+## 2. Academic Review 2 Deliverables (`Review-2/`)
 
-* **`data/vocabulary/`**:
-  * **`borrowing_frequency.json`**: Empirical Hinglish word frequency database.
-  * **`domain_lexicon.json`**: Registries of software, finance, and medical terms.
-* **`data/eval_sets/`**:
-  * **`laps_hinglish_benchmark.json`**: Pre-curated sentences with ground truth manual annotations for threshold boundary tuning.
-
----
-
-## 📝 3. Academic & Patent Submissions
-
-### **Research Paper: LaTeX Manuscript**
-* **Scope:** Suitable for Scopus/IEEE venue submission.
-* **Core sections:**
-  * **Abstract & Introduction:** Framing the over-translation problem in code-mixing.
-  * **Related Work:** Analyzing existing neural machine translation constraints.
-  * **Methodology:** Complete mathematical details of the LAPS formula.
-  * **Experimental Setup:** Baselines and dataset metrics.
-  * **Results & Discussion:** Graphing quantitative metrics (BERTScore, ChrF++, OTER) and human evaluation scores.
-  * **Conclusion & Future Directions.**
-
-### **Patent Specification Draft**
-* **Draft Title:** *A Computer-Implemented Adaptive Token Preservation Framework for Explainable Code-Mixed Multilingual Text Rewriting*
-* **Includes:**
-  * **Detailed Description:** Explaining the system architecture, scoring steps, and dynamic thresholds.
-  * **Claims:** Structuring independent method, system, and apparatus claims.
-  * **Flowcharts:** High-quality diagrams illustrating system pipelines and decision loops.
+* **`Review-2/LAPS_Review_2_Draft_Report.md`**: Full report draft matching Chapters 1-4 of the official curriculum template.
+* **`Review-2/LAPS_Review_2_Presentation.pptx`**: Generated 13-slide PowerPoint deck covering all evaluation rubrics.
+* **`Review-2/LAPS_Review_2_PPT_Content.md`**: Markdown version of PPT slides with speaking script.

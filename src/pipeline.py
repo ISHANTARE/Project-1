@@ -13,8 +13,9 @@ End-to-end orchestrator with Sentence-Level Code-Mixing Detection (CMI):
 from src.laps.cmi_detector import detect_sentence_language
 from src.laps.tokenizer import tokenize
 from src.laps.feature_extractor import extract_features
+from src.laps.graph_engine import get_graph_engine
 from src.laps.scorer import score_all_tokens
-from src.laps.threshold_engine import batch_decide
+from src.laps.threshold_engine import batch_decide, batch_summarise
 from src.llm.rewriter import LAPSRewriter
 from src.llm.explainer import explain_all
 
@@ -39,19 +40,29 @@ def run(
     if cmi_info["mode"] == "MONOLINGUAL_EN":
         for t in tagged:
             if t["script"] != "punct":
-                t["is_candidate"] = True
-                t["laps_score"]   = 0.90
-                t["decision"]     = "PRESERVE"
-                t["confidence"]   = 0.40
-                t["threshold"]    = 0.50
-                t["features"]     = {"BF": 0.95, "DS": 0.90, "SI": 0.90, "CC": 1.0, "AF": 0.95, "TB": 0.10}
+                t["is_candidate"]    = True
+                t["laps_score"]      = 0.90
+                t["decision"]        = "PRESERVE"
+                t["probability"]     = 0.9933   # σ(10*(0.90-0.50))
+                t["confidence"]      = 0.4933
+                t["threshold"]       = 0.50
+                t["is_borderline"]   = False
+                t["ego_density_bonus"] = 0.0
+                t["naturalness_penalty"] = 0.10
+                t["domain"]          = "General"
+                t["features"]        = {"BF": 0.95, "DS": 0.90, "SI": 0.90, "CC": 1.0, "AF": 0.95, "TB": 0.10}
             else:
-                t["is_candidate"] = False
-                t["laps_score"]   = None
-                t["decision"]     = "NATIVE"
-                t["confidence"]   = None
-                t["threshold"]    = None
-                t["features"]     = {}
+                t["is_candidate"]    = False
+                t["laps_score"]      = None
+                t["decision"]        = "NATIVE"
+                t["probability"]     = None
+                t["confidence"]      = None
+                t["threshold"]       = None
+                t["is_borderline"]   = False
+                t["ego_density_bonus"] = 0.0
+                t["naturalness_penalty"] = 0.0
+                t["domain"]          = "N/A"
+                t["features"]        = {}
 
         preserve_list = [t["token"] for t in tagged if t["decision"] == "PRESERVE"]
         explanations  = explain_all(tagged)
@@ -62,16 +73,18 @@ def run(
             "preserve_list":  preserve_list,
             "rewrite_result": {
                 "original":  sentence,
-                "rewritten": sentence,  # Pure English sentence remains as-is
+                "rewritten": sentence,  # Pure English: no rewriting needed
                 "preserved": preserve_list,
-                "prompt":    "Monolingual English Input - No rewriting required.",
+                "xml_prompt": "Monolingual English - No rewriting required.",
                 "backend":   llm_backend,
             },
             "explanations":   explanations,
             "is_monolingual": True,
+            "summary":        None,
         }
 
     # 3. Code-Mixed Pipeline: Feature extraction for candidate tokens
+    kg_engine     = get_graph_engine()
     surface_forms = [t["token"] for t in tagged]
     features_map  = {}
     for i, tok in enumerate(tagged):
@@ -81,17 +94,22 @@ def run(
     # 4. Score
     scored = score_all_tokens(tagged, features_map, weights)
 
-    # 5. Threshold decisions
-    decided = batch_decide(scored, register)
+    # 5. Sigmoid Soft-Boundary Threshold decisions (with KG ego-density enrichment)
+    decided = batch_decide(scored, register, kg_engine=kg_engine)
+    summary = batch_summarise(decided)
 
-    # 6. Build preserve list
-    preserve_list = [t["token"] for t in decided if t.get("decision") == "PRESERVE"]
+    # 6. Build preserve list (PRESERVE + UNCERTAIN both retained)
+    preserve_list = [
+        t["token"] for t in decided
+        if t.get("decision") in ("PRESERVE", "UNCERTAIN")
+    ]
 
-    # 7. Rewrite via LLM
-    rewriter = LAPSRewriter(backend=llm_backend, model=llm_model)
+    # 7. Rewrite via LLM – passes decided_tokens for XML prompt builder
+    rewriter = LAPSRewriter(backend=llm_backend, model=llm_model, kg_engine=kg_engine)
     rewrite_result = rewriter.rewrite(
         sentence=sentence,
-        preserve_tokens=preserve_list,
+        decided_tokens=decided,
+        register=register,
     )
 
     # 8. Explain
@@ -104,6 +122,13 @@ def run(
         "rewrite_result": rewrite_result,
         "explanations":   explanations,
         "is_monolingual": False,
+        "summary":        {
+            "total_candidates": summary.total_candidates,
+            "preserve_count":   summary.preserve_count,
+            "uncertain_count":  summary.uncertain_count,
+            "rewrite_count":    summary.rewrite_count,
+            "avg_probability":  summary.avg_probability,
+        },
     }
 
 
