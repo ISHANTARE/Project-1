@@ -1,85 +1,133 @@
 """
-LAPS Knowledge Graph Engine
----------------------------
-Queries the Bilingual Code-Mixed Knowledge Graph (`data/vocabulary/laps_knowledge_graph.json`)
-using graph traversal & sub-graph neighborhood analysis.
+LAPS Symmetric Bidirectional SQLite Graph Engine
+------------------------------------------------
+Queries the Bidirectional Knowledge Graph Database (`laps_knowledge_graph.db`) for:
+1. English -> Hindi translation penalties & loanword borrowing ratios.
+2. Hindi -> English translation necessity & Devanagari script lookups.
+3. Reverse borrowing index (Hindi terms in global English).
 """
 
-import json
+import sqlite3
 from pathlib import Path
-import networkx as nx
 
-GRAPH_PATH = Path(__file__).resolve().parents[2] / "data" / "vocabulary" / "laps_knowledge_graph.json"
+DB_PATH = Path(__file__).resolve().parents[2] / "data" / "vocabulary" / "laps_knowledge_graph.db"
 
 
 class KnowledgeGraphEngine:
-    def __init__(self, graph_path: Path = GRAPH_PATH):
-        self.graph_path = graph_path
-        self.G = self._load_graph()
+    def __init__(self, db_path: Path = DB_PATH):
+        self.db_path = db_path
 
-    def _load_graph(self) -> nx.DiGraph:
-        if not self.graph_path.exists():
-            # Return empty graph fallback
-            return nx.DiGraph()
-
-        with open(self.graph_path, encoding="utf-8") as f:
-            data = json.load(f)
-        return nx.node_link_graph(data, edges="links")
+    def _get_connection(self):
+        return sqlite3.connect(self.db_path)
 
     def has_node(self, token: str) -> bool:
-        return self.G.has_node(token.lower())
+        if not self.db_path.exists():
+            return False
+        with self._get_connection() as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT 1 FROM nodes WHERE id = ?", (token.lower(),))
+            return cur.fetchone() is not None
 
     def get_node_attributes(self, token: str) -> dict:
-        """Fetch node attributes (frequencies, borrowing ratios, POS)."""
-        tok = token.lower()
-        if self.G.has_node(tok):
-            return dict(self.G.nodes[tok])
+        """Fetch node attributes (frequencies, script_devanagari, borrowing ratios, domain)."""
+        if not self.db_path.exists():
+            return {}
+        with self._get_connection() as conn:
+            cur = conn.cursor()
+            cur.execute("""
+                SELECT id, type, language, script_devanagari, f_mono_en, f_mono_hi, f_borrow, borrowing_ratio, domain, is_reverse_borrow
+                FROM nodes WHERE id = ?
+            """, (token.lower(),))
+            row = cur.fetchone()
+            if row:
+                return {
+                    "id": row[0],
+                    "type": row[1],
+                    "language": row[2],
+                    "script_devanagari": row[3],
+                    "f_mono_en": row[4],
+                    "f_mono_hi": row[5],
+                    "f_borrow": row[6],
+                    "borrowing_ratio": row[7],
+                    "domain": row[8],
+                    "is_reverse_borrow": bool(row[9]),
+                }
         return {}
 
-    def get_borrowing_frequency(self, token: str) -> float:
-        """Retrieve borrowing frequency ratio from graph node."""
-        attrs = self.get_node_attributes(token)
-        return attrs.get("f_borrow", 0.70)
-
     def get_domain_specificity(self, token: str) -> float:
-        """Find graph distance/weight to domain category nodes."""
-        tok = token.lower()
-        if not self.G.has_node(tok):
+        """Retrieve domain specificity weight from SQLite nodes/domain."""
+        attrs = self.get_node_attributes(token)
+        if not attrs:
             return 0.30
+        dom = attrs.get("domain", "General")
+        return 0.85 if dom != "General" else 0.40
 
-        # Check direct BELONGS_TO edges
-        for nbr in self.G.neighbors(tok):
-            if nbr.startswith("Domain_"):
-                edge_data = self.G.get_edge_data(tok, nbr)
-                return edge_data.get("weight", 0.85)
+    def get_en_to_hi_edge(self, token: str) -> dict:
+        """Query EN -> HI translation edge (penalty & meaning drift)."""
+        if not self.db_path.exists():
+            return {"naturalness_penalty": 0.50, "meaning_drift": 0.50}
 
-        return 0.40
+        with self._get_connection() as conn:
+            cur = conn.cursor()
+            cur.execute("""
+                SELECT naturalness_penalty, weight FROM edges
+                WHERE source = ? AND relation = 'EN_TO_HI_TRANSLATION'
+            """, (token.lower(),))
+            row = cur.fetchone()
+            if row:
+                return {
+                    "naturalness_penalty": row[0],
+                    "meaning_drift": round(1.0 - row[0], 2),
+                }
+
+        return {"naturalness_penalty": 0.50, "meaning_drift": 0.50}
 
     def get_translation_edge(self, token: str) -> dict:
-        """Fetch TRANSLATES_TO edge parameters (equivalence, naturalness penalty, meaning drift)."""
-        tok = token.lower()
-        if not self.G.has_node(tok):
-            return {"equivalence": 0.50, "naturalness_penalty": 0.50, "meaning_drift": 0.50}
+        """Alias for get_en_to_hi_edge."""
+        return self.get_en_to_hi_edge(token)
 
-        for nbr in self.G.neighbors(tok):
-            edge_data = self.G.get_edge_data(tok, nbr)
-            if edge_data.get("relation") == "TRANSLATES_TO":
-                return edge_data
+    def get_hi_to_en_edge(self, token: str) -> dict:
+        """Query HI -> EN translation edge (necessity & meaning recovery)."""
+        if not self.db_path.exists():
+            return {"translation_necessity": 0.50, "meaning_recovery": 0.50}
 
-        return {"equivalence": 0.50, "naturalness_penalty": 0.50, "meaning_drift": 0.50}
+        with self._get_connection() as conn:
+            cur = conn.cursor()
+            cur.execute("""
+                SELECT translation_necessity, weight FROM edges
+                WHERE source = ? AND relation = 'HI_TO_EN_TRANSLATION'
+            """, (token.lower(),))
+            row = cur.fetchone()
+            if row:
+                return {
+                    "translation_necessity": row[0],
+                    "meaning_recovery": round(row[0], 2),
+                }
+
+        return {"translation_necessity": 0.50, "meaning_recovery": 0.50}
 
     def get_context_cooccurrence(self, token: str, context_window: list[str]) -> float:
-        """Assess context graph neighborhood density."""
-        tok = token.lower()
-        if not self.G.has_node(tok) or not context_window:
+        """Assess context co-occurrence density via SQL edge queries."""
+        if not context_window or not self.db_path.exists():
             return 0.50
 
-        neighbors = set(self.G.neighbors(tok))
-        matches = sum(1 for c in context_window if c.lower() in neighbors)
-        return round(0.50 + (matches * 0.25), 2)
+        tok = token.lower()
+        with self._get_connection() as conn:
+            cur = conn.cursor()
+            placeholders = ",".join(["?"] * len(context_window))
+            query = f"SELECT COUNT(*) FROM edges WHERE source = ? AND target IN ({placeholders})"
+            params = [tok] + [c.lower() for c in context_window]
+            cur.execute(query, params)
+            count = cur.fetchone()[0]
+
+        return round(min(1.0, 0.50 + (count * 0.20)), 2)
+
+    def is_reverse_borrowed(self, token: str) -> bool:
+        """Check if token is a Hindi word borrowed into global English (e.g. jugaad, chai, guru)."""
+        attrs = self.get_node_attributes(token)
+        return attrs.get("is_reverse_borrow", False)
 
 
-# Singleton graph instance
 _KG_ENGINE = None
 
 def get_graph_engine() -> KnowledgeGraphEngine:
@@ -91,5 +139,14 @@ def get_graph_engine() -> KnowledgeGraphEngine:
 
 if __name__ == "__main__":
     kg = get_graph_engine()
-    print("Node 'meeting':", kg.get_node_attributes("meeting"))
-    print("Translation Edge 'meeting':", kg.get_translation_edge("meeting"))
+    print("=== ENGLISH LOANWORD NODE ===")
+    print("meeting:", kg.get_node_attributes("meeting"))
+    print("EN->HI Edge:", kg.get_en_to_hi_edge("meeting"))
+
+    print("\n=== HINDI NATIVE NODE ===")
+    b_attrs = kg.get_node_attributes("baithak")
+    print(f"baithak ID: {b_attrs.get('id')} | lang: {b_attrs.get('language')} | domain: {b_attrs.get('domain')}")
+    print("HI->EN Edge:", kg.get_hi_to_en_edge("baithak"))
+
+    print("\n=== REVERSE BORROWING NODE ===")
+    print("jugaad reverse borrow?", kg.is_reverse_borrowed("jugaad"))
