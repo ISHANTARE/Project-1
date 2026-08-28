@@ -1,15 +1,21 @@
 """
-LAPS Advanced Tokenizer & Language Tagger (LID)
------------------------------------------------
-Hybrid Language Tagger for Hinglish/Code-Mixed Text:
-1. Identifies Devanagari script.
-2. Checks common English vocabulary (WordNet/frequency lexicons + common English patterns).
-3. Identifies Hindi transliteration patterns & grammar markers (phonetic rules, common Hinglish stop words, postpositions).
+LAPS Advanced Tokenizer & Subword Neural Language Tagger (LID)
+--------------------------------------------------------------
+Hybrid Language Tagger for Code-Mixed Hinglish/Indic Text:
+1. Devanagari Script Detection.
+2. Neural Subword Character N-Gram Classifier (NeuralLanguageIdentifier).
+3. Phonetic Normalization for Romanized Hindi chat contractions ('smjh', 'cl', 'kro', 'chahye').
+4. Candidate Loanword Flagging for LAPS feature vector calculation.
 """
 
 import re
 import difflib
 from pathlib import Path
+
+try:
+    from src.laps.neural_lid import get_neural_lid, normalize_phonetic_transliteration
+except ModuleNotFoundError:
+    from laps.neural_lid import get_neural_lid, normalize_phonetic_transliteration
 
 # ── Devanagari regex ───────────────────────────────────────────────────────────
 DEVANAGARI_RE = re.compile(r'[\u0900-\u097F]')
@@ -18,7 +24,7 @@ LATIN_RE      = re.compile(r'[A-Za-z]')
 # ── Ambiguous homographs (English words that match Hinglish transliterated forms)
 AMBIGUOUS_HOMOGRAPHS = {"the", "is", "so", "me", "to", "do", "it", "in", "on", "no", "he", "be", "an", "at", "as", "hi"}
 
-# ── Comprehensive Transliterated Hindi Marker Vocabulary ────────────────────────
+# ── Comprehensive Transliterated Hindi Marker Vocabulary (Lexical Anchor) ────────
 HINDI_MARKERS = {
     # Pronouns & Demonstratives
     "kisi", "kiske", "kiska", "kiski", "kahan", "kaise", "kab", "kyun", "kya",
@@ -33,10 +39,10 @@ HINDI_MARKERS = {
     "saath", "sath", "bina", "liye", "baad", "pehle", "paas", "pass", "samne",
     "aage", "piche", "andar", "baahar", "beech", "uppar", "neeche",
 
-    # Verbs & Auxiliaries (excluding ambiguous English words like 'the')
+    # Verbs & Auxiliaries
     "hai", "hain", "ho", "hoon", "hun", "h", "tha", "thi", "gaya", "gayi",
     "gaye", "raha", "rahi", "rahe", "hoga", "hogi", "hoge", "honge", "karna",
-    "karni", "karne", "kar", "karo", "karein", "karo", "karta", "karti", "karte",
+    "karni", "karne", "kar", "karo", "karein", "karta", "karti", "karte",
     "kiya", "kiyi", "kiye", "dene", "dena", "diya", "diye", "lene", "lena",
     "liya", "liye", "aana", "aaye", "aaya", "aayi", "jaana", "jaaye", "jaaya",
     "jaayein", "sakta", "sakti", "sakte", "chahiye", "milla", "mili", "mile",
@@ -50,14 +56,12 @@ HINDI_MARKERS = {
     "na", "mat", "bas", "sirf", "vaise", "vaisebhi", "jaise", "jaisebhi",
 }
 
-# Phonetic suffixes highly characteristic of Hindi verb/noun inflections
 HINDI_SUFFIX_PATTERNS = (
     r'.*(ege|egi|ega|enge|ungi|unga|oge|ogi|aaye|aaya|aayi|aate|aati|aata|'
     r'iyega|iye|iyeh|ingey|ingee|ingea|rakho|dekho|suno|batao|samjho)$'
 )
 HINDI_SUFFIX_RE = re.compile(HINDI_SUFFIX_PATTERNS, re.IGNORECASE)
 
-# Standard English dictionary words that are universally recognized
 COMMON_ENGLISH_WORDS = {
     "hi", "hello", "hey", "link", "viva", "calendar", "calender", "pdf", "doc",
     "docx", "ppt", "pptx", "excel", "sheet", "file", "folder", "zoom", "teams",
@@ -72,24 +76,33 @@ COMMON_ENGLISH_WORDS = {
 
 
 def _is_hindi_word(word_lower: str) -> bool:
-    """Check if token is a transliterated Hindi word."""
+    """Check if token is a transliterated Hindi word using neural LID and lexical fallback."""
     if word_lower in HINDI_MARKERS:
         return True
     if HINDI_SUFFIX_RE.match(word_lower) and word_lower not in COMMON_ENGLISH_WORDS:
         return True
-    return False
+    
+    # Neural subword character n-gram prediction
+    lid = get_neural_lid()
+    pred = lid.predict_token_language(word_lower)
+    return pred["language"] == "HI"
 
 
 def tokenize(sentence: str) -> list[dict]:
     """
-    Tokenize a code-mixed sentence with high-accuracy LID.
+    Tokenize a code-mixed sentence with noise-resilient neural subword LID.
 
     Returns tagged tokens:
-      - language: 'EN' (English loanword candidate), 'HI' (transliterated Hindi), 'DEV' (Devanagari), 'PUNCT'
-      - is_candidate: True if English candidate subject to LAPS scoring.
+      - token: raw token string
+      - lower: lowercased token string
+      - script: 'latin', 'devanagari', or 'punct'
+      - language: 'EN', 'HI', 'PUNCT'
+      - is_candidate: True if English loanword candidate subject to LAPS scoring
+      - p_hi / p_en: Continuous language probability distributions
     """
     raw_tokens = re.findall(r"[\w'\-]+|[^\w\s]", sentence)
     tagged = []
+    lid = get_neural_lid()
 
     for tok in raw_tokens:
         tok_low = tok.lower()
@@ -98,7 +111,8 @@ def tokenize(sentence: str) -> list[dict]:
         if re.fullmatch(r'[\d\W]+', tok):
             tagged.append({
                 "token": tok, "lower": tok_low, "script": "punct",
-                "language": "PUNCT", "is_candidate": False
+                "language": "PUNCT", "is_candidate": False,
+                "p_hi": 0.0, "p_en": 0.0
             })
             continue
 
@@ -106,28 +120,52 @@ def tokenize(sentence: str) -> list[dict]:
         if DEVANAGARI_RE.search(tok):
             tagged.append({
                 "token": tok, "lower": tok_low, "script": "devanagari",
-                "language": "HI", "is_candidate": False
+                "language": "HI", "is_candidate": False,
+                "p_hi": 1.0, "p_en": 0.0
             })
             continue
 
-        # Check Hindi transliteration
-        if _is_hindi_word(tok_low):
-            tagged.append({
-                "token": tok, "lower": tok_low, "script": "latin",
-                "language": "HI", "is_candidate": False
-            })
-            continue
+        # Neural subword LID prediction
+        pred = lid.predict_token_language(tok)
+        
+        # Check dictionary overrides for ambiguous cases
+        if tok_low in COMMON_ENGLISH_WORDS:
+            lang = "EN"
+            is_cand = True
+            p_en = 0.95
+            p_hi = 0.05
+        elif tok_low in HINDI_MARKERS or HINDI_SUFFIX_RE.match(tok_low):
+            lang = "HI"
+            is_cand = False
+            p_hi = 0.95
+            p_en = 0.05
+        else:
+            lang = pred["language"]
+            is_cand = pred["is_candidate"]
+            p_hi = pred["p_hi"]
+            p_en = pred["p_en"]
 
-        # Latin script non-Hindi -> Tagged as candidate English token
         tagged.append({
-            "token": tok, "lower": tok_low, "script": "latin",
-            "language": "EN", "is_candidate": True
+            "token": tok,
+            "lower": tok_low,
+            "script": "latin",
+            "language": lang,
+            "is_candidate": is_cand,
+            "p_hi": p_hi,
+            "p_en": p_en,
+            "normalized": pred.get("normalized", tok_low)
         })
 
     return tagged
 
 
 if __name__ == "__main__":
-    sample = "hi! Kisi ke pass viva calender ki link h kya?"
-    for t in tokenize(sample):
-        print(f"{t['token']:12s} -> lang: {t['language']:6s} candidate: {t['is_candidate']}")
+    test_cases = [
+        "hi! Kisi ke pass viva calender ki link h kya?",
+        "bhai smjh ni aya kal ka ppt share kr dena plzz",
+        "yeh client meeting postpone ho gayi hai"
+    ]
+    for sample in test_cases:
+        print(f"\nSentence: {sample}")
+        for t in tokenize(sample):
+            print(f"  {t['token']:12s} -> lang:{t['language']:5s} cand:{str(t['is_candidate']):5s} P(HI):{t['p_hi']:.2f} P(EN):{t['p_en']:.2f}")

@@ -1,26 +1,35 @@
 {
-  "corpus": "C:\\Users\\Admin\\VIT_Projects\\PROJECT-1\\data\\evaluation\\gold_corpus.json",
-  "metrics": {
-    "LAPS (Proposed)": {
-      "oter": 0.0192,
-      "bleu_approx": 0.3904,
-      "token_f1": 0.9567,
-      "bertscore_f1": null,
-      "n_sentences": 100
-    },
-    "LAPS Ablation (No Constraints)": {
-      "oter": 0.0192,
-      "bleu_approx": 0.3904,
-      "token_f1": 0.0,
-      "bertscore_f1": null,
-      "n_sentences": 100
-    },
-    "Static Dictionary Filter": {
-      "oter": 0.0192,
-      "bleu_approx": 0.3904,
-      "token_f1": 0.0838,
-      "bertscore_f1": null,
-      "n_sentences": 100
-    }
+  "LAPS (Proposed Neuro-Symbolic)": {
+    "oter": 0.0239,
+    "bleu": 0.5572,
+    "chrf": 0.5594,
+    "token_f1": 0.714,
+    "n_sentences": 1000
+  },
+  "Few-Shot ICL (Standard LLM)": {
+    "oter": 0.0964,
+    "bleu": 0.5516,
+    "chrf": 0.5528,
+    "token_f1": 0.6268,
+    "n_sentences": 1000
+  },
+  "Static Dictionary Filter": {
+    "oter": 0.2035,
+    "bleu": 0.5475,
+    "chrf": 0.5388,
+    "token_f1": 0.3722,
+    "n_sentences": 1000
+  },
+  "Unconstrained NMT Baseline": {
+    "oter": 0.5357,
+    "bleu": 0.5239,
+    "chrf": 0.516,
+    "token_f1": 0.0,
+    "n_sentences": 1000
+  },
+  "significance_p_values": {
+    "Few-Shot ICL (Standard LLM)": 0.4948,
+    "Static Dictionary Filter": 0.4928,
+    "Unconstrained NMT Baseline": 0.491
   }
 }

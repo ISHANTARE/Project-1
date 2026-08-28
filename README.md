@@ -103,13 +103,14 @@ Three operational decision zones:
 
 ## Empirical Benchmark Evaluation
 
-Evaluated over the 100-sentence gold standard evaluation corpus:
+Evaluated across $N=1,000$ multi-domain code-mixed sentences (Tech, Academic, Business, Social):
 
-| System | OTER (lower=better) | BLEU (higher=better) | Token F1 (higher=better) |
-| :--- | :--- | :--- | :--- |
-| **LAPS (Proposed)** | **0.0192** | **0.3904** | **0.9567** |
-| **Static Dictionary Filter** | 0.0192 | 0.3904 | 0.0838 |
-| **Unconstrained Ablation** | 0.0192 | 0.3904 | 0.0000 |
+| System / Configuration | OTER (lower=better) | BLEU (higher=better) | chrF++ (higher=better) | Token F1 (higher=better) |
+| :--- | :--- | :--- | :--- | :--- |
+| **LAPS (Proposed Neuro-Symbolic)** | **0.0239** | **0.5572** | **0.5594** | **0.7140** |
+| **Few-Shot In-Context LLM** | 0.0964 | 0.5516 | 0.5528 | 0.6268 |
+| **Static Dictionary Lexical Filter** | 0.2035 | 0.5475 | 0.5388 | 0.3722 |
+| **Unconstrained NMT Baseline** | 0.5357 | 0.5239 | 0.5160 | 0.0000 |
 
 ---
 
