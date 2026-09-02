@@ -243,6 +243,102 @@ class SubwordLanguageIdentifier:
             "backend": "bayesian_subword_ngram"
         }
 
+    @staticmethod
+    def disambiguate_homographs(tokens: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Contextual sequence-level homograph disambiguation for short Romanized utterances.
+        Disambiguates tokens that exist in both English and Romanized Hindi:
+        ('us', 'me', 'so', 'do', 'to', 'is', 'in', 'on', 'no', 'he', 'be')
+        """
+        n = len(tokens)
+        for i, t in enumerate(tokens):
+            w = t.get("lower", t.get("token", "").lower())
+            prev_w = tokens[i - 1].get("lower", tokens[i - 1].get("token", "").lower()) if i > 0 else ""
+            next_w = tokens[i + 1].get("lower", tokens[i + 1].get("token", "").lower()) if i < n - 1 else ""
+
+            # 1. 'us' (English pronoun vs. Hindi oblique demonstrative pronoun: 'us room me', 'us ko')
+            if w == "us":
+                if next_w in {"ko", "se", "ka", "ki", "ke", "par", "pe", "pr", "ne", "me", "mein", "liye", "paas", "pass", "saath", "sath", "room", "kamre", "baat", "din", "waqt", "samay"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                elif prev_w in {"aur", "ya", "ki", "lekin", "se", "ne", "toh", "to"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.90
+                    t["p_en"] = 0.10
+                else:
+                    # English 'us' is a closed-class grammatical pronoun; never an English candidate loanword to preserve
+                    t["is_candidate"] = False
+
+            # 2. 'me' (English pronoun vs. Hindi locative postposition: 'meeting me', 'us me')
+            elif w == "me":
+                if next_w in {"h", "hai", "hain", "tha", "thi", "the", "gaya", "gayi", "hoga", "hogi", "aana", "batao", "bhejo", "aa", "rakha", "to", "toh", "bhi", "sirf"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                elif prev_w and prev_w not in {"give", "tell", "send", "ping", "email", "call", "help", "let", "show"}:
+                    # Preceded by noun/loanword/adjective in code-mixed sentence -> Hindi postposition "mein"
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.92
+                    t["p_en"] = 0.08
+                else:
+                    t["is_candidate"] = False
+
+            # 3. 'do' (English auxiliary verb vs. Hindi imperative verb: 'de do', 'bhej do', 'kar do')
+            elif w == "do":
+                if prev_w in {"de", "kar", "krr", "bhej", "bata", "le", "rakh", "daal", "chhod", "rok", "aane", "jaane", "kr", "karo"} or prev_w.endswith(("e", "kar")):
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                elif next_w in {"bhai", "yaar", "na", "mat", "plz", "please", "jaldi"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.90
+                    t["p_en"] = 0.10
+                else:
+                    t["is_candidate"] = False
+
+            # 4. 'to' / 'toh' (English preposition vs. Hindi particle: 'yeh to link hai')
+            elif w == "to":
+                if prev_w in {"yeh", "ye", "woh", "voh", "kya", "ab", "jab", "tab", "main", "hum", "aap", "tum", "bhai", "yaar"} or next_w in {"bhi", "sahi", "phir", "fir", "hai", "h", "kya"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                else:
+                    t["is_candidate"] = False
+
+            # 5. 'is' (English auxiliary 'is' vs. Hindi demonstrative pronoun: 'is room me', 'is ko')
+            elif w == "is":
+                if next_w in {"ko", "se", "ka", "ki", "ke", "liye", "par", "pe", "mein", "me", "baat", "time", "din", "room", "kamre", "saath"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                else:
+                    t["is_candidate"] = False
+
+            # 6. 'so' (English conjunction vs. Hindi verb 'so jana' or colloquial connector)
+            elif w == "so":
+                if next_w in {"jao", "gaya", "gayi", "raha", "rahe"}:
+                    t["language"] = "HI"
+                    t["is_candidate"] = False
+                    t["p_hi"] = 0.95
+                    t["p_en"] = 0.05
+                else:
+                    t["is_candidate"] = False
+
+            # 7. Function words in English are never loanword preservation candidates
+            elif w in {"the", "in", "on", "no", "he", "be", "an", "at", "as", "hi", "it", "and", "or", "for", "by", "from"}:
+                t["is_candidate"] = False
+
+        return tokens
+
 
 # Alias for backward compatibility
 NeuralLanguageIdentifier = SubwordLanguageIdentifier
@@ -254,3 +350,4 @@ def get_neural_lid() -> SubwordLanguageIdentifier:
     if _LID_INSTANCE is None:
         _LID_INSTANCE = SubwordLanguageIdentifier()
     return _LID_INSTANCE
+

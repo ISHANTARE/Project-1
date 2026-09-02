@@ -187,3 +187,59 @@ class TestBenchmarkSplitsIntegrity:
         # Verify presence of OOV tokens in test split
         has_oov = any(s.get("id", "").startswith("OOV") for s in test_sentences)
         assert has_oov is True, "Held-out test set must contain authentic OOV test cases"
+
+
+class TestHomographDisambiguation:
+    def test_short_utterance_homographs(self):
+        tokens = tokenize("us room me meeting h to link bhej do")
+        token_map = {t["token"].lower(): t for t in tokens}
+
+        # Colliding homographs must be identified as Hindi grammatical particles/verbs
+        assert token_map["us"]["language"] == "HI"
+        assert token_map["us"]["is_candidate"] is False
+
+        assert token_map["me"]["language"] == "HI"
+        assert token_map["me"]["is_candidate"] is False
+
+        assert token_map["to"]["language"] == "HI"
+        assert token_map["to"]["is_candidate"] is False
+
+        assert token_map["do"]["language"] == "HI"
+        assert token_map["do"]["is_candidate"] is False
+
+        # True loanwords must remain English candidates
+        assert token_map["meeting"]["language"] == "EN"
+        assert token_map["meeting"]["is_candidate"] is True
+
+        assert token_map["link"]["language"] == "EN"
+        assert token_map["link"]["is_candidate"] is True
+
+
+class TestRegisterDetector:
+    def test_auto_register_detection(self):
+        from src.laps.register_detector import detect_register
+
+        casual_sample = "bhai kal ka ppt share kr dena plzz!"
+        res_c = detect_register(casual_sample)
+        assert res_c["predicted_register"] == "casual"
+        assert res_c["threshold"] == 0.35
+
+        business_sample = "The client requested an update on the server deployment project."
+        res_b = detect_register(business_sample)
+        assert res_b["predicted_register"] == "business"
+        assert res_b["threshold"] == 0.50
+
+        academic_sample = "The viva evaluation and thesis presentation are scheduled tomorrow."
+        res_a = detect_register(academic_sample)
+        assert res_a["predicted_register"] == "academic"
+        assert res_a["threshold"] == 0.65
+
+    def test_pipeline_with_auto_register(self):
+        res = run(
+            sentence="bhai client meeting ki link share kr dena",
+            register="auto",
+            llm_backend="mock"
+        )
+        assert "preserve_list" in res
+        assert "meeting" in res["preserve_list"] or "link" in res["preserve_list"]
+

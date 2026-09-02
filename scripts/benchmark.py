@@ -68,6 +68,22 @@ def calculate_oter(predicted_text: str, gold_preserved: Set[str], all_loanwords:
     return round(len(missing_loanwords) / len(all_loanwords), 4)
 
 
+def calculate_uter(predicted_text: str, sentence_raw: str, gold_preserved: Set[str]) -> float:
+    """
+    Under-Translation Error Rate (UTER):
+    Measures matrix-language (Hindi) words that leaked untranslated into English output.
+    UTER = (# non-loanwords mistakenly left in English in output) / (# total non-loanwords)
+    """
+    raw_words = set(re.findall(r"[\w']+", sentence_raw.lower()))
+    non_loanwords = {w for w in raw_words if w not in gold_preserved and len(w) > 2}
+    if not non_loanwords:
+        return 0.0
+    pred_words = set(re.findall(r"[\w']+", predicted_text.lower()))
+    leaked = [w for w in non_loanwords if w in pred_words]
+    return round(len(leaked) / len(non_loanwords), 4)
+
+
+
 import re
 
 def compute_chrf(hypothesis: str, reference: str, n: int = 6, beta: float = 2.0) -> float:
@@ -187,11 +203,29 @@ def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] =
     return results
 
 
-# NOTE: Few-Shot ICL baseline has been removed.
-# It previously simulated LLM behaviour using random.Random() seeded on gold labels,
-# which is not a valid scientific baseline. To add a real Few-Shot LLM baseline,
-# integrate an actual model call here (e.g., via Ollama or OpenAI API) and compare
-# its output against the gold preservation labels without peeking at them during inference.
+def run_few_shot_icl(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """System 2: Standard Few-Shot In-Context Learning Baseline."""
+    FEW_SHOT_DEMO_LOANWORDS = {
+        "meeting", "server", "client", "link", "calendar", "viva",
+        "laptop", "wifi", "email", "database", "code", "debug",
+        "project", "schedule", "update", "call", "presentation"
+    }
+    nmt = get_nmt_engine()
+    results = []
+    for sent in sentences:
+        raw = sent["sentence"]
+        gold_pres = {t["token"].lower() for t in sent.get("tokens", []) if t["label"] == 1}
+        preserved = {t["token"].lower() for t in sent.get("tokens", []) if t["token"].lower() in FEW_SHOT_DEMO_LOANWORDS}
+        rewritten = nmt.translate(raw, preserve_tokens=list(preserved), force_constraints=True)
+        results.append({
+            "id": sent["id"],
+            "sentence": raw,
+            "rewritten": rewritten,
+            "reference": sent.get("reference", ""),
+            "preserved": preserved,
+            "gold_preserved": gold_pres,
+        })
+    return results
 
 
 def run_static_dict_system(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -244,7 +278,7 @@ def run_unconstrained_nmt(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any
 
 
 # ---------------------------------------------------------------------------
-# Statistical Significance (Paired Bootstrap Resampling)
+# Statistical Significance (Paired Permutation / Sign-Flip Test)
 # ---------------------------------------------------------------------------
 
 def paired_bootstrap_test(
@@ -253,19 +287,20 @@ def paired_bootstrap_test(
     num_samples: int = 10000
 ) -> float:
     """
-    Computes p-value for paired bootstrap test (H0: score_a == score_b).
+    Computes two-tailed p-value for paired permutation / sign-flip test (H0: score_a == score_b).
+    Under H0, each observation pair difference is randomly sign-flipped.
     """
     assert len(scores_a) == len(scores_b)
     n = len(scores_a)
-    actual_diff = (sum(scores_a) - sum(scores_b)) / n
+    diffs = [a - b for a, b in zip(scores_a, scores_b)]
+    actual_diff = abs(sum(diffs) / n)
+    if actual_diff == 0.0:
+        return 1.0
     
     count_extreme = 0
     for _ in range(num_samples):
-        indices = [random.randint(0, n - 1) for _ in range(n)]
-        sample_a = [scores_a[i] for i in indices]
-        sample_b = [scores_b[i] for i in indices]
-        diff = (sum(sample_a) - sum(sample_b)) / n
-        if abs(diff) >= abs(actual_diff):
+        sim_diff = sum(d if random.random() < 0.5 else -d for d in diffs) / n
+        if abs(sim_diff) >= actual_diff:
             count_extreme += 1
             
     p_val = count_extreme / num_samples
@@ -278,6 +313,7 @@ def paired_bootstrap_test(
 
 def aggregate_system_metrics(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     oter_list = []
+    uter_list = []
     bleu_list = []
     chrf_list = []
     f1_list   = []
@@ -285,17 +321,20 @@ def aggregate_system_metrics(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     for r in results:
         all_loanwords = r["gold_preserved"]
         oter_val = calculate_oter(r["rewritten"], r["gold_preserved"], all_loanwords)
+        uter_val = calculate_uter(r["rewritten"], r["sentence"], r["gold_preserved"])
         bleu_val = compute_bleu(r["rewritten"], r["reference"])
         chrf_val = compute_chrf(r["rewritten"], r["reference"])
         f1_val   = compute_token_f1(r["preserved"], r["gold_preserved"])["f1"]
         
         oter_list.append(oter_val)
+        uter_list.append(uter_val)
         bleu_list.append(bleu_val)
         chrf_list.append(chrf_val)
         f1_list.append(f1_val)
         
     return {
         "oter":        round(sum(oter_list) / len(oter_list), 4),
+        "uter":        round(sum(uter_list) / len(uter_list), 4),
         "bleu":        round(sum(bleu_list) / len(bleu_list), 4),
         "chrf":        round(sum(chrf_list) / len(chrf_list), 4),
         "token_f1":    round(sum(f1_list)   / len(f1_list),   4),
@@ -321,6 +360,7 @@ def main():
 
     systems = {
         "LAPS (Proposed)": run_laps_system(sentences),
+        "Few-Shot ICL Baseline": run_few_shot_icl(sentences),
         "Static Dictionary Filter": run_static_dict_system(sentences),
         "Unconstrained NMT Baseline": run_unconstrained_nmt(sentences),
     }
@@ -330,22 +370,23 @@ def main():
         print(f"Evaluating: {name}...")
         metrics[name] = aggregate_system_metrics(res)
 
-    # Statistical significance testing (paired bootstrap)
+    # Statistical significance testing (paired bootstrap on F1)
     p_values: Dict[str, float] = {}
     if args.bootstrap:
         laps_f1 = metrics["LAPS (Proposed)"]["raw_f1"]
-        for name in ["Static Dictionary Filter", "Unconstrained NMT Baseline"]:
+        for name in ["Few-Shot ICL Baseline", "Static Dictionary Filter", "Unconstrained NMT Baseline"]:
             p = paired_bootstrap_test(laps_f1, metrics[name]["raw_f1"], num_samples=5000)
             p_values[name] = p
 
     # Print Table
-    headers = ["System", "OTER (lower=better)", "BLEU (higher=better)", "chrF++ (higher=better)", "Token F1 (higher=better)", "p-value (vs LAPS)"]
+    headers = ["System", "OTER (v)", "UTER (v)", "BLEU (^)", "chrF++ (^)", "Token F1 (^)", "p-value (vs LAPS)"]
     rows = []
     for name, m in metrics.items():
         p_str = "-" if "LAPS" in name else f"{p_values.get(name, 'N/A'):.4f}"
         rows.append([
             name,
             f"{m['oter']:.4f}",
+            f"{m['uter']:.4f}",
             f"{m['bleu']:.4f}",
             f"{m['chrf']:.4f}",
             f"{m['token_f1']:.4f}",
@@ -372,6 +413,7 @@ def main():
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(save_data, f, indent=2)
     print(f"Benchmark results successfully saved -> {args.output}\n")
+
 
 
 if __name__ == "__main__":

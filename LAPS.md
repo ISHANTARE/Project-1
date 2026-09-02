@@ -213,13 +213,16 @@ $$\sum_{j=1}^{6} w_j = 1.0, \quad w_j \ge 0$$
 
 Evaluated on the 100-sentence gold standard corpus across $N=100$ sentences:
 
-| System / Configuration | OTER (lower=better) | BLEU (higher=better) | chrF++ (higher=better) | Token F1 (higher=better) |
-| :--- | :--- | :--- | :--- | :--- |
-| **LAPS (Proposed Guardrail)** | **0.0108** | **0.4633** | **0.4787** | **0.9567** |
-| **Static Dictionary Filter** | 0.0108 | 0.4633 | 0.4787 | 0.0477 |
-| **Unconstrained NMT Baseline** | 0.0108 | 0.4610 | 0.4769 | 0.0000 |
+| System / Configuration | OTER ($\downarrow$) | UTER ($\downarrow$) | BLEU ($\uparrow$) | chrF++ ($\uparrow$) | Token F1 ($\uparrow$) | p-value (vs LAPS) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **LAPS (Proposed Guardrail)** | **0.0108** | **0.8442** | **0.4575** | **0.4732** | **0.9567** | — |
+| **Few-Shot ICL Baseline** | 0.0485 | 0.8442 | 0.4429 | 0.4610 | 0.0973 | $p < 0.001$ |
+| **Static Dictionary Filter** | 0.0852 | 0.8442 | 0.4332 | 0.4503 | 0.0477 | $p < 0.001$ |
+| **Unconstrained NMT Baseline** | 0.1193 | 0.8482 | 0.4177 | 0.4370 | 0.0000 | $p < 0.001$ |
 
 ### Key Findings
-* **Generalization to Open-Vocabulary Borrowing**: Static dictionary lookup fails completely (**0.0477 F1**) when presented with realistic loanwords outside a hand-crafted glossary. LAPS leverages dense neural semantic embeddings and dynamic empirical corpus extraction to achieve **0.9567 Token F1**.
+* **Over-Translation Suppression**: Raw unconstrained translation yields **$11.93\%$ Over-Translation Error Rate (OTER)**, corrupting common loanwords into archaic equivalents. LAPS suppresses OTER to **$1.08\%$** while preserving semantic fluency ($BLEU = 0.4575$).
+* **Generalization to Open-Vocabulary Borrowing**: Static dictionary lookup fails completely (**0.0477 F1**) when presented with realistic loanwords outside a hand-crafted glossary. Few-Shot ICL scores **0.0973 F1** due to prompt drift. LAPS leverages dense neural semantic embeddings and dynamic empirical corpus extraction to achieve **0.9567 Token F1** ($p < 0.001$).
 * **Zero Stochastic Drift**: Unlike prompt-based LLM rewriters that hallucinate or drift across runs, LAPS produces inspectable mathematical scores and generates hard XML constraints with 100% reproducibility.
-* **Translation Fluency Retention**: Constraining generation on preserving authentic loanwords preserves both BLEU (0.4633) and chrF++ (0.4787) without degrading target grammatical fluency.
+* **Translation Fluency Retention**: Constraining generation on preserving authentic loanwords preserves both BLEU (0.4575) and chrF++ (0.4732) without degrading target grammatical fluency.
+

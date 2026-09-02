@@ -8,11 +8,13 @@ This document details the concrete, verifiable software, algorithmic, and experi
 
 ### LAPS Core Engine (`src/laps/`)
 * **`cmi_detector.py`**: Sentence-level Code-Mixing Index (Gamback and Das, 2014) detector distinguishing monolingual English versus code-mixed Hinglish.
-* **`tokenizer.py`**: Subword/phonetic Language Identifier (LID) tagging Latin/Devanagari scripts and transliterated Hindi grammar markers.
+* **`tokenizer.py`**: Subword/phonetic Language Identifier (LID) tagging Latin/Devanagari scripts, transliterated Hindi grammar markers, and sequence-level homograph disambiguation.
+* **`neural_lid.py`**: Noise-resilient character-level PyTorch classifier with Bayesian n-gram fallback and contextual homograph disambiguation (*us, me, so, do, to, is*).
+* **`register_detector.py`**: Automated conversational register predictor inferring register (`casual`, `social`, `business`, `academic`) and dynamic threshold $\theta_R$ from surface text cues.
 * **`feature_extractor.py`**: Neural feature calculator utilizing `sentence-transformers` (`all-MiniLM-L6-v2`) zero-shot embeddings and fuzzy typo alignment (`difflib`).
 * **`graph_engine.py`**: High-performance SQLite query API for `laps_knowledge_graph.db`.
 * **`scorer.py`**: Multi-factor LAPS weighted scoring calculation over 6 linguistic feature axes.
-* **`threshold_engine.py`**: Soft Sigmoid logistic probability boundary engine with three decision zones (PRESERVE, UNCERTAIN, REWRITE) and KG ego-density modulation.
+* **`threshold_engine.py`**: Soft Sigmoid logistic probability boundary engine with three decision zones (PRESERVE, UNCERTAIN, REWRITE), KG ego-density modulation, and dynamic register integration.
 
 ### Production Lexical & Corpus Artifacts (`data/vocabulary/`)
 * **`empirical_loanword_index.json`**: Empirical borrowing index compiled from **16,024 LinCE and PHINC code-mixed sentences**, indexing **9,879 unique English loanword tokens** with occurrence count, document frequency, and continuous borrowing propensity scores ($\text{BPI}$).
@@ -22,7 +24,8 @@ This document details the concrete, verifiable software, algorithmic, and experi
 * **`data/evaluation/gold_corpus.json`**: 100-sentence gold standard corpus annotated with human token preservation labels across 4 communicative registers (Casual, Business, Academic, Social).
 * **`data/evaluation/gold_corpus_real_50.json`**: 50 authentic evaluation sentences extracted directly from LinCE and PHINC benchmarks.
 * **`scripts/build_empirical_loanword_index.py`**: Automated pipeline downloading and parsing LinCE and PHINC to compute statistical borrowing propensities.
-* **`scripts/benchmark.py`**: Automated multi-baseline evaluation harness measuring Over-Translation Error Rate (OTER), BLEU, chrF++, and Token F1.
+* **`scripts/benchmark.py`**: Automated multi-baseline evaluation harness measuring Over-Translation Error Rate (OTER), Under-Translation Error Rate (UTER), BLEU, chrF++, Token F1, and paired permutation significance testing ($p < 0.001$) across LAPS, Few-Shot ICL, Static Dictionary, and Unconstrained NMT.
+
 * **`scripts/run_ablation_study.py`**: Automated ablation study runner quantifying individual feature contributions across all 6 axes.
 * **`scripts/compute_agreement.py`**: Inter-annotator agreement calculator computing Fleiss' Kappa from human annotations.
 * **`scripts/optimize_weights.py`**: Simplex grid search and SLSQP local optimizer generating calibrated weight vectors $\mathbf{w}^*$.

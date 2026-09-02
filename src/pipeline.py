@@ -22,7 +22,7 @@ from src.llm.explainer import explain_all
 
 def run(
     sentence: str,
-    register: str = "business",
+    register: str = "auto",
     llm_backend: str = "mock",
     llm_model: str | None = None,
     weights: dict | None = None,

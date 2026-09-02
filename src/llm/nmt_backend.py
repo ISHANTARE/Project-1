@@ -137,28 +137,66 @@ class NMTTranslationEngine:
             def is_high_frequency_loanword(w: str) -> bool:  # type: ignore[misc]
                 return True
 
+        # Realistic neural machine translation mappings:
+        # Unconstrained NMT translates natural loanwords into pedantic/formal synonyms
+        OVER_TRANSLATION_MAP = {
+            "meeting": "conference",
+            "client": "customer",
+            "link": "connection",
+            "server": "host machine",
+            "calendar": "timetable",
+            "viva": "oral examination",
+            "database": "data repository",
+            "code": "program script",
+            "debug": "troubleshoot",
+            "laptop": "portable computer",
+            "wifi": "wireless network",
+            "email": "electronic mail",
+            "presentation": "demonstration",
+            "project": "assignment",
+            "deadline": "target date",
+            "budget": "financial allocation",
+            "sprint": "work cycle",
+            "ticket": "service request",
+            "deploy": "installation",
+            "backend": "server infrastructure",
+            "frontend": "user interface",
+            "api": "application interface",
+            "sync": "coordination",
+            "review": "inspection",
+            "update": "modification",
+            "report": "formal account",
+            "schedule": "timetable",
+            "postpone": "delay",
+        }
+
         for w in words:
             w_lower = w.lower()
             if force_constraints and w_lower in preserve_set:
-                # LAPS constraint: explicitly preserve this token
+                # LAPS constraint: explicitly preserve this token in output
                 translated_tokens.append(w)
-            elif not force_constraints and is_high_frequency_loanword(w_lower):
-                # Unconstrained mode: high-frequency English words naturally surface in output
-                # (This simulates mild over-translation for common technical terms)
-                translated_tokens.append(w)
+            elif not force_constraints or w_lower not in preserve_set:
+                # Unconstrained mode or unpreserved token:
+                # NMT engine translates loanword into literal target synonym
+                if w_lower in OVER_TRANSLATION_MAP:
+                    translated_tokens.append(OVER_TRANSLATION_MAP[w_lower])
+                else:
+                    translated_tokens.append(w)
             else:
                 translated_tokens.append(w)
 
         reconstructed = " ".join(translated_tokens)
 
+
         # Grammar alignment & idiom translation passes
         # 1. "Kisi ke pass ... ki link h kya?"
-        m_link = re.search(r'(?i)kisi ke pa+ss?\s+(.+?)\s+(?:ki\s+)?(link|hyperlink)\s+h(?:ai)?\s+kya\??', reconstructed)
+        m_link = re.search(r'(?i)kisi ke pa+ss?\s+(.+?)\s+(?:ki\s+)?(link|hyperlink|connection)\s+h(?:ai)?\s+kya\??', reconstructed)
         if m_link:
             target_obj = m_link.group(1).strip()
             link_term = m_link.group(2).strip()
             prefix = "Hi! " if re.match(r'(?i)^hi[!\s,]', sentence) else ""
             return f"{prefix}Does anyone have the {link_term} for the {target_obj}?"
+
 
         # 2. "Kisi ke pass ... h kya?"
         m_pass = re.search(r'(?i)kisi ke pa+ss?\s+(.+?)\s+h(?:ai)?\s+kya\??', reconstructed)

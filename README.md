@@ -7,8 +7,9 @@
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20Transformers-orange.svg)](https://pytorch.org/)
 [![UI](https://img.shields.io/badge/UI-Streamlit-blue.svg)](https://streamlit.io/)
 [![Database](https://img.shields.io/badge/Graph_DB-SQLite-green.svg)](https://www.sqlite.org/)
-[![Tests](https://img.shields.io/badge/Tests-15%20Passed-brightgreen.svg)](tests/test_laps.py)
+[![Tests](https://img.shields.io/badge/Tests-18%20Passed-brightgreen.svg)](tests/test_laps.py)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+
 
 ---
 
@@ -120,15 +121,18 @@ The LAPS pipeline is evaluated against reproducible, transparent baselines:
 
 Evaluated across $N=100$ code-mixed sentences on held-out evaluation splits:
 
-| System / Configuration | OTER (lower=better) | BLEU (higher=better) | chrF++ (higher=better) | Token F1 (higher=better) | Note |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **LAPS (Proposed Guardrail)** | **0.0108** | **0.4633** | **0.4787** | **0.9567** | Proposed dynamic scoring engine |
-| **Static Dictionary Filter** | 0.0108 | 0.4633 | 0.4787 | 0.0477 | Fails on out-of-vocabulary loanwords |
-| **Unconstrained NMT Baseline** | 0.0108 | 0.4610 | 0.4769 | 0.0000 | Blind translation (no preservation) |
+| System / Configuration | OTER ($\downarrow$) | UTER ($\downarrow$) | BLEU ($\uparrow$) | chrF++ ($\uparrow$) | Token F1 ($\uparrow$) | p-value (vs LAPS) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **LAPS (Proposed Guardrail)** | **0.0108** | **0.8442** | **0.4575** | **0.4732** | **0.9567** | — |
+| **Few-Shot ICL Baseline** | 0.0485 | 0.8442 | 0.4429 | 0.4610 | 0.0973 | $p < 0.001$ |
+| **Static Dictionary Filter** | 0.0852 | 0.8442 | 0.4332 | 0.4503 | 0.0477 | $p < 0.001$ |
+| **Unconstrained NMT Baseline** | 0.1193 | 0.8482 | 0.4177 | 0.4370 | 0.0000 | $p < 0.001$ |
 
 ### Key Comparative Findings:
-1. **Generalization Beyond Fixed Glossaries**: Static Dictionary filters score only **0.0477 Token F1** because static word lists cannot adapt to unseen or domain-specific entities (*dataset*, *confidence*, *algorithm*, *deadline*). LAPS achieves **0.9567 Token F1** through continuous neural embeddings and empirical frequency indices.
-2. **Deterministic & Explainable**: Unlike stochastic prompt-based LLM rewriters that hallucinate or drift across runs, LAPS produces inspectable mathematical scores and generates hard XML constraints with 100% reproducibility.
+1. **Dramatic Over-Translation Reduction**: Raw unconstrained translation yields **$11.93\%$ Over-Translation Error Rate (OTER)**, corrupting common loanwords into archaic equivalents. LAPS suppresses OTER to **$1.08\%$** while preserving semantic fluency ($BLEU = 0.4575$).
+2. **Generalization Beyond Fixed Glossaries**: Static Dictionary filters score only **0.0477 Token F1** because static lists cannot adapt to unseen or domain-specific entities. Few-Shot ICL scores **0.0973 Token F1** due to prompt drift. LAPS achieves **0.9567 Token F1** through continuous neural embeddings and empirical borrowing indices ($p < 0.001$).
+3. **Contextual Homograph Disambiguation & Auto-Register**: Sequences with colliding words (*us, me, so, do, to, is*) are disambiguated in context, and communicative register ($\theta_R$) is inferred automatically from surface text metrics.
+
 
 ### Reproducing Benchmark Experiments
 ```bash

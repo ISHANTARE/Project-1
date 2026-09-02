@@ -30,17 +30,34 @@ import math
 from dataclasses import dataclass, field
 from typing import Literal
 
-# ---------------------------------------------------------------------------
-# Register Threshold Table (θ_R)
-# ---------------------------------------------------------------------------
-REGISTER_THRESHOLDS: dict[str, float] = {
-    "casual":   0.35,   # WhatsApp, informal chat
-    "social":   0.40,   # Twitter, Instagram
-    "business": 0.50,   # Emails, Slack, professional Hinglish
-    "academic": 0.65,   # Reports, papers, viva
-}
+try:
+    from src.laps.register_detector import (
+        REGISTER_THRESHOLDS,
+        DEFAULT_REGISTER,
+        detect_register,
+        get_register_threshold
+    )
+except ModuleNotFoundError:
+    try:
+        from laps.register_detector import (
+            REGISTER_THRESHOLDS,
+            DEFAULT_REGISTER,
+            detect_register,
+            get_register_threshold
+        )
+    except ModuleNotFoundError:
+        REGISTER_THRESHOLDS: dict[str, float] = {
+            "casual":   0.35,
+            "social":   0.40,
+            "business": 0.50,
+            "academic": 0.65,
+        }
+        DEFAULT_REGISTER: str = "business"
+        def detect_register(text: str = ""):
+            return {"predicted_register": DEFAULT_REGISTER, "threshold": 0.50}
+        def get_register_threshold(reg: str, text: str = ""):
+            return REGISTER_THRESHOLDS.get(reg, 0.50)
 
-DEFAULT_REGISTER: str = "business"
 
 # Sigmoid steepness (λ) – higher → sharper boundary
 SIGMOID_LAMBDA: float = 10.0
@@ -167,11 +184,18 @@ def decide(
     Returns:
         PreservationDecision dataclass.
     """
-    register = register.lower()
-    if register not in REGISTER_THRESHOLDS:
-        register = DEFAULT_REGISTER
-
-    theta = REGISTER_THRESHOLDS[register]
+    register_clean = register.lower().strip()
+    if register_clean == "auto":
+        text_cue = " ".join(context_window or [token])
+        det = detect_register(text_cue)
+        register = det["predicted_register"]
+        theta = det["threshold"]
+    else:
+        if register_clean not in REGISTER_THRESHOLDS:
+            register = DEFAULT_REGISTER
+        else:
+            register = register_clean
+        theta = REGISTER_THRESHOLDS[register]
 
     # 1. Base sigmoid probability
     prob = compute_sigmoid_probability(score, theta, lam)
@@ -226,7 +250,7 @@ def batch_decide(
     Args:
         scored_tokens : Output of scorer.score_all_tokens() – list of dicts
                         with at least 'token', 'laps_score', 'is_candidate'.
-        register      : Communicative register string.
+        register      : Communicative register string ('casual', 'business', 'auto', etc.)
         kg_engine     : Optional KnowledgeGraphEngine for CC_ego enrichment.
         lam           : Sigmoid steepness parameter.
 
@@ -237,6 +261,13 @@ def batch_decide(
     """
     # Build sentence-level context window (all surface tokens)
     all_tokens = [tok["token"] for tok in scored_tokens]
+
+    register_clean = register.lower().strip()
+    if register_clean == "auto":
+        sentence_text = " ".join(all_tokens)
+        det = detect_register(sentence_text)
+        register = det["predicted_register"]
+
 
     results = []
     for i, tok in enumerate(scored_tokens):

@@ -22,7 +22,8 @@ DEVANAGARI_RE = re.compile(r'[\u0900-\u097F]')
 LATIN_RE      = re.compile(r'[A-Za-z]')
 
 # ── Ambiguous homographs (English words that match Hinglish transliterated forms)
-AMBIGUOUS_HOMOGRAPHS = {"the", "is", "so", "me", "to", "do", "it", "in", "on", "no", "he", "be", "an", "at", "as", "hi"}
+AMBIGUOUS_HOMOGRAPHS = {"the", "is", "so", "me", "to", "do", "it", "in", "on", "no", "he", "be", "an", "at", "as", "hi", "us"}
+
 
 # ── Comprehensive Transliterated Hindi Marker Vocabulary (Lexical Anchor) ────────
 HINDI_MARKERS = {
@@ -161,7 +162,11 @@ def tokenize(sentence: str) -> list[dict]:
             "normalized": pred.get("normalized", tok_low)
         })
 
+    # Contextual sequence-level homograph disambiguation
+    tagged = lid.disambiguate_homographs(tagged)
+
     return tagged
+
 
 
 if __name__ == "__main__":
