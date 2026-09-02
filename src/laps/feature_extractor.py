@@ -123,16 +123,41 @@ HINDI_LIGHT_VERBS = {
 }
 
 
+EMPIRICAL_INDEX_PATH = VOCAB_DIR / "empirical_loanword_index.json"
+_EMPIRICAL_INDEX: Optional[Dict[str, Any]] = None
+
+def _load_empirical_index() -> Dict[str, Any]:
+    global _EMPIRICAL_INDEX
+    if _EMPIRICAL_INDEX is None:
+        if EMPIRICAL_INDEX_PATH.exists():
+            try:
+                with open(EMPIRICAL_INDEX_PATH, encoding="utf-8") as f:
+                    _EMPIRICAL_INDEX = json.load(f).get("tokens", {})
+            except Exception:
+                _EMPIRICAL_INDEX = {}
+        else:
+            _EMPIRICAL_INDEX = {}
+    return _EMPIRICAL_INDEX
+
+
 # ── Feature Vector Derivations ────────────────────────────────────────────────
 
 def _compute_bf_dynamic(token_lower: str, bf_dict: Dict[str, float]) -> float:
     """
-    1. BF: Dynamic Borrowing Frequency derived from empirical Zipf corpus distribution.
-    Uses continuous logistic mapping over English and Indic corpus frequencies.
+    1. BF: Dynamic Borrowing Frequency.
+    Derived primarily from authentic empirical Hinglish corpora (LinCE & PHINC).
+    Falls back to continuous Zipf distribution over global English for novel tokens.
     """
+    # 1. Primary: Empirical Hinglish corpus borrowing index (LinCE + PHINC)
+    emp_idx = _load_empirical_index()
+    if token_lower in emp_idx:
+        return float(emp_idx[token_lower]["borrowing_score"])
+
+    # 2. Secondary: Local vocabulary map
     if token_lower in bf_dict:
         return float(bf_dict[token_lower])
 
+    # 3. Fallback: Continuous logistic mapping over global English Zipf distribution
     if wordfreq is not None:
         zipf = wordfreq.zipf_frequency(token_lower, "en")
         if zipf > 0:
@@ -252,13 +277,15 @@ def _compute_tb_dynamic(
     if VERB_ACTION_SUFFIX_RE.match(token_lower):
         return 0.80
 
-    # 3. Contextual Hindi Light Verb collocations (e.g. 'postpone ho gaya')
+    # 3. Contextual Hindi Light Verb collocations (Complex Predicates: [Verb] + [Light Verb])
+    # In Hinglish grammar, an English word immediately preceding a Hindi light verb
+    # (e.g., 'ho gaya', 'karna padega', 'kar do') functions as a verbal action predicate.
     if all_tokens is not None and index is not None and index + 1 < len(all_tokens):
         next_tok = all_tokens[index + 1].lower()
         if next_tok in HINDI_LIGHT_VERBS:
-            # If it's a verbal predicate followed by a light verb, moderate-to-high benefit
-            if token_lower in {"delay", "cancel", "verify", "arrange", "continue"}:
-                return 0.85
+            # If followed by a light verb and not an explicit nominal entity suffix
+            if not NOUN_ENTITY_SUFFIX_RE.match(token_lower):
+                return 0.75
 
     # 4. Nominal entity derivational suffix (-tion, -ment, -ity, -ics, -base)
     if NOUN_ENTITY_SUFFIX_RE.match(token_lower):

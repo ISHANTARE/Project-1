@@ -14,27 +14,30 @@ This document details the concrete, verifiable software, algorithmic, and experi
 * **`scorer.py`**: Multi-factor LAPS weighted scoring calculation over 6 linguistic feature axes.
 * **`threshold_engine.py`**: Soft Sigmoid logistic probability boundary engine with three decision zones (PRESERVE, UNCERTAIN, REWRITE) and KG ego-density modulation.
 
-### Production Knowledge Graph Database (`data/vocabulary/`)
-* **`laps_knowledge_graph.db`**: SQLite Graph Database containing **2,907 Nodes and 2,940 Multi-Relational Edges** storing Zipf frequencies, Devanagari script mappings, naturalness penalties, and reverse-borrowing indices.
-* **`laps_knowledge_graph.json`**: Node-link JSON graph representation.
+### Production Lexical & Corpus Artifacts (`data/vocabulary/`)
+* **`empirical_loanword_index.json`**: Empirical borrowing index compiled from **16,024 LinCE and PHINC code-mixed sentences**, indexing **9,879 unique English loanword tokens** with occurrence count, document frequency, and continuous borrowing propensity scores ($\text{BPI}$).
+* **`laps_knowledge_graph.db`**: High-performance SQLite Database containing **2,907 Nodes and 2,940 Multi-Relational Edges** storing Zipf frequencies, Devanagari script mappings, naturalness penalties, and reverse-borrowing indices.
 
 ### Evaluation and Experimental Harnesses (`scripts/` and `data/evaluation/`)
 * **`data/evaluation/gold_corpus.json`**: 100-sentence gold standard corpus annotated with human token preservation labels across 4 communicative registers (Casual, Business, Academic, Social).
+* **`data/evaluation/gold_corpus_real_50.json`**: 50 authentic evaluation sentences extracted directly from LinCE and PHINC benchmarks.
+* **`scripts/build_empirical_loanword_index.py`**: Automated pipeline downloading and parsing LinCE and PHINC to compute statistical borrowing propensities.
+* **`scripts/benchmark.py`**: Automated multi-baseline evaluation harness measuring Over-Translation Error Rate (OTER), BLEU, chrF++, and Token F1.
+* **`scripts/run_ablation_study.py`**: Automated ablation study runner quantifying individual feature contributions across all 6 axes.
+* **`scripts/compute_agreement.py`**: Inter-annotator agreement calculator computing Fleiss' Kappa from human annotations.
 * **`scripts/optimize_weights.py`**: Simplex grid search and SLSQP local optimizer generating calibrated weight vectors $\mathbf{w}^*$.
-* **`scripts/benchmark.py`**: Automated evaluation harness measuring Over-Translation Error Rate (OTER), BLEU, and Token F1.
-* **`scripts/human_eval_export.py`**: Automated exporter generating double-blind CSV sheets for 3-rater Fleiss' Kappa agreement studies.
 
 ### LLM Guiding Engine (`src/llm/`)
-* **`rewriter.py`**: Graph-enriched XML prompt builder supporting OpenAI (GPT-4o-mini), local Ollama (Llama 3), and an offline fluent Hinglish-to-English natural translator.
+* **`rewriter.py`**: Graph-enriched XML prompt builder supporting OpenAI (GPT-4o-mini), local Ollama (Llama 3), local MarianMT NMT, and an offline rule-based translator.
+* **`nmt_backend.py`**: Local neural translation engine using HuggingFace Helsinki-NLP Opus-MT models.
 * **`explainer.py`**: Rationale generator producing structured, transparent token-level justifications.
 
 ### Interactive Frontend (`app.py`)
-* **Streamlit Web Dashboard (http://localhost:8501):**
-  * Token decision maps (PRESERVE / UNCERTAIN / REWRITE / NATIVE pills).
-  * 6-axis hexagonal radar charts and probability bar plots with threshold overlays.
-  * Constrained rewrite output box with preserved token list.
-  * Graph-enriched XML prompt inspector.
-  * Token explanation tables with CSV export functionality.
+* **Streamlit Web Dashboard (http://localhost:8501) with 4 Comprehensive Tabs:**
+  1. **Live Interactive Rewriter:** Token decision maps, 6-axis hexagonal radar charts, score distribution bar plots, and structured audit logs.
+  2. **LinCE & PHINC Empirical Corpus Explorer:** Searchable, filterable table of 9,879 loanwords with dynamic frequencies and borrowing scores.
+  3. **Comparative Benchmark & Evaluation:** Side-by-side performance cards, bar plots, and statistical findings comparing LAPS vs Static Dictionary vs Unconstrained NMT.
+  4. **LAPS Mathematical Formulation:** Full interactive LaTeX equations detailing the multidimensional scoring formula and Soft Sigmoid probability function.
 
 ---
 

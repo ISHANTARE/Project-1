@@ -54,6 +54,7 @@ HINDI_MARKERS = {
     "zyada", "ziyada", "kam", "thoda", "thodi", "accha", "acchi", "acche",
     "bura", "buri", "bure", "sahi", "galat", "theek", "haan", "nahin", "nahi",
     "na", "mat", "bas", "sirf", "vaise", "vaisebhi", "jaise", "jaisebhi",
+    "bhai", "yaar", "ji", "tu", "baat", "ek", "ye", "ne", "rt", "log", "waley"
 }
 
 HINDI_SUFFIX_PATTERNS = (
@@ -62,24 +63,28 @@ HINDI_SUFFIX_PATTERNS = (
 )
 HINDI_SUFFIX_RE = re.compile(HINDI_SUFFIX_PATTERNS, re.IGNORECASE)
 
-COMMON_ENGLISH_WORDS = {
-    "hi", "hello", "hey", "link", "viva", "calendar", "calender", "pdf", "doc",
-    "docx", "ppt", "pptx", "excel", "sheet", "file", "folder", "zoom", "teams",
-    "meet", "meeting", "client", "server", "code", "debug", "compile", "deploy",
-    "database", "project", "postpone", "schedule", "deadline", "manager",
-    "assignment", "lab", "test", "exam", "quiz", "result", "mark", "grade",
-    "syllabus", "lecture", "class", "course", "subject", "ticket", "email",
-    "chat", "call", "message", "video", "audio", "image", "photo", "app",
-    "website", "url", "portal", "system", "network", "status", "update",
-    "upload", "download", "install", "cancel", "confirm", "reset", "clear",
-}
+try:
+    import wordfreq
+except ImportError:
+    wordfreq = None
+
+
+def _is_english_dictionary_word(word_lower: str) -> bool:
+    """Check if token is a recognized English word via global corpus frequency."""
+    if wordfreq is not None:
+        return wordfreq.zipf_frequency(word_lower, "en") >= 2.5
+    return False
 
 
 def _is_hindi_word(word_lower: str) -> bool:
     """Check if token is a transliterated Hindi word using neural LID and lexical fallback."""
     if word_lower in HINDI_MARKERS:
         return True
-    if HINDI_SUFFIX_RE.match(word_lower) and word_lower not in COMMON_ENGLISH_WORDS:
+    # If the word is recognized in the global English lexicon and not in Hindi markers,
+    # it is an English candidate, avoiding false positive Hindi classification
+    if _is_english_dictionary_word(word_lower) and not HINDI_SUFFIX_RE.match(word_lower):
+        return False
+    if HINDI_SUFFIX_RE.match(word_lower) and not _is_english_dictionary_word(word_lower):
         return True
     
     # Neural subword character n-gram prediction
@@ -129,12 +134,12 @@ def tokenize(sentence: str) -> list[dict]:
         pred = lid.predict_token_language(tok)
         
         # Check dictionary overrides for ambiguous cases
-        if tok_low in COMMON_ENGLISH_WORDS:
+        if _is_english_dictionary_word(tok_low) and tok_low not in HINDI_MARKERS:
             lang = "EN"
-            is_cand = True
+            is_cand = tok_low not in AMBIGUOUS_HOMOGRAPHS
             p_en = 0.95
             p_hi = 0.05
-        elif tok_low in HINDI_MARKERS or HINDI_SUFFIX_RE.match(tok_low):
+        elif tok_low in HINDI_MARKERS or (HINDI_SUFFIX_RE.match(tok_low) and not _is_english_dictionary_word(tok_low)):
             lang = "HI"
             is_cand = False
             p_hi = 0.95

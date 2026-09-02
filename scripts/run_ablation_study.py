@@ -28,7 +28,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 from laps.scorer           import DEFAULT_WEIGHTS
 from laps.threshold_engine import compute_sigmoid_probability, REGISTER_THRESHOLDS
 
-CORPUS_PATH = PROJECT_ROOT / "data" / "evaluation" / "gold_corpus_v2_1k.json"
+CORPUS_PATH = PROJECT_ROOT / "data" / "evaluation" / "gold_corpus.json"
 RESULTS_PATH = PROJECT_ROOT / "results" / "ablation_results.json"
 
 

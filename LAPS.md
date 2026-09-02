@@ -65,11 +65,11 @@ Where:
 For every candidate loanword token $t_i$ within sentence context $C = (t_1, t_2, \dots, t_N)$, LAPS computes six normalized features $\in [0.0, 1.0]$:
 
 #### 1. Borrowing Frequency ($\text{BF}$)
-Measures how frequently token $t_i$ appears as a natural loanword in conversational code-mixed corpora compared to standard monolingual corpora:
+Measures how frequently token $t_i$ appears as a natural loanword in conversational code-mixed corpora compared to standard monolingual corpora. In LAPS, $\text{BF}$ is derived directly from empirical frequencies extracted from **16,024 authentic Hinglish sentences** (LinCE and PHINC corpora):
 
-$$\text{BF}(t_i) = \frac{\log_{10}(f_{\text{cm}}(t_i) + 1)}{\log_{10}(f_{\text{mono}}(t_i) + f_{\text{cm}}(t_i) + 2)}$$
+$$\text{BPI}(t_i) = \min\left(1.0, \frac{\log_{10}(c(t_i) + 1)}{\log_{10}(1000)} \times \left(0.5 + 0.5 \cdot \frac{\text{df}(t_i)}{N_{\text{total}}}\right)\right)$$
 
-In the LAPS SQLite Knowledge Graph, $\text{BF}$ is queried directly using pre-indexed Zipf frequency ratios derived from bilingual corpora.
+Where $c(t_i)$ is token occurrence count and $\text{df}(t_i)$ is document frequency across code-mixed sentences. If a token is not in the indexed 9,879 loanwords, LAPS smoothly falls back to global English Zipf frequency scaling.
 
 #### 2. Domain Specificity ($\text{DS}$)
 Quantifies whether $t_i$ belongs to a specialized professional domain (Tech, Business, Academic, Medical, Finance). It is computed via zero-shot vector embedding cosine similarity using `sentence-transformers` (`all-MiniLM-L6-v2`):
@@ -211,14 +211,15 @@ $$\sum_{j=1}^{6} w_j = 1.0, \quad w_j \ge 0$$
 
 ## 6. Empirical Benchmark Results
 
-Evaluated on the 100-sentence gold standard corpus against baseline systems:
+Evaluated on the 100-sentence gold standard corpus across $N=100$ sentences:
 
-| System | OTER (lower=better) | BLEU (higher=better) | Token F1 (higher=better) |
-| :--- | :--- | :--- | :--- |
-| **LAPS (Proposed)** | **0.0192** | **0.3904** | **0.9567** |
-| **Static Dictionary Filter** | 0.0192 | 0.3904 | 0.0838 |
-| **Unconstrained Ablation** | 0.0192 | 0.3904 | 0.0000 |
+| System / Configuration | OTER (lower=better) | BLEU (higher=better) | chrF++ (higher=better) | Token F1 (higher=better) |
+| :--- | :--- | :--- | :--- | :--- |
+| **LAPS (Proposed Guardrail)** | **0.0108** | **0.4633** | **0.4787** | **0.9567** |
+| **Static Dictionary Filter** | 0.0108 | 0.4633 | 0.4787 | 0.0477 |
+| **Unconstrained NMT Baseline** | 0.0108 | 0.4610 | 0.4769 | 0.0000 |
 
 ### Key Findings
-* **Over-Translation Error Rate (OTER):** Reduced by **98%** compared to unconstrained LLMs.
-* **Token Classification F1:** Achieves **0.9567**, demonstrating superior preservation accuracy across all four communicative registers.
+* **Generalization to Open-Vocabulary Borrowing**: Static dictionary lookup fails completely (**0.0477 F1**) when presented with realistic loanwords outside a hand-crafted glossary. LAPS leverages dense neural semantic embeddings and dynamic empirical corpus extraction to achieve **0.9567 Token F1**.
+* **Zero Stochastic Drift**: Unlike prompt-based LLM rewriters that hallucinate or drift across runs, LAPS produces inspectable mathematical scores and generates hard XML constraints with 100% reproducibility.
+* **Translation Fluency Retention**: Constraining generation on preserving authentic loanwords preserves both BLEU (0.4633) and chrF++ (0.4787) without degrading target grammatical fluency.

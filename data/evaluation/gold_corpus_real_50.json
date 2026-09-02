@@ -1,0 +1,555 @@
+{
+  "_metadata": {
+    "source": "LinCE and PHINC Open-Source Corpora",
+    "n_sentences": 50,
+    "description": "50 authentic code-mixed Hinglish sentences extracted directly from LinCE and PHINC."
+  },
+  "sentences": [
+    {
+      "id": "REAL_001",
+      "source": "LinCE",
+      "sentence": "Virat so nice player yar what fielding nd batting also keep up virat",
+      "reference": "",
+      "candidate_loanwords": [
+        "player",
+        "keep",
+        "also",
+        "nd",
+        "batting",
+        "up"
+      ]
+    },
+    {
+      "id": "REAL_002",
+      "source": "LinCE",
+      "sentence": "Aamir bhai suspense behind ur movie .. we are waiting , salman or shahrukh ko phir se maza chakha den",
+      "reference": "",
+      "candidate_loanwords": [
+        "behind",
+        "suspense",
+        "ur",
+        "movie",
+        "waiting"
+      ]
+    },
+    {
+      "id": "REAL_003",
+      "source": "LinCE",
+      "sentence": "Love you Bhaijan I 'm super jabar biggest fan love You",
+      "reference": "",
+      "candidate_loanwords": [
+        "fan",
+        "biggest",
+        "super",
+        "love"
+      ]
+    },
+    {
+      "id": "REAL_004",
+      "source": "LinCE",
+      "sentence": "admin ab is pg pe post krne k lia kch aur nai bacha kya",
+      "reference": "",
+      "candidate_loanwords": [
+        "admin",
+        "pg",
+        "post"
+      ]
+    },
+    {
+      "id": "REAL_005",
+      "source": "LinCE",
+      "sentence": "Machis to joothe badnaam hai aag to Kohli ne laga rakhi hai very very congratulations virat",
+      "reference": "",
+      "candidate_loanwords": [
+        "congratulations",
+        "very"
+      ]
+    },
+    {
+      "id": "REAL_006",
+      "source": "LinCE",
+      "sentence": "There is kohli show in mohali ground the run machine 150*kya kholi sir bnna pata ha",
+      "reference": "",
+      "candidate_loanwords": [
+        "run",
+        "sir",
+        "machine",
+        "ground"
+      ]
+    },
+    {
+      "id": "REAL_007",
+      "source": "LinCE",
+      "sentence": "Salman Ji You are My favorite Hero forever",
+      "reference": "",
+      "candidate_loanwords": [
+        "hero",
+        "favorite",
+        "forever"
+      ]
+    },
+    {
+      "id": "REAL_008",
+      "source": "LinCE",
+      "sentence": "Priya gi sorry in the no play option happy good night",
+      "reference": "",
+      "candidate_loanwords": [
+        "sorry",
+        "option",
+        "night",
+        "play",
+        "good",
+        "no"
+      ]
+    },
+    {
+      "id": "REAL_009",
+      "source": "LinCE",
+      "sentence": "kyaa comment karen big bee ke liye mein unke samaksh baunaa mahsoos kartaa hoon",
+      "reference": "",
+      "candidate_loanwords": [
+        "comment"
+      ]
+    },
+    {
+      "id": "REAL_010",
+      "source": "LinCE",
+      "sentence": "Bhai aapne kah diya bas ab to ye movie bhi dekhna he",
+      "reference": "",
+      "candidate_loanwords": [
+        "movie"
+      ]
+    },
+    {
+      "id": "REAL_011",
+      "source": "LinCE",
+      "sentence": "Best Possible remedy to resolve unmetered Power Supply #Saubhagya #Gujjubhaikadimaag",
+      "reference": "",
+      "candidate_loanwords": [
+        "resolve",
+        "possible",
+        "supply",
+        "best",
+        "power",
+        "remedy"
+      ]
+    },
+    {
+      "id": "REAL_012",
+      "source": "LinCE",
+      "sentence": "Salute sir . Jai hind .",
+      "reference": "",
+      "candidate_loanwords": [
+        "sir",
+        "salute"
+      ]
+    },
+    {
+      "id": "REAL_013",
+      "source": "LinCE",
+      "sentence": "#assalamualykum #salmansir mai aap ka bahut bada fan hu .. mujhe aapki har movie bahut pasand hai .. . #iloveuhh",
+      "reference": "",
+      "candidate_loanwords": [
+        "fan",
+        "movie"
+      ]
+    },
+    {
+      "id": "REAL_014",
+      "source": "LinCE",
+      "sentence": "Sacche hindu .. . Ye film flop kara ke rahenge .. .",
+      "reference": "",
+      "candidate_loanwords": [
+        "flop",
+        "film"
+      ]
+    },
+    {
+      "id": "REAL_015",
+      "source": "LinCE",
+      "sentence": "Hi I am emraan tum friend ban jao mere",
+      "reference": "",
+      "candidate_loanwords": [
+        "friend",
+        "hi",
+        "am"
+      ]
+    },
+    {
+      "id": "REAL_016",
+      "source": "LinCE",
+      "sentence": "I fully support Swachh Bharat Abhiyan .",
+      "reference": "",
+      "candidate_loanwords": [
+        "fully",
+        "support"
+      ]
+    },
+    {
+      "id": "REAL_017",
+      "source": "LinCE",
+      "sentence": "Im daughter of himalayas you are son of mugal badshaha but met in comment",
+      "reference": "",
+      "candidate_loanwords": [
+        "son",
+        "met",
+        "im",
+        "daughter",
+        "comment"
+      ]
+    },
+    {
+      "id": "REAL_018",
+      "source": "LinCE",
+      "sentence": "Jai how indo Russian relationship modi sir .",
+      "reference": "",
+      "candidate_loanwords": [
+        "sir",
+        "relationship",
+        "how"
+      ]
+    },
+    {
+      "id": "REAL_019",
+      "source": "LinCE",
+      "sentence": "Ka ho bachhan ji ab dusro ko bhi kamane ka moka de do bhai . Age dekhiye apni .",
+      "reference": "",
+      "candidate_loanwords": [
+        "age"
+      ]
+    },
+    {
+      "id": "REAL_020",
+      "source": "LinCE",
+      "sentence": "Dhoni superstar cool aur world ka best captain",
+      "reference": "",
+      "candidate_loanwords": [
+        "superstar",
+        "world",
+        "best",
+        "cool",
+        "captain"
+      ]
+    },
+    {
+      "id": "REAL_021",
+      "source": "LinCE",
+      "sentence": "maine to subha hi bola tha \u263a .. aaj 100 lgega .. . aur dekho result apke samne hai",
+      "reference": "",
+      "candidate_loanwords": [
+        "result"
+      ]
+    },
+    {
+      "id": "REAL_022",
+      "source": "LinCE",
+      "sentence": "abe ja pehle sorry bol k aa",
+      "reference": "",
+      "candidate_loanwords": [
+        "sorry"
+      ]
+    },
+    {
+      "id": "REAL_023",
+      "source": "LinCE",
+      "sentence": "India ne toss jita matlab 50%macth jitt Best of luck team india",
+      "reference": "",
+      "candidate_loanwords": [
+        "team",
+        "luck",
+        "best",
+        "toss"
+      ]
+    },
+    {
+      "id": "REAL_024",
+      "source": "LinCE",
+      "sentence": "bevkoof ladke ye confession page h ..... autobiography nhi likhni h yha ...",
+      "reference": "",
+      "candidate_loanwords": [
+        "page",
+        "autobiography",
+        "confession"
+      ]
+    },
+    {
+      "id": "REAL_025",
+      "source": "LinCE",
+      "sentence": "Mere hi shehar k pass rehta h near dehradun .. .. .. .. .. ..",
+      "reference": "",
+      "candidate_loanwords": [
+        "near"
+      ]
+    },
+    {
+      "id": "REAL_026",
+      "source": "LinCE",
+      "sentence": "Happy birth day to u amitabhji Gujarat vapi",
+      "reference": "",
+      "candidate_loanwords": [
+        "day",
+        "happy",
+        "birth"
+      ]
+    },
+    {
+      "id": "REAL_027",
+      "source": "LinCE",
+      "sentence": "u r a champ .. bt aaj to dhoni ki bating dkhne meI mzaa aaya",
+      "reference": "",
+      "candidate_loanwords": [
+        "bt",
+        "champ"
+      ]
+    },
+    {
+      "id": "REAL_028",
+      "source": "LinCE",
+      "sentence": "Tumne apne words ka insurance to krvaya hoga na @ Komal Singh",
+      "reference": "",
+      "candidate_loanwords": [
+        "insurance",
+        "words"
+      ]
+    },
+    {
+      "id": "REAL_029",
+      "source": "LinCE",
+      "sentence": "jo jo single hai page like kro !! !",
+      "reference": "",
+      "candidate_loanwords": [
+        "page",
+        "like",
+        "single"
+      ]
+    },
+    {
+      "id": "REAL_030",
+      "source": "LinCE",
+      "sentence": "Sir ji thanks u r great",
+      "reference": "",
+      "candidate_loanwords": [
+        "sir",
+        "great",
+        "thanks"
+      ]
+    },
+    {
+      "id": "REAL_031",
+      "source": "LinCE",
+      "sentence": "Nice sir Amitabh Bachchan ji .. is a joy",
+      "reference": "",
+      "candidate_loanwords": [
+        "sir",
+        "joy",
+        "nice"
+      ]
+    },
+    {
+      "id": "REAL_032",
+      "source": "LinCE",
+      "sentence": "@Nitisha_Kashyap If I am pseudo bong , you are pret aatma \ud83d\ude28",
+      "reference": "",
+      "candidate_loanwords": [
+        "pseudo",
+        "am"
+      ]
+    },
+    {
+      "id": "REAL_033",
+      "source": "LinCE",
+      "sentence": "Mather chod u have so many money give some to poor people u all rich people be like that only",
+      "reference": "",
+      "candidate_loanwords": [
+        "rich",
+        "give",
+        "some",
+        "all",
+        "have",
+        "poor"
+      ]
+    },
+    {
+      "id": "REAL_034",
+      "source": "LinCE",
+      "sentence": "Back side haath mat rekhna .",
+      "reference": "",
+      "candidate_loanwords": [
+        "back",
+        "side"
+      ]
+    },
+    {
+      "id": "REAL_035",
+      "source": "LinCE",
+      "sentence": "Super Bhaiya . .. very nice Jai Ho",
+      "reference": "",
+      "candidate_loanwords": [
+        "super",
+        "nice",
+        "very"
+      ]
+    },
+    {
+      "id": "REAL_036",
+      "source": "LinCE",
+      "sentence": "porn dekh rahe kya bhai :p",
+      "reference": "",
+      "candidate_loanwords": [
+        "porn"
+      ]
+    },
+    {
+      "id": "REAL_037",
+      "source": "LinCE",
+      "sentence": "Waaa amir jeee m fan ho gaya",
+      "reference": "",
+      "candidate_loanwords": [
+        "fan"
+      ]
+    },
+    {
+      "id": "REAL_038",
+      "source": "LinCE",
+      "sentence": "Sir app se personal baat karni he",
+      "reference": "",
+      "candidate_loanwords": [
+        "sir",
+        "personal"
+      ]
+    },
+    {
+      "id": "REAL_039",
+      "source": "LinCE",
+      "sentence": "Desh ki pragti ke liye iss prakar ka interaction jaruari hai .",
+      "reference": "",
+      "candidate_loanwords": [
+        "interaction"
+      ]
+    },
+    {
+      "id": "REAL_040",
+      "source": "LinCE",
+      "sentence": "@itsbisha @honeybunnymaahi @lve_mom @sweety_rukhsar @taher07 oye balle ballee .. hurrahh ! wohooo .. yeeeyay ! i am mad completely !",
+      "reference": "",
+      "candidate_loanwords": [
+        "mad",
+        "completely",
+        "am"
+      ]
+    },
+    {
+      "id": "REAL_041",
+      "source": "LinCE",
+      "sentence": "Bhai aap bhi ho film me to maza aajyega .. !!",
+      "reference": "",
+      "candidate_loanwords": [
+        "film"
+      ]
+    },
+    {
+      "id": "REAL_042",
+      "source": "LinCE",
+      "sentence": "me sochta hu log itne talented comments kaise marte h ? :-/",
+      "reference": "",
+      "candidate_loanwords": [
+        "talented",
+        "comments"
+      ]
+    },
+    {
+      "id": "REAL_043",
+      "source": "LinCE",
+      "sentence": "Hi salmankhan my dream see you I am irani I go to India for you please give me answer",
+      "reference": "",
+      "candidate_loanwords": [
+        "go",
+        "please",
+        "dream",
+        "give",
+        "see",
+        "am"
+      ]
+    },
+    {
+      "id": "REAL_044",
+      "source": "LinCE",
+      "sentence": "yrrrrrrrrrr movie kon dekhne ja rha hai .. .. mai toh nhi jayungiiiii . just bcz of Anushka Sharma",
+      "reference": "",
+      "candidate_loanwords": [
+        "just",
+        "movie"
+      ]
+    },
+    {
+      "id": "REAL_045",
+      "source": "LinCE",
+      "sentence": "@nidhify Praying that it actually works for me ! Either India Today or Times ( Wasim Bhai) !",
+      "reference": "",
+      "candidate_loanwords": [
+        "either",
+        "praying",
+        "actually",
+        "works",
+        "me"
+      ]
+    },
+    {
+      "id": "REAL_046",
+      "source": "LinCE",
+      "sentence": "Kabhi indian things bhi chek ki hoti bina dadi ya muchhe k koi ni milega tumhe",
+      "reference": "",
+      "candidate_loanwords": [
+        "indian",
+        "chek",
+        "things"
+      ]
+    },
+    {
+      "id": "REAL_047",
+      "source": "LinCE",
+      "sentence": "India pm sahab good morning modi ji , iam mahesh kumar verma up india shahjahanpur .",
+      "reference": "",
+      "candidate_loanwords": [
+        "pm",
+        "morning",
+        "good",
+        "iam"
+      ]
+    },
+    {
+      "id": "REAL_048",
+      "source": "LinCE",
+      "sentence": "King of King 's Bhaijaan Jai ho",
+      "reference": "",
+      "candidate_loanwords": [
+        "king"
+      ]
+    },
+    {
+      "id": "REAL_049",
+      "source": "LinCE",
+      "sentence": "Great deal Narendra Modi ji S-400 will boost our security and our anti missile power , thank you !!",
+      "reference": "",
+      "candidate_loanwords": [
+        "missile",
+        "security",
+        "great",
+        "deal",
+        "power",
+        "anti"
+      ]
+    },
+    {
+      "id": "REAL_050",
+      "source": "LinCE",
+      "sentence": "hello sis aap new york mai ho to plz ek kam kr do mera plzz .",
+      "reference": "",
+      "candidate_loanwords": [
+        "sis",
+        "hello",
+        "plz"
+      ]
+    }
+  ]
+}

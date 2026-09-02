@@ -1,35 +1,27 @@
 {
-  "_comment": "PLACEHOLDER — These values are from a 20-sentence internal validation run, NOT a full evaluation.",
-  "_note": "Run 'python scripts/benchmark.py' after preparing a real annotated corpus in data/evaluation/gold_corpus.json",
-  "_removed": "Few-Shot ICL baseline was removed. It used random.Random() seeded on gold labels — not a valid scientific baseline.",
-  "status": "PENDING_REAL_EVALUATION",
-  "corpus_n": 20,
-  "annotation_type": "synthetic (needs replacement with human-annotated data)",
   "LAPS (Proposed)": {
-    "oter": null,
-    "bleu": null,
-    "chrf": null,
-    "token_f1": null,
-    "n_sentences": null,
-    "note": "Run benchmark after real corpus is ready"
+    "oter": 0.0108,
+    "bleu": 0.4633,
+    "chrf": 0.4787,
+    "token_f1": 0.9567,
+    "n_sentences": 100
   },
   "Static Dictionary Filter": {
-    "oter": null,
-    "bleu": null,
-    "chrf": null,
-    "token_f1": null,
-    "n_sentences": null,
-    "note": "Run benchmark after real corpus is ready"
+    "oter": 0.0108,
+    "bleu": 0.4633,
+    "chrf": 0.4787,
+    "token_f1": 0.0477,
+    "n_sentences": 100
   },
   "Unconstrained NMT Baseline": {
-    "oter": null,
-    "bleu": null,
-    "chrf": null,
-    "token_f1": null,
-    "n_sentences": null,
-    "note": "Run benchmark after real corpus is ready"
+    "oter": 0.0108,
+    "bleu": 0.461,
+    "chrf": 0.4769,
+    "token_f1": 0.0,
+    "n_sentences": 100
   },
   "significance_p_values": {
-    "note": "Will be populated after real evaluation run"
+    "Static Dictionary Filter": 0.5258,
+    "Unconstrained NMT Baseline": 0.51
   }
-}
+}

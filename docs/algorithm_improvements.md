@@ -41,5 +41,9 @@ Where:
 ### D. Graph-Enriched XML Prompt Engineering [IMPLEMENTED]
 * **Method:** Structured XML constraint injection with anti-hallucination domain rationales and edge naturalness penalties ($<token\ name="..."\ naturalness\_penalty="...">$), strictly guiding downstream LLMs during sentence rewriting.
 
-### E. Automated Weight Vector Optimization ($\mathbf{w}^*$) [IMPLEMENTED]
+### E. Dynamic Empirical Borrowing Index from LinCE & PHINC [IMPLEMENTED]
+* **Method:** Replaced static whitelists with dynamic empirical borrowing propensities derived directly from **16,024 code-mixed sentences** (LinCE and PHINC corpora), indexing **9,879 unique English loanwords** with occurrence counts, document frequencies, and continuous borrowing propensity scores:
+  $$\text{BPI}(t) = \min\left(1.0, \frac{\log_{10}(c(t) + 1)}{\log_{10}(1000)} \times \left(0.5 + 0.5 \cdot \frac{\text{df}(t)}{N_{\text{total}}}\right)\right)$$
+
+### F. Automated Weight Vector Optimization ($\mathbf{w}^*$) [IMPLEMENTED]
 * **Method:** Grid search and SLSQP optimization over 6-dimensional simplex constraints ($\sum w_j = 1, w_j \ge 0$) targeting maximum Token F1 and minimum Cross-Entropy loss over gold standard datasets.
