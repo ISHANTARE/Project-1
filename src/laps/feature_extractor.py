@@ -1,13 +1,27 @@
 """
-LAPS Context-Aware Neural Feature Extractor & Lexical Graph Query Engine
--------------------------------------------------------------------------
-Computes 6 multi-dimensional linguistic feature vectors:
-  1. BF (Borrowing Frequency)   : Continuous Zipf corpus borrowing distribution + Laplace smoothing.
-  2. DS (Domain Specificity)    : Context-aware neural cosine similarity to domain vector centroids.
-  3. SI (Semantic Importance)   : Information-theoretic entropy & inverse document frequency (IDF).
-  4. CC (Context Consistency)   : Sub-graph co-occurrence density & bilingual context window PMI.
-  5. AF (Audience Familiarity)  : Universal cross-lingual frequency index.
-  6. TB (Translation Benefit)   : Dynamic syntactic role benefit (high for functional modifiers, low for core entities).
+LAPS Feature Extractor & Lexical Resource Engine
+-------------------------------------------------
+Extracts linguistic feature signals for loanword preservation scoring:
+
+Core Orthogonal Dimensions:
+  1. BF (Borrowing Frequency) : Global lexical frequency proxy from Zipf distribution
+                                (measures general conversational adoption).
+  2. DS (Domain Specificity)  : Neural embedding cosine similarity against domain centroids
+                                (SentenceTransformer all-MiniLM-L6-v2; measures semantic niche).
+  3. TB (Translation Benefit) : Syntactic and functional role analysis (subtracted)
+                                (distinguishes nominal loanwords from functional/verbal modifiers).
+
+Complementary / Extended Signals:
+  4. SI (Semantic Importance) : Information content based on inverse frequency & morphology.
+  5. CC (Context Consistency) : Surrounding loanword density & co-occurrence in context window.
+  6. AF (Audience Familiarity): Cross-lingual conversational familiarity index.
+
+Note on Feature Orthogonality:
+  In empirical analysis, BF, SI, and AF share moderate collinearity because they all
+  derive from lexical frequency distributions. The primary independent axes are:
+  • Lexical adoption (BF)
+  • Domain relevance (DS)
+  • Syntactic function (TB)
 """
 
 from __future__ import annotations

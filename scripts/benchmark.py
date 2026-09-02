@@ -1,23 +1,28 @@
 """
-LAPS Rigorous Multi-Baseline Benchmark & Statistical Significance Runner
-------------------------------------------------------------------------
-Evaluates the LAPS pipeline against competitive academic baselines:
-  1. LAPS + XML Constraints (Proposed Neuro-Symbolic System)
-  2. Few-Shot In-Context Learning (ICL Baseline - GPT/LLM Prompting)
-  3. Static Dictionary Lexical Filter (Baseline - Fixed Glossary Constraint)
-  4. Unconstrained Neural Translation (Raw NMT Baseline - IndicTrans2/Surrogate)
-  5. Zero-Shot Unconstrained LLM (Ablation)
+LAPS Multi-Baseline Benchmark Runner
+-------------------------------------
+Evaluates the LAPS pipeline against three honest, reproducible baselines:
+  1. LAPS + XML Constraints        (Proposed System)
+  2. Static Dictionary Filter      (Fixed glossary — classic industry baseline)
+  3. Unconstrained NMT Translation (Opus-MT without preservation constraints)
+
+Research Objective:
+  Demonstrate algorithmic feasibility of the LAPS preservation scoring
+  approach — NOT to compete with large-scale commercial LLMs.
 
 Metrics Computed:
-  • Over-Translation Error Rate (OTER) – Primary task metric (lower is better)
-  • BLEU-4 / Unigram BLEU               – Lexical match against reference
-  • chrF++                              – Character-n-gram overlap
-  • Token-level Precision, Recall, F1   – Loanword preservation accuracy
-  • Paired Bootstrap Significance Test  – 10,000 resamples (p < 0.01)
+  • Over-Translation Error Rate (OTER) – Primary metric (lower is better)
+  • BLEU                               – Lexical match against reference
+  • chrF++                             – Character n-gram overlap
+  • Token-level F1                     – Loanword preservation accuracy
+  • Paired Bootstrap Significance Test – 5,000 resamples
 
 Usage:
   python scripts/benchmark.py
-  python scripts/benchmark.py --corpus data/evaluation/gold_corpus.json --bootstrap
+  python scripts/benchmark.py --corpus data/evaluation/gold_corpus.json
+
+NOTE: The corpus used must be a real, human-annotated dataset.
+  Run scripts/collect_real_data.py to prepare an annotation template.
 """
 
 from __future__ import annotations
@@ -182,28 +187,11 @@ def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] =
     return results
 
 
-def run_few_shot_icl(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """System 2: Few-Shot In-Context Learning Prompting Baseline."""
-    nmt = get_nmt_engine()
-    results = []
-    
-    for sent in sentences:
-        raw = sent["sentence"]
-        gold_pres = {t["token"].lower() for t in sent.get("tokens", []) if t["label"] == 1}
-        # In few-shot prompting, standard loanwords are mostly retained by common sense
-        # Simulate ~80% retention typical of standard LLMs without explicit dynamic scoring
-        simulated_preserved = [t for t in gold_pres if random.Random(sent["id"] + t).random() > 0.15]
-        rewritten = nmt.translate(raw, preserve_tokens=simulated_preserved, force_constraints=True)
-        
-        results.append({
-            "id": sent["id"],
-            "sentence": raw,
-            "rewritten": rewritten,
-            "reference": sent.get("reference", ""),
-            "preserved": set(simulated_preserved),
-            "gold_preserved": gold_pres,
-        })
-    return results
+# NOTE: Few-Shot ICL baseline has been removed.
+# It previously simulated LLM behaviour using random.Random() seeded on gold labels,
+# which is not a valid scientific baseline. To add a real Few-Shot LLM baseline,
+# integrate an actual model call here (e.g., via Ollama or OpenAI API) and compare
+# its output against the gold preservation labels without peeking at them during inference.
 
 
 def run_static_dict_system(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -332,10 +320,9 @@ def main():
     print(f"=======================================================\n")
 
     systems = {
-        "LAPS (Proposed Neuro-Symbolic)": run_laps_system(sentences),
-        "Few-Shot ICL (Standard LLM)":   run_few_shot_icl(sentences),
-        "Static Dictionary Filter":      run_static_dict_system(sentences),
-        "Unconstrained NMT Baseline":    run_unconstrained_nmt(sentences),
+        "LAPS (Proposed)": run_laps_system(sentences),
+        "Static Dictionary Filter": run_static_dict_system(sentences),
+        "Unconstrained NMT Baseline": run_unconstrained_nmt(sentences),
     }
 
     metrics: Dict[str, Any] = {}
@@ -343,11 +330,11 @@ def main():
         print(f"Evaluating: {name}...")
         metrics[name] = aggregate_system_metrics(res)
 
-    # Statistical significance testing
+    # Statistical significance testing (paired bootstrap)
     p_values: Dict[str, float] = {}
     if args.bootstrap:
-        laps_f1 = metrics["LAPS (Proposed Neuro-Symbolic)"]["raw_f1"]
-        for name in ["Few-Shot ICL (Standard LLM)", "Static Dictionary Filter", "Unconstrained NMT Baseline"]:
+        laps_f1 = metrics["LAPS (Proposed)"]["raw_f1"]
+        for name in ["Static Dictionary Filter", "Unconstrained NMT Baseline"]:
             p = paired_bootstrap_test(laps_f1, metrics[name]["raw_f1"], num_samples=5000)
             p_values[name] = p
 
@@ -355,7 +342,7 @@ def main():
     headers = ["System", "OTER (lower=better)", "BLEU (higher=better)", "chrF++ (higher=better)", "Token F1 (higher=better)", "p-value (vs LAPS)"]
     rows = []
     for name, m in metrics.items():
-        p_str = "-" if "LAPS" in name else f"p < {p_values.get(name, 0.05):.4f} *"
+        p_str = "-" if "LAPS" in name else f"{p_values.get(name, 'N/A'):.4f}"
         rows.append([
             name,
             f"{m['oter']:.4f}",

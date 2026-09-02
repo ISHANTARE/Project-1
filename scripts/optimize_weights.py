@@ -35,7 +35,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 from laps.scorer           import compute_score
 from laps.threshold_engine import REGISTER_THRESHOLDS
 
-DEFAULT_CORPUS = PROJECT_ROOT / "data" / "evaluation" / "gold_corpus_v2_1k.json"
+DEFAULT_CORPUS = PROJECT_ROOT / "data" / "evaluation" / "gold_corpus.json"
 DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "weights"
 GAMMA_L2       = 0.01
 SIGMOID_LAMBDA = 10.0

@@ -71,28 +71,78 @@ def interpret_kappa(kappa: float) -> str:
         return "Almost Perfect Agreement"
 
 
+def _load_annotation_csv(csv_path: Path) -> List[List[int]]:
+    """
+    Load real human annotation ratings from a CSV file.
+
+    Expected CSV format (one row per token, columns = rater decisions):
+        sentence_id, token, rater_1, rater_2, rater_3
+        S001, viva, 1, 1, 1
+        S001, calendar, 1, 1, 0
+        S002, postpone, 0, 0, 1
+        ...
+
+    Where 1 = Preserve and 0 = Rewrite.
+    Returns a ratings matrix: List[[n_rewrite, n_preserve], ...]
+    """
+    import csv
+    matrix = []
+    with open(csv_path, encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            rater_cols = [k for k in row if k.startswith("rater_")]
+            if not rater_cols:
+                raise ValueError(
+                    f"No 'rater_*' columns found in {csv_path}. "
+                    "Expected columns: sentence_id, token, rater_1, rater_2, ..."
+                )
+            votes = [int(row[r]) for r in rater_cols]
+            n_preserve = sum(votes)
+            n_rewrite = len(votes) - n_preserve
+            matrix.append([n_rewrite, n_preserve])
+    return matrix
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Inter-Rater Agreement Calculator for LAPS")
-    parser.add_argument("--corpus", type=Path, default=Path("data/evaluation/gold_corpus_v2_1k.json"))
+    parser = argparse.ArgumentParser(
+        description="Inter-Rater Agreement Calculator for LAPS",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+USAGE EXAMPLES:
+  Compute Kappa from a real annotation CSV:
+    python scripts/compute_agreement.py --annotations data/evaluation/annotations.csv
+
+  The CSV must have columns: sentence_id, token, rater_1, rater_2, [rater_3, ...]
+  Use scripts/collect_real_data.py to generate the annotation template CSV.
+
+IMPORTANT:
+  This script requires REAL human annotation data.
+  Do NOT use synthetic or algorithmically generated ratings.
+  Fleiss' Kappa is only meaningful when computed from independent human judgements.
+        """
+    )
+    parser.add_argument(
+        "--annotations",
+        type=Path,
+        default=Path("data/evaluation/annotations.csv"),
+        help="Path to real human annotation CSV file."
+    )
     args = parser.parse_args()
 
-    with open(args.corpus, encoding="utf-8") as f:
-        data = json.load(f)
+    if not args.annotations.exists():
+        print(f"\n[ERROR] Annotation file not found: {args.annotations}")
+        print("\nTo generate the annotation template, run:")
+        print("  python scripts/collect_real_data.py")
+        print("\nThen fill in the 'rater_1', 'rater_2', etc. columns with real human judgements.")
+        print("Each rater independently marks: 1 = Preserve the loanword, 0 = Translate it.\n")
+        return
 
-    sentences = data.get("sentences", data) if isinstance(data, dict) else data
-    
-    # 3-rater matrix: Category 0: Rewrite, Category 1: Preserve
-    matrix = []
-    for s in sentences:
-        for t in s.get("tokens", []):
-            label = t.get("label", 1)
-            # Realistic 3-rater distributions with 92% inter-annotator consensus
-            if label == 1:
-                # 88% full consensus [0, 3], 12% 2-out-of-3 consensus [1, 2]
-                matrix.append([0, 3] if (hash(t["token"] + s["id"]) % 8 != 0) else [1, 2])
-            else:
-                # 88% full consensus [3, 0], 12% 2-out-of-3 consensus [2, 1]
-                matrix.append([3, 0] if (hash(t["token"] + s["id"]) % 8 != 0) else [2, 1])
+    print(f"\nLoading annotations from: {args.annotations}")
+    matrix = _load_annotation_csv(args.annotations)
+
+    if len(matrix) < 10:
+        print(f"[WARNING] Only {len(matrix)} tokens found. "
+              "A minimum of 30-50 annotated tokens is recommended for reliable Kappa.")
 
     kappa, stats = compute_fleiss_kappa(matrix)
     print("\n=======================================================")

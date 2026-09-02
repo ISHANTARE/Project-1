@@ -106,16 +106,29 @@ Three operational decision zones:
 
 ---
 
-## Empirical Benchmark Evaluation
+## Algorithmic Feasibility & Benchmark Framework
 
-Evaluated across $N=1,000$ multi-domain code-mixed sentences (Tech, Academic, Business, Social):
+The primary objective of this project is to **demonstrate that an explicit, explainable token-preservation algorithm is feasible and technically viable** for code-mixed text rewriting, rather than competing against large-scale frontier LLMs.
 
-| System / Configuration | OTER (lower=better) | BLEU (higher=better) | chrF++ (higher=better) | Token F1 (higher=better) |
-| :--- | :--- | :--- | :--- | :--- |
-| **LAPS (Proposed Neuro-Symbolic)** | **0.0239** | **0.5572** | **0.5594** | **0.7140** |
-| **Few-Shot In-Context LLM** | 0.0964 | 0.5516 | 0.5528 | 0.6268 |
-| **Static Dictionary Lexical Filter** | 0.2035 | 0.5475 | 0.5388 | 0.3722 |
-| **Unconstrained NMT Baseline** | 0.5357 | 0.5239 | 0.5160 | 0.0000 |
+### Experimental Setup & Baselines
+The LAPS pipeline is evaluated against reproducible, transparent baselines:
+1. **LAPS (Proposed)**: Dynamic linguistic scoring + sigmoid thresholding + constrained generation.
+2. **Static Dictionary Filter**: Rule-based lexical constraint using a fixed glossary of frequent loanwords.
+3. **Unconstrained NMT Baseline**: Raw neural translation without preservation constraints (subject to over-translation errors).
+
+### Evaluation Harness
+```bash
+# Generate annotation template for human evaluators
+python scripts/collect_real_data.py
+
+# Calculate inter-rater agreement from real judgements
+python scripts/compute_agreement.py --annotations data/evaluation/annotations.csv
+
+# Run multi-baseline evaluation harness
+python scripts/benchmark.py --corpus data/evaluation/gold_corpus.json
+```
+
+> **Note on Evaluation:** Benchmark results are computed over controlled test sets evaluating Over-Translation Error Rate (OTER), Token-level F1, BLEU, and chrF++. The framework includes paired bootstrap significance testing to validate whether LAPS preserves loanwords significantly better than unconstrained baselines.
 
 ---
 
