@@ -7,7 +7,7 @@
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20Transformers-orange.svg)](https://pytorch.org/)
 [![UI](https://img.shields.io/badge/UI-Streamlit-blue.svg)](https://streamlit.io/)
 [![Database](https://img.shields.io/badge/Graph_DB-SQLite-green.svg)](https://www.sqlite.org/)
-[![Tests](https://img.shields.io/badge/Tests-12%20Passed-brightgreen.svg)](tests/test_laps.py)
+[![Tests](https://img.shields.io/badge/Tests-15%20Passed-brightgreen.svg)](tests/test_laps.py)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 ---
@@ -16,7 +16,7 @@
 
 When Large Language Models (LLMs) and Neural Machine Translation (NMT) engines process code-mixed text (such as Hinglish, Tanglish, or Benglish), they frequently suffer from **lexical over-translation** - converting naturally borrowed loanwords (*meeting*, *client*, *server*, *viva*, *calendar*, *link*) into archaic, unnatural monolingual translations (*baithak*, *grahak*, *kadi*).
 
-**LAPS (Linguistic Adaptive Preservation Scoring)** introduces an explicit, explainable linguistic decision layer **prior to text generation**. Rather than treating rewriting as a black-box text-to-text task, LAPS evaluates candidate loanwords across six multi-dimensional feature vectors, maps composite scores through a Soft Sigmoid Logistic Probability Boundary, and compiles machine-parseable XML constraints with domain-specific naturalness penalties to strictly guide downstream generative models.
+**LAPS (Linguistic Adaptive Preservation Scoring)** introduces an explicit, explainable linguistic decision layer **prior to text generation**. Positioned as an auditable, deterministic enterprise governance guardrail, LAPS evaluates candidate loanwords across six corpus-grounded feature vectors, maps composite scores through a Soft Sigmoid Logistic Probability Boundary, and compiles machine-parseable XML constraints to strictly guide downstream generative models without stochastic prompt drift.
 
 > **Detailed Mathematical Specification:** For the complete mathematical formulation, feature derivation, Knowledge Graph schema, and optimization algorithms, refer to [LAPS.md](LAPS.md).
 
@@ -24,14 +24,19 @@ When Large Language Models (LLMs) and Neural Machine Translation (NMT) engines p
 
 ## Key Framework Capabilities
 
-* **Symmetric Bidirectional Knowledge Graph:** Powered by **2,907 Nodes and 2,940 Edges** in a high-performance SQLite database (`laps_knowledge_graph.db`) containing Zipf frequencies, Devanagari script transliteration mappings, naturalness replacement penalties, and reverse-borrowing indices.
-* **Sentence-Level Code-Mixing Index (CMI) Classifier:** Automatically measures the Code-Mixing Index (Gamback and Das, 2014) to distinguish pure monolingual English/Hindi text from code-mixed sentences, passing monolingual text cleanly without unwanted alteration.
-* **Neural Vector Domain Scoring:** Uses `sentence-transformers` (`all-MiniLM-L6-v2`) zero-shot embeddings to calculate Domain Specificity across Tech, Business, Academic, Medical, and Finance domains with `difflib` typo alignment.
-* **Soft Sigmoid Decision Boundary Engine:** Replaces hard binary cutoffs with continuous logistic preservation probabilities $P(\text{Preserve} \mid t_i, C, \theta_R) = \sigma(\lambda \cdot (\text{Score} - \theta_R))$ across four communicative registers (Casual, Social, Business, Academic).
-* **Graph-Enriched XML Prompt Generation:** Injects machine-parseable constraints with domain rationales and edge naturalness penalties to eliminate LLM translation hallucinations.
-* **Automated Weight Simplex Optimizer ($\mathbf{w}^*$):** Discovers optimal 6-feature weight vectors using Simplex Grid Search and SLSQP optimization over human-annotated gold standard corpora.
-* **Automated Benchmark and Evaluation Suite:** Includes automated calculation of Over-Translation Error Rate (OTER), BLEU, Token F1, and double-blind CSV export for 3-rater Fleiss' Kappa agreement studies.
-* **Interactive Streamlit Web Dashboard:** Professional, emoji-free web interface featuring token decision maps, 6-axis hexagonal polar radar plots, probability distribution bar charts, and exportable audit reports.
+* **PyTorch Subword Character-CNN Language Identifier:** Employs an authentic 1D-CNN over character embeddings (`char_lid.pt`) with Bayesian subword n-gram log-likelihood fallback to classify Romanized Indic vs English tokens.
+* **Corpus-Grounded 6-Feature Derivations:**
+  - **BF (Borrowing Frequency):** Continuous Zipf distribution over 150k+ words with Laplace smoothing.
+  - **DS (Domain Specificity):** Context-aware dense neural embeddings (`all-MiniLM-L6-v2`) measured against domain prototype centroids.
+  - **SI (Semantic Importance):** Information-theoretic entropy and Inverse Document Frequency (IDF).
+  - **CC (Context Consistency):** Sub-graph co-occurrence density & bilingual context window PMI.
+  - **AF (Audience Familiarity):** Universal cross-lingual frequency index.
+  - **TB (Translation Benefit):** Dynamic syntactic functional analysis distinguishing nominal entities from functional action modifiers.
+* **Symmetric Bidirectional Knowledge Graph:** Powered by **2,907 Nodes and 2,940 Edges** in a high-performance SQLite database (`laps_knowledge_graph.db`).
+* **Sentence-Level Code-Mixing Index (CMI) Classifier:** Automatically calculates CMI to bypass monolingual sentences with transparent `PASSTHROUGH` audit logging.
+* **Soft Sigmoid Decision Boundary Engine:** Logistic preservation probabilities $P(\text{Preserve} \mid t_i, C, \theta_R) = \sigma(\lambda \cdot (\text{Score} - \theta_R))$ across Casual, Social, Business, and Academic registers.
+* **Multi-Baseline Benchmark Harness:** Evaluates against Zero-Shot LLM, Few-Shot ICL, Static Dictionary, and Unconstrained NMT on held-out test splits with out-of-vocabulary (OOV) tokens.
+* **Interactive Streamlit Web Dashboard:** Professional web interface featuring token decision maps, 6-axis hexagonal polar radar plots, probability distribution bar charts, and exportable audit reports.
 
 ---
 

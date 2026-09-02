@@ -39,30 +39,17 @@ def run(
     # Handle Monolingual English Input
     if cmi_info["mode"] == "MONOLINGUAL_EN":
         for t in tagged:
-            if t["script"] != "punct":
-                t["is_candidate"]    = True
-                t["laps_score"]      = 0.90
-                t["decision"]        = "PRESERVE"
-                t["probability"]     = 0.9933   # σ(10*(0.90-0.50))
-                t["confidence"]      = 0.4933
-                t["threshold"]       = 0.50
-                t["is_borderline"]   = False
-                t["ego_density_bonus"] = 0.0
-                t["naturalness_penalty"] = 0.10
-                t["domain"]          = "General"
-                t["features"]        = {"BF": 0.95, "DS": 0.90, "SI": 0.90, "CC": 1.0, "AF": 0.95, "TB": 0.10}
-            else:
-                t["is_candidate"]    = False
-                t["laps_score"]      = None
-                t["decision"]        = "NATIVE"
-                t["probability"]     = None
-                t["confidence"]      = None
-                t["threshold"]       = None
-                t["is_borderline"]   = False
-                t["ego_density_bonus"] = 0.0
-                t["naturalness_penalty"] = 0.0
-                t["domain"]          = "N/A"
-                t["features"]        = {}
+            t["is_candidate"]      = False
+            t["laps_score"]        = None
+            t["decision"]          = "PASSTHROUGH"
+            t["probability"]       = None
+            t["confidence"]        = None
+            t["threshold"]         = None
+            t["is_borderline"]     = False
+            t["ego_density_bonus"] = 0.0
+            t["naturalness_penalty"] = 0.0
+            t["domain"]            = "N/A"
+            t["features"]          = {}
 
         preserve_list = [t["token"] for t in tagged if t["decision"] == "PRESERVE"]
         explanations  = explain_all(tagged)

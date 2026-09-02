@@ -1,7 +1,8 @@
 """
 Unit and Integration Tests for LAPS Framework
 ==============================================
-Tests all modular components and end-to-end pipeline.
+Tests all modular components, neural LID, corpus-grounded features,
+and end-to-end pipeline.
 Run: pytest tests/
 """
 
@@ -13,6 +14,7 @@ from pathlib import Path
 from src.laps.cmi_detector import detect_sentence_language
 from src.laps.tokenizer import tokenize
 from src.laps.feature_extractor import extract_features
+from src.laps.neural_lid import get_neural_lid
 from src.laps.graph_engine import get_graph_engine
 from src.laps.scorer import compute_score, score_all_tokens
 from src.laps.threshold_engine import decide, batch_decide, compute_sigmoid_probability
@@ -39,16 +41,54 @@ class TestTokenizer:
         assert len(tokens) > 0
         token_texts = [t["token"] for t in tokens]
         assert "meeting" in token_texts
-        # Meeting should be marked as candidate loanword
         meeting_tok = next(t for t in tokens if t["token"] == "meeting")
         assert meeting_tok["is_candidate"] is True
+
+
+class TestNeuralLanguageIdentifier:
+    def test_neural_char_lid_inference(self):
+        lid = get_neural_lid()
+        assert lid is not None
+
+        # Test common Hinglish chat markers vs English loanwords
+        en_res = lid.predict_token_language("meeting")
+        assert en_res["language"] == "EN"
+        assert en_res["p_en"] > 0.50
+
+        hi_res = lid.predict_token_language("karna")
+        assert hi_res["language"] == "HI"
+        assert hi_res["p_hi"] > 0.50
+
+        # Verify probability normalization
+        assert abs((en_res["p_en"] + en_res["p_hi"]) - 1.0) < 0.01
+        assert abs((hi_res["p_en"] + hi_res["p_hi"]) - 1.0) < 0.01
+
+
+class TestCorpusGroundedFeatures:
+    def test_extract_features_oov_word(self):
+        # Test completely unseen OOV technical term
+        tokens = ["Kubernetes", "cluster", "deploy", "karo"]
+        f = extract_features("Kubernetes", tokens, 0)
+        assert 0.0 <= f["BF"] <= 1.0
+        assert 0.0 <= f["DS"] <= 1.0
+        assert 0.0 <= f["SI"] <= 1.0
+        assert 0.0 <= f["CC"] <= 1.0
+        assert 0.0 <= f["AF"] <= 1.0
+        assert 0.0 <= f["TB"] <= 1.0
+
+    def test_tb_syntactic_differentiation(self):
+        # Core nouns/entities should have lower translation benefit (preservation preferred)
+        # Functional modifiers/verbs should have higher translation benefit
+        tokens = ["meeting", "postpone", "karo"]
+        f_noun = extract_features("meeting", tokens, 0)
+        f_verb = extract_features("postpone", tokens, 1)
+        assert f_verb["TB"] > f_noun["TB"], f"Expected verb TB ({f_verb['TB']}) > noun TB ({f_noun['TB']})"
 
 
 class TestKnowledgeGraphEngine:
     def test_graph_engine_singleton(self):
         engine = get_graph_engine()
         assert engine is not None
-        # Check node lookup for a common technical term
         attrs = engine.get_node_attributes("meeting")
         assert isinstance(attrs, dict)
 
@@ -112,7 +152,7 @@ class TestEndToEndPipeline:
         assert res["rewrite_result"]["rewritten"] != ""
         assert len(res["explanations"]) > 0
 
-    def test_monolingual_passthrough(self):
+    def test_monolingual_passthrough_no_fake_scores(self):
         res = run(
             sentence="The server has crashed and needs to be restarted immediately.",
             register="business",
@@ -120,26 +160,30 @@ class TestEndToEndPipeline:
         )
         assert res["is_monolingual"] is True
         assert res["cmi_info"]["mode"] == "MONOLINGUAL_EN"
+        # Verify NO fake scores are injected
+        for t in res["tokens"]:
+            assert t["decision"] == "PASSTHROUGH"
+            assert t["laps_score"] is None
+            assert t["probability"] is None
+            assert t["features"] == {}
 
 
-class TestGoldCorpusIntegrity:
-    def test_corpus_size_and_schema(self):
+class TestBenchmarkSplitsIntegrity:
+    def test_splits_exist_and_non_circular(self):
         root = Path(__file__).resolve().parent.parent
-        corpus_file = root / "data" / "evaluation" / "gold_corpus.json"
-        assert corpus_file.exists()
-        
-        with open(corpus_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            
-        sentences = data.get("sentences", [])
-        assert len(sentences) == 100, f"Expected 100 sentences in gold corpus, found {len(sentences)}"
-        
-        for s in sentences:
-            assert "id" in s
-            assert "sentence" in s
-            assert "register" in s
-            assert "tokens" in s
-            for t in s["tokens"]:
-                assert "token" in t
-                assert "label" in t
-                assert "features" in t
+        train_p = root / "data" / "evaluation" / "train_split.json"
+        val_p   = root / "data" / "evaluation" / "val_split.json"
+        test_p  = root / "data" / "evaluation" / "test_split.json"
+
+        assert train_p.exists(), "Train split missing"
+        assert val_p.exists(), "Validation split missing"
+        assert test_p.exists(), "Test split missing"
+
+        with open(test_p, encoding="utf-8") as f:
+            test_data = json.load(f)
+
+        test_sentences = test_data.get("sentences", [])
+        assert len(test_sentences) >= 20
+        # Verify presence of OOV tokens in test split
+        has_oov = any(s.get("id", "").startswith("OOV") for s in test_sentences)
+        assert has_oov is True, "Held-out test set must contain authentic OOV test cases"

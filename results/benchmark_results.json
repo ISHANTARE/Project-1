@@ -1,35 +1,35 @@
 {
   "LAPS (Proposed Neuro-Symbolic)": {
-    "oter": 0.0239,
-    "bleu": 0.5572,
-    "chrf": 0.5594,
-    "token_f1": 0.714,
-    "n_sentences": 1000
+    "oter": 0.0125,
+    "bleu": 0.4596,
+    "chrf": 0.5225,
+    "token_f1": 0.845,
+    "n_sentences": 20
   },
   "Few-Shot ICL (Standard LLM)": {
-    "oter": 0.0964,
-    "bleu": 0.5516,
-    "chrf": 0.5528,
-    "token_f1": 0.6268,
-    "n_sentences": 1000
+    "oter": 0.0125,
+    "bleu": 0.4441,
+    "chrf": 0.5098,
+    "token_f1": 0.9157,
+    "n_sentences": 20
   },
   "Static Dictionary Filter": {
-    "oter": 0.2035,
-    "bleu": 0.5475,
-    "chrf": 0.5388,
-    "token_f1": 0.3722,
-    "n_sentences": 1000
+    "oter": 0.0542,
+    "bleu": 0.4505,
+    "chrf": 0.5104,
+    "token_f1": 0.0333,
+    "n_sentences": 20
   },
   "Unconstrained NMT Baseline": {
-    "oter": 0.5357,
-    "bleu": 0.5239,
-    "chrf": 0.516,
+    "oter": 0.0667,
+    "bleu": 0.4297,
+    "chrf": 0.4966,
     "token_f1": 0.0,
-    "n_sentences": 1000
+    "n_sentences": 20
   },
   "significance_p_values": {
-    "Few-Shot ICL (Standard LLM)": 0.4948,
-    "Static Dictionary Filter": 0.4928,
-    "Unconstrained NMT Baseline": 0.491
+    "Few-Shot ICL (Standard LLM)": 0.5048,
+    "Static Dictionary Filter": 0.5424,
+    "Unconstrained NMT Baseline": 0.5452
   }
 }

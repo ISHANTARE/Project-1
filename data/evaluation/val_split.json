@@ -1,0 +1,750 @@
+{
+  "description": "LAPS Partitioned Benchmark Split - Validation (15 sentences)",
+  "count": 15,
+  "sentences": [
+    {
+      "id": "S001",
+      "sentence": "hi! Kisi ke pass viva calender ki link h kya?",
+      "register": "academic",
+      "reference": "Hi! Does anyone have the link for the viva calendar?",
+      "tokens": [
+        {
+          "token": "viva",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.9,
+            "SI": 0.85,
+            "CC": 0.72,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "calendar",
+          "features": {
+            "BF": 0.95,
+            "DS": 0.6,
+            "SI": 0.7,
+            "CC": 0.68,
+            "AF": 0.92,
+            "TB": 0.08
+          },
+          "label": 1
+        },
+        {
+          "token": "link",
+          "features": {
+            "BF": 0.97,
+            "DS": 0.88,
+            "SI": 0.8,
+            "CC": 0.85,
+            "AF": 0.95,
+            "TB": 0.05
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S096",
+      "sentence": "Startup idea ke baare mein mentor se discuss karo",
+      "register": "business",
+      "reference": "Discuss the startup idea with the mentor.",
+      "tokens": [
+        {
+          "token": "startup",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.85,
+            "SI": 0.85,
+            "CC": 0.8,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "idea",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.65,
+            "SI": 0.68,
+            "CC": 0.65,
+            "AF": 0.86,
+            "TB": 0.14
+          },
+          "label": 0
+        },
+        {
+          "token": "mentor",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.78,
+            "SI": 0.8,
+            "CC": 0.75,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "discuss",
+          "features": {
+            "BF": 0.82,
+            "DS": 0.68,
+            "SI": 0.7,
+            "CC": 0.65,
+            "AF": 0.8,
+            "TB": 0.18
+          },
+          "label": 0
+        }
+      ]
+    },
+    {
+      "id": "S058",
+      "sentence": "Regression analysis run karo aur p-value check karo",
+      "register": "academic",
+      "reference": "Run the regression analysis and check the p-value.",
+      "tokens": [
+        {
+          "token": "regression",
+          "features": {
+            "BF": 0.8,
+            "DS": 0.95,
+            "SI": 0.92,
+            "CC": 0.85,
+            "AF": 0.78,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "analysis",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.88,
+            "SI": 0.88,
+            "CC": 0.82,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "p-value",
+          "features": {
+            "BF": 0.78,
+            "DS": 0.95,
+            "SI": 0.92,
+            "CC": 0.85,
+            "AF": 0.75,
+            "TB": 0.18
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S094",
+      "sentence": "Notice period kab khatam hoga? Relieving letter lena hai",
+      "register": "business",
+      "reference": "When does the notice period end? I need the relieving letter.",
+      "tokens": [
+        {
+          "token": "notice",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.82,
+            "CC": 0.75,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "period",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.7,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "relieving",
+          "features": {
+            "BF": 0.78,
+            "DS": 0.8,
+            "SI": 0.82,
+            "CC": 0.72,
+            "AF": 0.76,
+            "TB": 0.18
+          },
+          "label": 0
+        },
+        {
+          "token": "letter",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.65,
+            "SI": 0.68,
+            "CC": 0.62,
+            "AF": 0.82,
+            "TB": 0.16
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S054",
+      "sentence": "Lab experiment ka hypothesis define karo",
+      "register": "academic",
+      "reference": "Define the hypothesis for the lab experiment.",
+      "tokens": [
+        {
+          "token": "lab",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.88,
+            "SI": 0.85,
+            "CC": 0.8,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "experiment",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.9,
+            "SI": 0.9,
+            "CC": 0.82,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "hypothesis",
+          "features": {
+            "BF": 0.78,
+            "DS": 0.92,
+            "SI": 0.9,
+            "CC": 0.8,
+            "AF": 0.75,
+            "TB": 0.18
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S090",
+      "sentence": "Freelance project mil gaya, contract sign karna padega",
+      "register": "business",
+      "reference": "A freelance project has been received; the contract needs to be signed.",
+      "tokens": [
+        {
+          "token": "freelance",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.82,
+            "CC": 0.75,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "project",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.78,
+            "SI": 0.78,
+            "CC": 0.75,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "contract",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.88,
+            "SI": 0.85,
+            "CC": 0.82,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "sign",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.72,
+            "SI": 0.75,
+            "CC": 0.7,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 0
+        }
+      ]
+    },
+    {
+      "id": "S026",
+      "sentence": "Coffee peete hain aur project ka plan banate hain",
+      "register": "casual",
+      "reference": "Let us have coffee and plan the project.",
+      "tokens": [
+        {
+          "token": "coffee",
+          "features": {
+            "BF": 0.95,
+            "DS": 0.55,
+            "SI": 0.6,
+            "CC": 0.68,
+            "AF": 0.94,
+            "TB": 0.05
+          },
+          "label": 1
+        },
+        {
+          "token": "project",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.72,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "plan",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.65,
+            "SI": 0.7,
+            "CC": 0.68,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S072",
+      "sentence": "Shirt ka size medium hai, exchange karna hai",
+      "register": "casual",
+      "reference": "The shirt size is medium; it needs to be exchanged.",
+      "tokens": [
+        {
+          "token": "size",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.58,
+            "SI": 0.6,
+            "CC": 0.62,
+            "AF": 0.88,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "medium",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.58,
+            "SI": 0.6,
+            "CC": 0.62,
+            "AF": 0.86,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "exchange",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.6,
+            "SI": 0.62,
+            "CC": 0.6,
+            "AF": 0.82,
+            "TB": 0.16
+          },
+          "label": 0
+        }
+      ]
+    },
+    {
+      "id": "S085",
+      "sentence": "Data structures ka assignment submit karna padega kal tak",
+      "register": "academic",
+      "reference": "The data structures assignment needs to be submitted by tomorrow.",
+      "tokens": [
+        {
+          "token": "data",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.9,
+            "SI": 0.88,
+            "CC": 0.85,
+            "AF": 0.9,
+            "TB": 0.08
+          },
+          "label": 1
+        },
+        {
+          "token": "structures",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.92,
+            "SI": 0.9,
+            "CC": 0.85,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "assignment",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.8,
+            "CC": 0.72,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "submit",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.72,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S078",
+      "sentence": "Internship report format IEEE standard mein hoga",
+      "register": "academic",
+      "reference": "The internship report format will follow IEEE standard.",
+      "tokens": [
+        {
+          "token": "internship",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.75,
+            "SI": 0.8,
+            "CC": 0.72,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "report",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.78,
+            "SI": 0.78,
+            "CC": 0.72,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "format",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.8,
+            "CC": 0.75,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "IEEE",
+          "features": {
+            "BF": 0.82,
+            "DS": 0.95,
+            "SI": 0.92,
+            "CC": 0.85,
+            "AF": 0.8,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "standard",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.82,
+            "SI": 0.82,
+            "CC": 0.78,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S065",
+      "sentence": "Podcast sun raha tha, episode bahut interesting tha",
+      "register": "social",
+      "reference": "I was listening to a podcast; the episode was very interesting.",
+      "tokens": [
+        {
+          "token": "podcast",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.75,
+            "AF": 0.9,
+            "TB": 0.08
+          },
+          "label": 1
+        },
+        {
+          "token": "episode",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.72,
+            "SI": 0.72,
+            "CC": 0.7,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "interesting",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.58,
+            "SI": 0.62,
+            "CC": 0.6,
+            "AF": 0.82,
+            "TB": 0.16
+          },
+          "label": 0
+        }
+      ]
+    },
+    {
+      "id": "S030",
+      "sentence": "Recharge karo, balance khatam ho gaya",
+      "register": "casual",
+      "reference": "Recharge the phone; the balance has run out.",
+      "tokens": [
+        {
+          "token": "recharge",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.72,
+            "SI": 0.75,
+            "CC": 0.68,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "balance",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.65,
+            "SI": 0.68,
+            "CC": 0.62,
+            "AF": 0.82,
+            "TB": 0.15
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S028",
+      "sentence": "Headache ho raha hai, tablet leni padegi",
+      "register": "casual",
+      "reference": "I have a headache; I will need to take a tablet.",
+      "tokens": [
+        {
+          "token": "headache",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.68,
+            "SI": 0.72,
+            "CC": 0.65,
+            "AF": 0.85,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "tablet",
+          "features": {
+            "BF": 0.86,
+            "DS": 0.7,
+            "SI": 0.75,
+            "CC": 0.65,
+            "AF": 0.84,
+            "TB": 0.15
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S089",
+      "sentence": "Online pizza order karo, coupon code use karo",
+      "register": "casual",
+      "reference": "Order pizza online and use the coupon code.",
+      "tokens": [
+        {
+          "token": "online",
+          "features": {
+            "BF": 0.95,
+            "DS": 0.82,
+            "SI": 0.8,
+            "CC": 0.8,
+            "AF": 0.93,
+            "TB": 0.05
+          },
+          "label": 1
+        },
+        {
+          "token": "pizza",
+          "features": {
+            "BF": 0.96,
+            "DS": 0.55,
+            "SI": 0.58,
+            "CC": 0.62,
+            "AF": 0.95,
+            "TB": 0.05
+          },
+          "label": 1
+        },
+        {
+          "token": "coupon",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.65,
+            "SI": 0.68,
+            "CC": 0.65,
+            "AF": 0.86,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "code",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.8,
+            "SI": 0.8,
+            "CC": 0.78,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S098",
+      "sentence": "Ticket book karo concert ke liye, front row chahiye",
+      "register": "casual",
+      "reference": "Book a ticket for the concert; I want the front row.",
+      "tokens": [
+        {
+          "token": "ticket",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.62,
+            "SI": 0.65,
+            "CC": 0.68,
+            "AF": 0.9,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "book",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.62,
+            "SI": 0.65,
+            "CC": 0.65,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "concert",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.6,
+            "SI": 0.62,
+            "CC": 0.65,
+            "AF": 0.9,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "front",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.55,
+            "SI": 0.58,
+            "CC": 0.6,
+            "AF": 0.86,
+            "TB": 0.14
+          },
+          "label": 0
+        },
+        {
+          "token": "row",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.52,
+            "SI": 0.55,
+            "CC": 0.58,
+            "AF": 0.82,
+            "TB": 0.18
+          },
+          "label": 0
+        }
+      ]
+    }
+  ]
+}

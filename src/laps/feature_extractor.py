@@ -2,12 +2,12 @@
 LAPS Context-Aware Neural Feature Extractor & Lexical Graph Query Engine
 -------------------------------------------------------------------------
 Computes 6 multi-dimensional linguistic feature vectors:
-  1. BF (Borrowing Frequency)   : Empirical Zipf frequency ratio & corpus borrowing prevalence.
-  2. DS (Domain Specificity)    : Context-aware neural similarity to domain prototype vectors.
-  3. SI (Semantic Importance)   : Information density & semantic drift risk under translation.
+  1. BF (Borrowing Frequency)   : Continuous Zipf corpus borrowing distribution + Laplace smoothing.
+  2. DS (Domain Specificity)    : Context-aware neural cosine similarity to domain vector centroids.
+  3. SI (Semantic Importance)   : Information-theoretic entropy & inverse document frequency (IDF).
   4. CC (Context Consistency)   : Sub-graph co-occurrence density & bilingual context window PMI.
-  5. AF (Audience Familiarity)  : Universal conversational recognition index.
-  6. TB (Translation Benefit)   : Dynamic syntactic role benefit (high for auxiliary/function words, low for core nouns).
+  5. AF (Audience Familiarity)  : Universal cross-lingual frequency index.
+  6. TB (Translation Benefit)   : Dynamic syntactic role benefit (high for functional modifiers, low for core entities).
 """
 
 from __future__ import annotations
@@ -15,8 +15,12 @@ from __future__ import annotations
 import json
 import difflib
 import math
+import re
+import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Any
+REPO_ROOT = str(Path(__file__).resolve().parents[2])
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
 
 try:
     import wordfreq
@@ -66,24 +70,6 @@ def _get_domain_embeddings() -> Dict[str, Any]:
     return _DOMAIN_EMBEDDINGS
 
 
-# Canonical Loanwords Knowledge Fallback
-WELL_KNOWN_LOANWORDS: Dict[str, float] = {
-    "calendar": 0.90, "calender": 0.90, "viva": 0.95, "link": 0.95, "meeting": 0.95,
-    "client": 0.92, "server": 0.90, "project": 0.93, "postpone": 0.85, "deadline": 0.88,
-    "schedule": 0.86, "manager": 0.91, "code": 0.94, "design": 0.87, "debug": 0.80,
-    "database": 0.89, "deploy": 0.84, "application": 0.83, "interface": 0.76,
-    "product": 0.85, "release": 0.82, "testing": 0.88, "feedback": 0.84, "backup": 0.86,
-    "network": 0.89, "system": 0.87, "update": 0.91, "upload": 0.93, "download": 0.92,
-    "install": 0.90, "cancel": 0.88, "confirm": 0.85, "email": 0.96, "chat": 0.95,
-    "call": 0.94, "message": 0.93, "login": 0.95, "logout": 0.92, "password": 0.94,
-    "data": 0.89, "file": 0.91, "folder": 0.88, "image": 0.87, "video": 0.89,
-    "app": 0.95, "zoom": 0.92, "teams": 0.90, "assignment": 0.89, "lab": 0.88,
-    "exam": 0.92, "test": 0.89, "class": 0.93, "lecture": 0.88, "course": 0.89,
-    "hi": 0.90, "hello": 0.92, "hey": 0.88, "ok": 0.97, "okay": 0.97, "ppt": 0.92,
-    "pdf": 0.95, "doc": 0.91, "docx": 0.91, "wifi": 0.96, "laptop": 0.95
-}
-
-
 def _load_bf_dict() -> Dict[str, float]:
     if BF_PATH.exists():
         try:
@@ -91,49 +77,67 @@ def _load_bf_dict() -> Dict[str, float]:
                 return json.load(f)
         except Exception:
             pass
-    return WELL_KNOWN_LOANWORDS
+    return {}
 
 
-def _fuzzy_loanword_match(token_lower: str, bf_dict: Dict[str, float]) -> Tuple[str, float]:
-    """Find closest canonical loanword match for phonetic typos (e.g. 'calender' -> 'calendar')."""
-    if token_lower in bf_dict:
-        return token_lower, bf_dict[token_lower]
-    if token_lower in WELL_KNOWN_LOANWORDS:
-        return token_lower, WELL_KNOWN_LOANWORDS[token_lower]
+# ── Morphological & Syntactic Patterns ────────────────────────────────────────
 
-    matches = difflib.get_close_matches(token_lower, list(WELL_KNOWN_LOANWORDS.keys()), n=1, cutoff=0.75)
-    if matches:
-        matched = matches[0]
-        return matched, WELL_KNOWN_LOANWORDS[matched]
-    return token_lower, 0.40
+# Nominal entity derivational affixes (typically loanwords that resist translation)
+NOUN_ENTITY_SUFFIX_RE = re.compile(
+    r'.*(tion|ment|ity|ence|ance|er|or|ist|ism|logy|ics|ware|base|gram|day|end|ite|ive|sis|ant|ent|um|us)$',
+    re.IGNORECASE
+)
+
+# Verbal and functional action affixes
+VERB_ACTION_SUFFIX_RE = re.compile(
+    r'.*(ize|ise|ify|ed|ing|ate)$',
+    re.IGNORECASE
+)
+
+# Common closed-class functional words, auxiliary verbs, and modal modifiers
+FUNCTIONAL_MODIFIERS = {
+    "postpone", "reschedule", "arrange", "continue", "prefer", "require",
+    "delay", "start", "stop", "finish", "complete", "cancel", "verify",
+    "already", "always", "quickly", "easily", "actually", "probably",
+    "maybe", "definitely", "because", "instead", "although", "otherwise"
+}
+
+HINDI_LIGHT_VERBS = {
+    "karna", "karo", "karein", "kiya", "karega", "karenge", "karna",
+    "hona", "ho", "hoga", "honge", "gaya", "gayi", "gaye", "raha", "rahi",
+    "dena", "diya", "do", "lena", "liya", "lo"
+}
 
 
 # ── Feature Vector Derivations ────────────────────────────────────────────────
 
 def _compute_bf_dynamic(token_lower: str, bf_dict: Dict[str, float]) -> float:
     """
-    1. BF: Dynamic Borrowing Frequency derived from Zipf frequency & loanword index.
+    1. BF: Dynamic Borrowing Frequency derived from empirical Zipf corpus distribution.
+    Uses continuous logistic mapping over English and Indic corpus frequencies.
     """
-    canonical, base_score = _fuzzy_loanword_match(token_lower, bf_dict)
+    if token_lower in bf_dict:
+        return float(bf_dict[token_lower])
+
     if wordfreq is not None:
-        zipf = wordfreq.zipf_frequency(canonical, "en")
-        # Map Zipf score (range ~2.0 to 7.0) to [0.2, 0.98]
+        zipf = wordfreq.zipf_frequency(token_lower, "en")
         if zipf > 0:
-            zipf_norm = min(0.98, max(0.20, (zipf - 1.5) / 5.5))
-            return round((base_score + zipf_norm) / 2.0, 4)
-    return round(base_score, 4)
+            # Logistic curve: Zipf 2.0 -> ~0.35, Zipf 4.5 -> ~0.85, Zipf 6.0 -> ~0.95
+            score = 1.0 / (1.0 + math.exp(-1.1 * (zipf - 3.2)))
+            return round(max(0.20, min(0.98, score)), 4)
+
+    return 0.40
 
 
 def _compute_ds_contextual(token_lower: str, context_window: List[str]) -> float:
     """
     2. DS: Context-Aware Neural Domain Specificity.
-    Measures cosine similarity of token embedded within its local context against domain prototypes.
+    Measures cosine similarity of contextualized token embedding against domain prototype centroids.
     """
     try:
         model = _get_embedding_model()
         dom_embeds = _get_domain_embeddings()
-        
-        # Embed token with contextual window
+
         context_str = " ".join(context_window) if context_window else token_lower
         tok_embed = model.encode(f"{token_lower} in context: {context_str}", convert_to_tensor=True)
 
@@ -143,77 +147,111 @@ def _compute_ds_contextual(token_lower: str, context_window: List[str]) -> float
             if sim > max_sim:
                 max_sim = sim
 
-        # Normalize score into [0.15, 0.98]
         return round(max(0.15, min(0.98, max_sim)), 4)
     except Exception:
-        return 0.75 if token_lower in WELL_KNOWN_LOANWORDS else 0.35
+        return 0.50
 
 
 def _compute_si_dynamic(token_lower: str, bf_score: float) -> float:
     """
-    3. SI: Semantic Importance / Information Density.
-    Measures information retention need based on token specificity and semantic drift risk.
+    3. SI: Information-Theoretic Semantic Importance.
+    Measures information content (negative log-probability / IDF proxy) and morphological load.
+    High for domain concepts and specific entities; low for high-frequency grammatical glue.
     """
-    canonical, _ = _fuzzy_loanword_match(token_lower, {})
-    # Core nouns and entities carry high semantic load
-    entity_stems = {"viva", "calendar", "link", "meeting", "client", "server", "code", "debug",
-                    "database", "deploy", "project", "assignment", "lab", "test", "exam", "quiz",
-                    "pdf", "doc", "ppt", "zoom", "teams", "api", "url", "portal", "system", "wifi"}
-    
-    if canonical in entity_stems:
-        return 0.90
-    
-    # Information content scaling with length & frequency
-    length_weight = min(1.0, len(token_lower) / 10.0)
-    return round(max(0.40, min(0.95, (bf_score * 0.6) + (length_weight * 0.4))), 4)
+    zipf = 4.0
+    if wordfreq is not None:
+        z = wordfreq.zipf_frequency(token_lower, "en")
+        if z > 0:
+            zipf = z
+
+    # Information Content (IC): rare/specialized words carry high information
+    # Zipf ~ 7.5 (e.g. 'the', 'is') -> IC ~ 0.15
+    # Zipf ~ 4.5 (e.g. 'meeting', 'viva') -> IC ~ 0.80
+    # Zipf ~ 2.5 (e.g. 'hypervisor') -> IC ~ 0.95
+    ic = max(0.15, min(0.98, (8.0 - zipf) / 6.0))
+
+    # Morphological complexity factor
+    has_noun_morphology = bool(NOUN_ENTITY_SUFFIX_RE.match(token_lower))
+    morph_bonus = 0.12 if has_noun_morphology else 0.0
+
+    si = (ic * 0.60) + (bf_score * 0.28) + morph_bonus
+    return round(max(0.20, min(0.98, si)), 4)
 
 
-def _compute_cc_dynamic(token_lower: str, context_tokens: List[str], bf_dict: Dict[str, float], kg_engine) -> float:
+def _compute_cc_dynamic(
+    token_lower: str,
+    context_tokens: List[str],
+    bf_dict: Dict[str, float],
+    kg_engine
+) -> float:
     """
     4. CC: Context Consistency.
     Measures surrounding loanword density and graph co-occurrence PMI.
     """
     if not context_tokens:
         return 0.50
-    
-    # Graph co-occurrence
+
     cc_graph = kg_engine.get_context_cooccurrence(token_lower, context_tokens) if kg_engine else 0.50
-    
-    # Window loanword density
-    matches = sum(1 for t in context_tokens if t.lower() in WELL_KNOWN_LOANWORDS or t.lower() in bf_dict)
+
+    matches = 0
+    for t in context_tokens:
+        t_low = t.lower()
+        if t_low in bf_dict:
+            matches += 1
+        elif wordfreq and wordfreq.zipf_frequency(t_low, "en") >= 3.5:
+            matches += 1
+
     cc_window = max(0.30, min(1.0, matches / len(context_tokens) + 0.3))
-    
     return round((cc_graph + cc_window) / 2.0, 4)
 
 
 def _compute_af_dynamic(token_lower: str) -> float:
     """
     5. AF: Audience Familiarity.
-    Measures universal recognition across bilingual audiences.
+    Measures cross-lingual conversational recognition index from empirical Zipf distribution.
     """
-    canonical, score = _fuzzy_loanword_match(token_lower, {})
     if wordfreq is not None:
-        zipf = wordfreq.zipf_frequency(canonical, "en")
-        if zipf > 4.5:
-            score = max(score, 0.92)
-    return round(score, 4)
+        zipf = wordfreq.zipf_frequency(token_lower, "en")
+        if zipf > 0:
+            # Normalize Zipf [2.0, 7.0] -> [0.30, 0.98]
+            af = (zipf - 1.5) / 5.5
+            return round(max(0.30, min(0.98, af)), 4)
+    return 0.70
 
 
-def _compute_tb_dynamic(token_lower: str, is_verb_or_function: bool = False) -> float:
+def _compute_tb_dynamic(
+    token_lower: str,
+    all_tokens: Optional[List[str]] = None,
+    index: Optional[int] = None
+) -> float:
     """
     6. TB: Translation Benefit.
-    Measures grammatical/syntactic benefit of translating the token.
-    High for functional verbs/adverbs/particles; Low for technical/domain nouns.
+    Measures the syntactic/communicative benefit of translating the token into Hindi.
+    - Low for technical/domain nouns, entities, and nominal compounds (Preservation preferred).
+    - High for functional modifiers, modal adverbs, and generic action verbs (Translation preferred).
     """
-    verbs_modifiers = {
-        "postpone", "reschedule", "arrange", "continue", "prefer", "require",
-        "delay", "start", "stop", "finish", "complete", "cancel", "verify"
-    }
-    if token_lower in verbs_modifiers or is_verb_or_function:
+    # 1. Closed-class functional modifiers and action verbs
+    if token_lower in FUNCTIONAL_MODIFIERS:
         return 0.85
-    
-    # Technical nouns and entities have low translation benefit (high preservation need)
-    return 0.15
+
+    # 2. Verbal derivational suffix (-ize, -ify, -ing, -ate)
+    if VERB_ACTION_SUFFIX_RE.match(token_lower):
+        return 0.80
+
+    # 3. Contextual Hindi Light Verb collocations (e.g. 'postpone ho gaya')
+    if all_tokens is not None and index is not None and index + 1 < len(all_tokens):
+        next_tok = all_tokens[index + 1].lower()
+        if next_tok in HINDI_LIGHT_VERBS:
+            # If it's a verbal predicate followed by a light verb, moderate-to-high benefit
+            if token_lower in {"delay", "cancel", "verify", "arrange", "continue"}:
+                return 0.85
+
+    # 4. Nominal entity derivational suffix (-tion, -ment, -ity, -ics, -base)
+    if NOUN_ENTITY_SUFFIX_RE.match(token_lower):
+        return 0.15
+
+    # 5. Core content nouns have low translation benefit (high preservation value)
+    return 0.20
 
 
 # ── Master Feature Extractor Function ─────────────────────────────────────────
@@ -254,7 +292,7 @@ def extract_features(token: str, all_tokens: List[str], index: int) -> Dict[str,
     if tb_penalty > 0.50:
         tb = max(0.10, 1.0 - tb_penalty)
     else:
-        tb = _compute_tb_dynamic(tok_low)
+        tb = _compute_tb_dynamic(tok_low, all_tokens, index)
 
     # 5. Context Consistency (CC)
     cc = _compute_cc_dynamic(tok_low, window, bf_dict, kg)

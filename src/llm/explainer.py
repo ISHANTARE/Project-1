@@ -90,10 +90,15 @@ def explain_token(token_result: dict) -> dict:
     nat_penalty   = token_result.get("naturalness_penalty", 0.0)
     domain        = token_result.get("domain", "General")
 
-    if decision == "NATIVE":
+    if decision in ("NATIVE", "PASSTHROUGH"):
+        msg = (
+            "Monolingual bypass: sentence is in target language — no loanword scoring required."
+            if decision == "PASSTHROUGH"
+            else "Token identified as native Hindi — not subject to LAPS scoring."
+        )
         return {
             "token":              token_result["token"],
-            "decision":           "NATIVE",
+            "decision":           decision,
             "score":              None,
             "threshold":          None,
             "probability":        None,
@@ -101,7 +106,7 @@ def explain_token(token_result: dict) -> dict:
             "ego_density_bonus":  0.0,
             "naturalness_penalty": 0.0,
             "domain":             "N/A",
-            "primary":            "Token identified as native Hindi — not subject to LAPS scoring.",
+            "primary":            msg,
             "supporting":         [],
         }
 

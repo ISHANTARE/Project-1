@@ -1,0 +1,871 @@
+{
+  "description": "LAPS Partitioned Benchmark Split - Held-out Test (20 sentences with OOV)",
+  "count": 20,
+  "sentences": [
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "register": "business",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "tokens": [
+        {
+          "token": "presentation",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.75,
+            "SI": 0.82,
+            "CC": 0.7,
+            "AF": 0.88,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "confidence",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.6,
+            "SI": 0.7,
+            "CC": 0.65,
+            "AF": 0.82,
+            "TB": 0.15
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "register": "academic",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "tokens": [
+        {
+          "token": "dataset",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.95,
+            "SI": 0.92,
+            "CC": 0.88,
+            "AF": 0.85,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "preprocessing",
+          "features": {
+            "BF": 0.8,
+            "DS": 0.95,
+            "SI": 0.92,
+            "CC": 0.85,
+            "AF": 0.78,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "training",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.9,
+            "SI": 0.88,
+            "CC": 0.82,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "register": "academic",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "tokens": [
+        {
+          "token": "homework",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.72,
+            "SI": 0.75,
+            "CC": 0.68,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "submit",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.72,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "assignment",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.8,
+            "CC": 0.72,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "register": "casual",
+      "reference": "My phone's camera is very good.",
+      "tokens": [
+        {
+          "token": "phone",
+          "features": {
+            "BF": 0.95,
+            "DS": 0.75,
+            "SI": 0.75,
+            "CC": 0.78,
+            "AF": 0.94,
+            "TB": 0.06
+          },
+          "label": 1
+        },
+        {
+          "token": "camera",
+          "features": {
+            "BF": 0.94,
+            "DS": 0.8,
+            "SI": 0.78,
+            "CC": 0.75,
+            "AF": 0.92,
+            "TB": 0.07
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "register": "social",
+      "reference": "Check the comment section; there are some negative comments.",
+      "tokens": [
+        {
+          "token": "comment",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.72,
+            "SI": 0.72,
+            "CC": 0.72,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "section",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.68,
+            "SI": 0.68,
+            "CC": 0.65,
+            "AF": 0.82,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "negative",
+          "features": {
+            "BF": 0.82,
+            "DS": 0.55,
+            "SI": 0.58,
+            "CC": 0.58,
+            "AF": 0.8,
+            "TB": 0.18
+          },
+          "label": 0
+        }
+      ]
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "register": "casual",
+      "reference": "Are your headphones available? Please share them.",
+      "tokens": [
+        {
+          "token": "headphones",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.78,
+            "SI": 0.8,
+            "CC": 0.78,
+            "AF": 0.9,
+            "TB": 0.08
+          },
+          "label": 1
+        },
+        {
+          "token": "available",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.62,
+            "SI": 0.65,
+            "CC": 0.6,
+            "AF": 0.82,
+            "TB": 0.16
+          },
+          "label": 0
+        },
+        {
+          "token": "share",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.68,
+            "SI": 0.7,
+            "CC": 0.65,
+            "AF": 0.88,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "register": "casual",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "tokens": [
+        {
+          "token": "weather",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.55,
+            "SI": 0.68,
+            "CC": 0.6,
+            "AF": 0.88,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "office",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.7,
+            "SI": 0.75,
+            "CC": 0.68,
+            "AF": 0.88,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "register": "business",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "tokens": [
+        {
+          "token": "team",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.72,
+            "AF": 0.9,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "morale",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.68,
+            "SI": 0.7,
+            "CC": 0.62,
+            "AF": 0.82,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "motivation",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.65,
+            "SI": 0.72,
+            "CC": 0.65,
+            "AF": 0.85,
+            "TB": 0.14
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "register": "casual",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "tokens": [
+        {
+          "token": "park",
+          "features": {
+            "BF": 0.92,
+            "DS": 0.55,
+            "SI": 0.6,
+            "CC": 0.65,
+            "AF": 0.9,
+            "TB": 0.09
+          },
+          "label": 1
+        },
+        {
+          "token": "walk",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.55,
+            "SI": 0.6,
+            "CC": 0.62,
+            "AF": 0.88,
+            "TB": 0.11
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "register": "casual",
+      "reference": "What is the cricket match score right now?",
+      "tokens": [
+        {
+          "token": "cricket",
+          "features": {
+            "BF": 0.95,
+            "DS": 0.62,
+            "SI": 0.68,
+            "CC": 0.72,
+            "AF": 0.94,
+            "TB": 0.06
+          },
+          "label": 1
+        },
+        {
+          "token": "match",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.62,
+            "SI": 0.65,
+            "CC": 0.68,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "score",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.65,
+            "SI": 0.68,
+            "CC": 0.65,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "register": "business",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "tokens": [
+        {
+          "token": "quarterly",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.88,
+            "SI": 0.85,
+            "CC": 0.78,
+            "AF": 0.82,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "targets",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.82,
+            "SI": 0.8,
+            "CC": 0.75,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "strategy",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.85,
+            "SI": 0.85,
+            "CC": 0.8,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "revisit",
+          "features": {
+            "BF": 0.8,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.7,
+            "AF": 0.78,
+            "TB": 0.18
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "register": "business",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "tokens": [
+        {
+          "token": "promotion",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.8,
+            "SI": 0.82,
+            "CC": 0.78,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "quarter",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.82,
+            "SI": 0.82,
+            "CC": 0.78,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "performance",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.85,
+            "SI": 0.85,
+            "CC": 0.82,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "review",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.8,
+            "SI": 0.78,
+            "CC": 0.75,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "register": "business",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "tokens": [
+        {
+          "token": "server",
+          "features": {
+            "BF": 0.93,
+            "DS": 0.9,
+            "SI": 0.88,
+            "CC": 0.82,
+            "AF": 0.9,
+            "TB": 0.08
+          },
+          "label": 1
+        },
+        {
+          "token": "debug",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.92,
+            "SI": 0.85,
+            "CC": 0.78,
+            "AF": 0.85,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "production",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.88,
+            "SI": 0.82,
+            "CC": 0.75,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        },
+        {
+          "token": "crash",
+          "features": {
+            "BF": 0.8,
+            "DS": 0.85,
+            "SI": 0.8,
+            "CC": 0.72,
+            "AF": 0.78,
+            "TB": 0.18
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "register": "academic",
+      "reference": "Improve the machine learning model's accuracy.",
+      "tokens": [
+        {
+          "token": "machine",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.92,
+            "SI": 0.9,
+            "CC": 0.85,
+            "AF": 0.88,
+            "TB": 0.09
+          },
+          "label": 1
+        },
+        {
+          "token": "learning",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.9,
+            "SI": 0.88,
+            "CC": 0.82,
+            "AF": 0.85,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "model",
+          "features": {
+            "BF": 0.9,
+            "DS": 0.88,
+            "SI": 0.85,
+            "CC": 0.8,
+            "AF": 0.88,
+            "TB": 0.1
+          },
+          "label": 1
+        },
+        {
+          "token": "accuracy",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.85,
+            "SI": 0.83,
+            "CC": 0.78,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "register": "academic",
+      "reference": "Mark attendance in the research methodology class.",
+      "tokens": [
+        {
+          "token": "research",
+          "features": {
+            "BF": 0.88,
+            "DS": 0.88,
+            "SI": 0.85,
+            "CC": 0.82,
+            "AF": 0.85,
+            "TB": 0.12
+          },
+          "label": 1
+        },
+        {
+          "token": "methodology",
+          "features": {
+            "BF": 0.8,
+            "DS": 0.92,
+            "SI": 0.9,
+            "CC": 0.82,
+            "AF": 0.78,
+            "TB": 0.15
+          },
+          "label": 1
+        },
+        {
+          "token": "attendance",
+          "features": {
+            "BF": 0.85,
+            "DS": 0.75,
+            "SI": 0.78,
+            "CC": 0.7,
+            "AF": 0.82,
+            "TB": 0.14
+          },
+          "label": 1
+        }
+      ]
+    },
+    {
+      "id": "OOV_001",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "register": "business",
+      "reference": "Configure the ingress controller in the Kubernetes cluster so traffic can be routed.",
+      "tokens": [
+        {
+          "token": "Kubernetes",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "cluster",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "ingress",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "controller",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "configure",
+          "label": 0,
+          "domain": "Tech"
+        },
+        {
+          "token": "traffic",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "route",
+          "label": 0,
+          "domain": "Tech"
+        }
+      ]
+    },
+    {
+      "id": "OOV_002",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "register": "business",
+      "reference": "Urgently request this patient's MRI scan and blood biochemistry report.",
+      "tokens": [
+        {
+          "token": "patient",
+          "label": 1,
+          "domain": "Medical"
+        },
+        {
+          "token": "MRI",
+          "label": 1,
+          "domain": "Medical"
+        },
+        {
+          "token": "scan",
+          "label": 1,
+          "domain": "Medical"
+        },
+        {
+          "token": "blood",
+          "label": 0,
+          "domain": "Medical"
+        },
+        {
+          "token": "biochemistry",
+          "label": 1,
+          "domain": "Medical"
+        },
+        {
+          "token": "report",
+          "label": 1,
+          "domain": "Medical"
+        }
+      ]
+    },
+    {
+      "id": "OOV_003",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "register": "business",
+      "reference": "Rebalance the portfolio's asset allocation to optimize capital gains tax.",
+      "tokens": [
+        {
+          "token": "Portfolio",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "asset",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "allocation",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "rebalance",
+          "label": 0,
+          "domain": "Finance"
+        },
+        {
+          "token": "capital",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "gains",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "tax",
+          "label": 1,
+          "domain": "Finance"
+        },
+        {
+          "token": "optimize",
+          "label": 0,
+          "domain": "Finance"
+        }
+      ]
+    },
+    {
+      "id": "OOV_004",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "register": "academic",
+      "reference": "Implementing the circuit breaker pattern is essential in microservices architecture.",
+      "tokens": [
+        {
+          "token": "Microservices",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "architecture",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "circuit",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "breaker",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "pattern",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "implement",
+          "label": 0,
+          "domain": "Tech"
+        }
+      ]
+    },
+    {
+      "id": "OOV_005",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "register": "casual",
+      "reference": "Bro, did you verify the checksum of the new firmware patch or directly flash it?",
+      "tokens": [
+        {
+          "token": "firmware",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "patch",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "checksum",
+          "label": 1,
+          "domain": "Tech"
+        },
+        {
+          "token": "verify",
+          "label": 0,
+          "domain": "Tech"
+        },
+        {
+          "token": "direct",
+          "label": 0,
+          "domain": "General"
+        },
+        {
+          "token": "flash",
+          "label": 1,
+          "domain": "Tech"
+        }
+      ]
+    }
+  ]
+}

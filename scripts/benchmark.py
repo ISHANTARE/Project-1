@@ -35,6 +35,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from laps.scorer           import compute_score, DEFAULT_WEIGHTS
 from laps.threshold_engine import batch_decide
+from laps.feature_extractor import extract_features
 from llm.rewriter          import LAPSRewriter
 from llm.nmt_backend       import get_nmt_engine
 
@@ -145,12 +146,16 @@ def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] =
         reg = sent.get("register", "business")
         
         scored_tokens = []
-        for tok in sent.get("tokens", []):
+        surface_tokens = [t["token"] for t in sent.get("tokens", [])]
+        for idx, tok in enumerate(sent.get("tokens", [])):
+            feats = tok.get("features")
+            if not feats:
+                feats = extract_features(tok["token"], surface_tokens, idx)
             scored_tokens.append({
                 "token":        tok["token"],
                 "is_candidate": True,
-                "laps_score":   compute_score(tok["features"], weights or DEFAULT_WEIGHTS),
-                "features":     tok["features"],
+                "laps_score":   compute_score(feats, weights or DEFAULT_WEIGHTS),
+                "features":     feats,
             })
             
         decided = batch_decide(scored_tokens, reg)
