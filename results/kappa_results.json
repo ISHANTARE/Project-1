@@ -1,0 +1,10 @@
+{
+  "n_tokens": 90,
+  "n_raters": 2,
+  "observed_agreement": 0.9444,
+  "expected_agreement": 0.5593,
+  "fleiss_kappa": 0.8739,
+  "gwet_ac1": 0.9007,
+  "interpretation": "Almost Perfect Agreement",
+  "note": "Computed on 90 candidate tokens across 20 code-mixed sentences. Tokens: English loanwords and Hindi grammatical words."
+}
