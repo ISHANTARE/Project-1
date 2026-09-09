@@ -712,7 +712,7 @@ with tab_math:
     with col_m2:
         st.markdown("#### 2. Soft Sigmoid Probability Engine")
         st.latex(r"P(\text{Preserve} \mid t_i, C, \theta_R) = \frac{1}{1 + e^{-\lambda (\text{LAPSScore}(t_i) - \theta_R)}}")
-        st.markdown("""
+        st.markdown(r"""
         * **$\lambda = 10.0$**: Steepness factor controlling transition sharpness.
         * **$\theta_R$**: Communicative register threshold ($\text{Casual}=0.35, \text{Business}=0.50, \text{Academic}=0.65$).
         * **$P \ge 0.70 \implies \text{PRESERVE}$**, **$0.50 \le P < 0.70 \implies \text{UNCERTAIN}$**, **$P < 0.50 \implies \text{REWRITE}$**.
