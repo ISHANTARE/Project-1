@@ -1,0 +1,111 @@
+{
+  "record_counts": {
+    "gold_corpus": 100,
+    "train_split": 70,
+    "val_split": 15,
+    "test_split": 20,
+    "total_split_entries": 105
+  },
+  "id_uniqueness": {
+    "duplicates_within_files": {
+      "gold": [],
+      "train": [],
+      "val": [],
+      "test": []
+    },
+    "is_each_file_unique": true
+  },
+  "pairwise_disjointness": {
+    "train_val_overlap": [],
+    "train_test_overlap": [],
+    "val_test_overlap": [],
+    "is_pairwise_disjoint": true
+  },
+  "parent_corpus_accounting": {
+    "gold_total": 100,
+    "train_gold_count": 70,
+    "val_gold_count": 15,
+    "test_gold_count": 15,
+    "test_gold_ids": [
+      "S004",
+      "S005",
+      "S012",
+      "S014",
+      "S015",
+      "S018",
+      "S029",
+      "S032",
+      "S036",
+      "S055",
+      "S070",
+      "S076",
+      "S082",
+      "S087",
+      "S095"
+    ],
+    "test_oov_count": 5,
+    "test_oov_ids": [
+      "OOV_001",
+      "OOV_002",
+      "OOV_003",
+      "OOV_004",
+      "OOV_005"
+    ],
+    "all_gold_covered_in_splits": true,
+    "missing_gold_ids": [],
+    "extra_non_gold_in_train_or_val": []
+  },
+  "schema_validation": {
+    "total_errors": 33,
+    "errors": [
+      "test:OOV_001 token 'Kubernetes' missing 'features'",
+      "test:OOV_001 token 'cluster' missing 'features'",
+      "test:OOV_001 token 'ingress' missing 'features'",
+      "test:OOV_001 token 'controller' missing 'features'",
+      "test:OOV_001 token 'configure' missing 'features'",
+      "test:OOV_001 token 'traffic' missing 'features'",
+      "test:OOV_001 token 'route' missing 'features'",
+      "test:OOV_002 token 'patient' missing 'features'",
+      "test:OOV_002 token 'MRI' missing 'features'",
+      "test:OOV_002 token 'scan' missing 'features'",
+      "test:OOV_002 token 'blood' missing 'features'",
+      "test:OOV_002 token 'biochemistry' missing 'features'",
+      "test:OOV_002 token 'report' missing 'features'",
+      "test:OOV_003 token 'Portfolio' missing 'features'",
+      "test:OOV_003 token 'asset' missing 'features'",
+      "test:OOV_003 token 'allocation' missing 'features'",
+      "test:OOV_003 token 'rebalance' missing 'features'",
+      "test:OOV_003 token 'capital' missing 'features'",
+      "test:OOV_003 token 'gains' missing 'features'",
+      "test:OOV_003 token 'tax' missing 'features'",
+      "test:OOV_003 token 'optimize' missing 'features'",
+      "test:OOV_004 token 'Microservices' missing 'features'",
+      "test:OOV_004 token 'architecture' missing 'features'",
+      "test:OOV_004 token 'circuit' missing 'features'",
+      "test:OOV_004 token 'breaker' missing 'features'",
+      "test:OOV_004 token 'pattern' missing 'features'",
+      "test:OOV_004 token 'implement' missing 'features'",
+      "test:OOV_005 token 'firmware' missing 'features'",
+      "test:OOV_005 token 'patch' missing 'features'",
+      "test:OOV_005 token 'checksum' missing 'features'",
+      "test:OOV_005 token 'verify' missing 'features'",
+      "test:OOV_005 token 'direct' missing 'features'",
+      "test:OOV_005 token 'flash' missing 'features'"
+    ],
+    "is_schema_valid": false
+  },
+  "text_similarity_audit": {
+    "exact_duplicate_count": 0,
+    "exact_duplicates": [],
+    "near_duplicate_jaccard_count": 0,
+    "near_duplicates_jaccard_threshold": 0.85,
+    "near_duplicates_jaccard": [],
+    "near_duplicate_seqmatcher_count": 0,
+    "near_duplicates_seqmatcher_threshold": 0.85,
+    "near_duplicates_seqmatcher": []
+  },
+  "verdict": {
+    "partition_accounting": "70 (train) + 15 (val) + 15 (test-gold) = 100 gold parent records; + 5 OOV = 105 total split records",
+    "integrity_verified": true
+  }
+}
