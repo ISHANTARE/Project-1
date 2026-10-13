@@ -88,21 +88,51 @@ def audit_splits() -> Dict[str, Any]:
     missing_from_splits = sorted(list(gold_ids - all_split_gold_ids))
     extra_non_gold = sorted(list((id_sets["train"] | id_sets["val"]) - gold_ids))
 
-    # Schema verification
+    # ── Schema verification (type-discriminated) ────────────────────────────
+    # Two valid token schemas exist by design:
+    #   IN_DIST: in-distribution gold records — token fields: {token, features, label}
+    #            'features' is a pre-cached dict of {BF,DS,SI,CC,AF,TB}.
+    #   OOV_EXT: out-of-vocabulary extension records — token fields: {token, label, domain}
+    #            'features' is absent so that the live neural inference path is exercised;
+    #            'domain' is present instead to support domain-specific OOV test scenarios.
+    # The benchmark pipeline (scripts/benchmark.py:459-461) handles both:
+    #   feats = tok.get('features')  # None for OOV
+    #   if not feats: feats = extract_features(...)  # live inference for OOV
     schema_errors = []
-    required_fields = ["id", "sentence", "register", "tokens"]
-    token_fields = ["token", "features", "label"]
+    record_field_errors = []
+    required_record_fields = ["id", "sentence", "register", "tokens"]
+    # Token schema for in-distribution records (train, val, and in-dist test records)
+    indist_token_required = ["token", "features", "label"]
+    # Token schema for OOV extension records (no features cache; domain tag present)
+    oov_token_required = ["token", "label", "domain"]
+
+    # Identify OOV IDs from test split (any ID not in gold corpus parent)
+    oov_ids: Set[str] = id_sets["test"] - id_sets["gold"]
 
     for split_name in ["train", "val", "test"]:
         for s in records[split_name]:
             sid = s.get("id", "UNKNOWN")
-            for rf in required_fields:
+            # Record-level required fields (same for all record types)
+            for rf in required_record_fields:
                 if rf not in s:
-                    schema_errors.append(f"{split_name}:{sid} missing field '{rf}'")
+                    schema_errors.append(f"{split_name}:{sid} missing record field '{rf}'")
+            # Token-level: choose schema based on record type
+            is_oov = sid in oov_ids
+            token_required = oov_token_required if is_oov else indist_token_required
             for tok in s.get("tokens", []):
-                for tf in token_fields:
+                for tf in token_required:
                     if tf not in tok:
-                        schema_errors.append(f"{split_name}:{sid} token '{tok.get('token')}' missing '{tf}'")
+                        schema_errors.append(
+                            f"{split_name}:{sid} token '{tok.get('token')}' "
+                            f"missing required field '{tf}' (schema: {'OOV_EXT' if is_oov else 'IN_DIST'})"
+                        )
+                # Additional sanity: OOV tokens must NOT accidentally have features
+                # (that would mean they are no longer genuinely OOV from the system's view)
+                if is_oov and "features" in tok:
+                    schema_errors.append(
+                        f"{split_name}:{sid} OOV token '{tok.get('token')}' "
+                        f"has unexpected 'features' cache — defeats OOV test purpose"
+                    )
 
     # Duplicate and Near-Duplicate Checks
     # Collect all (split_name, sentence_id, text)
@@ -185,6 +215,13 @@ def audit_splits() -> Dict[str, Any]:
             "extra_non_gold_in_train_or_val": extra_non_gold,
         },
         "schema_validation": {
+            "methodology": (
+                "Type-discriminated validation: IN_DIST records (token,features,label) vs "
+                "OOV_EXT records (token,label,domain). Features are intentionally absent on OOV "
+                "records to exercise the live neural inference fallback (benchmark.py:459-461)."
+            ),
+            "in_dist_records_validated": len(records["train"]) + len(records["val"]) + len(test_gold_overlap),
+            "oov_ext_records_validated": len(oov_ids),
             "total_errors": len(schema_errors),
             "errors": schema_errors,
             "is_schema_valid": len(schema_errors) == 0,

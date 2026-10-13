@@ -582,3 +582,133 @@ class TestSurrogateReferenceIndependenceAndExactMatchAudit:
 
 
 
+class TestOOVRecordSchemaValidation:
+    """
+    Regression tests for the two-schema design:
+      IN_DIST records: {token, features, label}
+      OOV_EXT records: {token, label, domain}  — no cached features by design.
+
+    These tests verify:
+      1. All 5 OOV records have the correct OOV_EXT token schema.
+      2. No OOV token accidentally carries a 'features' cache (which would corrupt the OOV test).
+      3. Live extract_features() works correctly for OOV tokens and returns valid [0,1] floats.
+    """
+    OOV_IDS = {"OOV_001", "OOV_002", "OOV_003", "OOV_004", "OOV_005"}
+    OOV_TOKEN_REQUIRED = {"token", "label", "domain"}
+    OOV_TOKEN_FORBIDDEN = {"features"}
+
+    def _load_oov_records(self):
+        test_path = Path("data/evaluation/test_split.json")
+        if not test_path.exists():
+            pytest.skip("test_split.json not found")
+        with open(test_path, encoding="utf-8") as f:
+            data = json.load(f)
+        return [s for s in data["sentences"] if s["id"] in self.OOV_IDS]
+
+    def test_all_five_oov_records_present(self):
+        recs = self._load_oov_records()
+        found_ids = {r["id"] for r in recs}
+        assert found_ids == self.OOV_IDS, (
+            f"Expected OOV IDs {self.OOV_IDS}, found {found_ids}"
+        )
+
+    def test_oov_records_have_required_top_level_fields(self):
+        recs = self._load_oov_records()
+        required = {"id", "sentence", "register", "reference", "tokens"}
+        for rec in recs:
+            missing = required - rec.keys()
+            assert not missing, (
+                f"OOV record {rec['id']} missing top-level fields: {missing}"
+            )
+            assert isinstance(rec["sentence"], str) and rec["sentence"].strip()
+            assert isinstance(rec["tokens"], list) and len(rec["tokens"]) > 0
+
+    def test_oov_token_schema_correct_and_no_features_cache(self):
+        """
+        Each token in an OOV record must have {token, label, domain} and must NOT have
+        'features', because the purpose of OOV records is to exercise live feature
+        extraction via extract_features().
+        """
+        recs = self._load_oov_records()
+        for rec in recs:
+            for tok in rec["tokens"]:
+                missing = self.OOV_TOKEN_REQUIRED - tok.keys()
+                assert not missing, (
+                    f"OOV record {rec['id']} token '{tok.get('token')}' "
+                    f"missing required fields: {missing}"
+                )
+                assert isinstance(tok["token"], str) and tok["token"].strip()
+                assert isinstance(tok["label"], int) and tok["label"] in (0, 1)
+                assert isinstance(tok["domain"], str) and tok["domain"].strip()
+                # Must not have cached features (defeats the OOV test purpose)
+                forbidden_present = self.OOV_TOKEN_FORBIDDEN & tok.keys()
+                assert not forbidden_present, (
+                    f"OOV record {rec['id']} token '{tok.get('token')}' "
+                    f"has forbidden fields {forbidden_present} "
+                    f"(cached features corrupt the OOV evaluation)"
+                )
+
+    def test_live_feature_extraction_for_oov_tokens(self):
+        """
+        The pipeline's live fallback path (extract_features) must produce valid [0,1]
+        float feature vectors for OOV tokens that have no cached features.
+        Tests three representative OOV tokens covering different domains.
+        """
+        oov_samples = [
+            # (token, context_tokens, index)
+            ("Kubernetes", ["Kubernetes", "cluster", "ingress", "controller"], 0),
+            ("MRI", ["patient", "MRI", "scan", "blood"], 1),
+            ("firmware", ["firmware", "patch", "checksum", "verify"], 0),
+        ]
+        feature_keys = {"BF", "DS", "SI", "CC", "AF", "TB"}
+        for token, ctx, idx in oov_samples:
+            feats = extract_features(token, ctx, idx)
+            assert feats.keys() == feature_keys, (
+                f"extract_features returned unexpected keys for '{token}': {feats.keys()}"
+            )
+            for key, val in feats.items():
+                assert isinstance(val, float), (
+                    f"Feature {key} for '{token}' is not float: {type(val)}"
+                )
+                assert 0.0 <= val <= 1.0, (
+                    f"Feature {key}={val:.4f} for '{token}' out of [0,1] range"
+                )
+
+
+class TestDatasetIntegrityAuditorSchemaResult:
+    """
+    End-to-end regression test for the type-discriminated schema auditor.
+    Runs the full audit_dataset_integrity.audit_splits() function and asserts
+    that is_schema_valid=True when both IN_DIST and OOV_EXT records are correctly typed.
+    """
+
+    def test_schema_valid_with_type_discriminated_validator(self):
+        """
+        The type-discriminated validator must report is_schema_valid=True:
+         - IN_DIST records (100 gold) validated against {token, features, label}.
+         - OOV_EXT records (5) validated against {token, label, domain}.
+        """
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "audit_dataset_integrity",
+            Path("scripts/audit_dataset_integrity.py"),
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+
+        results = mod.audit_splits()
+        sv = results["schema_validation"]
+
+        assert sv["is_schema_valid"] is True, (
+            f"Expected schema_valid=True but got errors:\n" +
+            "\n".join(sv["errors"][:20])
+        )
+        assert sv["total_errors"] == 0, (
+            f"Expected 0 schema errors, got {sv['total_errors']}"
+        )
+        assert sv["in_dist_records_validated"] == 100, (
+            f"Expected 100 in-dist records validated, got {sv['in_dist_records_validated']}"
+        )
+        assert sv["oov_ext_records_validated"] == 5, (
+            f"Expected 5 OOV records validated, got {sv['oov_ext_records_validated']}"
+        )
