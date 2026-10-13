@@ -2,7 +2,6 @@
 
 **Audit Status**: COMPLETED AND VERIFIED  
 **Date**: October 13, 2026  
-**Auditor**: Senior NLP Research Engineer & Experimental Scientist  
 
 ---
 

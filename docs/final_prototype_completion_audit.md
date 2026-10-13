@@ -1,7 +1,6 @@
 # LAPS Final Prototype Completion Audit & Deliverable Verification
 
 > **Document:** `docs/final_prototype_completion_audit.md`  
-> **Auditor Role:** Senior Software Architect, NLP Research Engineer, QA Lead, Technical Project Auditor  
 > **Course / Institution:** BCSE497J — Project-I | Vellore Institute of Technology, Vellore  
 > **Date of Audit:** October 2026 | Test Suite Status: **45/45 Passing** (100%)  
 > **Framework:** LAPS v2.0 (Linguistic Adaptive Preservation Scoring)

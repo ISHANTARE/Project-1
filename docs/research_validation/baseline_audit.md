@@ -1,7 +1,6 @@
 # LAPS Baseline Research & Experimental Audit
 
 **Audit Date**: October 13, 2026  
-**Auditor**: Senior NLP Research Engineer & Experimental Scientist  
 **Repository**: LAPS — Linguistic Adaptive Preservation Scoring  
 **Git Branch**: `main`  
 **Git Commit**: `5870c0c4cd66562881767153d537cb33fb6f9a2f` (`docs: preserve LAPS defence evidence and preparation guide`)  

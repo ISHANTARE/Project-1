@@ -2,7 +2,6 @@
 
 **Document:** `docs/mathematical_specification_audit.md`  
 **Course:** BCSE497J — Project-I, Vellore Institute of Technology, Vellore  
-**Auditor:** Senior NLP Research Engineer & Mathematical Evaluator  
 **Audit Scope:** Verification of formulas, weights, boundaries, normalization, and code-versus-documentation alignment.
 
 ---

@@ -2,7 +2,6 @@
 **Project Domain:** Natural Language Processing, Code-Mixed Text Rewriting, Neuro-Symbolic AI, Explainable AI  
 **Course:** BCSE497J — Project-I, Vellore Institute of Technology, Vellore  
 **Audit Date:** October 2026 / Local Workspace Audit  
-**Auditor:** Senior NLP Research Engineer & Software Architect  
 
 ---
 
