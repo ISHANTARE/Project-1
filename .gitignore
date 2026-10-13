@@ -1,0 +1,12 @@
+/Original-docs
+.pytest_cache/
+.agents/
+__pycache__/
+*.py[cod]
+*$py.class
+*/__pycache__/
+*/*/__pycache__/
+.env
+.venv/
+env/
+venv/

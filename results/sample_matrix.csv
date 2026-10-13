@@ -1,0 +1,6 @@
+Token,Language,Domain,BF,DS,SI,CC,AF,TB,LAPS_Score,P_Preserve,Decision,Confidence,Justification
+client,EN,Business,0.9,0.85,0.718,0.7333,0.6486,0.2,0.6809,0.859241,PRESERVE,0.3592,Highly frequent borrowed word in code-mixed speech.
+meeting,EN,Business,0.9,0.85,0.537,0.75,0.7357,0.15,0.6653,0.839296,PRESERVE,0.3393,Highly frequent borrowed word in code-mixed speech.
+postpone,EN,Business,0.9,0.85,0.704,0.75,0.4971,0.85,0.5929,0.716872,PRESERVE,0.2169,Highly frequent borrowed word in code-mixed speech.
+schedule,EN,Business,0.9,0.85,0.585,0.65,0.6671,0.4,0.6246,0.776607,PRESERVE,0.2766,Highly frequent borrowed word in code-mixed speech.
+fix,EN,Tech,0.7465,0.85,0.534,0.65,0.6786,0.2,0.6054,0.741542,PRESERVE,0.2415,Domain-specific technical or professional term.

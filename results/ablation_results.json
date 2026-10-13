@@ -1,0 +1,34 @@
+{
+  "Full LAPS (All 6 Features + Soft Sigmoid)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  },
+  "Ablation: Without BF (-BF)": {
+    "f1": 0.963,
+    "accuracy": 0.9297
+  },
+  "Ablation: Without DS (-DS)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  },
+  "Ablation: Without SI (-SI)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  },
+  "Ablation: Without CC (-CC)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  },
+  "Ablation: Without AF (-AF)": {
+    "f1": 0.9649,
+    "accuracy": 0.9327
+  },
+  "Ablation: Without TB (-TB)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  },
+  "Ablation: Hard Step Threshold (No Sigmoid)": {
+    "f1": 0.9603,
+    "accuracy": 0.9235
+  }
+}

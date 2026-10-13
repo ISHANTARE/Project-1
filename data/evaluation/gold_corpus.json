@@ -1,0 +1,1146 @@
+{
+  "description": "LAPS Gold Standard Evaluation Corpus - 100 code-mixed Hinglish sentences with human token-level preservation labels",
+  "version": "2.0",
+  "annotators": 2,
+  "annotated_tokens_sample": 90,
+  "observed_agreement": 0.9444,
+  "fleiss_kappa": 0.8739,
+  "cohen_kappa": 0.8744,
+  "annotation_provenance_note": "Inter-annotator agreement was measured across 2 independent bilingual raters on 90 candidate tokens across sentences S001-S020 (data/evaluation/annotations.csv). Observed agreement was 85/90 (94.44%), yielding Fleiss' kappa = 0.8739 and Cohen's kappa = 0.8744 ('Almost Perfect Agreement'). 5 disagreements (submit, postpone, free, raise, try; rater_1=1, rater_2=0) are preserved in the raw CSV with no synthetic final_consensus column; for gold evaluation labels, preservation was assigned according to the primary annotator's verified domain criteria.",
+  "annotation_scale": "binary (1=Preserve, 0=Rewrite)",
+  "register_distribution": {
+    "casual": 35,
+    "business": 35,
+    "academic": 20,
+    "social": 10
+  },
+  "sentences": [
+    {
+      "id": "S001",
+      "sentence": "hi! Kisi ke pass viva calender ki link h kya?",
+      "register": "academic",
+      "reference": "Hi! Does anyone have the link for the viva calendar?",
+      "tokens": [
+        {"token": "viva",     "features": {"BF": 0.88, "DS": 0.90, "SI": 0.85, "CC": 0.72, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "calendar", "features": {"BF": 0.95, "DS": 0.60, "SI": 0.70, "CC": 0.68, "AF": 0.92, "TB": 0.08}, "label": 1},
+        {"token": "link",     "features": {"BF": 0.97, "DS": 0.88, "SI": 0.80, "CC": 0.85, "AF": 0.95, "TB": 0.05}, "label": 1}
+      ]
+    },
+    {
+      "id": "S002",
+      "sentence": "Kal client meeting postpone ho gayi, kya hum phir se schedule karein?",
+      "register": "business",
+      "reference": "Tomorrow's client meeting was postponed. Should we reschedule it?",
+      "tokens": [
+        {"token": "client",   "features": {"BF": 0.90, "DS": 0.85, "SI": 0.80, "CC": 0.75, "AF": 0.88, "TB": 0.15}, "label": 1},
+        {"token": "meeting",  "features": {"BF": 0.92, "DS": 0.78, "SI": 0.75, "CC": 0.80, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "schedule", "features": {"BF": 0.88, "DS": 0.70, "SI": 0.72, "CC": 0.70, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S003",
+      "sentence": "Report ki deadline aaj hai, submission portal pe upload karo",
+      "register": "academic",
+      "reference": "The report deadline is today; please upload it to the submission portal.",
+      "tokens": [
+        {"token": "report",     "features": {"BF": 0.85, "DS": 0.75, "SI": 0.80, "CC": 0.65, "AF": 0.88, "TB": 0.15}, "label": 1},
+        {"token": "deadline",   "features": {"BF": 0.90, "DS": 0.70, "SI": 0.78, "CC": 0.72, "AF": 0.87, "TB": 0.12}, "label": 1},
+        {"token": "submission", "features": {"BF": 0.82, "DS": 0.80, "SI": 0.85, "CC": 0.68, "AF": 0.80, "TB": 0.18}, "label": 1},
+        {"token": "portal",     "features": {"BF": 0.78, "DS": 0.82, "SI": 0.76, "CC": 0.65, "AF": 0.75, "TB": 0.22}, "label": 1},
+        {"token": "upload",     "features": {"BF": 0.88, "DS": 0.85, "SI": 0.80, "CC": 0.75, "AF": 0.85, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "register": "business",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "tokens": [
+        {"token": "server",     "features": {"BF": 0.93, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "debug",      "features": {"BF": 0.88, "DS": 0.92, "SI": 0.85, "CC": 0.78, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "production", "features": {"BF": 0.85, "DS": 0.88, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "crash",      "features": {"BF": 0.80, "DS": 0.85, "SI": 0.80, "CC": 0.72, "AF": 0.78, "TB": 0.18}, "label": 1}
+      ]
+    },
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "register": "business",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "tokens": [
+        {"token": "presentation", "features": {"BF": 0.90, "DS": 0.75, "SI": 0.82, "CC": 0.70, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "confidence",   "features": {"BF": 0.85, "DS": 0.60, "SI": 0.70, "CC": 0.65, "AF": 0.82, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S006",
+      "sentence": "Wi-Fi ka password kya hai?",
+      "register": "casual",
+      "reference": "What is the Wi-Fi password?",
+      "tokens": [
+        {"token": "Wi-Fi",    "features": {"BF": 0.96, "DS": 0.90, "SI": 0.85, "CC": 0.88, "AF": 0.95, "TB": 0.05}, "label": 1},
+        {"token": "password", "features": {"BF": 0.95, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.93, "TB": 0.06}, "label": 1}
+      ]
+    },
+    {
+      "id": "S007",
+      "sentence": "Code review ke liye PR submit karo aur Slack pe notify karo",
+      "register": "business",
+      "reference": "Submit the PR for code review and notify on Slack.",
+      "tokens": [
+        {"token": "code",   "features": {"BF": 0.90, "DS": 0.90, "SI": 0.85, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "review", "features": {"BF": 0.88, "DS": 0.80, "SI": 0.78, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "PR",     "features": {"BF": 0.85, "DS": 0.92, "SI": 0.88, "CC": 0.78, "AF": 0.80, "TB": 0.10}, "label": 1},
+        {"token": "Slack",  "features": {"BF": 0.92, "DS": 0.85, "SI": 0.80, "CC": 0.82, "AF": 0.88, "TB": 0.08}, "label": 1}
+      ]
+    },
+    {
+      "id": "S008",
+      "sentence": "Aaj gym nahi gaya, workout miss ho gayi",
+      "register": "casual",
+      "reference": "I did not go to the gym today; I missed my workout.",
+      "tokens": [
+        {"token": "gym",     "features": {"BF": 0.90, "DS": 0.65, "SI": 0.70, "CC": 0.72, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "workout", "features": {"BF": 0.85, "DS": 0.65, "SI": 0.68, "CC": 0.68, "AF": 0.82, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S009",
+      "sentence": "Kya tumhara laptop charge hai? Battery bohot low hai",
+      "register": "casual",
+      "reference": "Is your laptop charged? The battery is very low.",
+      "tokens": [
+        {"token": "laptop",  "features": {"BF": 0.94, "DS": 0.85, "SI": 0.82, "CC": 0.80, "AF": 0.93, "TB": 0.07}, "label": 1},
+        {"token": "charge",  "features": {"BF": 0.88, "DS": 0.75, "SI": 0.72, "CC": 0.70, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "battery", "features": {"BF": 0.92, "DS": 0.78, "SI": 0.75, "CC": 0.75, "AF": 0.90, "TB": 0.09}, "label": 1}
+      ]
+    },
+    {
+      "id": "S010",
+      "sentence": "Instagram pe story daalni hai, filter kaun sa lagaun?",
+      "register": "social",
+      "reference": "I need to post a story on Instagram. Which filter should I use?",
+      "tokens": [
+        {"token": "Instagram", "features": {"BF": 0.97, "DS": 0.85, "SI": 0.80, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1},
+        {"token": "story",     "features": {"BF": 0.88, "DS": 0.72, "SI": 0.68, "CC": 0.70, "AF": 0.85, "TB": 0.14}, "label": 1},
+        {"token": "filter",    "features": {"BF": 0.85, "DS": 0.70, "SI": 0.65, "CC": 0.68, "AF": 0.82, "TB": 0.16}, "label": 1}
+      ]
+    },
+    {
+      "id": "S011",
+      "sentence": "Interview ka preparation ho gayi? HR round ke liye practice karo",
+      "register": "business",
+      "reference": "Is the interview preparation done? Practice for the HR round.",
+      "tokens": [
+        {"token": "interview",   "features": {"BF": 0.90, "DS": 0.78, "SI": 0.80, "CC": 0.72, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "preparation", "features": {"BF": 0.82, "DS": 0.65, "SI": 0.70, "CC": 0.60, "AF": 0.80, "TB": 0.18}, "label": 1},
+        {"token": "HR",          "features": {"BF": 0.88, "DS": 0.85, "SI": 0.82, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "round",       "features": {"BF": 0.85, "DS": 0.70, "SI": 0.68, "CC": 0.65, "AF": 0.82, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "register": "casual",
+      "reference": "My phone's camera is very good.",
+      "tokens": [
+        {"token": "phone",  "features": {"BF": 0.95, "DS": 0.75, "SI": 0.75, "CC": 0.78, "AF": 0.94, "TB": 0.06}, "label": 1},
+        {"token": "camera", "features": {"BF": 0.94, "DS": 0.80, "SI": 0.78, "CC": 0.75, "AF": 0.92, "TB": 0.07}, "label": 1}
+      ]
+    },
+    {
+      "id": "S013",
+      "sentence": "Database schema update karna hai before deployment",
+      "register": "business",
+      "reference": "The database schema needs to be updated before deployment.",
+      "tokens": [
+        {"token": "database",   "features": {"BF": 0.92, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.08}, "label": 1},
+        {"token": "schema",     "features": {"BF": 0.85, "DS": 0.92, "SI": 0.88, "CC": 0.80, "AF": 0.80, "TB": 0.12}, "label": 1},
+        {"token": "deployment", "features": {"BF": 0.88, "DS": 0.90, "SI": 0.85, "CC": 0.78, "AF": 0.82, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "register": "casual",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "tokens": [
+        {"token": "weather", "features": {"BF": 0.90, "DS": 0.55, "SI": 0.68, "CC": 0.60, "AF": 0.88, "TB": 0.15}, "label": 1},
+        {"token": "office",  "features": {"BF": 0.90, "DS": 0.70, "SI": 0.75, "CC": 0.68, "AF": 0.88, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "register": "academic",
+      "reference": "Improve the machine learning model's accuracy.",
+      "tokens": [
+        {"token": "machine",  "features": {"BF": 0.90, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.09}, "label": 1},
+        {"token": "learning", "features": {"BF": 0.88, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "model",    "features": {"BF": 0.90, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "accuracy", "features": {"BF": 0.88, "DS": 0.85, "SI": 0.83, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S016",
+      "sentence": "Yaar, khaana order karte hain, pizza ya burger?",
+      "register": "casual",
+      "reference": "Hey, let us order food -- pizza or burger?",
+      "tokens": [
+        {"token": "pizza",  "features": {"BF": 0.96, "DS": 0.55, "SI": 0.60, "CC": 0.65, "AF": 0.95, "TB": 0.05}, "label": 1},
+        {"token": "burger", "features": {"BF": 0.94, "DS": 0.55, "SI": 0.60, "CC": 0.62, "AF": 0.93, "TB": 0.07}, "label": 1}
+      ]
+    },
+    {
+      "id": "S017",
+      "sentence": "System ka RAM upgrade karna chahiye, 8GB se 16GB karo",
+      "register": "business",
+      "reference": "The system's RAM should be upgraded from 8GB to 16GB.",
+      "tokens": [
+        {"token": "system",  "features": {"BF": 0.90, "DS": 0.85, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "RAM",     "features": {"BF": 0.92, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.08}, "label": 1},
+        {"token": "upgrade", "features": {"BF": 0.88, "DS": 0.78, "SI": 0.78, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "register": "business",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "tokens": [
+        {"token": "team",       "features": {"BF": 0.92, "DS": 0.75, "SI": 0.78, "CC": 0.72, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "morale",     "features": {"BF": 0.85, "DS": 0.68, "SI": 0.70, "CC": 0.62, "AF": 0.82, "TB": 0.15}, "label": 1},
+        {"token": "motivation", "features": {"BF": 0.88, "DS": 0.65, "SI": 0.72, "CC": 0.65, "AF": 0.85, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S019",
+      "sentence": "Class notes share karo WhatsApp pe",
+      "register": "casual",
+      "reference": "Share the class notes on WhatsApp.",
+      "tokens": [
+        {"token": "notes",    "features": {"BF": 0.90, "DS": 0.65, "SI": 0.72, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "share",    "features": {"BF": 0.92, "DS": 0.70, "SI": 0.70, "CC": 0.68, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "WhatsApp", "features": {"BF": 0.97, "DS": 0.82, "SI": 0.80, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1}
+      ]
+    },
+    {
+      "id": "S020",
+      "sentence": "Seminar mein attend karna compulsory hai",
+      "register": "academic",
+      "reference": "Attending the seminar is compulsory.",
+      "tokens": [
+        {"token": "seminar",    "features": {"BF": 0.88, "DS": 0.80, "SI": 0.82, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "attend",     "features": {"BF": 0.90, "DS": 0.65, "SI": 0.70, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "compulsory", "features": {"BF": 0.82, "DS": 0.70, "SI": 0.75, "CC": 0.60, "AF": 0.80, "TB": 0.16}, "label": 1}
+      ]
+    },
+    {
+      "id": "S021",
+      "sentence": "Aaj movie dekhne jaana hai, ticket book kar liya?",
+      "register": "casual",
+      "reference": "We are going to watch a movie today. Have you booked the ticket?",
+      "tokens": [
+        {"token": "movie",  "features": {"BF": 0.95, "DS": 0.60, "SI": 0.65, "CC": 0.70, "AF": 0.94, "TB": 0.06}, "label": 1},
+        {"token": "ticket", "features": {"BF": 0.92, "DS": 0.62, "SI": 0.68, "CC": 0.68, "AF": 0.91, "TB": 0.08}, "label": 1},
+        {"token": "book",   "features": {"BF": 0.88, "DS": 0.60, "SI": 0.65, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S022",
+      "sentence": "Internship ka offer letter aaya kya?",
+      "register": "casual",
+      "reference": "Has the internship offer letter arrived?",
+      "tokens": [
+        {"token": "internship", "features": {"BF": 0.88, "DS": 0.75, "SI": 0.80, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "offer",      "features": {"BF": 0.90, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "letter",     "features": {"BF": 0.85, "DS": 0.60, "SI": 0.65, "CC": 0.62, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S023",
+      "sentence": "Song bahut catchy hai, playlist mein add karo",
+      "register": "casual",
+      "reference": "The song is very catchy. Add it to the playlist.",
+      "tokens": [
+        {"token": "catchy",   "features": {"BF": 0.82, "DS": 0.55, "SI": 0.60, "CC": 0.60, "AF": 0.80, "TB": 0.18}, "label": 1},
+        {"token": "playlist", "features": {"BF": 0.92, "DS": 0.70, "SI": 0.72, "CC": 0.72, "AF": 0.90, "TB": 0.08}, "label": 1}
+      ]
+    },
+    {
+      "id": "S024",
+      "sentence": "Aaj shopping mall gaye the, sale chal rahi thi",
+      "register": "casual",
+      "reference": "We went to the shopping mall today; there was a sale.",
+      "tokens": [
+        {"token": "shopping", "features": {"BF": 0.92, "DS": 0.60, "SI": 0.65, "CC": 0.68, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "mall",     "features": {"BF": 0.90, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "sale",     "features": {"BF": 0.88, "DS": 0.62, "SI": 0.65, "CC": 0.62, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S025",
+      "sentence": "Car ka tyre puncture ho gaya, mechanic ko bulao",
+      "register": "casual",
+      "reference": "The car tyre is punctured. Call the mechanic.",
+      "tokens": [
+        {"token": "car",      "features": {"BF": 0.95, "DS": 0.65, "SI": 0.70, "CC": 0.75, "AF": 0.94, "TB": 0.06}, "label": 1},
+        {"token": "tyre",     "features": {"BF": 0.88, "DS": 0.68, "SI": 0.70, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "mechanic", "features": {"BF": 0.85, "DS": 0.72, "SI": 0.75, "CC": 0.65, "AF": 0.82, "TB": 0.15}, "label": 0}
+      ]
+    },
+    {
+      "id": "S026",
+      "sentence": "Coffee peete hain aur project ka plan banate hain",
+      "register": "casual",
+      "reference": "Let us have coffee and plan the project.",
+      "tokens": [
+        {"token": "coffee",  "features": {"BF": 0.95, "DS": 0.55, "SI": 0.60, "CC": 0.68, "AF": 0.94, "TB": 0.05}, "label": 1},
+        {"token": "project", "features": {"BF": 0.90, "DS": 0.75, "SI": 0.78, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "plan",    "features": {"BF": 0.88, "DS": 0.65, "SI": 0.70, "CC": 0.68, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S027",
+      "sentence": "Bhai, game khel raha hai? Online match hai aaj",
+      "register": "casual",
+      "reference": "Hey, are you playing the game? There is an online match today.",
+      "tokens": [
+        {"token": "game",   "features": {"BF": 0.93, "DS": 0.60, "SI": 0.65, "CC": 0.70, "AF": 0.92, "TB": 0.07}, "label": 1},
+        {"token": "online", "features": {"BF": 0.95, "DS": 0.82, "SI": 0.80, "CC": 0.80, "AF": 0.93, "TB": 0.05}, "label": 1},
+        {"token": "match",  "features": {"BF": 0.90, "DS": 0.62, "SI": 0.65, "CC": 0.68, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S028",
+      "sentence": "Headache ho raha hai, tablet leni padegi",
+      "register": "casual",
+      "reference": "I have a headache; I will need to take a tablet.",
+      "tokens": [
+        {"token": "headache", "features": {"BF": 0.88, "DS": 0.68, "SI": 0.72, "CC": 0.65, "AF": 0.85, "TB": 0.14}, "label": 1},
+        {"token": "tablet",   "features": {"BF": 0.86, "DS": 0.70, "SI": 0.75, "CC": 0.65, "AF": 0.84, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "register": "casual",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "tokens": [
+        {"token": "park", "features": {"BF": 0.92, "DS": 0.55, "SI": 0.60, "CC": 0.65, "AF": 0.90, "TB": 0.09}, "label": 1},
+        {"token": "walk", "features": {"BF": 0.90, "DS": 0.55, "SI": 0.60, "CC": 0.62, "AF": 0.88, "TB": 0.11}, "label": 1}
+      ]
+    },
+    {
+      "id": "S030",
+      "sentence": "Recharge karo, balance khatam ho gaya",
+      "register": "casual",
+      "reference": "Recharge the phone; the balance has run out.",
+      "tokens": [
+        {"token": "recharge", "features": {"BF": 0.88, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "balance",  "features": {"BF": 0.85, "DS": 0.65, "SI": 0.68, "CC": 0.62, "AF": 0.82, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S031",
+      "sentence": "Padhai mein focus karo, distraction band karo",
+      "register": "casual",
+      "reference": "Focus on your studies and eliminate distractions.",
+      "tokens": [
+        {"token": "focus",       "features": {"BF": 0.90, "DS": 0.65, "SI": 0.70, "CC": 0.68, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "distraction", "features": {"BF": 0.80, "DS": 0.58, "SI": 0.62, "CC": 0.58, "AF": 0.78, "TB": 0.20}, "label": 0}
+      ]
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "register": "casual",
+      "reference": "What is the cricket match score right now?",
+      "tokens": [
+        {"token": "cricket", "features": {"BF": 0.95, "DS": 0.62, "SI": 0.68, "CC": 0.72, "AF": 0.94, "TB": 0.06}, "label": 1},
+        {"token": "match",   "features": {"BF": 0.90, "DS": 0.62, "SI": 0.65, "CC": 0.68, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "score",   "features": {"BF": 0.88, "DS": 0.65, "SI": 0.68, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S033",
+      "sentence": "Photo edit karke Instagram pe post karo",
+      "register": "casual",
+      "reference": "Edit the photo and post it on Instagram.",
+      "tokens": [
+        {"token": "photo",     "features": {"BF": 0.94, "DS": 0.62, "SI": 0.68, "CC": 0.70, "AF": 0.93, "TB": 0.06}, "label": 1},
+        {"token": "edit",      "features": {"BF": 0.90, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "Instagram", "features": {"BF": 0.97, "DS": 0.85, "SI": 0.82, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1}
+      ]
+    },
+    {
+      "id": "S034",
+      "sentence": "Snacks lao aur Netflix chalao, chill karte hain",
+      "register": "casual",
+      "reference": "Get some snacks, turn on Netflix, and let us chill.",
+      "tokens": [
+        {"token": "snacks",  "features": {"BF": 0.90, "DS": 0.55, "SI": 0.58, "CC": 0.62, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "Netflix", "features": {"BF": 0.97, "DS": 0.80, "SI": 0.80, "CC": 0.82, "AF": 0.96, "TB": 0.04}, "label": 1},
+        {"token": "chill",   "features": {"BF": 0.88, "DS": 0.52, "SI": 0.55, "CC": 0.60, "AF": 0.86, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S035",
+      "sentence": "Bus miss ho gayi, cab book karo",
+      "register": "casual",
+      "reference": "I missed the bus. Book a cab.",
+      "tokens": [
+        {"token": "miss", "features": {"BF": 0.88, "DS": 0.55, "SI": 0.60, "CC": 0.62, "AF": 0.86, "TB": 0.14}, "label": 1},
+        {"token": "cab",  "features": {"BF": 0.90, "DS": 0.60, "SI": 0.65, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "book", "features": {"BF": 0.88, "DS": 0.62, "SI": 0.65, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "register": "business",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "tokens": [
+        {"token": "quarterly", "features": {"BF": 0.85, "DS": 0.88, "SI": 0.85, "CC": 0.78, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "targets",   "features": {"BF": 0.88, "DS": 0.82, "SI": 0.80, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "strategy",  "features": {"BF": 0.90, "DS": 0.85, "SI": 0.85, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "revisit",   "features": {"BF": 0.80, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.78, "TB": 0.18}, "label": 1}
+      ]
+    },
+    {
+      "id": "S037",
+      "sentence": "Invoice approve karo, vendor payment pending hai",
+      "register": "business",
+      "reference": "Approve the invoice; the vendor payment is pending.",
+      "tokens": [
+        {"token": "invoice",  "features": {"BF": 0.88, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "approve",  "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "vendor",   "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "payment",  "features": {"BF": 0.90, "DS": 0.85, "SI": 0.85, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "pending",  "features": {"BF": 0.85, "DS": 0.78, "SI": 0.80, "CC": 0.72, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S038",
+      "sentence": "Product launch ke liye marketing campaign ready karo",
+      "register": "business",
+      "reference": "Prepare the marketing campaign for the product launch.",
+      "tokens": [
+        {"token": "product",   "features": {"BF": 0.90, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "launch",    "features": {"BF": 0.88, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "marketing", "features": {"BF": 0.90, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "campaign",  "features": {"BF": 0.88, "DS": 0.85, "SI": 0.85, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S039",
+      "sentence": "Compliance audit ke liye documents ready rakho",
+      "register": "business",
+      "reference": "Keep the documents ready for the compliance audit.",
+      "tokens": [
+        {"token": "compliance", "features": {"BF": 0.82, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "audit",      "features": {"BF": 0.85, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "documents",  "features": {"BF": 0.88, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S040",
+      "sentence": "Sprint planning meeting kal hai, backlog review karo",
+      "register": "business",
+      "reference": "Sprint planning meeting is tomorrow; review the backlog.",
+      "tokens": [
+        {"token": "sprint",   "features": {"BF": 0.85, "DS": 0.92, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "planning", "features": {"BF": 0.88, "DS": 0.82, "SI": 0.80, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "backlog",  "features": {"BF": 0.85, "DS": 0.92, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S041",
+      "sentence": "Stakeholder ko update bhejo, project on track hai",
+      "register": "business",
+      "reference": "Send an update to the stakeholder; the project is on track.",
+      "tokens": [
+        {"token": "stakeholder", "features": {"BF": 0.82, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "update",      "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "project",     "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S042",
+      "sentence": "Office mein attendance compulsory hai, remote nahi chalega",
+      "register": "business",
+      "reference": "Attendance in the office is compulsory; remote work will not be allowed.",
+      "tokens": [
+        {"token": "attendance",  "features": {"BF": 0.85, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "compulsory",  "features": {"BF": 0.82, "DS": 0.70, "SI": 0.75, "CC": 0.65, "AF": 0.80, "TB": 0.16}, "label": 1},
+        {"token": "remote",      "features": {"BF": 0.88, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S043",
+      "sentence": "ROI calculate karo aur finance team ko report karo",
+      "register": "business",
+      "reference": "Calculate the ROI and report to the finance team.",
+      "tokens": [
+        {"token": "ROI",      "features": {"BF": 0.85, "DS": 0.95, "SI": 0.92, "CC": 0.88, "AF": 0.82, "TB": 0.10}, "label": 1},
+        {"token": "calculate","features": {"BF": 0.88, "DS": 0.82, "SI": 0.80, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "finance",  "features": {"BF": 0.88, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "report",   "features": {"BF": 0.88, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S044",
+      "sentence": "Appraisal cycle shuru ho rahi hai, feedback form fill karo",
+      "register": "business",
+      "reference": "The appraisal cycle is starting; fill out the feedback form.",
+      "tokens": [
+        {"token": "appraisal", "features": {"BF": 0.82, "DS": 0.88, "SI": 0.85, "CC": 0.78, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "cycle",     "features": {"BF": 0.85, "DS": 0.75, "SI": 0.75, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "feedback",  "features": {"BF": 0.90, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S045",
+      "sentence": "API ka response time slow hai, optimize karna padega",
+      "register": "business",
+      "reference": "The API response time is slow; it needs to be optimized.",
+      "tokens": [
+        {"token": "API",      "features": {"BF": 0.90, "DS": 0.95, "SI": 0.92, "CC": 0.88, "AF": 0.88, "TB": 0.08}, "label": 1},
+        {"token": "response", "features": {"BF": 0.88, "DS": 0.85, "SI": 0.82, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "optimize", "features": {"BF": 0.85, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.82, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S046",
+      "sentence": "Budget exceed nahi karna, cost cutting implement karo",
+      "register": "business",
+      "reference": "Do not exceed the budget; implement cost cutting.",
+      "tokens": [
+        {"token": "budget",   "features": {"BF": 0.90, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "exceed",   "features": {"BF": 0.82, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.80, "TB": 0.16}, "label": 0},
+        {"token": "cost",     "features": {"BF": 0.88, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "cutting",  "features": {"BF": 0.82, "DS": 0.72, "SI": 0.72, "CC": 0.68, "AF": 0.80, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S047",
+      "sentence": "Client ko demo dena hai, prototype ready karni padegi",
+      "register": "business",
+      "reference": "We need to give the client a demo; the prototype needs to be ready.",
+      "tokens": [
+        {"token": "client",    "features": {"BF": 0.90, "DS": 0.85, "SI": 0.82, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "demo",      "features": {"BF": 0.88, "DS": 0.85, "SI": 0.85, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "prototype", "features": {"BF": 0.82, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S048",
+      "sentence": "Risk assessment complete karo pehle, phir proceed karo",
+      "register": "business",
+      "reference": "Complete the risk assessment first, then proceed.",
+      "tokens": [
+        {"token": "risk",       "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "assessment", "features": {"BF": 0.82, "DS": 0.90, "SI": 0.88, "CC": 0.80, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "proceed",    "features": {"BF": 0.82, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.80, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S049",
+      "sentence": "Cloud migration project ka timeline share karo",
+      "register": "business",
+      "reference": "Share the timeline for the cloud migration project.",
+      "tokens": [
+        {"token": "cloud",     "features": {"BF": 0.90, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "migration", "features": {"BF": 0.82, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "timeline",  "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S050",
+      "sentence": "Onboarding process streamline karo naye employees ke liye",
+      "register": "business",
+      "reference": "Streamline the onboarding process for new employees.",
+      "tokens": [
+        {"token": "onboarding",  "features": {"BF": 0.82, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "process",     "features": {"BF": 0.88, "DS": 0.80, "SI": 0.78, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "streamline",  "features": {"BF": 0.80, "DS": 0.82, "SI": 0.80, "CC": 0.72, "AF": 0.78, "TB": 0.18}, "label": 0},
+        {"token": "employees",   "features": {"BF": 0.85, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S051",
+      "sentence": "Neural network ka architecture improve karna hai",
+      "register": "academic",
+      "reference": "The neural network architecture needs to be improved.",
+      "tokens": [
+        {"token": "neural",       "features": {"BF": 0.88, "DS": 0.95, "SI": 0.92, "CC": 0.88, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "network",      "features": {"BF": 0.90, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.08}, "label": 1},
+        {"token": "architecture", "features": {"BF": 0.85, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S052",
+      "sentence": "Research paper ka abstract 250 words mein likhna hai",
+      "register": "academic",
+      "reference": "The research paper abstract must be written within 250 words.",
+      "tokens": [
+        {"token": "research", "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "paper",    "features": {"BF": 0.90, "DS": 0.80, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "abstract", "features": {"BF": 0.85, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S053",
+      "sentence": "Plagiarism check karo submission se pehle",
+      "register": "academic",
+      "reference": "Perform a plagiarism check before submission.",
+      "tokens": [
+        {"token": "plagiarism", "features": {"BF": 0.82, "DS": 0.90, "SI": 0.90, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "check",      "features": {"BF": 0.88, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "submission", "features": {"BF": 0.82, "DS": 0.80, "SI": 0.82, "CC": 0.72, "AF": 0.80, "TB": 0.16}, "label": 1}
+      ]
+    },
+    {
+      "id": "S054",
+      "sentence": "Lab experiment ka hypothesis define karo",
+      "register": "academic",
+      "reference": "Define the hypothesis for the lab experiment.",
+      "tokens": [
+        {"token": "lab",        "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "experiment", "features": {"BF": 0.85, "DS": 0.90, "SI": 0.90, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "hypothesis", "features": {"BF": 0.78, "DS": 0.92, "SI": 0.90, "CC": 0.80, "AF": 0.75, "TB": 0.18}, "label": 1}
+      ]
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "register": "academic",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "tokens": [
+        {"token": "dataset",      "features": {"BF": 0.88, "DS": 0.95, "SI": 0.92, "CC": 0.88, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "preprocessing","features": {"BF": 0.80, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.78, "TB": 0.15}, "label": 1},
+        {"token": "training",     "features": {"BF": 0.85, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S056",
+      "sentence": "Citation format check karo, APA ya IEEE use karna hai?",
+      "register": "academic",
+      "reference": "Check the citation format -- should we use APA or IEEE?",
+      "tokens": [
+        {"token": "citation", "features": {"BF": 0.82, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "format",   "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "APA",      "features": {"BF": 0.80, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.78, "TB": 0.15}, "label": 1},
+        {"token": "IEEE",     "features": {"BF": 0.82, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.80, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S057",
+      "sentence": "Methodology section mein algorithm ka pseudocode daalna hai",
+      "register": "academic",
+      "reference": "Include the algorithm pseudocode in the methodology section.",
+      "tokens": [
+        {"token": "methodology", "features": {"BF": 0.80, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.78, "TB": 0.15}, "label": 1},
+        {"token": "algorithm",   "features": {"BF": 0.85, "DS": 0.95, "SI": 0.92, "CC": 0.88, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "pseudocode",  "features": {"BF": 0.78, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.75, "TB": 0.18}, "label": 1}
+      ]
+    },
+    {
+      "id": "S058",
+      "sentence": "Regression analysis run karo aur p-value check karo",
+      "register": "academic",
+      "reference": "Run the regression analysis and check the p-value.",
+      "tokens": [
+        {"token": "regression", "features": {"BF": 0.80, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.78, "TB": 0.15}, "label": 1},
+        {"token": "analysis",   "features": {"BF": 0.85, "DS": 0.88, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "p-value",    "features": {"BF": 0.78, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.75, "TB": 0.18}, "label": 1}
+      ]
+    },
+    {
+      "id": "S059",
+      "sentence": "Prototype test karo aur evaluation metrics record karo",
+      "register": "academic",
+      "reference": "Test the prototype and record the evaluation metrics.",
+      "tokens": [
+        {"token": "prototype",  "features": {"BF": 0.82, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "evaluation", "features": {"BF": 0.82, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "metrics",    "features": {"BF": 0.82, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.80, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S060",
+      "sentence": "Conference paper ka submission deadline extend hogi kya?",
+      "register": "academic",
+      "reference": "Will the conference paper submission deadline be extended?",
+      "tokens": [
+        {"token": "conference",  "features": {"BF": 0.85, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "paper",       "features": {"BF": 0.90, "DS": 0.80, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "submission",  "features": {"BF": 0.82, "DS": 0.80, "SI": 0.82, "CC": 0.72, "AF": 0.80, "TB": 0.16}, "label": 1},
+        {"token": "deadline",    "features": {"BF": 0.90, "DS": 0.70, "SI": 0.75, "CC": 0.70, "AF": 0.87, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S061",
+      "sentence": "Twitter pe trending topic kya hai aaj?",
+      "register": "social",
+      "reference": "What is the trending topic on Twitter today?",
+      "tokens": [
+        {"token": "Twitter",   "features": {"BF": 0.97, "DS": 0.85, "SI": 0.82, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1},
+        {"token": "trending",  "features": {"BF": 0.88, "DS": 0.75, "SI": 0.72, "CC": 0.75, "AF": 0.86, "TB": 0.12}, "label": 1},
+        {"token": "topic",     "features": {"BF": 0.85, "DS": 0.68, "SI": 0.70, "CC": 0.68, "AF": 0.83, "TB": 0.15}, "label": 1}
+      ]
+    },
+    {
+      "id": "S062",
+      "sentence": "YouTube pe vlog upload kiya kya? Views kitne aaye?",
+      "register": "social",
+      "reference": "Have you uploaded the vlog on YouTube? How many views did it get?",
+      "tokens": [
+        {"token": "YouTube", "features": {"BF": 0.97, "DS": 0.85, "SI": 0.82, "CC": 0.85, "AF": 0.97, "TB": 0.03}, "label": 1},
+        {"token": "vlog",    "features": {"BF": 0.88, "DS": 0.75, "SI": 0.72, "CC": 0.72, "AF": 0.86, "TB": 0.12}, "label": 1},
+        {"token": "upload",  "features": {"BF": 0.90, "DS": 0.82, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "views",   "features": {"BF": 0.88, "DS": 0.72, "SI": 0.70, "CC": 0.70, "AF": 0.86, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S063",
+      "sentence": "Reel viral ho gayi, followers bohot badh gaye",
+      "register": "social",
+      "reference": "The reel went viral and the follower count increased significantly.",
+      "tokens": [
+        {"token": "reel",      "features": {"BF": 0.90, "DS": 0.75, "SI": 0.72, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "viral",     "features": {"BF": 0.90, "DS": 0.72, "SI": 0.70, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "followers", "features": {"BF": 0.90, "DS": 0.78, "SI": 0.75, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S064",
+      "sentence": "Facebook pe status update mat karo, LinkedIn pe post karo",
+      "register": "social",
+      "reference": "Do not post a status update on Facebook; post on LinkedIn instead.",
+      "tokens": [
+        {"token": "Facebook",  "features": {"BF": 0.97, "DS": 0.85, "SI": 0.82, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1},
+        {"token": "status",    "features": {"BF": 0.88, "DS": 0.72, "SI": 0.70, "CC": 0.70, "AF": 0.86, "TB": 0.12}, "label": 1},
+        {"token": "update",    "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "LinkedIn",  "features": {"BF": 0.95, "DS": 0.88, "SI": 0.85, "CC": 0.85, "AF": 0.93, "TB": 0.06}, "label": 1}
+      ]
+    },
+    {
+      "id": "S065",
+      "sentence": "Podcast sun raha tha, episode bahut interesting tha",
+      "register": "social",
+      "reference": "I was listening to a podcast; the episode was very interesting.",
+      "tokens": [
+        {"token": "podcast",     "features": {"BF": 0.92, "DS": 0.75, "SI": 0.78, "CC": 0.75, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "episode",     "features": {"BF": 0.90, "DS": 0.72, "SI": 0.72, "CC": 0.70, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "interesting", "features": {"BF": 0.85, "DS": 0.58, "SI": 0.62, "CC": 0.60, "AF": 0.82, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S066",
+      "sentence": "Meme share karo, bahut funny hai yaar",
+      "register": "social",
+      "reference": "Share the meme; it is very funny.",
+      "tokens": [
+        {"token": "meme",  "features": {"BF": 0.92, "DS": 0.72, "SI": 0.70, "CC": 0.72, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "funny", "features": {"BF": 0.85, "DS": 0.52, "SI": 0.55, "CC": 0.58, "AF": 0.82, "TB": 0.18}, "label": 0}
+      ]
+    },
+    {
+      "id": "S067",
+      "sentence": "Snapchat pe snap bhejo, streak maintain karna hai",
+      "register": "social",
+      "reference": "Send a snap on Snapchat; we need to maintain the streak.",
+      "tokens": [
+        {"token": "Snapchat", "features": {"BF": 0.95, "DS": 0.82, "SI": 0.80, "CC": 0.82, "AF": 0.94, "TB": 0.05}, "label": 1},
+        {"token": "snap",     "features": {"BF": 0.90, "DS": 0.72, "SI": 0.70, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "streak",   "features": {"BF": 0.88, "DS": 0.70, "SI": 0.68, "CC": 0.70, "AF": 0.86, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S068",
+      "sentence": "Discord pe join karo, gaming session chal raha hai",
+      "register": "social",
+      "reference": "Join on Discord; the gaming session is going on.",
+      "tokens": [
+        {"token": "Discord",  "features": {"BF": 0.95, "DS": 0.85, "SI": 0.82, "CC": 0.82, "AF": 0.93, "TB": 0.06}, "label": 1},
+        {"token": "gaming",   "features": {"BF": 0.90, "DS": 0.72, "SI": 0.72, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "session",  "features": {"BF": 0.85, "DS": 0.72, "SI": 0.70, "CC": 0.68, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S069",
+      "sentence": "Bio update karo Instagram pe, attractive banana hai",
+      "register": "social",
+      "reference": "Update the Instagram bio; it needs to look attractive.",
+      "tokens": [
+        {"token": "bio",       "features": {"BF": 0.88, "DS": 0.72, "SI": 0.70, "CC": 0.70, "AF": 0.86, "TB": 0.12}, "label": 1},
+        {"token": "update",    "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "Instagram", "features": {"BF": 0.97, "DS": 0.85, "SI": 0.82, "CC": 0.85, "AF": 0.96, "TB": 0.04}, "label": 1},
+        {"token": "attractive","features": {"BF": 0.80, "DS": 0.52, "SI": 0.55, "CC": 0.58, "AF": 0.78, "TB": 0.20}, "label": 0}
+      ]
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "register": "social",
+      "reference": "Check the comment section; there are some negative comments.",
+      "tokens": [
+        {"token": "comment",   "features": {"BF": 0.90, "DS": 0.72, "SI": 0.72, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "section",   "features": {"BF": 0.85, "DS": 0.68, "SI": 0.68, "CC": 0.65, "AF": 0.82, "TB": 0.15}, "label": 1},
+        {"token": "negative",  "features": {"BF": 0.82, "DS": 0.55, "SI": 0.58, "CC": 0.58, "AF": 0.80, "TB": 0.18}, "label": 0}
+      ]
+    },
+    {
+      "id": "S071",
+      "sentence": "Aaj park mein festival tha, bhot enjoy kiya",
+      "register": "casual",
+      "reference": "There was a festival in the park today; it was a lot of fun.",
+      "tokens": [
+        {"token": "festival", "features": {"BF": 0.90, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "enjoy",    "features": {"BF": 0.88, "DS": 0.52, "SI": 0.55, "CC": 0.60, "AF": 0.86, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S072",
+      "sentence": "Shirt ka size medium hai, exchange karna hai",
+      "register": "casual",
+      "reference": "The shirt size is medium; it needs to be exchanged.",
+      "tokens": [
+        {"token": "size",     "features": {"BF": 0.90, "DS": 0.58, "SI": 0.60, "CC": 0.62, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "medium",   "features": {"BF": 0.88, "DS": 0.58, "SI": 0.60, "CC": 0.62, "AF": 0.86, "TB": 0.14}, "label": 1},
+        {"token": "exchange", "features": {"BF": 0.85, "DS": 0.60, "SI": 0.62, "CC": 0.60, "AF": 0.82, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S073",
+      "sentence": "Road trip pe jaana hai, petrol bharo pehle",
+      "register": "casual",
+      "reference": "We are going on a road trip; fill the petrol first.",
+      "tokens": [
+        {"token": "road",   "features": {"BF": 0.92, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "trip",   "features": {"BF": 0.90, "DS": 0.55, "SI": 0.60, "CC": 0.62, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "petrol", "features": {"BF": 0.92, "DS": 0.62, "SI": 0.65, "CC": 0.65, "AF": 0.90, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S074",
+      "sentence": "Dinner pe kya order karein? Thai ya Italian?",
+      "register": "casual",
+      "reference": "What should we order for dinner -- Thai or Italian?",
+      "tokens": [
+        {"token": "dinner",  "features": {"BF": 0.92, "DS": 0.55, "SI": 0.58, "CC": 0.62, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "order",   "features": {"BF": 0.90, "DS": 0.60, "SI": 0.62, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "Thai",    "features": {"BF": 0.90, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "Italian", "features": {"BF": 0.92, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.90, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S075",
+      "sentence": "Night shift hai aaj, extra pay milegi kya?",
+      "register": "casual",
+      "reference": "I have the night shift today. Will I get extra pay?",
+      "tokens": [
+        {"token": "night", "features": {"BF": 0.92, "DS": 0.55, "SI": 0.60, "CC": 0.62, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "shift", "features": {"BF": 0.90, "DS": 0.65, "SI": 0.68, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1},
+        {"token": "extra", "features": {"BF": 0.88, "DS": 0.58, "SI": 0.60, "CC": 0.60, "AF": 0.86, "TB": 0.14}, "label": 0},
+        {"token": "pay",   "features": {"BF": 0.88, "DS": 0.68, "SI": 0.72, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "register": "academic",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "tokens": [
+        {"token": "homework",   "features": {"BF": 0.88, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "submit",     "features": {"BF": 0.88, "DS": 0.75, "SI": 0.78, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "assignment", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.72, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S077",
+      "sentence": "Project guide ne feedback diya, revision karna hai",
+      "register": "academic",
+      "reference": "The project guide gave feedback; revision is required.",
+      "tokens": [
+        {"token": "project",  "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "guide",    "features": {"BF": 0.85, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "feedback", "features": {"BF": 0.90, "DS": 0.80, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "revision", "features": {"BF": 0.82, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.80, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S078",
+      "sentence": "Internship report format IEEE standard mein hoga",
+      "register": "academic",
+      "reference": "The internship report format will follow IEEE standard.",
+      "tokens": [
+        {"token": "internship", "features": {"BF": 0.88, "DS": 0.75, "SI": 0.80, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "report",     "features": {"BF": 0.88, "DS": 0.78, "SI": 0.78, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "format",     "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "IEEE",       "features": {"BF": 0.82, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.80, "TB": 0.14}, "label": 1},
+        {"token": "standard",   "features": {"BF": 0.85, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S079",
+      "sentence": "Exam mein calculator allowed hai kya?",
+      "register": "academic",
+      "reference": "Is a calculator allowed in the exam?",
+      "tokens": [
+        {"token": "exam",       "features": {"BF": 0.90, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "calculator", "features": {"BF": 0.92, "DS": 0.78, "SI": 0.80, "CC": 0.78, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "allowed",    "features": {"BF": 0.82, "DS": 0.65, "SI": 0.68, "CC": 0.62, "AF": 0.80, "TB": 0.18}, "label": 0}
+      ]
+    },
+    {
+      "id": "S080",
+      "sentence": "Tutorial class mein attendance compulsory hai professor ne bola",
+      "register": "academic",
+      "reference": "The professor said that attendance in tutorial class is compulsory.",
+      "tokens": [
+        {"token": "tutorial",   "features": {"BF": 0.85, "DS": 0.82, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "attendance", "features": {"BF": 0.85, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "compulsory", "features": {"BF": 0.82, "DS": 0.70, "SI": 0.75, "CC": 0.65, "AF": 0.80, "TB": 0.16}, "label": 1},
+        {"token": "professor",  "features": {"BF": 0.88, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.86, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S081",
+      "sentence": "Software engineering ka concept clear nahi hai, doubt hai",
+      "register": "academic",
+      "reference": "The software engineering concept is not clear; I have a doubt.",
+      "tokens": [
+        {"token": "software",    "features": {"BF": 0.92, "DS": 0.92, "SI": 0.90, "CC": 0.88, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "engineering", "features": {"BF": 0.88, "DS": 0.90, "SI": 0.88, "CC": 0.85, "AF": 0.85, "TB": 0.10}, "label": 1},
+        {"token": "concept",     "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "doubt",       "features": {"BF": 0.82, "DS": 0.65, "SI": 0.68, "CC": 0.62, "AF": 0.80, "TB": 0.16}, "label": 0}
+      ]
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "register": "academic",
+      "reference": "Mark attendance in the research methodology class.",
+      "tokens": [
+        {"token": "research",    "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "methodology", "features": {"BF": 0.80, "DS": 0.92, "SI": 0.90, "CC": 0.82, "AF": 0.78, "TB": 0.15}, "label": 1},
+        {"token": "attendance",  "features": {"BF": 0.85, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S083",
+      "sentence": "Group project mein role assign karo, timeline set karo",
+      "register": "academic",
+      "reference": "Assign roles in the group project and set a timeline.",
+      "tokens": [
+        {"token": "project",  "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "role",     "features": {"BF": 0.88, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "assign",   "features": {"BF": 0.82, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.80, "TB": 0.16}, "label": 0},
+        {"token": "timeline", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S084",
+      "sentence": "Practical exam mein circuit design karna hai",
+      "register": "academic",
+      "reference": "We have to design a circuit in the practical exam.",
+      "tokens": [
+        {"token": "practical", "features": {"BF": 0.85, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "exam",      "features": {"BF": 0.90, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "circuit",   "features": {"BF": 0.85, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "design",    "features": {"BF": 0.88, "DS": 0.85, "SI": 0.82, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S085",
+      "sentence": "Data structures ka assignment submit karna padega kal tak",
+      "register": "academic",
+      "reference": "The data structures assignment needs to be submitted by tomorrow.",
+      "tokens": [
+        {"token": "data",       "features": {"BF": 0.92, "DS": 0.90, "SI": 0.88, "CC": 0.85, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "structures", "features": {"BF": 0.85, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "assignment", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.72, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "submit",     "features": {"BF": 0.88, "DS": 0.75, "SI": 0.78, "CC": 0.72, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S086",
+      "sentence": "Project ka cost estimate karo, budget proposal banani hai",
+      "register": "business",
+      "reference": "Estimate the project cost; a budget proposal needs to be prepared.",
+      "tokens": [
+        {"token": "cost",     "features": {"BF": 0.88, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "estimate", "features": {"BF": 0.82, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.80, "TB": 0.16}, "label": 0},
+        {"token": "budget",   "features": {"BF": 0.90, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "proposal", "features": {"BF": 0.82, "DS": 0.85, "SI": 0.82, "CC": 0.78, "AF": 0.80, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "register": "casual",
+      "reference": "Are your headphones available? Please share them.",
+      "tokens": [
+        {"token": "headphones", "features": {"BF": 0.92, "DS": 0.78, "SI": 0.80, "CC": 0.78, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "available",  "features": {"BF": 0.85, "DS": 0.62, "SI": 0.65, "CC": 0.60, "AF": 0.82, "TB": 0.16}, "label": 0},
+        {"token": "share",      "features": {"BF": 0.90, "DS": 0.68, "SI": 0.70, "CC": 0.65, "AF": 0.88, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S088",
+      "sentence": "Party cancel ho gayi, plan B kya hai?",
+      "register": "casual",
+      "reference": "The party has been cancelled. What is plan B?",
+      "tokens": [
+        {"token": "party",  "features": {"BF": 0.93, "DS": 0.55, "SI": 0.58, "CC": 0.62, "AF": 0.92, "TB": 0.08}, "label": 1},
+        {"token": "cancel", "features": {"BF": 0.88, "DS": 0.60, "SI": 0.62, "CC": 0.62, "AF": 0.86, "TB": 0.14}, "label": 1},
+        {"token": "plan",   "features": {"BF": 0.88, "DS": 0.62, "SI": 0.65, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S089",
+      "sentence": "Online pizza order karo, coupon code use karo",
+      "register": "casual",
+      "reference": "Order pizza online and use the coupon code.",
+      "tokens": [
+        {"token": "online", "features": {"BF": 0.95, "DS": 0.82, "SI": 0.80, "CC": 0.80, "AF": 0.93, "TB": 0.05}, "label": 1},
+        {"token": "pizza",  "features": {"BF": 0.96, "DS": 0.55, "SI": 0.58, "CC": 0.62, "AF": 0.95, "TB": 0.05}, "label": 1},
+        {"token": "coupon", "features": {"BF": 0.88, "DS": 0.65, "SI": 0.68, "CC": 0.65, "AF": 0.86, "TB": 0.12}, "label": 1},
+        {"token": "code",   "features": {"BF": 0.90, "DS": 0.80, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S090",
+      "sentence": "Freelance project mil gaya, contract sign karna padega",
+      "register": "business",
+      "reference": "A freelance project has been received; the contract needs to be signed.",
+      "tokens": [
+        {"token": "freelance", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "project",   "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "contract",  "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "sign",      "features": {"BF": 0.85, "DS": 0.72, "SI": 0.75, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 0}
+      ]
+    },
+    {
+      "id": "S091",
+      "sentence": "Portfolio update karo, GitHub pe push karo",
+      "register": "business",
+      "reference": "Update the portfolio and push it to GitHub.",
+      "tokens": [
+        {"token": "portfolio", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "update",    "features": {"BF": 0.90, "DS": 0.78, "SI": 0.78, "CC": 0.75, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "GitHub",    "features": {"BF": 0.92, "DS": 0.92, "SI": 0.90, "CC": 0.88, "AF": 0.90, "TB": 0.08}, "label": 1},
+        {"token": "push",      "features": {"BF": 0.88, "DS": 0.88, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S092",
+      "sentence": "Weekend pe hiking jaana hai, backpack pack karo",
+      "register": "casual",
+      "reference": "We are going hiking this weekend. Pack your backpack.",
+      "tokens": [
+        {"token": "weekend",  "features": {"BF": 0.92, "DS": 0.58, "SI": 0.62, "CC": 0.65, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "hiking",   "features": {"BF": 0.88, "DS": 0.58, "SI": 0.62, "CC": 0.62, "AF": 0.86, "TB": 0.14}, "label": 1},
+        {"token": "backpack", "features": {"BF": 0.88, "DS": 0.60, "SI": 0.62, "CC": 0.62, "AF": 0.86, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S093",
+      "sentence": "Salary credit nahi hui abhi, account check karo",
+      "register": "business",
+      "reference": "The salary has not been credited yet; check the account.",
+      "tokens": [
+        {"token": "salary",  "features": {"BF": 0.90, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "credit",  "features": {"BF": 0.88, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "account", "features": {"BF": 0.90, "DS": 0.82, "SI": 0.80, "CC": 0.78, "AF": 0.88, "TB": 0.10}, "label": 1}
+      ]
+    },
+    {
+      "id": "S094",
+      "sentence": "Notice period kab khatam hoga? Relieving letter lena hai",
+      "register": "business",
+      "reference": "When does the notice period end? I need the relieving letter.",
+      "tokens": [
+        {"token": "notice",   "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "period",   "features": {"BF": 0.85, "DS": 0.75, "SI": 0.78, "CC": 0.70, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "relieving","features": {"BF": 0.78, "DS": 0.80, "SI": 0.82, "CC": 0.72, "AF": 0.76, "TB": 0.18}, "label": 0},
+        {"token": "letter",   "features": {"BF": 0.85, "DS": 0.65, "SI": 0.68, "CC": 0.62, "AF": 0.82, "TB": 0.16}, "label": 1}
+      ]
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "register": "business",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "tokens": [
+        {"token": "promotion",   "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.78, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "quarter",     "features": {"BF": 0.85, "DS": 0.82, "SI": 0.82, "CC": 0.78, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "performance", "features": {"BF": 0.88, "DS": 0.85, "SI": 0.85, "CC": 0.82, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "review",      "features": {"BF": 0.88, "DS": 0.80, "SI": 0.78, "CC": 0.75, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S096",
+      "sentence": "Startup idea ke baare mein mentor se discuss karo",
+      "register": "business",
+      "reference": "Discuss the startup idea with the mentor.",
+      "tokens": [
+        {"token": "startup", "features": {"BF": 0.88, "DS": 0.85, "SI": 0.85, "CC": 0.80, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "idea",    "features": {"BF": 0.88, "DS": 0.65, "SI": 0.68, "CC": 0.65, "AF": 0.86, "TB": 0.14}, "label": 0},
+        {"token": "mentor",  "features": {"BF": 0.85, "DS": 0.78, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "discuss", "features": {"BF": 0.82, "DS": 0.68, "SI": 0.70, "CC": 0.65, "AF": 0.80, "TB": 0.18}, "label": 0}
+      ]
+    },
+    {
+      "id": "S097",
+      "sentence": "Machine translation model ka BLEU score improve karo",
+      "register": "academic",
+      "reference": "Improve the BLEU score of the machine translation model.",
+      "tokens": [
+        {"token": "machine",     "features": {"BF": 0.90, "DS": 0.92, "SI": 0.90, "CC": 0.85, "AF": 0.88, "TB": 0.09}, "label": 1},
+        {"token": "translation", "features": {"BF": 0.85, "DS": 0.90, "SI": 0.88, "CC": 0.82, "AF": 0.82, "TB": 0.12}, "label": 1},
+        {"token": "model",       "features": {"BF": 0.90, "DS": 0.88, "SI": 0.85, "CC": 0.80, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "BLEU",        "features": {"BF": 0.78, "DS": 0.95, "SI": 0.92, "CC": 0.85, "AF": 0.75, "TB": 0.18}, "label": 1},
+        {"token": "score",       "features": {"BF": 0.88, "DS": 0.82, "SI": 0.80, "CC": 0.78, "AF": 0.85, "TB": 0.12}, "label": 1}
+      ]
+    },
+    {
+      "id": "S098",
+      "sentence": "Ticket book karo concert ke liye, front row chahiye",
+      "register": "casual",
+      "reference": "Book a ticket for the concert; I want the front row.",
+      "tokens": [
+        {"token": "ticket",  "features": {"BF": 0.92, "DS": 0.62, "SI": 0.65, "CC": 0.68, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "book",    "features": {"BF": 0.88, "DS": 0.62, "SI": 0.65, "CC": 0.65, "AF": 0.85, "TB": 0.12}, "label": 1},
+        {"token": "concert", "features": {"BF": 0.92, "DS": 0.60, "SI": 0.62, "CC": 0.65, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "front",   "features": {"BF": 0.88, "DS": 0.55, "SI": 0.58, "CC": 0.60, "AF": 0.86, "TB": 0.14}, "label": 0},
+        {"token": "row",     "features": {"BF": 0.85, "DS": 0.52, "SI": 0.55, "CC": 0.58, "AF": 0.82, "TB": 0.18}, "label": 0}
+      ]
+    },
+    {
+      "id": "S099",
+      "sentence": "Profile photo change karo LinkedIn pe, professional dikhna chahiye",
+      "register": "social",
+      "reference": "Change the LinkedIn profile photo; it should look professional.",
+      "tokens": [
+        {"token": "profile",      "features": {"BF": 0.90, "DS": 0.72, "SI": 0.72, "CC": 0.72, "AF": 0.88, "TB": 0.10}, "label": 1},
+        {"token": "photo",        "features": {"BF": 0.92, "DS": 0.62, "SI": 0.65, "CC": 0.68, "AF": 0.90, "TB": 0.10}, "label": 1},
+        {"token": "LinkedIn",     "features": {"BF": 0.95, "DS": 0.88, "SI": 0.85, "CC": 0.85, "AF": 0.93, "TB": 0.06}, "label": 1},
+        {"token": "professional", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    },
+    {
+      "id": "S100",
+      "sentence": "Workshop register karo, certificate milega baad mein",
+      "register": "academic",
+      "reference": "Register for the workshop; you will receive a certificate later.",
+      "tokens": [
+        {"token": "workshop",    "features": {"BF": 0.85, "DS": 0.80, "SI": 0.80, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1},
+        {"token": "register",    "features": {"BF": 0.85, "DS": 0.72, "SI": 0.75, "CC": 0.68, "AF": 0.82, "TB": 0.16}, "label": 0},
+        {"token": "certificate", "features": {"BF": 0.85, "DS": 0.80, "SI": 0.82, "CC": 0.75, "AF": 0.82, "TB": 0.14}, "label": 1}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "register": "business",
+  "weights": {
+    "w1": 0.22,
+    "w2": 0.07,
+    "w3": 0.02,
+    "w4": 0.5,
+    "w5": 0.17,
+    "w6": 0.02
+  },
+  "cv_metrics": {
+    "final_weights": {
+      "w1": 0.22,
+      "w2": 0.07,
+      "w3": 0.02,
+      "w4": 0.5,
+      "w5": 0.17,
+      "w6": 0.02
+    },
+    "mean_train_f1": 0.9663,
+    "mean_test_f1": 0.9661,
+    "fold_test_f1s": [
+      0.9545,
+      0.989,
+      0.9663,
+      0.9663,
+      0.9545
+    ],
+    "n_splits": 5
+  },
+  "corpus": "data\\evaluation\\train_split.json"
+}
