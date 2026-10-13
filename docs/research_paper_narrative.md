@@ -231,6 +231,8 @@ For each preserved token $t_i$ with decision $\in \{\text{PRESERVE}, \text{UNCER
 
 This guarantees that each preserved loanword appears *verbatim* in the decoder output, regardless of the model's translation probabilities — achieving deterministic enforcement without stochastic prompt drift.
 
+> **Implementation vs. Benchmark Evaluation Status:** The neural constrained beam search pipeline (`ConstraintAwareNMT`, `force_words_ids`, and model-family routing across Opus-MT, IndicTrans2, and NLLB-200) is fully implemented in `src/laps/nmt_backend.py` and validated via unit testing (`tests/test_laps.py::TestNMTBackendAndConstraints`). However, the empirical multi-baseline benchmark reported in Section 5 evaluated all four systems under `DETERMINISTIC_SURROGATE_FALLBACK` (offline deterministic regex simulation). Full end-to-end neural evaluation on large GPU infrastructure remains an intended future empirical milestone.
+
 ---
 
 ## 9. Qualitative Error Analysis

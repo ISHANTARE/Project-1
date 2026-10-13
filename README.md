@@ -7,7 +7,7 @@
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20Transformers-orange.svg)](https://pytorch.org/)
 [![UI](https://img.shields.io/badge/UI-Streamlit-blue.svg)](https://streamlit.io/)
 [![Database](https://img.shields.io/badge/Graph_DB-SQLite-green.svg)](https://www.sqlite.org/)
-[![Tests](https://img.shields.io/badge/Tests-18%20Passed-brightgreen.svg)](tests/test_laps.py)
+[![Tests](https://img.shields.io/badge/Tests-45%20Passed-brightgreen.svg)](tests/test_laps.py)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 

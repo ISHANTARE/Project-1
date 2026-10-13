@@ -1,0 +1,38 @@
+======================================================================
+  LAPS Multi-Baseline Benchmark Harness (N=100)
+  Corpus: gold_corpus.json | SacreBLEU: 2.6.0
+======================================================================
+  Evaluation Methodology: Separated Classifier vs Output Retention
+  Significance Testing: Paired Permutation Test (seed=42, B=5,000)
+======================================================================
+
+Evaluating: LAPS (Proposed System)...
+Evaluating: Few-Shot Vocabulary Filter (Demonstration Heuristic)...
+Evaluating: Static Dictionary Filter...
+Evaluating: Unconstrained NMT Baseline...
+
+[TABLE 1] Output Preservation & Translation Performance (All Systems)
+---------------------------------------+----------+---------------+----------+------------+------------+---------------+-------------
+System                                 | OTER (v) | Output F1 (^) | BLEU (^) | chrF++ (^) | UTER Proxy | Delta vs LAPS | p-val (perm)
+---------------------------------------+----------+---------------+----------+------------+------------+---------------+-------------
+LAPS (Proposed)                        | 0.0108   | 0.9485        | 4.16     | 38.38      | 0.8442     | -             | -           
+Few-Shot Vocabulary Filter (Demonstrat | 0.0485   | 0.9269        | 4.03     | 37.20      | 0.8442     | +0.0217       | 0.0006 *    
+Static Dictionary Filter               | 0.0852   | 0.9041        | 3.99     | 36.29      | 0.8442     | +0.0445       | 0.0002 *    
+Unconstrained NMT Baseline             | 0.1193   | 0.8748        | 2.10     | 35.02      | 0.8482     | +0.0737       | 0.0002 *    
+---------------------------------------+----------+---------------+----------+------------+------------+---------------+-------------
+  * Statistically significant under Bonferroni correction (alpha = 0.05 / 3 = 0.0167)
+  Note: Strict Gold UTER is N/A due to lack of full-sentence LID annotations.
+
+[TABLE 2] Token Preservation Classifier Performance
+---------------------------------------+---------------+-----------+--------+----------+------------------+------------------------------------
+System                                 | Classifier F1 | Precision | Recall | Accuracy | Uncertainty Rate | Classifier Status                  
+---------------------------------------+---------------+-----------+--------+----------+------------------+------------------------------------
+LAPS (Proposed)                        | 0.9567        | 0.9290    | 0.9967 | 0.9266   | 0.1223           | Active Classifier                  
+Few-Shot Vocabulary Filter (Demonstrat | 0.0973        | 1.0000    | 0.0762 | 0.1468   | 0.0000           | Active Classifier                  
+Static Dictionary Filter               | 0.0477        | 1.0000    | 0.0397 | 0.1131   | 0.0000           | Active Classifier                  
+Unconstrained NMT Baseline             | N/A           | N/A       | N/A    | N/A      | N/A              | No Internal Classifier (End-to-End)
+---------------------------------------+---------------+-----------+--------+----------+------------------+------------------------------------
+
+Canonical benchmark results saved -> D:\Project-1-main\Project-1-main\results\benchmark_results.json
+Versioned benchmark results saved -> D:\Project-1-main\Project-1-main\results\benchmark_results_v2.json
+Latency report saved -> D:\Project-1-main\Project-1-main\results\latency_results.json

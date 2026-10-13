@@ -3,7 +3,7 @@
 > **Document:** `docs/final_prototype_completion_audit.md`  
 > **Auditor Role:** Senior Software Architect, NLP Research Engineer, QA Lead, Technical Project Auditor  
 > **Course / Institution:** BCSE497J — Project-I | Vellore Institute of Technology, Vellore  
-> **Date of Audit:** October 2026 | Test Suite Status: **40/40 Passing** (100%)  
+> **Date of Audit:** October 2026 | Test Suite Status: **45/45 Passing** (100%)  
 > **Framework:** LAPS v2.0 (Linguistic Adaptive Preservation Scoring)
 
 ---
@@ -343,7 +343,7 @@ In the multi-baseline benchmark, all systems previously reported an identical UT
 
 - **Final Overall Verdict:** **SOFTWARE AND EVALUATION VERIFIED**
 - **Deliverable Completion Summary:**
-  - Complete and verified: **40 / 40 unit and integration tests passing (100%)**
+  - Complete and verified: **45 / 45 unit and integration tests passing (100%)**
   - Baseline honesty: **Verified (Unconstrained NMT credited on output retention, classifier reported N/A)**
   - MT Metric standardization: **Verified (SacreBLEU v2.6.0 & chrF++ integrated)**
   - UTER qualification: **Verified (Strict UTER declared N/A due to dataset LID scope; leakage proxy tracked)**

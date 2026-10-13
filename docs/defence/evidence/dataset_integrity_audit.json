@@ -1,0 +1,80 @@
+{
+  "record_counts": {
+    "gold_corpus": 100,
+    "train_split": 70,
+    "val_split": 15,
+    "test_split": 20,
+    "total_split_entries": 105
+  },
+  "id_uniqueness": {
+    "duplicates_within_files": {
+      "gold": [],
+      "train": [],
+      "val": [],
+      "test": []
+    },
+    "is_each_file_unique": true
+  },
+  "pairwise_disjointness": {
+    "train_val_overlap": [],
+    "train_test_overlap": [],
+    "val_test_overlap": [],
+    "is_pairwise_disjoint": true
+  },
+  "parent_corpus_accounting": {
+    "gold_total": 100,
+    "train_gold_count": 70,
+    "val_gold_count": 15,
+    "test_gold_count": 15,
+    "test_gold_ids": [
+      "S004",
+      "S005",
+      "S012",
+      "S014",
+      "S015",
+      "S018",
+      "S029",
+      "S032",
+      "S036",
+      "S055",
+      "S070",
+      "S076",
+      "S082",
+      "S087",
+      "S095"
+    ],
+    "test_oov_count": 5,
+    "test_oov_ids": [
+      "OOV_001",
+      "OOV_002",
+      "OOV_003",
+      "OOV_004",
+      "OOV_005"
+    ],
+    "all_gold_covered_in_splits": true,
+    "missing_gold_ids": [],
+    "extra_non_gold_in_train_or_val": []
+  },
+  "schema_validation": {
+    "methodology": "Type-discriminated validation: IN_DIST records (token,features,label) vs OOV_EXT records (token,label,domain). Features are intentionally absent on OOV records to exercise the live neural inference fallback (benchmark.py:459-461).",
+    "in_dist_records_validated": 100,
+    "oov_ext_records_validated": 5,
+    "total_errors": 0,
+    "errors": [],
+    "is_schema_valid": true
+  },
+  "text_similarity_audit": {
+    "exact_duplicate_count": 0,
+    "exact_duplicates": [],
+    "near_duplicate_jaccard_count": 0,
+    "near_duplicates_jaccard_threshold": 0.85,
+    "near_duplicates_jaccard": [],
+    "near_duplicate_seqmatcher_count": 0,
+    "near_duplicates_seqmatcher_threshold": 0.85,
+    "near_duplicates_seqmatcher": []
+  },
+  "verdict": {
+    "partition_accounting": "70 (train) + 15 (val) + 15 (test-gold) = 100 gold parent records; + 5 OOV = 105 total split records",
+    "integrity_verified": true
+  }
+}

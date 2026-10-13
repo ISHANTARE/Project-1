@@ -1,0 +1,13 @@
+{
+  "n_tokens": 90,
+  "n_raters": 2,
+  "observed_agreement": 0.9444,
+  "expected_agreement": 0.5593,
+  "agreements_count": 85,
+  "disagreements_count": 5,
+  "fleiss_kappa": 0.8739,
+  "cohen_kappa": 0.8744,
+  "gwet_ac1": 0.9007,
+  "interpretation": "Almost Perfect Agreement",
+  "note": "Computed on 90 candidate tokens across 20 code-mixed sentences from data/evaluation/annotations.csv. 2 independent bilingual raters. 85/90 agreements; 5 disagreements (submit, postpone, free, raise, try where rater_1=1, rater_2=0) preserved without synthetic final_consensus column."
+}

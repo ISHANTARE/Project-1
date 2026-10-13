@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-10-13T15:09:40+05:30",
+  "system": {
+    "os": "Windows (win32)",
+    "python_version": "3.10.9",
+    "pytest_version": "9.1.1",
+    "sacrebleu_version": "2.6.0",
+    "torch_version": "2.11.0+cu128",
+    "transformers_version": "5.15.1"
+  },
+  "git": {
+    "branch": "main",
+    "commit_hash": "6ba1523",
+    "remote": "https://github.com/aryan-chopra-dev/LAPS-LINGUISTIC-ADAPTIVE-PRESERVATION-SCORING.git",
+    "status": "synchronized"
+  },
+  "pytest_execution": {
+    "command": "python -m pytest -v",
+    "working_directory": "d:\\Project-1-main\\Project-1-main",
+    "exit_code": 0,
+    "total_collected": 45,
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 16,
+    "warnings_source": "fpdf2 deprecated ln parameter in test_multi_format_exports",
+    "duration_seconds": 27.51
+  },
+  "benchmark_execution": {
+    "command": "python scripts/benchmark.py --corpus data/evaluation/gold_corpus.json",
+    "working_directory": "d:\\Project-1-main\\Project-1-main",
+    "exit_code": 0,
+    "corpus_path": "data/evaluation/gold_corpus.json",
+    "corpus_size": 100,
+    "execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+    "pre_cached_features": true,
+    "real_neural_evaluation_status": "Pending (Architected, implemented, and unit-tested in laps/nmt_backend.py; benchmark executed in deterministic surrogate mode)",
+    "statistical_testing": {
+      "test_name": "Monte Carlo Paired Permutation / Sign-Flip Test",
+      "samples": 5000,
+      "seed": 42,
+      "bootstrap_ci_samples": 2000,
+      "family_wise_alpha": 0.05,
+      "bonferroni_adjusted_alpha": 0.0167
+    }
+  }
+}
