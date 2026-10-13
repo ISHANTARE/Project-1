@@ -1,0 +1,66 @@
+{
+  "data/evaluation/gold_corpus.json": {
+    "sha256": "67be52420e2947842f88e1e56c6a79f154770270fc7100fa914f4ab6bc15af2f",
+    "size_bytes": 66933
+  },
+  "data/evaluation/test_split.json": {
+    "sha256": "3f32bb7c3636fdf162f9686b321454ae27421fa441e8fcce06cb145e94d534df",
+    "size_bytes": 19840
+  },
+  "data/evaluation/val_split.json": {
+    "sha256": "c79e84d0aa91322116a8a0c0c89cbd1e5e46155db87f40a0583d5abbb6d66248",
+    "size_bytes": 16623
+  },
+  "results/benchmark_real_neural_test_split.json": {
+    "sha256": "9781ab594884d174c02ccdc5178f54a15fbfa82bc4e05b270d736527dd424003",
+    "size_bytes": 5855
+  },
+  "results/predictions_real_neural_test_split.json": {
+    "sha256": "f999228a7e768e3b4a9ce4f8d8663f57554a0895f85b2ec23d313b61b93291d7",
+    "size_bytes": 29757
+  },
+  "results/benchmark_real_neural_gold_100.json": {
+    "sha256": "d50219af9bc4fca479a7ea08e1bc25df893689353bedf0435c6539999f391f49",
+    "size_bytes": 5856
+  },
+  "results/predictions_real_neural_gold_100.json": {
+    "sha256": "27a1e833a975aa7c654ffa34d407115de179ada3f17dbb83090370b3473f6f6a",
+    "size_bytes": 141658
+  },
+  "results/ablation_results_audited.json": {
+    "sha256": "fa701100a62578a87a34ba4104c5bbfafc3ee5604a95bc6a072cb594d6248495",
+    "size_bytes": 2645
+  },
+  "results/ablation_results_val.json": {
+    "sha256": "c3d77bac976ba60883fca5818ff43f457aef4f7d7e096ebf7424080e77d9ec43",
+    "size_bytes": 2602
+  },
+  "results/operational_latency_profile.json": {
+    "sha256": "1bc0adb11adb3af59762ec03a441c7f1669efb58c3dcce6e31a6cc653272069f",
+    "size_bytes": 2594
+  },
+  "results/benchmark_results_v2.json": {
+    "sha256": "9781ab594884d174c02ccdc5178f54a15fbfa82bc4e05b270d736527dd424003",
+    "size_bytes": 5855
+  },
+  "src/llm/nmt_backend.py": {
+    "sha256": "7e7502c9540b340b17a0e24daf3251c06ee7e25439211fb2c920cae0551f0511",
+    "size_bytes": 18831
+  },
+  "scripts/benchmark.py": {
+    "sha256": "45789c6f28abe0906b9c7720a706ddc6f56b980ac936e5ebd9ad72ef8e9c795d",
+    "size_bytes": 41834
+  },
+  "scripts/run_ablation_study.py": {
+    "sha256": "76e4c10d5a28b18db42a8afbc5e5747ddac9a9f2f41ef3d6d37b6f31d80c448f",
+    "size_bytes": 9582
+  },
+  "scripts/profile_operational_latency.py": {
+    "sha256": "b7557f1d25792066476a544f9605aba14e58b86b3e5737f9278d6fed6a87d26e",
+    "size_bytes": 8667
+  },
+  "tests/test_laps.py": {
+    "sha256": "069190257e7574870e1c8e22dca9273dce65c9b5ba84d1e7027e124f0a3823a9",
+    "size_bytes": 37243
+  }
+}

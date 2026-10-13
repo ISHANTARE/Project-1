@@ -775,6 +775,10 @@ def main():
     parser.add_argument("--output", type=Path, default=RESULTS_DIR / "benchmark_results.json")
     parser.add_argument("--output-v2", type=Path, default=RESULTS_DIR / "benchmark_results_v2.json")
     parser.add_argument("--latency-output", type=Path, default=RESULTS_DIR / "latency_results.json")
+    parser.add_argument("--save-predictions", type=Path, default=None, help="Save per-sentence predictions JSON")
+    parser.add_argument("--backend-mode", choices=["surrogate", "real_neural"], default="surrogate",
+                        help="Execution mode: 'surrogate' (deterministic fallback) or 'real_neural' (live HuggingFace model)")
+    parser.add_argument("--device", type=str, default=None, help="Device for neural inference ('cuda' or 'cpu')")
     parser.add_argument("--bootstrap", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--permutations", type=int, default=5000)
@@ -786,6 +790,18 @@ def main():
         except Exception:
             pass
 
+    # Initialize neural engine if requested
+    nmt_eng = get_nmt_engine()
+    if args.device:
+        nmt_eng.device = args.device
+
+    if args.backend_mode == "real_neural":
+        loaded = nmt_eng.load_model()
+        if not loaded:
+            print("[WARN] Could not load real neural model. Proceeding with fallback.")
+        else:
+            print(f"[INFO] Successfully loaded real neural model: {nmt_eng.model_name} on {nmt_eng.device}")
+
     with open(args.corpus, encoding="utf-8") as f:
         data = json.load(f)
     sentences = data.get("sentences", data) if isinstance(data, dict) else data
@@ -793,6 +809,7 @@ def main():
     print("\n" + "=" * 70)
     print(f"  LAPS Multi-Baseline Benchmark Harness (N={len(sentences)})")
     print(f"  Corpus: {args.corpus.name} | SacreBLEU: {SACREBLEU_VERSION}")
+    print(f"  Backend Mode: {args.backend_mode} ({'Real Neural Model: ' + nmt_eng.model_name if getattr(nmt_eng, '_is_loaded', False) else 'Deterministic Surrogate'})")
     print("=" * 70)
     print("  Evaluation Methodology: Separated Classifier vs Output Retention")
     print("  Significance Testing: Paired Permutation Test (seed=42, B=5,000)")
@@ -933,6 +950,9 @@ def main():
             "sacrebleu_version": SACREBLEU_VERSION,
             "permutation_test_seed": args.seed,
             "permutation_samples": args.permutations,
+            "backend_mode": args.backend_mode,
+            "nmt_model": nmt_eng.model_name if getattr(nmt_eng, "_is_loaded", False) else "DETERMINISTIC_SURROGATE_FALLBACK",
+            "device": getattr(nmt_eng, "device", "N/A"),
             "methodology_note": (
                 "Corrected benchmark separating internal classifier evaluation from "
                 "output-level loanword retention. Baselines without internal classifiers "
@@ -945,6 +965,36 @@ def main():
         },
         "statistical_significance": significance_results,
     }
+
+    # Save per-sentence prediction details if requested
+    pred_path = args.save_predictions
+    if pred_path is not None:
+        pred_records = []
+        for s_idx, sent in enumerate(sentences):
+            sent_entry = {
+                "id": sent.get("id", f"S_{s_idx}"),
+                "sentence": sent.get("sentence", ""),
+                "reference": sent.get("reference", ""),
+                "register": sent.get("register", "unknown"),
+                "gold_preserved": sorted(list({t["token"].lower() for t in sent.get("tokens", []) if t.get("label") == 1})),
+                "predictions": {},
+            }
+            for sys_name, res_list in systems.items():
+                r = res_list[s_idx]
+                sent_entry["predictions"][sys_name] = {
+                    "rewritten": r["rewritten"],
+                    "backend_execution_mode": r.get("backend_execution_mode", "UNKNOWN"),
+                    "preserved_tokens": sorted(list(r.get("preserved") or [])),
+                }
+            pred_records.append(sent_entry)
+
+        pred_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(pred_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "metadata": save_data["metadata"],
+                "records": pred_records,
+            }, f, indent=2)
+        print(f"Per-sentence predictions saved -> {pred_path}")
 
     # Save canonical results
     args.output.parent.mkdir(parents=True, exist_ok=True)

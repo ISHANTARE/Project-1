@@ -70,9 +70,16 @@ class NMTTranslationEngine:
     _INDICTRANS_PREFIXES = ("ai4bharat/indictrans", "indictrans")
     _NLLB_PREFIXES = ("facebook/nllb", "nllb")
 
-    def __init__(self, model_name: Optional[str] = None, device: str = "cpu"):
+    def __init__(self, model_name: Optional[str] = None, device: Optional[str] = None):
         self.model_name = model_name or os.getenv("LAPS_NMT_MODEL", "Helsinki-NLP/opus-mt-hi-en")
-        self.device = device
+        if device is None:
+            try:
+                import torch
+                self.device = "cuda" if torch.cuda.is_available() else "cpu"
+            except Exception:
+                self.device = "cpu"
+        else:
+            self.device = device
         self._model = None
         self._tokenizer = None
         self._is_loaded = False
@@ -159,29 +166,21 @@ class NMTTranslationEngine:
         compatible with HuggingFace ``generate()``.
 
         Each preserved token is tokenized WITHOUT special tokens and filtered
-        to remove empty or pad-only entries.  The result is a list-of-lists
+        to remove empty or pad-only entries. The result is a list-of-lists
         where each inner list is the token-ID sequence for one loanword.
-
-        Parameters
-        ----------
-        preserve_tokens : list[str]
-            Loanwords that LAPS has determined should be preserved verbatim.
-
-        Returns
-        -------
-        list[list[int]]
-            Token IDs suitable for ``model.generate(force_words_ids=...)``.
         """
         if not preserve_tokens or self._tokenizer is None:
             return []
 
         force_ids: List[List[int]] = []
         pad_id = getattr(self._tokenizer, "pad_token_id", None)
+        seen_token_strs: Set[str] = set()
 
         for tok in preserve_tokens:
             tok_clean = tok.strip()
-            if not tok_clean:
+            if not tok_clean or tok_clean.lower() in seen_token_strs:
                 continue
+            seen_token_strs.add(tok_clean.lower())
             ids = self._tokenizer(tok_clean, add_special_tokens=False).input_ids
             # Filter out pad tokens and empty sequences
             ids = [i for i in ids if i != pad_id] if pad_id is not None else ids
@@ -202,23 +201,7 @@ class NMTTranslationEngine:
         When ``force_constraints=True`` and ``preserve_tokens`` is non-empty,
         the engine uses HuggingFace's ``force_words_ids`` parameter to
         deterministically inject preserved loanwords into the beam search
-        decoder output.  This ensures that tokens identified by the LAPS
-        scoring engine as PRESERVE or UNCERTAIN appear verbatim in the
-        translation, preventing over-translation.
-
-        Parameters
-        ----------
-        sentence : str
-            Input Hinglish (code-mixed) sentence.
-        preserve_tokens : list[str], optional
-            Tokens that must appear verbatim in the output (from LAPS).
-        force_constraints : bool
-            If True, apply ``force_words_ids`` constrained decoding.
-
-        Returns
-        -------
-        str
-            Translated English sentence with preserved loanwords intact.
+        decoder output.
         """
         preserve_set = set(p.lower() for p in (preserve_tokens or []))
 
@@ -232,9 +215,10 @@ class NMTTranslationEngine:
                 ).to(self.device)
 
                 gen_kwargs: Dict[str, Any] = {
-                    "max_length": 128,
+                    "max_new_tokens": 64,
                     "num_beams": 4,
                     "early_stopping": True,
+                    "no_repeat_ngram_size": 3,
                 }
 
                 # NLLB-200: forced BOS token for target language
@@ -244,18 +228,14 @@ class NMTTranslationEngine:
                         gen_kwargs["forced_bos_token_id"] = tgt_lang_id
 
                 # ---- LAPS Constrained Beam Search Integration ----
-                # Inject force_words_ids to guarantee preserved loanwords
-                # appear verbatim in the decoder output.
                 if force_constraints and preserve_tokens:
                     force_words_ids = self._build_force_words_ids(preserve_tokens)
                     if force_words_ids:
                         gen_kwargs["force_words_ids"] = force_words_ids
-                        # Scale beam count to accommodate constraint space:
-                        # minimum 4 beams, or 2× the number of constraints
-                        gen_kwargs["num_beams"] = max(
-                            gen_kwargs["num_beams"],
-                            2 * len(force_words_ids)
-                        )
+                        # Scale beam count to accommodate constraint space
+                        gen_kwargs["num_beams"] = min(16, max(6, 2 * len(force_words_ids)))
+                        gen_kwargs["trust_remote_code"] = True
+                        gen_kwargs["custom_generate"] = "transformers-community/constrained-beam-search"
                         logger.debug(
                             f"Constrained decoding: {len(force_words_ids)} forced tokens, "
                             f"num_beams={gen_kwargs['num_beams']}"

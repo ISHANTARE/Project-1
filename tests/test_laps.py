@@ -712,3 +712,182 @@ class TestDatasetIntegrityAuditorSchemaResult:
         assert sv["oov_ext_records_validated"] == 5, (
             f"Expected 5 OOV records validated, got {sv['oov_ext_records_validated']}"
         )
+
+
+class TestNeuralBackendRealInference:
+    """
+    Tests live execution of the neural translation engine with real model checkpoints.
+    Validates constraint enforcement, unconstrained vs constrained telemetry,
+    and verbatim token retention.
+    """
+
+    def test_neural_model_loads_successfully(self):
+        from src.llm.nmt_backend import get_nmt_engine
+        engine = get_nmt_engine()
+        success = engine.load_model()
+        assert success is True, "Expected neural NMT model to load successfully"
+        assert engine._is_loaded is True
+        assert engine._model is not None
+        assert engine._tokenizer is not None
+
+    def test_real_constrained_generation_enforces_tokens(self):
+        from src.llm.nmt_backend import get_nmt_engine
+        engine = get_nmt_engine()
+        if not engine.load_model():
+            pytest.skip("Neural NMT model not available")
+
+        sentence = "Assignment submit karne ki deadline kal hai"
+        forced = ["assignment", "deadline"]
+        output = engine.translate(sentence, preserve_tokens=forced, force_constraints=True)
+
+        assert engine.last_execution_mode == "REAL_INFERENCE_CONSTRAINED"
+        out_lower = output.lower()
+        for token in forced:
+            assert token in out_lower, (
+                f"Forced token '{token}' must appear verbatim in constrained output: '{output}'"
+            )
+
+    def test_real_unconstrained_generation_telemetry(self):
+        from src.llm.nmt_backend import get_nmt_engine
+        engine = get_nmt_engine()
+        if not engine.load_model():
+            pytest.skip("Neural NMT model not available")
+
+        sentence = "Assignment submit karne ki deadline kal hai"
+        output = engine.translate(sentence, preserve_tokens=[], force_constraints=False)
+
+        assert engine.last_execution_mode == "REAL_INFERENCE_UNCONSTRAINED"
+        assert isinstance(output, str) and len(output.strip()) > 0
+
+
+class TestAuditedFeatureAblationStudy:
+    """
+    Validates the mathematical correctness and schema integrity of the audited
+    feature ablation framework.
+    """
+
+    def test_score_custom_canonical_weight_mapping(self):
+        from scripts.run_ablation_study import score_custom, FEATURE_WEIGHT_KEYS
+
+        # Test case: perfect features (positive features=1.0, TB=0.0)
+        # Formula: 0.20(1) + 0.20(1) + 0.20(1) + 0.15(1) + 0.15(1) - 0.10(0) = 0.90
+        feats = {"BF": 1.0, "DS": 1.0, "SI": 1.0, "CC": 1.0, "AF": 1.0, "TB": 0.0}
+        full_score = score_custom(feats, ["BF", "DS", "SI", "CC", "AF", "TB"])
+        assert round(full_score, 4) == 0.90, f"Expected 0.90, got {full_score}"
+
+        # Test ablating BF: remaining positive weights sum to 0.70, total weight 0.80 -> 0.70/0.80 = 0.875
+        no_bf_score = score_custom(feats, ["DS", "SI", "CC", "AF", "TB"])
+        assert round(no_bf_score, 4) == 0.875, f"Expected 0.875 after normalization, got {no_bf_score}"
+
+        # Test penalizing TB: when TB is 1.0, score must drop by 0.10 to 0.80
+        feats_high_tb = {"BF": 1.0, "DS": 1.0, "SI": 1.0, "CC": 1.0, "AF": 1.0, "TB": 1.0}
+        penalized_score = score_custom(feats_high_tb, ["BF", "DS", "SI", "CC", "AF", "TB"])
+        assert round(penalized_score, 4) == 0.80, f"Expected 0.80 with TB penalty, got {penalized_score}"
+
+    def test_ablation_matrix_runner_produces_valid_schema(self):
+        from scripts.run_ablation_study import run_ablation_study
+        val_path = Path("data/evaluation/val_split.json")
+        out_test = Path("results/test_ablation_check.json")
+
+        res = run_ablation_study(val_path, out_test)
+        assert "Full LAPS (All 6 Features + Soft Sigmoid + KG)" in res
+        assert "Ablation: Without BF (-BF)" in res
+        assert "Ablation: Without Knowledge Graph (No Ego Density Bonus)" in res
+
+        for name, metrics in res.items():
+            assert "f1" in metrics
+            assert "precision" in metrics
+            assert "recall" in metrics
+            assert "accuracy" in metrics
+            assert "delta_f1" in metrics
+            assert 0.0 <= metrics["f1"] <= 1.0
+
+        if out_test.exists():
+            out_test.unlink()
+
+
+class TestHandVerifiedPreservationMetrics:
+    """
+    Analytically tests precision, recall, F1, and OTER metrics against hand-verified
+    gold test cases.
+    """
+
+    def test_preservation_classifier_hand_crafted_matrix(self):
+        from scripts.benchmark import evaluate_preservation_classifier
+
+        # Hand-crafted tokens: 2 positive, 2 negative
+        gold_tokens = [
+            {"token": "viva", "label": 1},
+            {"token": "link", "label": 1},
+            {"token": "karne", "label": 0},
+            {"token": "hai", "label": 0},
+        ]
+        # Predicted preserve: "viva" (TP) and "karne" (FP) -> TP=1, FP=1, FN=1, TN=1
+        pred_preserve = {"viva", "karne"}
+        res = evaluate_preservation_classifier(pred_preserve, gold_tokens)
+
+        assert res["tp"] == 1
+        assert res["fp"] == 1
+        assert res["fn"] == 1
+        assert res["tn"] == 1
+        assert res["precision"] == 0.50
+        assert res["recall"] == 0.50
+        assert res["f1"] == 0.50
+        assert res["accuracy"] == 0.50
+
+    def test_output_preservation_hand_crafted_example(self):
+        from scripts.benchmark import evaluate_output_preservation
+
+        gold_tokens = [
+            {"token": "meeting", "label": 1},
+            {"token": "link", "label": 1},
+            {"token": "postpone", "label": 0},
+        ]
+        # Hypothesis preserves "meeting" but misses "link", and includes verbatim candidate "postpone" (label=0)
+        hyp = "The meeting was postpone today."
+        res = evaluate_output_preservation(hyp, gold_tokens)
+
+        assert "meeting" in res["retained_loanwords"]
+        assert "link" in res["missing_loanwords"]
+        assert "postpone" in res["unintended_retentions"]
+        assert res["oter"] == 0.50  # 1 of 2 gold loanwords missing
+        assert res["output_recall"] == 0.50  # 1 of 2 retained
+        assert res["output_precision"] == 0.50  # 1 TP / (1 TP + 1 FP)
+        assert res["output_f1"] == 0.50
+
+
+class TestOperationalLatencyProfileSchema:
+    """
+    Verifies that operational latency measurements exist and record realistic
+    mean, median, and P95 numbers across all pipeline stages.
+    """
+
+    def test_profile_results_exist_and_conform_to_schema(self):
+        profile_path = Path("results/operational_latency_profile.json")
+        assert profile_path.exists(), "Operational latency profile must exist"
+
+        with open(profile_path, encoding="utf-8") as f:
+            data = json.load(f)
+
+        assert "metadata" in data
+        assert "stages" in data
+        assert "scientific_interpretation" in data
+
+        required_stages = [
+            "cmi_detection",
+            "tokenization_and_lid",
+            "live_feature_extraction_minilm_kg",
+            "preservation_scoring",
+            "thresholding_batch_decide",
+            "neural_nmt_unconstrained",
+            "neural_nmt_constrained",
+            "end_to_end_pipeline_live",
+            "pre_cached_scoring_alone",
+        ]
+        for st in required_stages:
+            assert st in data["stages"], f"Missing stage {st} in latency profile"
+            stat = data["stages"][st]
+            assert "mean_ms" in stat and stat["mean_ms"] >= 0.0
+            assert "median_ms" in stat and stat["median_ms"] >= 0.0
+            assert "p95_ms" in stat and stat["p95_ms"] >= 0.0
+

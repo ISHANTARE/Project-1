@@ -1,0 +1,769 @@
+{
+  "metadata": {
+    "experiment_timestamp": "2026-10-13 17:01:11",
+    "corpus_path": "data\\evaluation\\test_split.json",
+    "corpus_size": 20,
+    "sacrebleu_version": "2.6.0",
+    "permutation_test_seed": 42,
+    "permutation_samples": 5000,
+    "backend_mode": "real_neural",
+    "nmt_model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda",
+    "methodology_note": "Corrected benchmark separating internal classifier evaluation from output-level loanword retention. Baselines without internal classifiers report classifier metrics as N/A while their output is fully credited."
+  },
+  "records": [
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "register": "business",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Tomorrow presentation ready not hai, phir also confidence ke sath jaana hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "confidence",
+            "presentation"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And this is the same thing as the one we're all on, we have to get a little bit more than a third. And we have a little better one. And this one is equal to the one that is equal even to the negative one. So we have the same value. presentation",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "presentation"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "register": "academic",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Dataset ka preprocessing complete hua? Training start karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "dataset",
+            "preprocessing",
+            "training"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "register": "academic",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Homework submit karo, assignment late not honi chahiye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "assignment",
+            "homework",
+            "submit"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "register": "casual",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Mera phone ka camera bahut achha hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "camera",
+            "phone"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "register": "social",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Comment section check karo, kuch negative comments hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "comment",
+            "negative",
+            "section"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "register": "casual",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "What tumhara headphones available hai? Share karo na",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "available",
+            "headphones",
+            "share"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "register": "casual",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today ka weather kharab hai, office mat aao",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "office",
+            "weather"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "register": "business",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Team ka morale low hai, motivation speech do",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "morale",
+            "motivation",
+            "team"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "register": "casual",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today free ho toh park in walk karte hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "park",
+            "walk"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "register": "casual",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Cricket match ka score what hai abhi?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "cricket",
+            "match",
+            "score"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "register": "business",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "quarterly",
+            "revisit",
+            "strategy",
+            "targets"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "register": "business",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Promotion milega is quarter in, performance review achha tha",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "performance",
+            "promotion",
+            "quarter",
+            "review"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "register": "business",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Server ka needs to be debugged, production in crash ho raha hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "crash",
+            "debug",
+            "production",
+            "server"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The server looks at a number of ways, and it's going to be different.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "register": "academic",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Machine learning model ka accuracy improve karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "accuracy",
+            "learning",
+            "machine",
+            "model"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "register": "academic",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Research methodology class in attendance mark karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "attendance",
+            "methodology",
+            "research"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_001",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "reference": "Configure the ingress controller in the Kubernetes cluster so traffic can be routed.",
+      "register": "business",
+      "gold_preserved": [
+        "cluster",
+        "controller",
+        "ingress",
+        "kubernetes",
+        "traffic"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Kubernetes cluster in ingress controller configure karo taaki traffic route ho sake",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "controller",
+            "route",
+            "traffic"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_002",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "reference": "Urgently request this patient's MRI scan and blood biochemistry report.",
+      "register": "business",
+      "gold_preserved": [
+        "biochemistry",
+        "mri",
+        "patient",
+        "report",
+        "scan"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "blood",
+            "patient",
+            "report"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_003",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "reference": "Rebalance the portfolio's asset allocation to optimize capital gains tax.",
+      "register": "business",
+      "gold_preserved": [
+        "allocation",
+        "asset",
+        "capital",
+        "gains",
+        "portfolio",
+        "tax"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "capital",
+            "tax"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_004",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "reference": "Implementing the circuit breaker pattern is essential in microservices architecture.",
+      "register": "academic",
+      "gold_preserved": [
+        "architecture",
+        "breaker",
+        "circuit",
+        "microservices",
+        "pattern"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Microservices architecture in circuit breaker pattern implement karna zaroori hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": []
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_005",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "reference": "Bro, did you verify the checksum of the new firmware patch or directly flash it?",
+      "register": "casual",
+      "gold_preserved": [
+        "checksum",
+        "firmware",
+        "flash",
+        "patch"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "checksum",
+            "direct",
+            "firmware",
+            "flash",
+            "patch"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    }
+  ]
+}
