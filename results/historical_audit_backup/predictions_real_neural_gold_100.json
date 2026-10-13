@@ -1,0 +1,3802 @@
+{
+  "metadata": {
+    "experiment_timestamp": "2026-10-13 17:03:58",
+    "corpus_path": "data\\evaluation\\gold_corpus.json",
+    "corpus_size": 100,
+    "sacrebleu_version": "2.6.0",
+    "permutation_test_seed": 42,
+    "permutation_samples": 5000,
+    "backend_mode": "real_neural",
+    "nmt_model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda",
+    "methodology_note": "Corrected benchmark separating internal classifier evaluation from output-level loanword retention. Baselines without internal classifiers report classifier metrics as N/A while their output is fully credited."
+  },
+  "records": [
+    {
+      "id": "S001",
+      "sentence": "hi! Kisi ke pass viva calender ki link h kya?",
+      "reference": "Hi! Does anyone have the link for the viva calendar?",
+      "register": "academic",
+      "gold_preserved": [
+        "calendar",
+        "link",
+        "viva"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Hi! Does anyone have the link for the viva calendar?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "calendar",
+            "link",
+            "viva"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What vivas linking the links? ! . .? I'm not sure. I've got to see you... I have got a job.. You know, I'll be here..... ..? . I will take calendar",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "calendar",
+            "link",
+            "viva"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What vivas linking the links? ! . .? I'm not sure. I've got to see you... I have got a job.. You know, I'll be here..... ..? . I will take calendar",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "calendar",
+            "link",
+            "viva"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What happened to my dad's face?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S002",
+      "sentence": "Kal client meeting postpone ho gayi, kya hum phir se schedule karein?",
+      "reference": "Tomorrow's client meeting was postponed. Should we reschedule it?",
+      "register": "business",
+      "gold_preserved": [
+        "client",
+        "meeting",
+        "schedule"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Tomorrow client meeting delay ho gayi, what we phir from schedule karein?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "client",
+            "meeting",
+            "schedule"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So meeting the clients with the same title, we could just get to the heart? ! . .? .. s. ? ??  . m. ! I'm not going to be a mug. I' schedule",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "client",
+            "meeting",
+            "schedule"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So we could circumise crabs, can crabing crab? No. crab. I' meeting you. I can't do that, right? I'm not going to be. I don't want to be a waiter. I want to client",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "client",
+            "meeting"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "I'm going to put it on, but we're going to get it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S003",
+      "sentence": "Report ki deadline aaj hai, submission portal pe upload karo",
+      "reference": "The report deadline is today; please upload it to the submission portal.",
+      "register": "academic",
+      "gold_preserved": [
+        "deadline",
+        "portal",
+        "report",
+        "submission",
+        "upload"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Report ki deadline today hai, submission portal on upload karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "deadline",
+            "portal",
+            "report",
+            "submission",
+            "upload"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "This leads to a new line. You can add it over.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "This leads to a new line. You can add it over.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "This leads to a new line. You can add it over.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "register": "business",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Server ka needs to be debugged, production in crash ho raha hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "crash",
+            "debug",
+            "production",
+            "server"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The server looks at a number of ways, and it's going to be different.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "register": "business",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Tomorrow presentation ready not hai, phir also confidence ke sath jaana hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "confidence",
+            "presentation"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And this is the same thing as the one we're all on, we have to get a little bit more than a third. And we have a little better one. And this one is equal to the one that is equal even to the negative one. So we have the same value. presentation",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "presentation"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S006",
+      "sentence": "Wi-Fi ka password kya hai?",
+      "reference": "What is the Wi-Fi password?",
+      "register": "casual",
+      "gold_preserved": [
+        "password",
+        "wi-fi"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Wi - Fi ka password what hai?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Wi-Fi",
+            "password"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Well, that's equal to password?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Well, that's equal to password?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Well, that's equal to password?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S007",
+      "sentence": "Code review ke liye PR submit karo aur Slack pe notify karo",
+      "reference": "Submit the PR for code review and notify on Slack.",
+      "register": "business",
+      "gold_preserved": [
+        "code",
+        "pr",
+        "review",
+        "slack"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Code review ke liye PR submit karo aur Slack on notify karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "PR",
+            "Slack",
+            "code",
+            "review"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What if you could just add all the numbers and add them to the whole list? If you want to do that, you're going to have to change your state of life.. You're not going to be a bit too late. I'm going to get a bit of a lot of code",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "code"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What if you could just add all the numbers and add them to the whole list? If you want to do that, you're going to have to change your state of life.. You're not going to be a bit too late. I'm going to get a bit of a lot of code",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "code"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What if you want to add all of this to the previous one?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S008",
+      "sentence": "Aaj gym nahi gaya, workout miss ho gayi",
+      "reference": "I did not go to the gym today; I missed my workout.",
+      "register": "casual",
+      "gold_preserved": [
+        "gym",
+        "workout"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today gym not gaya, workout miss ho gayi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "gym",
+            "workout"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Aaj gym hehin, heys he's old.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Aaj gym hehin, heys he's old.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Aaj gym hehin, heys he's old.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S009",
+      "sentence": "Kya tumhara laptop charge hai? Battery bohot low hai",
+      "reference": "Is your laptop charged? The battery is very low.",
+      "register": "casual",
+      "gold_preserved": [
+        "battery",
+        "charge",
+        "laptop"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "What tumhara laptop charge hai? Battery bohot low hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "battery",
+            "charge",
+            "laptop"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So what is the pure language? And what is it? And then we're going to have to do with this? We have to get the answer... And this is just a little bit of a blouse. And we've got to do that, so we' laptop",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "laptop"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So what is the pure language? And what is it? And then we're going to have to do with this? We have to get the answer... And this is just a little bit of a blouse. And we've got to do that, so we' laptop",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "laptop"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So what's the difference?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S010",
+      "sentence": "Instagram pe story daalni hai, filter kaun sa lagaun?",
+      "reference": "I need to post a story on Instagram. Which filter should I use?",
+      "register": "social",
+      "gold_preserved": [
+        "filter",
+        "instagram",
+        "story"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Instagram on story daalni hai, filter kaun sa lagaun?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Instagram",
+            "filter",
+            "story"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What do you think is going to do with this thing?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What do you think is going to do with this thing?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What do you think is going to do with this thing?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S011",
+      "sentence": "Interview ka preparation ho gayi? HR round ke liye practice karo",
+      "reference": "Is the interview preparation done? Practice for the HR round.",
+      "register": "business",
+      "gold_preserved": [
+        "hr",
+        "interview",
+        "preparation",
+        "round"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Interview ka preparation ho gayi? HR round ke liye practice karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "HR",
+            "interview",
+            "preparation",
+            "round"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What do you think I could do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What do you think I could do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What do you think I could do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "register": "casual",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Mera phone ka camera bahut achha hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "camera",
+            "phone"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S013",
+      "sentence": "Database schema update karna hai before deployment",
+      "reference": "The database schema needs to be updated before deployment.",
+      "register": "business",
+      "gold_preserved": [
+        "database",
+        "deployment",
+        "schema"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Database schema modification karna hai before deployment",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "database",
+            "deployment",
+            "schema"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "First of all, the answer is no. If you want to do this again, you can change it. You can change the answer by saying: \"Exply,\" and then get the correct path. You could change it by saying \"To\" or \"[+3,\" \" database",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "database"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "First of all, the answer is no. If you want to do this again, you can change it. You can change the answer by saying: \"Exply,\" and then get the correct path. You could change it by saying \"To\" or \"[+3,\" \" database",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "database"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "First of all, the value of the new value is greater than the value shown at the beginning.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "register": "casual",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today ka weather kharab hai, office mat aao",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "office",
+            "weather"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "register": "academic",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Machine learning model ka accuracy improve karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "accuracy",
+            "learning",
+            "machine",
+            "model"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S016",
+      "sentence": "Yaar, khaana order karte hain, pizza ya burger?",
+      "reference": "Hey, let us order food -- pizza or burger?",
+      "register": "casual",
+      "gold_preserved": [
+        "burger",
+        "pizza"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Yaar, khaana order karte hain, pizza ya burger?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "burger",
+            "pizza"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Here, let's see, pizza barter, is it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Here, let's see, pizza barter, is it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Here, let's see, pizza barter, is it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S017",
+      "sentence": "System ka RAM upgrade karna chahiye, 8GB se 16GB karo",
+      "reference": "The system's RAM should be upgraded from 8GB to 16GB.",
+      "register": "business",
+      "gold_preserved": [
+        "ram",
+        "system",
+        "upgrade"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "System ka RAM upgrade karna chahiye, 8GB from 16GB karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "RAM",
+            "system",
+            "upgrade"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want me to do this, I want you to do something for me.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want me to do this, I want you to do something for me.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want me to do this, I want you to do something for me.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "register": "business",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Team ka morale low hai, motivation speech do",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "morale",
+            "motivation",
+            "team"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S019",
+      "sentence": "Class notes share karo WhatsApp pe",
+      "reference": "Share the class notes on WhatsApp.",
+      "register": "casual",
+      "gold_preserved": [
+        "notes",
+        "share",
+        "whatsapp"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Class notes share karo WhatsApp on",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "WhatsApp",
+            "notes",
+            "share"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So share",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So share",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So share",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S020",
+      "sentence": "Seminar mein attend karna compulsory hai",
+      "reference": "Attending the seminar is compulsory.",
+      "register": "academic",
+      "gold_preserved": [
+        "attend",
+        "compulsory",
+        "seminar"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Seminar in attend karna compulsory hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "attend",
+            "seminar"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And I'm going to have to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And I'm going to have to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And I'm going to have to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S021",
+      "sentence": "Aaj movie dekhne jaana hai, ticket book kar liya?",
+      "reference": "We are going to watch a movie today. Have you booked the ticket?",
+      "register": "casual",
+      "gold_preserved": [
+        "book",
+        "movie",
+        "ticket"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today movie dekhne jaana hai, ticket book kar liya?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "book",
+            "movie",
+            "ticket"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What do you think is going to have to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What do you think is going to have to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What do you think is going to have to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S022",
+      "sentence": "Internship ka offer letter aaya kya?",
+      "reference": "Has the internship offer letter arrived?",
+      "register": "casual",
+      "gold_preserved": [
+        "internship",
+        "letter",
+        "offer"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Internship ka offer letter aaya what?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "internship",
+            "letter",
+            "offer"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's this Earth like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's this Earth like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's this Earth like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S023",
+      "sentence": "Song bahut catchy hai, playlist mein add karo",
+      "reference": "The song is very catchy. Add it to the playlist.",
+      "register": "casual",
+      "gold_preserved": [
+        "catchy",
+        "playlist"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Song bahut catchy hai, playlist in add karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "catchy",
+            "playlist"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S024",
+      "sentence": "Aaj shopping mall gaye the, sale chal rahi thi",
+      "reference": "We went to the shopping mall today; there was a sale.",
+      "register": "casual",
+      "gold_preserved": [
+        "mall",
+        "sale",
+        "shopping"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today shopping mall gaye the, sale chal rahi thi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "mall",
+            "sale",
+            "shopping"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to go back to that one, you're going to have to be the last one.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to go back to that one, you're going to have to be the last one.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to go back to that one, you're going to have to be the last one.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S025",
+      "sentence": "Car ka tyre puncture ho gaya, mechanic ko bulao",
+      "reference": "The car tyre is punctured. Call the mechanic.",
+      "register": "casual",
+      "gold_preserved": [
+        "car",
+        "tyre"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Car ka tyre puncture ho gaya, mechanic to bulao",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "car",
+            "mechanic",
+            "tyre"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to work with me, I want to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to work with me, I want to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to work with me, I want to do something.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S026",
+      "sentence": "Coffee peete hain aur project ka plan banate hain",
+      "reference": "Let us have coffee and plan the project.",
+      "register": "casual",
+      "gold_preserved": [
+        "coffee",
+        "plan",
+        "project"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Coffee peete hain aur project ka plan banate hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "coffee",
+            "plan",
+            "project"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's see what we're doing. We're going to have to do it... We want to do that.. And we'll get to the top of this line. We need to do the same thing.. I want to learn to do what we want to. project",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "project"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's see what we want to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's see what we want to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S027",
+      "sentence": "Bhai, game khel raha hai? Online match hai aaj",
+      "reference": "Hey, are you playing the game? There is an online match today.",
+      "register": "casual",
+      "gold_preserved": [
+        "game",
+        "match",
+        "online"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Bhai, game khel raha hai? Online match hai today",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "game",
+            "match",
+            "online"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So what is this game like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So what is this game like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So what is this game like?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S028",
+      "sentence": "Headache ho raha hai, tablet leni padegi",
+      "reference": "I have a headache; I will need to take a tablet.",
+      "register": "casual",
+      "gold_preserved": [
+        "headache",
+        "tablet"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Headache ho raha hai, tablet leni padegi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "headache",
+            "tablet"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "He's going to have this issue, and he's on the right side.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "He's going to have this issue, and he's on the right side.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "He's going to have this issue, and he's on the right side.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "register": "casual",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today free ho toh park in walk karte hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "park",
+            "walk"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S030",
+      "sentence": "Recharge karo, balance khatam ho gaya",
+      "reference": "Recharge the phone; the balance has run out.",
+      "register": "casual",
+      "gold_preserved": [
+        "balance",
+        "recharge"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Recharge karo, balance khatam ho gaya",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "balance",
+            "recharge"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's do it, if you want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's do it, if you want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's do it, if you want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S031",
+      "sentence": "Padhai mein focus karo, distraction band karo",
+      "reference": "Focus on your studies and eliminate distractions.",
+      "register": "casual",
+      "gold_preserved": [
+        "focus"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Padhai in focus karo, distraction band karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "distraction",
+            "focus"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if I don't know how to do it, do it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if I don't know how to do it, do it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if I don't know how to do it, do it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "register": "casual",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Cricket match ka score what hai abhi?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "cricket",
+            "match",
+            "score"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S033",
+      "sentence": "Photo edit karke Instagram pe post karo",
+      "reference": "Edit the photo and post it on Instagram.",
+      "register": "casual",
+      "gold_preserved": [
+        "edit",
+        "instagram",
+        "photo"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Photo edit karke Instagram on post karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Instagram",
+            "edit",
+            "photo"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Photo Dotke Inge",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Photo Dotke Inge",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Photo Dotke Inge",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S034",
+      "sentence": "Snacks lao aur Netflix chalao, chill karte hain",
+      "reference": "Get some snacks, turn on Netflix, and let us chill.",
+      "register": "casual",
+      "gold_preserved": [
+        "chill",
+        "netflix",
+        "snacks"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Snacks lao aur Netflix chalao, chill karte hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Netflix",
+            "chill",
+            "snacks"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's see, let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's see, let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's see, let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S035",
+      "sentence": "Bus miss ho gayi, cab book karo",
+      "reference": "I missed the bus. Book a cab.",
+      "register": "casual",
+      "gold_preserved": [
+        "book",
+        "cab",
+        "miss"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Bus miss ho gayi, cab book karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "book",
+            "cab",
+            "miss"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Make sure you do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Make sure you do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Make sure you do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "register": "business",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "quarterly",
+            "revisit",
+            "strategy",
+            "targets"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S037",
+      "sentence": "Invoice approve karo, vendor payment pending hai",
+      "reference": "Approve the invoice; the vendor payment is pending.",
+      "register": "business",
+      "gold_preserved": [
+        "approve",
+        "invoice",
+        "payment",
+        "pending",
+        "vendor"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Invoice approve karo, vendor payment pending hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "approve",
+            "invoice",
+            "payment",
+            "pending",
+            "vendor"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "When you improve, it's going to be minus 1.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "When you improve, it's going to be minus 1.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "When you improve, it's going to be minus 1.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S038",
+      "sentence": "Product launch ke liye marketing campaign ready karo",
+      "reference": "Prepare the marketing campaign for the product launch.",
+      "register": "business",
+      "gold_preserved": [
+        "campaign",
+        "launch",
+        "marketing",
+        "product"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Product launch ke liye marketing campaign ready karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "campaign",
+            "launch",
+            "marketing",
+            "product"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "No matter how many numbers you want them to hear, they're all right.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "No matter how many numbers you want them to hear, they're all right.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "No matter how many numbers you want them to hear, they're all right.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S039",
+      "sentence": "Compliance audit ke liye documents ready rakho",
+      "reference": "Keep the documents ready for the compliance audit.",
+      "register": "business",
+      "gold_preserved": [
+        "audit",
+        "compliance",
+        "documents"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Compliance audit ke liye documents ready rakho",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "audit",
+            "compliance",
+            "documents"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you were to write a message to me, I wouldn't have been able to read it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you were to write a message to me, I wouldn't have been able to read it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you were to write a message to me, I wouldn't have been able to read it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S040",
+      "sentence": "Sprint planning meeting kal hai, backlog review karo",
+      "reference": "Sprint planning meeting is tomorrow; review the backlog.",
+      "register": "business",
+      "gold_preserved": [
+        "backlog",
+        "planning",
+        "sprint"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Sprint planning conference tomorrow hai, backlog inspection karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "backlog",
+            "planning",
+            "sprint"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So we're going to have a positive view of what we want to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So we're going to have a positive view of what we want to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So we're going to have a positive view of what we want to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S041",
+      "sentence": "Stakeholder ko update bhejo, project on track hai",
+      "reference": "Send an update to the stakeholder; the project is on track.",
+      "register": "business",
+      "gold_preserved": [
+        "project",
+        "stakeholder",
+        "update"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Stakeholder to update bhejo, project on track hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "project",
+            "stakeholder",
+            "update"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want this, you can get it all right now. And you have to do it. You have to start with this problem. You can get a problem. And I want to keep it up. I want you to do this. I'm going to try to do that. project update",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "project",
+            "update"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to, you have to answer the last question.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to, you have to answer the last question.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S042",
+      "sentence": "Office mein attendance compulsory hai, remote nahi chalega",
+      "reference": "Attendance in the office is compulsory; remote work will not be allowed.",
+      "register": "business",
+      "gold_preserved": [
+        "attendance",
+        "compulsory",
+        "remote"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Office in attendance compulsory hai, remote not chalega",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "attendance",
+            "compulsory",
+            "remote"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So I'm going to get a little bit of a second, and then I'll get a second.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So I'm going to get a little bit of a second, and then I'll get a second.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So I'm going to get a little bit of a second, and then I'll get a second.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S043",
+      "sentence": "ROI calculate karo aur finance team ko report karo",
+      "reference": "Calculate the ROI and report to the finance team.",
+      "register": "business",
+      "gold_preserved": [
+        "calculate",
+        "finance",
+        "report",
+        "roi"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "ROI calculate karo aur finance team to report karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "ROI",
+            "calculate",
+            "finance",
+            "report"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to do it, you can use it to do so.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to do it, you can use it to do so.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to do it, you can use it to do so.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S044",
+      "sentence": "Appraisal cycle shuru ho rahi hai, feedback form fill karo",
+      "reference": "The appraisal cycle is starting; fill out the feedback form.",
+      "register": "business",
+      "gold_preserved": [
+        "appraisal",
+        "cycle",
+        "feedback"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Appraisal cycle shuru ho rahi hai, feedback form fill karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "appraisal",
+            "cycle",
+            "feedback"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's just draw out what's happening here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's just draw out what's happening here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's just draw out what's happening here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S045",
+      "sentence": "API ka response time slow hai, optimize karna padega",
+      "reference": "The API response time is slow; it needs to be optimized.",
+      "register": "business",
+      "gold_preserved": [
+        "api",
+        "optimize",
+        "response"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "API ka response time slow hai, optimize karna padega",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "API",
+            "optimize",
+            "response"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to change this equation, you need to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to change this equation, you need to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to change this equation, you need to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S046",
+      "sentence": "Budget exceed nahi karna, cost cutting implement karo",
+      "reference": "Do not exceed the budget; implement cost cutting.",
+      "register": "business",
+      "gold_preserved": [
+        "budget",
+        "cost"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Budget exceed not karna, cost cutting implement karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "budget",
+            "cost",
+            "cutting",
+            "exceed"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "bdgeted nubonica, able to clean up",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "bdgeted nubonica, able to clean up",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "bdgeted nubonica, able to clean up",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S047",
+      "sentence": "Client ko demo dena hai, prototype ready karni padegi",
+      "reference": "We need to give the client a demo; the prototype needs to be ready.",
+      "register": "business",
+      "gold_preserved": [
+        "client",
+        "demo",
+        "prototype"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Client to demo dena hai, prototype ready karni padegi",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "client",
+            "demo",
+            "prototype"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's just try to draw out what is really going on. So let us just try again. We can add a little bit of a second. And we can only do that. \"I want to add a second number of ways to get a new one. \" - OK. - client",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "client"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's just try to draw out what is really going on. So let us just try again. We can add a little bit of a second. And we can only do that. \"I want to add a second number of ways to get a new one. \" - OK. - client",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "client"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S048",
+      "sentence": "Risk assessment complete karo pehle, phir proceed karo",
+      "reference": "Complete the risk assessment first, then proceed.",
+      "register": "business",
+      "gold_preserved": [
+        "assessment",
+        "risk"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Risk assessment complete karo pehle, phir proceed karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "assessment",
+            "proceed",
+            "risk"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you don't do that, you'll have to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you don't do that, you'll have to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you don't do that, you'll have to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S049",
+      "sentence": "Cloud migration project ka timeline share karo",
+      "reference": "Share the timeline for the cloud migration project.",
+      "register": "business",
+      "gold_preserved": [
+        "cloud",
+        "migration",
+        "timeline"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Cloud migration assignment ka timeline share karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "cloud",
+            "migration",
+            "timeline"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Make sure you want to share the timeline",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Make sure you want to share the timeline",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Make sure you want to share the timeline",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S050",
+      "sentence": "Onboarding process streamline karo naye employees ke liye",
+      "reference": "Streamline the onboarding process for new employees.",
+      "register": "business",
+      "gold_preserved": [
+        "employees",
+        "onboarding",
+        "process"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Onboarding process streamline karo naye employees ke liye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "employees",
+            "onboarding",
+            "process",
+            "streamline"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to add your process, just add it to it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to add your process, just add it to it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to add your process, just add it to it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S051",
+      "sentence": "Neural network ka architecture improve karna hai",
+      "reference": "The neural network architecture needs to be improved.",
+      "register": "academic",
+      "gold_preserved": [
+        "architecture",
+        "network",
+        "neural"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Neural network ka architecture improve karna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "architecture",
+            "network",
+            "neural"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The network is also a positive and positive area.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The network is also a positive and positive area.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The network is also a positive and positive area.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S052",
+      "sentence": "Research paper ka abstract 250 words mein likhna hai",
+      "reference": "The research paper abstract must be written within 250 words.",
+      "register": "academic",
+      "gold_preserved": [
+        "abstract",
+        "paper",
+        "research"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Research paper ka abstract 250 words in likhna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "abstract",
+            "paper",
+            "research"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's just do that.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S053",
+      "sentence": "Plagiarism check karo submission se pehle",
+      "reference": "Perform a plagiarism check before submission.",
+      "register": "academic",
+      "gold_preserved": [
+        "check",
+        "plagiarism",
+        "submission"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Plagiarism check karo submission from pehle",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "check",
+            "plagiarism",
+            "submission"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to check this option, you need to check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to check this option, you need to check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to check this option, you need to check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S054",
+      "sentence": "Lab experiment ka hypothesis define karo",
+      "reference": "Define the hypothesis for the lab experiment.",
+      "register": "academic",
+      "gold_preserved": [
+        "experiment",
+        "hypothesis",
+        "lab"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Lab experiment ka hypothesis define karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "experiment",
+            "hypothesis",
+            "lab"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Reb:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Reb:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Reb:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "register": "academic",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Dataset ka preprocessing complete hua? Training start karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "dataset",
+            "preprocessing",
+            "training"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S056",
+      "sentence": "Citation format check karo, APA ya IEEE use karna hai?",
+      "reference": "Check the citation format -- should we use APA or IEEE?",
+      "register": "academic",
+      "gold_preserved": [
+        "apa",
+        "citation",
+        "format",
+        "ieee"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Citation format check karo, APA ya IEEE use karna hai?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "APA",
+            "IEEE",
+            "citation",
+            "format"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So how do you manage to figure out which is the APEEE is used?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So how do you manage to figure out which is the APEEE is used?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So how do you manage to figure out which is the APEEE is used?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S057",
+      "sentence": "Methodology section mein algorithm ka pseudocode daalna hai",
+      "reference": "Include the algorithm pseudocode in the methodology section.",
+      "register": "academic",
+      "gold_preserved": [
+        "algorithm",
+        "methodology",
+        "pseudocode"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Methodology section in algorithm ka pseudocode daalna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "algorithm",
+            "methodology",
+            "pseudocode"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to try again, you need to do something about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to try again, you need to do something about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to try again, you need to do something about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S058",
+      "sentence": "Regression analysis run karo aur p-value check karo",
+      "reference": "Run the regression analysis and check the p-value.",
+      "register": "academic",
+      "gold_preserved": [
+        "analysis",
+        "p-value",
+        "regression"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Regression analysis run karo aur p - value check karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "analysis",
+            "p-value",
+            "regression"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to try again and try again",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to try again and try again",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to try again and try again",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S059",
+      "sentence": "Prototype test karo aur evaluation metrics record karo",
+      "reference": "Test the prototype and record the evaluation metrics.",
+      "register": "academic",
+      "gold_preserved": [
+        "evaluation",
+        "metrics",
+        "prototype"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Prototype test karo aur evaluation metrics record karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "evaluation",
+            "metrics",
+            "prototype"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's take a look at this and see what's happening in the world.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's take a look at this and see what's happening in the world.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's take a look at this and see what's happening in the world.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S060",
+      "sentence": "Conference paper ka submission deadline extend hogi kya?",
+      "reference": "Will the conference paper submission deadline be extended?",
+      "register": "academic",
+      "gold_preserved": [
+        "conference",
+        "deadline",
+        "paper",
+        "submission"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Conference paper ka submission deadline extend hogi what?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "conference",
+            "deadline",
+            "paper",
+            "submission"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Do you want to do that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Do you want to do that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Do you want to do that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S061",
+      "sentence": "Twitter pe trending topic kya hai aaj?",
+      "reference": "What is the trending topic on Twitter today?",
+      "register": "social",
+      "gold_preserved": [
+        "topic",
+        "trending",
+        "twitter"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Twitter on trending topic what hai today?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Twitter",
+            "topic",
+            "trending"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Are you sure you want to meet this problem?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Are you sure you want to meet this problem?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Are you sure you want to meet this problem?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S062",
+      "sentence": "YouTube pe vlog upload kiya kya? Views kitne aaye?",
+      "reference": "Have you uploaded the vlog on YouTube? How many views did it get?",
+      "register": "social",
+      "gold_preserved": [
+        "upload",
+        "views",
+        "vlog",
+        "youtube"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "YouTube on vlog upload kiya what? Views kitne aaye?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "YouTube",
+            "upload",
+            "views",
+            "vlog"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What do you think?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What do you think?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What do you think?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S063",
+      "sentence": "Reel viral ho gayi, followers bohot badh gaye",
+      "reference": "The reel went viral and the follower count increased significantly.",
+      "register": "social",
+      "gold_preserved": [
+        "followers",
+        "reel",
+        "viral"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Reel viral ho gayi, followers bohot badh gaye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "followers",
+            "reel",
+            "viral"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "I'm going to put it on the top of my head.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "I'm going to put it on the top of my head.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "I'm going to put it on the top of my head.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S064",
+      "sentence": "Facebook pe status update mat karo, LinkedIn pe post karo",
+      "reference": "Do not post a status update on Facebook; post on LinkedIn instead.",
+      "register": "social",
+      "gold_preserved": [
+        "facebook",
+        "linkedin",
+        "status",
+        "update"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Facebook on status update mat karo, LinkedIn on post karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Facebook",
+            "LinkedIn",
+            "status",
+            "update"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Facebook project settings, look at the content below. If you don't want to do that, check this button to see if you want to save your changes. This will only happen if you have a copy of this report. If this option is available, you can change your changes now. You can update",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "update"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Facebook...",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Facebook...",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S065",
+      "sentence": "Podcast sun raha tha, episode bahut interesting tha",
+      "reference": "I was listening to a podcast; the episode was very interesting.",
+      "register": "social",
+      "gold_preserved": [
+        "episode",
+        "podcast"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Podcast sun raha tha, episode bahut interesting tha",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "episode",
+            "interesting",
+            "podcast"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Move the cursor to the left",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Move the cursor to the left",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Move the cursor to the left",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S066",
+      "sentence": "Meme share karo, bahut funny hai yaar",
+      "reference": "Share the meme; it is very funny.",
+      "register": "social",
+      "gold_preserved": [
+        "meme"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Meme share karo, bahut funny hai yaar",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "funny",
+            "meme"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let me do it, it's going to be the same.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let me do it, it's going to be the same.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let me do it, it's going to be the same.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S067",
+      "sentence": "Snapchat pe snap bhejo, streak maintain karna hai",
+      "reference": "Send a snap on Snapchat; we need to maintain the streak.",
+      "register": "social",
+      "gold_preserved": [
+        "snap",
+        "snapchat",
+        "streak"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Snapchat on snap bhejo, streak maintain karna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Snapchat",
+            "snap",
+            "streak"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's just get a draw-out, and it's going to be a drawer.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's just get a draw-out, and it's going to be a drawer.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's just get a draw-out, and it's going to be a drawer.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S068",
+      "sentence": "Discord pe join karo, gaming session chal raha hai",
+      "reference": "Join on Discord; the gaming session is going on.",
+      "register": "social",
+      "gold_preserved": [
+        "discord",
+        "gaming",
+        "session"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Discord on join karo, gaming session chal raha hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Discord",
+            "gaming",
+            "session"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's get a couple of numbers, it's going to be positive.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's get a couple of numbers, it's going to be positive.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's get a couple of numbers, it's going to be positive.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S069",
+      "sentence": "Bio update karo Instagram pe, attractive banana hai",
+      "reference": "Update the Instagram bio; it needs to look attractive.",
+      "register": "social",
+      "gold_preserved": [
+        "bio",
+        "instagram",
+        "update"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Bio update karo Instagram on, attractive banana hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Instagram",
+            "attractive",
+            "bio",
+            "update"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you were to write this first week, you would have to change the distance at the top of the page. And if you were, you could have to start with this number.. You could just write it over to the top, but you couldn't have to do that. You can update",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "update"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's see what you're doing.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's see what you're doing.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "register": "social",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Comment section check karo, kuch negative comments hain",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "comment",
+            "negative",
+            "section"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S071",
+      "sentence": "Aaj park mein festival tha, bhot enjoy kiya",
+      "reference": "There was a festival in the park today; it was a lot of fun.",
+      "register": "casual",
+      "gold_preserved": [
+        "enjoy",
+        "festival"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Today park in festival tha, bhot enjoy kiya",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "enjoy",
+            "festival"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Add a voice to your mouth, a voice from your mouth.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Add a voice to your mouth, a voice from your mouth.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Add a voice to your mouth, a voice from your mouth.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S072",
+      "sentence": "Shirt ka size medium hai, exchange karna hai",
+      "reference": "The shirt size is medium; it needs to be exchanged.",
+      "register": "casual",
+      "gold_preserved": [
+        "medium",
+        "size"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Shirt ka size medium hai, exchange karna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "exchange",
+            "medium",
+            "size"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The equation of this equation is to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The equation of this equation is to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The equation of this equation is to change it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S073",
+      "sentence": "Road trip pe jaana hai, petrol bharo pehle",
+      "reference": "We are going on a road trip; fill the petrol first.",
+      "register": "casual",
+      "gold_preserved": [
+        "petrol",
+        "road",
+        "trip"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Road trip on jaana hai, petrol bharo pehle",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "petrol",
+            "road",
+            "trip"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want a copy, write it over and over again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want a copy, write it over and over again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want a copy, write it over and over again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S074",
+      "sentence": "Dinner pe kya order karein? Thai ya Italian?",
+      "reference": "What should we order for dinner -- Thai or Italian?",
+      "register": "casual",
+      "gold_preserved": [
+        "dinner",
+        "italian",
+        "order",
+        "thai"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Dinner on what order karein? Thai ya Italian?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "Italian",
+            "Thai",
+            "dinner",
+            "order"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Can you do that? Thi either or Italian?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Can you do that? Thi either or Italian?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Can you do that? Thi either or Italian?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S075",
+      "sentence": "Night shift hai aaj, extra pay milegi kya?",
+      "reference": "I have the night shift today. Will I get extra pay?",
+      "register": "casual",
+      "gold_preserved": [
+        "night",
+        "pay",
+        "shift"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Night shift hai today, extra pay milegi what?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "extra",
+            "night",
+            "pay",
+            "shift"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So we're going to get a light.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So we're going to get a light.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So we're going to get a light.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "register": "academic",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Homework submit karo, assignment late not honi chahiye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "assignment",
+            "homework",
+            "submit"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S077",
+      "sentence": "Project guide ne feedback diya, revision karna hai",
+      "reference": "The project guide gave feedback; revision is required.",
+      "register": "academic",
+      "gold_preserved": [
+        "feedback",
+        "guide",
+        "project"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Project guide has feedback diya, revision karna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "feedback",
+            "guide",
+            "project",
+            "revision"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The answer is not divisible by a fraction, the equation is positive. The equation is to change the equation. The solution is not just a fraction of the difference. It is different from the answer or the answer to the question, but it's not the same as the answer. It's project",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "project"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The equation of this equation is not equal to the equation of the equation.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The equation of this equation is not equal to the equation of the equation.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S078",
+      "sentence": "Internship report format IEEE standard mein hoga",
+      "reference": "The internship report format will follow IEEE standard.",
+      "register": "academic",
+      "gold_preserved": [
+        "format",
+        "ieee",
+        "internship",
+        "report",
+        "standard"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Internship report format IEEE standard in hoga",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "IEEE",
+            "format",
+            "internship",
+            "report",
+            "standard"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Interthe report format IEEE's standard will be displayed",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Interthe report format IEEE's standard will be displayed",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Interthe report format IEEE's standard will be displayed",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S079",
+      "sentence": "Exam mein calculator allowed hai kya?",
+      "reference": "Is a calculator allowed in the exam?",
+      "register": "academic",
+      "gold_preserved": [
+        "calculator",
+        "exam"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Exam in calculator allowed hai what?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "calculator",
+            "exam"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And I think I'm going to get this down?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And I think I'm going to get this down?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And I think I'm going to get this down?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S080",
+      "sentence": "Tutorial class mein attendance compulsory hai professor ne bola",
+      "reference": "The professor said that attendance in tutorial class is compulsory.",
+      "register": "academic",
+      "gold_preserved": [
+        "attendance",
+        "compulsory",
+        "professor",
+        "tutorial"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Tutorial class in attendance compulsory hai professor has bola",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "attendance",
+            "compulsory",
+            "professor",
+            "tutorial"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So it's equal to negative.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So it's equal to negative.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So it's equal to negative.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S081",
+      "sentence": "Software engineering ka concept clear nahi hai, doubt hai",
+      "reference": "The software engineering concept is not clear; I have a doubt.",
+      "register": "academic",
+      "gold_preserved": [
+        "concept",
+        "engineering",
+        "software"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Software engineering ka concept clear not hai, doubt hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "concept",
+            "engineering",
+            "software"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "When using the software, it's going to be cool, do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "When using the software, it's going to be cool, do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "When using the software, it's going to be cool, do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "register": "academic",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Research methodology class in attendance mark karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "attendance",
+            "methodology",
+            "research"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S083",
+      "sentence": "Group project mein role assign karo, timeline set karo",
+      "reference": "Assign roles in the group project and set a timeline.",
+      "register": "academic",
+      "gold_preserved": [
+        "project",
+        "role",
+        "timeline"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Group project in role assign karo, timeline set karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "assign",
+            "project",
+            "role",
+            "timeline"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Displays a group view as well as a list of spaces, allowing these to be displayed in different settings. This will help you to see how you can use this information to the best of your ability. If you want to do so, you need to do the same. You can always do it project",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "project"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Displays a group view as well as a response,",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Displays a group view as well as a response,",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S084",
+      "sentence": "Practical exam mein circuit design karna hai",
+      "reference": "We have to design a circuit in the practical exam.",
+      "register": "academic",
+      "gold_preserved": [
+        "circuit",
+        "design",
+        "exam",
+        "practical"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Practical exam in circuit design karna hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "circuit",
+            "design",
+            "exam",
+            "practical"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "In order to change the equation of this equation, you need to get rid of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "In order to change the equation of this equation, you need to get rid of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "In order to change the equation of this equation, you need to get rid of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S085",
+      "sentence": "Data structures ka assignment submit karna padega kal tak",
+      "reference": "The data structures assignment needs to be submitted by tomorrow.",
+      "register": "academic",
+      "gold_preserved": [
+        "assignment",
+        "data",
+        "structures",
+        "submit"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Data structures ka assignment submit karna padega tomorrow tak",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "assignment",
+            "data",
+            "structures",
+            "submit"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Data Data Data",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Data Data Data",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Data Data Data",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S086",
+      "sentence": "Project ka cost estimate karo, budget proposal banani hai",
+      "reference": "Estimate the project cost; a budget proposal needs to be prepared.",
+      "register": "business",
+      "gold_preserved": [
+        "budget",
+        "cost",
+        "proposal"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Assignment ka cost estimate karo, budget proposal banani hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "budget",
+            "cost",
+            "estimate",
+            "proposal"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's see what you can do, get out of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's see what you can do, get out of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's see what you can do, get out of it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "register": "casual",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "What tumhara headphones available hai? Share karo na",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "available",
+            "headphones",
+            "share"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S088",
+      "sentence": "Party cancel ho gayi, plan B kya hai?",
+      "reference": "The party has been cancelled. What is plan B?",
+      "register": "casual",
+      "gold_preserved": [
+        "cancel",
+        "party",
+        "plan"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Party cancel ho gayi, plan B what hai?",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "cancel",
+            "party",
+            "plan"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So, what's the difference?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So, what's the difference?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So, what's the difference?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S089",
+      "sentence": "Online pizza order karo, coupon code use karo",
+      "reference": "Order pizza online and use the coupon code.",
+      "register": "casual",
+      "gold_preserved": [
+        "code",
+        "coupon",
+        "online",
+        "pizza"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Online pizza order karo, coupon code use karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "code",
+            "coupon",
+            "online",
+            "pizza"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Can do this on top ofline pizza order, to use the couponable code",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "code"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Can do this on top ofline pizza order, to use the couponable code",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "code"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Can do this on top ofline pizza, use the coupon codec",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S090",
+      "sentence": "Freelance project mil gaya, contract sign karna padega",
+      "reference": "A freelance project has been received; the contract needs to be signed.",
+      "register": "business",
+      "gold_preserved": [
+        "contract",
+        "freelance",
+        "project"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Freelance project mil gaya, contract sign karna padega",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "contract",
+            "freelance",
+            "project",
+            "sign"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Free/LODILIMILOCKILDODOGYY, QODCHDOCHOCYDOL/ MILMODGECH/ MMOGHODLOG project",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "project"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Free%",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Free%",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S091",
+      "sentence": "Portfolio update karo, GitHub pe push karo",
+      "reference": "Update the portfolio and push it to GitHub.",
+      "register": "business",
+      "gold_preserved": [
+        "github",
+        "portfolio",
+        "push",
+        "update"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Portfolio update karo, GitHub on push karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "GitHub",
+            "portfolio",
+            "push",
+            "update"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to start again, you can get it all over.. I'm going to have to start a new project.. You're going to start this week. I want you to do the same thing. I need you to give me a new job, but I've got update",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "preserved_tokens": [
+            "update"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you don't know what to do, you're going to have to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you don't know what to do, you're going to have to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S092",
+      "sentence": "Weekend pe hiking jaana hai, backpack pack karo",
+      "reference": "We are going hiking this weekend. Pack your backpack.",
+      "register": "casual",
+      "gold_preserved": [
+        "backpack",
+        "hiking",
+        "weekend"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Weekend on hiking jaana hai, backpack pack karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "backpack",
+            "hiking",
+            "weekend"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's just get to the top of this line, then draw it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's just get to the top of this line, then draw it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's just get to the top of this line, then draw it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S093",
+      "sentence": "Salary credit nahi hui abhi, account check karo",
+      "reference": "The salary has not been credited yet; check the account.",
+      "register": "business",
+      "gold_preserved": [
+        "account",
+        "credit",
+        "salary"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Salary credit not hui abhi, account check karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "account",
+            "credit",
+            "salary"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Salary Mayo Nahihihi, inatratratra",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Salary Mayo Nahihihi, inatratratra",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Salary Mayo Nahihihi, inatratratra",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S094",
+      "sentence": "Notice period kab khatam hoga? Relieving letter lena hai",
+      "reference": "When does the notice period end? I need the relieving letter.",
+      "register": "business",
+      "gold_preserved": [
+        "letter",
+        "notice",
+        "period"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Notice period kab khatam hoga? Relieving letter lena hai",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "letter",
+            "notice",
+            "period",
+            "relieving"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What do you want to do with this?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What do you want to do with this?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What do you want to do with this?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "register": "business",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Promotion milega is quarter in, performance review achha tha",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "performance",
+            "promotion",
+            "quarter",
+            "review"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S096",
+      "sentence": "Startup idea ke baare mein mentor se discuss karo",
+      "reference": "Discuss the startup idea with the mentor.",
+      "register": "business",
+      "gold_preserved": [
+        "mentor",
+        "startup"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Startup idea ke baare in mentor from discuss karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "discuss",
+            "idea",
+            "mentor",
+            "startup"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to start again and you want me to do something about it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to start again and you want me to do something about it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to start again and you want me to do something about it",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S097",
+      "sentence": "Machine translation model ka BLEU score improve karo",
+      "reference": "Improve the BLEU score of the machine translation model.",
+      "register": "academic",
+      "gold_preserved": [
+        "bleu",
+        "machine",
+        "model",
+        "score",
+        "translation"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Machine translation model ka BLEU score improve karo",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "BLEU",
+            "machine",
+            "model",
+            "score",
+            "translation"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you're a parent, you'll find out how you feel about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you're a parent, you'll find out how you feel about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you're a parent, you'll find out how you feel about it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S098",
+      "sentence": "Ticket book karo concert ke liye, front row chahiye",
+      "reference": "Book a ticket for the concert; I want the front row.",
+      "register": "casual",
+      "gold_preserved": [
+        "book",
+        "concert",
+        "ticket"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Ticket book karo concert ke liye, front row chahiye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "book",
+            "concert",
+            "front",
+            "row",
+            "ticket"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S099",
+      "sentence": "Profile photo change karo LinkedIn pe, professional dikhna chahiye",
+      "reference": "Change the LinkedIn profile photo; it should look professional.",
+      "register": "social",
+      "gold_preserved": [
+        "linkedin",
+        "photo",
+        "professional",
+        "profile"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Profile photo change karo LinkedIn on, professional dikhna chahiye",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "LinkedIn",
+            "photo",
+            "professional",
+            "profile"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Add photo",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Add photo",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Add photo",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S100",
+      "sentence": "Workshop register karo, certificate milega baad mein",
+      "reference": "Register for the workshop; you will receive a certificate later.",
+      "register": "academic",
+      "gold_preserved": [
+        "certificate",
+        "workshop"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Workshop register karo, certificate milega baad in",
+          "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
+          "preserved_tokens": [
+            "certificate",
+            "register",
+            "workshop"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's do the work. I'll find it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's do the work. I'll find it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's do the work. I'll find it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "preserved_tokens": []
+        }
+      }
+    }
+  ]
+}

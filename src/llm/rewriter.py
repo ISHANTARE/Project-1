@@ -264,12 +264,17 @@ class LAPSRewriter:
         model:     Optional[str] = None,
         strategy:  Literal["xml_laps", "few_shot_icl", "zero_shot"] = "xml_laps",
         kg_engine=None,
+        require_real_neural: bool = False,
+        nmt_engine=None,
     ):
         self.backend   = (backend or os.getenv("LAPS_LLM_BACKEND", "mock")).lower()
         self.model     = model
         self.strategy  = strategy
         self.kg_engine = kg_engine
-        self.nmt_engine = get_nmt_engine()
+        self.require_real_neural = require_real_neural
+        self.nmt_engine = nmt_engine or get_nmt_engine()
+        if require_real_neural:
+            self.nmt_engine.require_real_neural = True
 
     def rewrite(
         self,
@@ -315,14 +320,16 @@ class LAPSRewriter:
             rewritten = self.nmt_engine.translate(
                 sentence,
                 preserve_tokens=preserve_list if constrained else None,
-                force_constraints=constrained
+                force_constraints=constrained,
+                require_real_neural=self.require_real_neural,
             )
         else:
             # Deterministic NMT Engine / Mock
             rewritten = self.nmt_engine.translate(
                 sentence,
                 preserve_tokens=preserve_list if constrained else None,
-                force_constraints=constrained
+                force_constraints=constrained,
+                require_real_neural=self.require_real_neural,
             )
 
         return {

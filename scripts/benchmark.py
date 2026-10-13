@@ -442,9 +442,19 @@ def paired_bootstrap_test(
 # 5. System Runners
 # ---------------------------------------------------------------------------
 
-def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] = None) -> List[Dict[str, Any]]:
+def run_laps_system(
+    sentences: List[Dict[str, Any]],
+    weights: Dict[str, float] = None,
+    require_real_neural: bool = False,
+) -> List[Dict[str, Any]]:
     """System 1: Proposed LAPS Neuro-Symbolic Framework."""
-    rewriter = LAPSRewriter(backend="nmt", strategy="xml_laps")
+    nmt_eng = get_nmt_engine()
+    rewriter = LAPSRewriter(
+        backend="nmt",
+        strategy="xml_laps",
+        require_real_neural=require_real_neural,
+        nmt_engine=nmt_eng,
+    )
     results = []
 
     for sent in sentences:
@@ -492,16 +502,26 @@ def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] =
         total_ms = preproc_ms + gen_ms
         per_token_ms = (preproc_ms / max(n_candidates, 1))
 
+        rewritten_text = rewrite_res["rewritten"]
+        rewritten_lower = rewritten_text.lower()
+        satisfied_constraints = [c for c in preserve_list if c.lower() in rewritten_lower]
+
         results.append({
             "id": sent["id"],
             "sentence": raw,
-            "rewritten": rewrite_res["rewritten"],
+            "rewritten": rewritten_text,
             "reference": sent.get("reference", ""),
             "tokens": sent.get("tokens", []),
             "preserved": set(preserve_list),
             "uncertain_tokens": set(uncertain_list),
             "gold_preserved": {t["token"].lower() for t in sent.get("tokens", []) if t.get("label") == 1},
             "backend_execution_mode": rewrite_res.get("execution_mode", "UNKNOWN"),
+            "model_identifier": nmt_eng.model_name if nmt_eng._is_loaded else "deterministic_surrogate",
+            "constraints_applied": bool(preserve_list),
+            "constraints_requested": list(preserve_list),
+            "constraints_satisfied": satisfied_constraints,
+            "constraint_satisfaction_rate": (len(satisfied_constraints) / len(preserve_list)) if preserve_list else 1.0,
+            "last_error": getattr(nmt_eng, "last_error", None),
             "latency_preproc_ms": round(preproc_ms, 2),
             "latency_gen_ms": round(gen_ms, 2),
             "latency_total_ms": round(total_ms, 2),
@@ -510,7 +530,10 @@ def run_laps_system(sentences: List[Dict[str, Any]], weights: Dict[str, float] =
     return results
 
 
-def run_few_shot_icl(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def run_few_shot_icl(
+    sentences: List[Dict[str, Any]],
+    require_real_neural: bool = False,
+) -> List[Dict[str, Any]]:
     """
     System 2: Few-Shot Vocabulary Filter (Demonstration Heuristic).
 
@@ -530,7 +553,19 @@ def run_few_shot_icl(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         raw = sent["sentence"]
         gold_pres = {t["token"].lower() for t in sent.get("tokens", []) if t.get("label") == 1}
         preserved = {t["token"].lower() for t in sent.get("tokens", []) if t["token"].lower() in FEW_SHOT_DEMO_LOANWORDS}
-        rewritten = nmt.translate(raw, preserve_tokens=list(preserved), force_constraints=True)
+        
+        t0 = time.perf_counter()
+        rewritten = nmt.translate(
+            raw,
+            preserve_tokens=list(preserved),
+            force_constraints=True,
+            require_real_neural=require_real_neural,
+        )
+        gen_ms = (time.perf_counter() - t0) * 1000.0
+
+        rewritten_lower = rewritten.lower()
+        satisfied_constraints = [c for c in preserved if c.lower() in rewritten_lower]
+
         results.append({
             "id": sent["id"],
             "sentence": raw,
@@ -541,11 +576,22 @@ def run_few_shot_icl(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "uncertain_tokens": set(),
             "gold_preserved": gold_pres,
             "backend_execution_mode": getattr(nmt, "last_execution_mode", "UNKNOWN"),
+            "model_identifier": nmt.model_name if nmt._is_loaded else "deterministic_surrogate",
+            "constraints_applied": bool(preserved),
+            "constraints_requested": list(preserved),
+            "constraints_satisfied": satisfied_constraints,
+            "constraint_satisfaction_rate": (len(satisfied_constraints) / len(preserved)) if preserved else 1.0,
+            "last_error": getattr(nmt, "last_error", None),
+            "latency_gen_ms": round(gen_ms, 2),
+            "latency_total_ms": round(gen_ms, 2),
         })
     return results
 
 
-def run_static_dict_system(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def run_static_dict_system(
+    sentences: List[Dict[str, Any]],
+    require_real_neural: bool = False,
+) -> List[Dict[str, Any]]:
     """
     System 3: Static Dictionary Lexical Filter.
 
@@ -562,7 +608,19 @@ def run_static_dict_system(sentences: List[Dict[str, Any]]) -> List[Dict[str, An
         raw = sent["sentence"]
         gold_pres = {t["token"].lower() for t in sent.get("tokens", []) if t.get("label") == 1}
         preserved = {t["token"].lower() for t in sent.get("tokens", []) if t["token"].lower() in STATIC_DICT}
-        rewritten = nmt.translate(raw, preserve_tokens=list(preserved), force_constraints=True)
+
+        t0 = time.perf_counter()
+        rewritten = nmt.translate(
+            raw,
+            preserve_tokens=list(preserved),
+            force_constraints=True,
+            require_real_neural=require_real_neural,
+        )
+        gen_ms = (time.perf_counter() - t0) * 1000.0
+
+        rewritten_lower = rewritten.lower()
+        satisfied_constraints = [c for c in preserved if c.lower() in rewritten_lower]
+
         results.append({
             "id": sent["id"],
             "sentence": raw,
@@ -573,11 +631,22 @@ def run_static_dict_system(sentences: List[Dict[str, Any]]) -> List[Dict[str, An
             "uncertain_tokens": set(),
             "gold_preserved": gold_pres,
             "backend_execution_mode": getattr(nmt, "last_execution_mode", "UNKNOWN"),
+            "model_identifier": nmt.model_name if nmt._is_loaded else "deterministic_surrogate",
+            "constraints_applied": bool(preserved),
+            "constraints_requested": list(preserved),
+            "constraints_satisfied": satisfied_constraints,
+            "constraint_satisfaction_rate": (len(satisfied_constraints) / len(preserved)) if preserved else 1.0,
+            "last_error": getattr(nmt, "last_error", None),
+            "latency_gen_ms": round(gen_ms, 2),
+            "latency_total_ms": round(gen_ms, 2),
         })
     return results
 
 
-def run_unconstrained_nmt(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def run_unconstrained_nmt(
+    sentences: List[Dict[str, Any]],
+    require_real_neural: bool = False,
+) -> List[Dict[str, Any]]:
     """
     System 4: Raw Unconstrained NMT Baseline.
 
@@ -592,7 +661,16 @@ def run_unconstrained_nmt(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any
     for sent in sentences:
         raw = sent["sentence"]
         gold_pres = {t["token"].lower() for t in sent.get("tokens", []) if t.get("label") == 1}
-        rewritten = nmt.translate(raw, preserve_tokens=[], force_constraints=False)
+
+        t0 = time.perf_counter()
+        rewritten = nmt.translate(
+            raw,
+            preserve_tokens=[],
+            force_constraints=False,
+            require_real_neural=require_real_neural,
+        )
+        gen_ms = (time.perf_counter() - t0) * 1000.0
+
         results.append({
             "id": sent["id"],
             "sentence": raw,
@@ -603,6 +681,14 @@ def run_unconstrained_nmt(sentences: List[Dict[str, Any]]) -> List[Dict[str, Any
             "uncertain_tokens": set(),
             "gold_preserved": gold_pres,
             "backend_execution_mode": getattr(nmt, "last_execution_mode", "UNKNOWN"),
+            "model_identifier": nmt.model_name if nmt._is_loaded else "deterministic_surrogate",
+            "constraints_applied": False,
+            "constraints_requested": [],
+            "constraints_satisfied": [],
+            "constraint_satisfaction_rate": 1.0,
+            "last_error": getattr(nmt, "last_error", None),
+            "latency_gen_ms": round(gen_ms, 2),
+            "latency_total_ms": round(gen_ms, 2),
         })
     return results
 
@@ -679,10 +765,12 @@ def aggregate_system_metrics(
             total_candidates += len(r["tokens"])
 
         # Latency collection
-        if "latency_total_ms" in r:
+        if "latency_total_ms" in r and r.get("latency_total_ms") is not None:
             total_ms_list.append(r["latency_total_ms"])
-            preproc_ms_list.append(r["latency_preproc_ms"])
-            per_token_ms_list.append(r["latency_per_token_ms"])
+            if "latency_preproc_ms" in r and r.get("latency_preproc_ms") is not None:
+                preproc_ms_list.append(r["latency_preproc_ms"])
+            if "latency_per_token_ms" in r and r.get("latency_per_token_ms") is not None:
+                per_token_ms_list.append(r["latency_per_token_ms"])
 
     # Corpus-level MT metrics
     corpus_bleu = compute_corpus_bleu(hypotheses, references)
@@ -753,9 +841,9 @@ def aggregate_system_metrics(
         agg["latency"] = {
             "mean_total_ms": round(mean(total_ms_list), 2),
             "std_total_ms": round(stdev(total_ms_list) if len(total_ms_list) > 1 else 0.0, 2),
-            "mean_preproc_ms": round(mean(preproc_ms_list), 2),
-            "std_preproc_ms": round(stdev(preproc_ms_list) if len(preproc_ms_list) > 1 else 0.0, 2),
-            "mean_per_token_ms": round(mean(per_token_ms_list), 2),
+            "mean_preproc_ms": round(mean(preproc_ms_list), 2) if preproc_ms_list else 0.0,
+            "std_preproc_ms": round(stdev(preproc_ms_list) if len(preproc_ms_list) > 1 else 0.0, 2) if len(preproc_ms_list) > 1 else 0.0,
+            "mean_per_token_ms": round(mean(per_token_ms_list), 2) if per_token_ms_list else 0.0,
             "p95_total_ms": round(sorted(total_ms_list)[int(0.95 * len(total_ms_list))], 2),
             "min_total_ms": round(min(total_ms_list), 2),
             "max_total_ms": round(max(total_ms_list), 2),
@@ -779,6 +867,8 @@ def main():
     parser.add_argument("--backend-mode", choices=["surrogate", "real_neural"], default="surrogate",
                         help="Execution mode: 'surrogate' (deterministic fallback) or 'real_neural' (live HuggingFace model)")
     parser.add_argument("--device", type=str, default=None, help="Device for neural inference ('cuda' or 'cpu')")
+    parser.add_argument("--require-real-neural", action="store_true", default=False,
+                        help="Strict research mode: fails immediately if any sentence falls back to surrogate")
     parser.add_argument("--bootstrap", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--permutations", type=int, default=5000)
@@ -794,13 +884,21 @@ def main():
     nmt_eng = get_nmt_engine()
     if args.device:
         nmt_eng.device = args.device
+    if args.require_real_neural:
+        nmt_eng.require_real_neural = True
 
     if args.backend_mode == "real_neural":
         loaded = nmt_eng.load_model()
         if not loaded:
+            if args.require_real_neural:
+                raise RuntimeError(
+                    f"Real neural inference was strictly required (--require-real-neural), but model '{nmt_eng.model_name}' could not be loaded: {nmt_eng.last_error}"
+                )
             print("[WARN] Could not load real neural model. Proceeding with fallback.")
         else:
             print(f"[INFO] Successfully loaded real neural model: {nmt_eng.model_name} on {nmt_eng.device}")
+    elif args.require_real_neural:
+        raise ValueError("--require-real-neural requires --backend-mode real_neural")
 
     with open(args.corpus, encoding="utf-8") as f:
         data = json.load(f)
@@ -810,26 +908,29 @@ def main():
     print(f"  LAPS Multi-Baseline Benchmark Harness (N={len(sentences)})")
     print(f"  Corpus: {args.corpus.name} | SacreBLEU: {SACREBLEU_VERSION}")
     print(f"  Backend Mode: {args.backend_mode} ({'Real Neural Model: ' + nmt_eng.model_name if getattr(nmt_eng, '_is_loaded', False) else 'Deterministic Surrogate'})")
+    print(f"  Strict Real Neural Required: {args.require_real_neural}")
     print("=" * 70)
     print("  Evaluation Methodology: Separated Classifier vs Output Retention")
     print("  Significance Testing: Paired Permutation Test (seed=42, B=5,000)")
     print("=" * 70 + "\n")
 
+    req_real = args.require_real_neural
+
     # 1. Run Proposed LAPS System
     print("Evaluating: LAPS (Proposed System)...")
     t0 = time.perf_counter()
-    laps_res = run_laps_system(sentences)
+    laps_res = run_laps_system(sentences, require_real_neural=req_real)
     t_laps_wall = (time.perf_counter() - t0) * 1000.0
 
     # 2. Run Baselines
     print("Evaluating: Few-Shot Vocabulary Filter (Demonstration Heuristic)...")
-    few_shot_res = run_few_shot_icl(sentences)
+    few_shot_res = run_few_shot_icl(sentences, require_real_neural=req_real)
 
     print("Evaluating: Static Dictionary Filter...")
-    dict_res = run_static_dict_system(sentences)
+    dict_res = run_static_dict_system(sentences, require_real_neural=req_real)
 
     print("Evaluating: Unconstrained NMT Baseline...")
-    uncon_res = run_unconstrained_nmt(sentences)
+    uncon_res = run_unconstrained_nmt(sentences, require_real_neural=req_real)
 
     systems = {
         "LAPS (Proposed)": laps_res,
@@ -837,6 +938,17 @@ def main():
         "Static Dictionary Filter": dict_res,
         "Unconstrained NMT Baseline": uncon_res,
     }
+
+    # Strict neural validation check
+    if args.require_real_neural:
+        for sys_name, res_list in systems.items():
+            for r in res_list:
+                mode = r.get("backend_execution_mode", "")
+                if mode not in ("REAL_INFERENCE_CONSTRAINED", "REAL_INFERENCE_UNCONSTRAINED"):
+                    raise RuntimeError(
+                        f"STRICT AUDIT FAILURE: System '{sys_name}' on utterance '{r.get('id')}' "
+                        f"produced illegal mode '{mode}'. Surrogate fallback is forbidden under --require-real-neural."
+                    )
 
     # Aggregate metrics
     metrics: Dict[str, Any] = {}
@@ -891,7 +1003,7 @@ def main():
 
     col_w1 = [max(len(h), max(len(r[i]) for r in rows_1)) for i, h in enumerate(headers_1)]
     sep1 = "-+-".join("-" * w for w in col_w1)
-    print("\n[TABLE 1] Output Preservation & Translation Performance (All Systems)")
+    print("[TABLE 1] Output Preservation & Translation Performance (All Systems)")
     print(sep1)
     print(" | ".join(h.ljust(w) for h, w in zip(headers_1, col_w1)))
     print(sep1)
@@ -951,6 +1063,7 @@ def main():
             "permutation_test_seed": args.seed,
             "permutation_samples": args.permutations,
             "backend_mode": args.backend_mode,
+            "require_real_neural": args.require_real_neural,
             "nmt_model": nmt_eng.model_name if getattr(nmt_eng, "_is_loaded", False) else "DETERMINISTIC_SURROGATE_FALLBACK",
             "device": getattr(nmt_eng, "device", "N/A"),
             "methodology_note": (
@@ -984,6 +1097,13 @@ def main():
                 sent_entry["predictions"][sys_name] = {
                     "rewritten": r["rewritten"],
                     "backend_execution_mode": r.get("backend_execution_mode", "UNKNOWN"),
+                    "model_identifier": r.get("model_identifier", "UNKNOWN"),
+                    "constraints_applied": r.get("constraints_applied", False),
+                    "constraints_requested": r.get("constraints_requested", []),
+                    "constraints_satisfied": r.get("constraints_satisfied", []),
+                    "constraint_satisfaction_rate": r.get("constraint_satisfaction_rate", 1.0),
+                    "last_error": r.get("last_error", None),
+                    "latency_total_ms": r.get("latency_total_ms", None),
                     "preserved_tokens": sorted(list(r.get("preserved") or [])),
                 }
             pred_records.append(sent_entry)

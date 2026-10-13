@@ -28,6 +28,7 @@ from __future__ import annotations
 import logging
 import os
 import re
+import sys
 from typing import List, Set, Optional, Dict, Any
 
 logger = logging.getLogger(__name__)
@@ -84,6 +85,8 @@ class NMTTranslationEngine:
         self._tokenizer = None
         self._is_loaded = False
         self._model_family = self._detect_model_family(self.model_name)
+        self.require_real_neural: bool = False
+        self.last_failure_stage: Optional[str] = None
         self.last_execution_mode: str = "UNINITIALIZED"
         self.last_error: Optional[str] = None
 
@@ -95,6 +98,8 @@ class NMTTranslationEngine:
             "model_family": self._model_family,
             "is_loaded": self._is_loaded,
             "device": self.device,
+            "require_real_neural": self.require_real_neural,
+            "last_failure_stage": self.last_failure_stage,
             "last_execution_mode": self.last_execution_mode,
             "last_error": self.last_error,
         }
@@ -193,7 +198,8 @@ class NMTTranslationEngine:
         self,
         sentence: str,
         preserve_tokens: Optional[List[str]] = None,
-        force_constraints: bool = False
+        force_constraints: bool = False,
+        require_real_neural: Optional[bool] = None,
     ) -> str:
         """
         Translate input sentence with optional lexical constraint enforcement.
@@ -202,7 +208,11 @@ class NMTTranslationEngine:
         the engine uses HuggingFace's ``force_words_ids`` parameter to
         deterministically inject preserved loanwords into the beam search
         decoder output.
+
+        When ``require_real_neural=True`` (or set on engine), the method raises
+        RuntimeError rather than silently falling back to the surrogate model.
         """
+        must_be_real = self.require_real_neural if require_real_neural is None else require_real_neural
         preserve_set = set(p.lower() for p in (preserve_tokens or []))
 
         # 1. Attempt HuggingFace neural generation if model is loaded
@@ -250,6 +260,8 @@ class NMTTranslationEngine:
                 if self._model_family == "indictrans2":
                     decoded = re.sub(r"^<2\w+>\s*", "", decoded)
 
+                self.last_failure_stage = None
+                self.last_error = None
                 if force_constraints and preserve_tokens:
                     self.last_execution_mode = "REAL_INFERENCE_CONSTRAINED"
                 else:
@@ -259,10 +271,23 @@ class NMTTranslationEngine:
 
             except Exception as e:
                 self.last_error = str(e)
+                self.last_failure_stage = "GENERATION_EXCEPTION"
+                if must_be_real:
+                    self.last_execution_mode = "FAILED_GENERATION_EXCEPTION"
+                    raise RuntimeError(
+                        f"Real neural generation required (--require-real-neural), but generation failed: {e}"
+                    ) from e
                 self.last_execution_mode = "DETERMINISTIC_SURROGATE_FALLBACK"
                 logger.warning(
                     f"Neural generation error ({self._model_family}): {e}. "
                     f"Falling back to rule-guided neural baseline."
+                )
+        else:
+            if must_be_real:
+                self.last_failure_stage = "MODEL_NOT_LOADED"
+                self.last_execution_mode = "FAILED_NOT_LOADED"
+                raise RuntimeError(
+                    f"Real neural generation required (--require-real-neural), but model '{self.model_name}' is not loaded."
                 )
 
         # 2. High-Fidelity Deterministic NMT Translation Engine (fallback)
@@ -422,6 +447,15 @@ _NMT_INSTANCE: Optional[NMTTranslationEngine] = None
 
 def get_nmt_engine() -> NMTTranslationEngine:
     global _NMT_INSTANCE
+    # Synchronize across aliased module names ('src.llm.nmt_backend' vs 'llm.nmt_backend')
+    for mod_name in ("src.llm.nmt_backend", "llm.nmt_backend"):
+        if mod_name in sys.modules and getattr(sys.modules[mod_name], "_NMT_INSTANCE", None) is not None:
+            _NMT_INSTANCE = sys.modules[mod_name]._NMT_INSTANCE
+            break
     if _NMT_INSTANCE is None:
         _NMT_INSTANCE = NMTTranslationEngine()
+    # Propagate to all aliases
+    for mod_name in ("src.llm.nmt_backend", "llm.nmt_backend"):
+        if mod_name in sys.modules:
+            sys.modules[mod_name]._NMT_INSTANCE = _NMT_INSTANCE
     return _NMT_INSTANCE

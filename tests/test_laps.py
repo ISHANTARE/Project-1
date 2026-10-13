@@ -759,6 +759,34 @@ class TestNeuralBackendRealInference:
         assert engine.last_execution_mode == "REAL_INFERENCE_UNCONSTRAINED"
         assert isinstance(output, str) and len(output.strip()) > 0
 
+    def test_require_real_neural_rejects_unloaded_model(self):
+        from src.llm.nmt_backend import NMTTranslationEngine
+        # Fresh unloaded instance
+        unloaded_engine = NMTTranslationEngine()
+        unloaded_engine._is_loaded = False
+        unloaded_engine.require_real_neural = True
+
+        with pytest.raises(RuntimeError) as exc_info:
+            unloaded_engine.translate("Test sentence", preserve_tokens=["test"], force_constraints=True)
+        assert "Real neural generation required" in str(exc_info.value)
+        assert unloaded_engine.last_execution_mode == "FAILED_NOT_LOADED"
+
+    def test_require_real_neural_on_loaded_model_produces_real_mode(self):
+        from src.llm.nmt_backend import get_nmt_engine
+        engine = get_nmt_engine()
+        if not engine.load_model():
+            pytest.skip("Neural NMT model not available")
+
+        sentence = "Assignment submit karne ki deadline kal hai"
+        output = engine.translate(
+            sentence,
+            preserve_tokens=["deadline"],
+            force_constraints=True,
+            require_real_neural=True,
+        )
+        assert engine.last_execution_mode == "REAL_INFERENCE_CONSTRAINED"
+        assert "deadline" in output.lower()
+
 
 class TestAuditedFeatureAblationStudy:
     """

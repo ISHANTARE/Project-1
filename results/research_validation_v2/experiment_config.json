@@ -1,0 +1,41 @@
+{
+  "model_name": "Helsinki-NLP/opus-mt-hi-en",
+  "device": "cuda",
+  "require_real_neural": true,
+  "constrained_decoding": {
+    "library": "transformers-community/constrained-beam-search",
+    "beam_scaling_rule": "min(16, max(6, 2 * len(force_words_ids)))",
+    "no_repeat_ngram_size": 3,
+    "max_new_tokens": 64,
+    "early_stopping": true
+  },
+  "evaluation_corpora": {
+    "test_split": {
+      "path": "data/evaluation/test_split.json",
+      "size": 20,
+      "type": "held_out_and_oov"
+    },
+    "gold_corpus": {
+      "path": "data/evaluation/gold_corpus.json",
+      "size": 100,
+      "type": "full_gold_benchmark"
+    },
+    "val_split": {
+      "path": "data/evaluation/val_split.json",
+      "size": 15,
+      "type": "validation_only"
+    },
+    "train_split": {
+      "path": "data/evaluation/train_split.json",
+      "size": 70,
+      "type": "training_only"
+    }
+  },
+  "significance_testing": {
+    "method": "Paired Monte Carlo Permutation Test",
+    "num_samples": 5000,
+    "seed": 42,
+    "alpha": 0.05,
+    "correction": "Bonferroni (alpha_adj = 0.05 / 3 = 0.0167)"
+  }
+}

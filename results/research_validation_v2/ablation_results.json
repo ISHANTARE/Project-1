@@ -1,0 +1,356 @@
+{
+  "held_out_test_split": {
+    "corpus": "data\\evaluation\\test_split.json",
+    "n_sentences": 20,
+    "n_candidate_tokens": 78,
+    "full_f1": 0.8702,
+    "ablations": {
+      "Full LAPS (All 6 Features + Soft Sigmoid + KG)": {
+        "precision": 0.9048,
+        "recall": 0.8382,
+        "f1": 0.8702,
+        "accuracy": 0.7821,
+        "tp": 57,
+        "fp": 6,
+        "fn": 11,
+        "tn": 4,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without BF (-BF)": {
+        "precision": 0.8929,
+        "recall": 0.7353,
+        "f1": 0.8065,
+        "accuracy": 0.6923,
+        "tp": 50,
+        "fp": 6,
+        "fn": 18,
+        "tn": 4,
+        "delta_f1": -0.0637
+      },
+      "Ablation: Without DS (-DS)": {
+        "precision": 0.9048,
+        "recall": 0.8382,
+        "f1": 0.8702,
+        "accuracy": 0.7821,
+        "tp": 57,
+        "fp": 6,
+        "fn": 11,
+        "tn": 4,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without SI (-SI)": {
+        "precision": 0.8966,
+        "recall": 0.7647,
+        "f1": 0.8254,
+        "accuracy": 0.7179,
+        "tp": 52,
+        "fp": 6,
+        "fn": 16,
+        "tn": 4,
+        "delta_f1": -0.0448
+      },
+      "Ablation: Without CC (-CC)": {
+        "precision": 0.9123,
+        "recall": 0.7647,
+        "f1": 0.832,
+        "accuracy": 0.7308,
+        "tp": 52,
+        "fp": 5,
+        "fn": 16,
+        "tn": 5,
+        "delta_f1": -0.0382
+      },
+      "Ablation: Without AF (-AF)": {
+        "precision": 0.9032,
+        "recall": 0.8235,
+        "f1": 0.8615,
+        "accuracy": 0.7692,
+        "tp": 56,
+        "fp": 6,
+        "fn": 12,
+        "tn": 4,
+        "delta_f1": -0.0087
+      },
+      "Ablation: Without TB (-TB)": {
+        "precision": 0.8676,
+        "recall": 0.8676,
+        "f1": 0.8676,
+        "accuracy": 0.7692,
+        "tp": 59,
+        "fp": 9,
+        "fn": 9,
+        "tn": 1,
+        "delta_f1": -0.0026
+      },
+      "Ablation: Without Register Thresholds (Fixed theta=0.50)": {
+        "precision": 0.918,
+        "recall": 0.8235,
+        "f1": 0.8682,
+        "accuracy": 0.7821,
+        "tp": 56,
+        "fp": 5,
+        "fn": 12,
+        "tn": 5,
+        "delta_f1": -0.002
+      },
+      "Ablation: Without Soft Sigmoid (Hard Cutoff, No Uncertainty)": {
+        "precision": 0.9138,
+        "recall": 0.7794,
+        "f1": 0.8413,
+        "accuracy": 0.7436,
+        "tp": 53,
+        "fp": 5,
+        "fn": 15,
+        "tn": 5,
+        "delta_f1": -0.0289
+      },
+      "Ablation: Without Knowledge Graph (No Ego Density Bonus)": {
+        "precision": 0.9016,
+        "recall": 0.8088,
+        "f1": 0.8527,
+        "accuracy": 0.7564,
+        "tp": 55,
+        "fp": 6,
+        "fn": 13,
+        "tn": 4,
+        "delta_f1": -0.0175
+      }
+    }
+  },
+  "validation_split": {
+    "corpus": "data\\evaluation\\val_split.json",
+    "n_sentences": 15,
+    "n_candidate_tokens": 52,
+    "full_f1": 0.9053,
+    "ablations": {
+      "Full LAPS (All 6 Features + Soft Sigmoid + KG)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without BF (-BF)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without DS (-DS)": {
+        "precision": 0.8462,
+        "recall": 1.0,
+        "f1": 0.9167,
+        "accuracy": 0.8462,
+        "tp": 44,
+        "fp": 8,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0114
+      },
+      "Ablation: Without SI (-SI)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without CC (-CC)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without AF (-AF)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without TB (-TB)": {
+        "precision": 0.8462,
+        "recall": 1.0,
+        "f1": 0.9167,
+        "accuracy": 0.8462,
+        "tp": 44,
+        "fp": 8,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0114
+      },
+      "Ablation: Without Register Thresholds (Fixed theta=0.50)": {
+        "precision": 0.8462,
+        "recall": 1.0,
+        "f1": 0.9167,
+        "accuracy": 0.8462,
+        "tp": 44,
+        "fp": 8,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0114
+      },
+      "Ablation: Without Soft Sigmoid (Hard Cutoff, No Uncertainty)": {
+        "precision": 0.8462,
+        "recall": 1.0,
+        "f1": 0.9167,
+        "accuracy": 0.8462,
+        "tp": 44,
+        "fp": 8,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0114
+      },
+      "Ablation: Without Knowledge Graph (No Ego Density Bonus)": {
+        "precision": 0.8431,
+        "recall": 0.9773,
+        "f1": 0.9053,
+        "accuracy": 0.8269,
+        "tp": 43,
+        "fp": 8,
+        "fn": 1,
+        "tn": 0,
+        "delta_f1": 0.0
+      }
+    }
+  },
+  "gold_corpus": {
+    "corpus": "data\\evaluation\\gold_corpus.json",
+    "n_sentences": 100,
+    "n_candidate_tokens": 327,
+    "full_f1": 0.955,
+    "ablations": {
+      "Full LAPS (All 6 Features + Soft Sigmoid + KG)": {
+        "precision": 0.9281,
+        "recall": 0.9834,
+        "f1": 0.955,
+        "accuracy": 0.9144,
+        "tp": 297,
+        "fp": 23,
+        "fn": 5,
+        "tn": 2,
+        "delta_f1": 0.0
+      },
+      "Ablation: Without BF (-BF)": {
+        "precision": 0.9351,
+        "recall": 0.9536,
+        "f1": 0.9443,
+        "accuracy": 0.896,
+        "tp": 288,
+        "fp": 20,
+        "fn": 14,
+        "tn": 5,
+        "delta_f1": -0.0107
+      },
+      "Ablation: Without DS (-DS)": {
+        "precision": 0.9313,
+        "recall": 0.9868,
+        "f1": 0.9582,
+        "accuracy": 0.9205,
+        "tp": 298,
+        "fp": 22,
+        "fn": 4,
+        "tn": 3,
+        "delta_f1": 0.0032
+      },
+      "Ablation: Without SI (-SI)": {
+        "precision": 0.9365,
+        "recall": 0.9768,
+        "f1": 0.9562,
+        "accuracy": 0.9174,
+        "tp": 295,
+        "fp": 20,
+        "fn": 7,
+        "tn": 5,
+        "delta_f1": 0.0012
+      },
+      "Ablation: Without CC (-CC)": {
+        "precision": 0.9283,
+        "recall": 0.9868,
+        "f1": 0.9567,
+        "accuracy": 0.9174,
+        "tp": 298,
+        "fp": 23,
+        "fn": 4,
+        "tn": 2,
+        "delta_f1": 0.0017
+      },
+      "Ablation: Without AF (-AF)": {
+        "precision": 0.9365,
+        "recall": 0.9768,
+        "f1": 0.9562,
+        "accuracy": 0.9174,
+        "tp": 295,
+        "fp": 20,
+        "fn": 7,
+        "tn": 5,
+        "delta_f1": 0.0012
+      },
+      "Ablation: Without TB (-TB)": {
+        "precision": 0.9235,
+        "recall": 1.0,
+        "f1": 0.9603,
+        "accuracy": 0.9235,
+        "tp": 302,
+        "fp": 25,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0053
+      },
+      "Ablation: Without Register Thresholds (Fixed theta=0.50)": {
+        "precision": 0.9235,
+        "recall": 1.0,
+        "f1": 0.9603,
+        "accuracy": 0.9235,
+        "tp": 302,
+        "fp": 25,
+        "fn": 0,
+        "tn": 0,
+        "delta_f1": 0.0053
+      },
+      "Ablation: Without Soft Sigmoid (Hard Cutoff, No Uncertainty)": {
+        "precision": 0.9292,
+        "recall": 1.0,
+        "f1": 0.9633,
+        "accuracy": 0.9297,
+        "tp": 302,
+        "fp": 23,
+        "fn": 0,
+        "tn": 2,
+        "delta_f1": 0.0083
+      },
+      "Ablation: Without Knowledge Graph (No Ego Density Bonus)": {
+        "precision": 0.9357,
+        "recall": 0.9636,
+        "f1": 0.9494,
+        "accuracy": 0.9052,
+        "tp": 291,
+        "fp": 20,
+        "fn": 11,
+        "tn": 5,
+        "delta_f1": -0.0056
+      }
+    }
+  }
+}

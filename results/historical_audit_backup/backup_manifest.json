@@ -1,0 +1,52 @@
+{
+  "results/benchmark_real_neural_gold_100.json": {
+    "backup_dest": "results\\historical_audit_backup\\benchmark_real_neural_gold_100.json",
+    "sha256": "d50219af9bc4fca479a7ea08e1bc25df893689353bedf0435c6539999f391f49",
+    "size_bytes": 5856
+  },
+  "results/predictions_real_neural_gold_100.json": {
+    "backup_dest": "results\\historical_audit_backup\\predictions_real_neural_gold_100.json",
+    "sha256": "27a1e833a975aa7c654ffa34d407115de179ada3f17dbb83090370b3473f6f6a",
+    "size_bytes": 141658
+  },
+  "results/benchmark_real_neural_test_split.json": {
+    "backup_dest": "results\\historical_audit_backup\\benchmark_real_neural_test_split.json",
+    "sha256": "9781ab594884d174c02ccdc5178f54a15fbfa82bc4e05b270d736527dd424003",
+    "size_bytes": 5855
+  },
+  "results/predictions_real_neural_test_split.json": {
+    "backup_dest": "results\\historical_audit_backup\\predictions_real_neural_test_split.json",
+    "sha256": "f999228a7e768e3b4a9ce4f8d8663f57554a0895f85b2ec23d313b61b93291d7",
+    "size_bytes": 29757
+  },
+  "results/benchmark_results_v2.json": {
+    "backup_dest": "results\\historical_audit_backup\\benchmark_results_v2.json",
+    "sha256": "9781ab594884d174c02ccdc5178f54a15fbfa82bc4e05b270d736527dd424003",
+    "size_bytes": 5855
+  },
+  "results/latency_results.json": {
+    "backup_dest": "results\\historical_audit_backup\\latency_results.json",
+    "sha256": "79c7df24dfc5686705340f6f0c0ffb4d1e75fdf2bc4f9d71cea87c1fac0565b4",
+    "size_bytes": 821
+  },
+  "results/ablation_results_audited.json": {
+    "backup_dest": "results\\historical_audit_backup\\ablation_results_audited.json",
+    "sha256": "fa701100a62578a87a34ba4104c5bbfafc3ee5604a95bc6a072cb594d6248495",
+    "size_bytes": 2645
+  },
+  "results/ablation_results_val.json": {
+    "backup_dest": "results\\historical_audit_backup\\ablation_results_val.json",
+    "sha256": "c3d77bac976ba60883fca5818ff43f457aef4f7d7e096ebf7424080e77d9ec43",
+    "size_bytes": 2602
+  },
+  "results/operational_latency_profile.json": {
+    "backup_dest": "results\\historical_audit_backup\\operational_latency_profile.json",
+    "sha256": "1bc0adb11adb3af59762ec03a441c7f1669efb58c3dcce6e31a6cc653272069f",
+    "size_bytes": 2594
+  },
+  "docs/research_validation/evidence_manifest.json": {
+    "backup_dest": "results\\historical_audit_backup\\evidence_manifest.json",
+    "sha256": "a8cf7ab146516e71e06f2e63f891cbace816ecbc0e5d222576f7994380dc72b7",
+    "size_bytes": 2507
+  }
+}

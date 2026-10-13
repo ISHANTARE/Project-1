@@ -1,0 +1,73 @@
+{
+  "test_split_statistical_tests": {
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "p_value": 0.0002,
+      "delta": 0.6596,
+      "ci_lower": 0.5167,
+      "ci_upper": 0.7908,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Static Dictionary Filter": {
+      "p_value": 0.0002,
+      "delta": 0.693,
+      "ci_lower": 0.5452,
+      "ci_upper": 0.825,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Unconstrained NMT Baseline": {
+      "p_value": 0.0002,
+      "delta": 0.7063,
+      "ci_lower": 0.5619,
+      "ci_upper": 0.8307,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    }
+  },
+  "gold_corpus_statistical_tests": {
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "p_value": 0.0002,
+      "delta": 0.6662,
+      "ci_lower": 0.6041,
+      "ci_upper": 0.726,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Static Dictionary Filter": {
+      "p_value": 0.0002,
+      "delta": 0.7125,
+      "ci_lower": 0.6545,
+      "ci_upper": 0.7642,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Unconstrained NMT Baseline": {
+      "p_value": 0.0002,
+      "delta": 0.7472,
+      "ci_lower": 0.6968,
+      "ci_upper": 0.795,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    }
+  },
+  "test_parameters": {
+    "test_type": "Paired Monte Carlo Permutation Test",
+    "iterations": 5000,
+    "random_seed": 42,
+    "bonferroni_adjusted_alpha": 0.016666666666666666,
+    "bootstrap_confidence_intervals": "95% BCa"
+  }
+}

@@ -46,7 +46,13 @@ GOLD_CORPUS = PROJECT_ROOT / "data" / "evaluation" / "gold_corpus.json"
 OUTPUT_FILE = PROJECT_ROOT / "results" / "operational_latency_profile.json"
 
 
-def profile_pipeline(sentences: List[Dict[str, Any]], n_warmup: int = 5, sample_size: int = 25) -> Dict[str, Any]:
+def profile_pipeline(
+    sentences: List[Dict[str, Any]],
+    n_warmup: int = 5,
+    sample_size: int = 25,
+    output_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    out_target = output_path or OUTPUT_FILE
     print(f"[INFO] Profiling operational latency on {sample_size} sample sentences (warmup={n_warmup})...")
 
     # Load resources
@@ -200,11 +206,11 @@ def profile_pipeline(sentences: List[Dict[str, Any]], n_warmup: int = 5, sample_
         ),
     }
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    out_target.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_target, "w", encoding="utf-8") as f:
         json.dump(profile_data, f, indent=2)
 
-    print(f"\n[RESULTS] Latency profile successfully exported to {OUTPUT_FILE}")
+    print(f"\n[RESULTS] Latency profile successfully exported to {out_target}")
     print("\nStage Breakdown (Mean / Median / P95 ms):")
     for k, v in profile_data["stages"].items():
         print(f"  {k:<35} : mean={v['mean_ms']:>6.2f} ms | med={v['median_ms']:>6.2f} ms | p95={v['p95_ms']:>6.2f} ms")
@@ -213,10 +219,16 @@ def profile_pipeline(sentences: List[Dict[str, Any]], n_warmup: int = 5, sample_
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Profile operational latency across LAPS stages")
+    parser.add_argument("--output", type=Path, default=OUTPUT_FILE, help="Path to output JSON")
+    parser.add_argument("--sample-size", type=int, default=20, help="Number of sentences to profile")
+    args = parser.parse_args()
+
     with open(GOLD_CORPUS, encoding="utf-8") as f:
         data = json.load(f)
     sentences = data.get("sentences", data) if isinstance(data, dict) else data
-    profile_pipeline(sentences, n_warmup=3, sample_size=20)
+    profile_pipeline(sentences, n_warmup=3, sample_size=args.sample_size, output_path=args.output)
 
 
 if __name__ == "__main__":
