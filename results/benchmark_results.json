@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "experiment_timestamp": "2026-10-13 00:59:43",
+    "experiment_timestamp": "2026-10-13 14:58:37",
     "corpus_path": "data\\evaluation\\gold_corpus.json",
     "corpus_size": 100,
     "sacrebleu_version": "2.6.0",
@@ -41,14 +41,14 @@
       "token_f1": 0.9567,
       "backend_execution_mode": "DETERMINISTIC_SURROGATE_FALLBACK",
       "latency": {
-        "mean_total_ms": 0.63,
-        "std_total_ms": 0.71,
-        "mean_preproc_ms": 0.1,
-        "std_preproc_ms": 0.07,
-        "mean_per_token_ms": 0.03,
-        "p95_total_ms": 1.23,
-        "min_total_ms": 0.25,
-        "max_total_ms": 6.32,
+        "mean_total_ms": 0.21,
+        "std_total_ms": 0.26,
+        "mean_preproc_ms": 0.03,
+        "std_preproc_ms": 0.01,
+        "mean_per_token_ms": 0.01,
+        "p95_total_ms": 0.37,
+        "min_total_ms": 0.12,
+        "max_total_ms": 2.43,
         "scope": "Scoring + XML compilation on pre-cached features (excludes embedding extraction)"
       }
     },
@@ -153,7 +153,7 @@
       "ci_upper": 0.0342,
       "num_samples": 5000,
       "seed": 42,
-      "test_name": "Paired Permutation / Sign-Flip Test",
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
       "bonferroni_significant": true
     },
     "Static Dictionary Filter": {
@@ -163,7 +163,7 @@
       "ci_upper": 0.0639,
       "num_samples": 5000,
       "seed": 42,
-      "test_name": "Paired Permutation / Sign-Flip Test",
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
       "bonferroni_significant": true
     },
     "Unconstrained NMT Baseline": {
@@ -173,7 +173,7 @@
       "ci_upper": 0.1093,
       "num_samples": 5000,
       "seed": 42,
-      "test_name": "Paired Permutation / Sign-Flip Test",
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
       "bonferroni_significant": true
     }
   }
