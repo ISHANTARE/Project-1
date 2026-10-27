@@ -125,6 +125,15 @@ class NMTTranslationEngine:
 
             self._tokenizer = AutoTokenizer.from_pretrained(self.model_name)
             self._model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name).to(self.device)
+
+            # Filter unknown kwargs (e.g. next_sequence_length passed by constrained-beam-search on modern MarianMT)
+            import inspect
+            orig_forward = self._model.forward
+            sig = inspect.signature(orig_forward).parameters
+            self._model.forward = lambda *args, **kwargs: orig_forward(
+                *args, **{k: v for k, v in kwargs.items() if k in sig}
+            )
+
             self._is_loaded = True
 
             logger.info(

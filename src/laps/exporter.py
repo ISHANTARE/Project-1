@@ -322,7 +322,14 @@ def export_to_pdf(
             pdf.set_x(12)
             pdf.cell(186, 3.8, _clean_latin(line), ln=True)
 
-    pdf_bytes = pdf.output()
+    # Support both modern fpdf2 (returns bytes/bytearray) and legacy fpdf (returns str with dest='S')
+    try:
+        out = pdf.output(dest="S")
+        pdf_bytes = out.encode("latin1") if isinstance(out, str) else bytes(out)
+    except TypeError:
+        out = pdf.output()
+        pdf_bytes = out.encode("latin1") if isinstance(out, str) else bytes(out)
+
     if output_path:
         p = Path(output_path)
         p.parent.mkdir(parents=True, exist_ok=True)
