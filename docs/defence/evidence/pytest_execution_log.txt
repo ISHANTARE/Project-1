@@ -1,0 +1,122 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\aryan\AppData\Local\Programs\Python\Python310\python.exe
+cachedir: .pytest_cache
+Fugue tests will be initialized with options:
+rootdir: D:\Project-1-main\Project-1-main
+plugins: anyio-4.15.0, fugue-0.9.7, asyncio-1.4.0, cov-7.1.0
+asyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 45 items
+
+tests/test_laps.py::TestCMIDetector::test_monolingual_english PASSED     [  2%]
+tests/test_laps.py::TestCMIDetector::test_code_mixed_hinglish PASSED     [  4%]
+tests/test_laps.py::TestTokenizer::test_tokenization_and_lid PASSED      [  6%]
+tests/test_laps.py::TestNeuralLanguageIdentifier::test_neural_char_lid_inference PASSED [  8%]
+tests/test_laps.py::TestCorpusGroundedFeatures::test_extract_features_oov_word PASSED [ 11%]
+tests/test_laps.py::TestCorpusGroundedFeatures::test_tb_syntactic_differentiation PASSED [ 13%]
+tests/test_laps.py::TestKnowledgeGraphEngine::test_graph_engine_singleton PASSED [ 15%]
+tests/test_laps.py::TestScorerAndSigmoid::test_compute_score_bounds PASSED [ 17%]
+tests/test_laps.py::TestScorerAndSigmoid::test_sigmoid_probabilities PASSED [ 20%]
+tests/test_laps.py::TestScorerAndSigmoid::test_decide_zones PASSED       [ 22%]
+tests/test_laps.py::TestRewriterAndExplainer::test_xml_prompt_construction PASSED [ 24%]
+tests/test_laps.py::TestRewriterAndExplainer::test_offline_rewriter PASSED [ 26%]
+tests/test_laps.py::TestEndToEndPipeline::test_pipeline_execution PASSED [ 28%]
+tests/test_laps.py::TestEndToEndPipeline::test_monolingual_passthrough_no_fake_scores PASSED [ 31%]
+tests/test_laps.py::TestBenchmarkSplitsIntegrity::test_splits_exist_and_non_circular PASSED [ 33%]
+tests/test_laps.py::TestHomographDisambiguation::test_short_utterance_homographs PASSED [ 35%]
+tests/test_laps.py::TestRegisterDetector::test_auto_register_detection PASSED [ 37%]
+tests/test_laps.py::TestRegisterDetector::test_pipeline_with_auto_register PASSED [ 40%]
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports PASSED [ 42%]
+tests/test_laps.py::TestNMTBackendAndConstraints::test_model_family_detection PASSED [ 44%]
+tests/test_laps.py::TestNMTBackendAndConstraints::test_constrained_translation_preservation PASSED [ 46%]
+tests/test_laps.py::TestEdgeCasesAndEmptyInput::test_empty_and_whitespace_input PASSED [ 48%]
+tests/test_laps.py::TestEdgeCasesAndEmptyInput::test_numeric_and_punct_input PASSED [ 51%]
+tests/test_laps.py::TestPreservationClassifierEvaluation::test_classifier_evaluation_standard PASSED [ 53%]
+tests/test_laps.py::TestPreservationClassifierEvaluation::test_unconstrained_baseline_reports_na_not_zero PASSED [ 55%]
+tests/test_laps.py::TestOutputPreservationEvaluation::test_output_credit_for_unconstrained_baseline PASSED [ 57%]
+tests/test_laps.py::TestOutputPreservationEvaluation::test_output_preservation_case_and_punct PASSED [ 60%]
+tests/test_laps.py::TestSacreBLEUAndChrFMetrics::test_identical_hypothesis_and_reference PASSED [ 62%]
+tests/test_laps.py::TestSacreBLEUAndChrFMetrics::test_disjoint_text PASSED [ 64%]
+tests/test_laps.py::TestSacreBLEUAndChrFMetrics::test_empty_input_graceful_handling PASSED [ 66%]
+tests/test_laps.py::TestSacreBLEUAndChrFMetrics::test_corpus_level_multi_sentence_metric_alignment PASSED [ 68%]
+tests/test_laps.py::TestPairedPermutationSignificance::test_identical_series_yields_null PASSED [ 71%]
+tests/test_laps.py::TestPairedPermutationSignificance::test_large_difference_finite_p_value PASSED [ 73%]
+tests/test_laps.py::TestPairedPermutationSignificance::test_reproducibility_under_seed PASSED [ 75%]
+tests/test_laps.py::TestUTERAnnotationLimitationAndProxy::test_uter_status_and_matrix_leakage PASSED [ 77%]
+tests/test_laps.py::TestBackendExecutionModeTelemetry::test_telemetry_reports_execution_mode PASSED [ 80%]
+tests/test_laps.py::TestDataSplitIntegrityAndLeakage::test_split_disjointness PASSED [ 82%]
+tests/test_laps.py::TestSurrogateReferenceIndependenceAndExactMatchAudit::test_surrogate_has_no_reference_lookup_or_id_access PASSED [ 84%]
+tests/test_laps.py::TestSurrogateReferenceIndependenceAndExactMatchAudit::test_s001_exact_match_mechanism_and_coincidence PASSED [ 86%]
+tests/test_laps.py::TestSurrogateReferenceIndependenceAndExactMatchAudit::test_exact_match_rate_across_gold_corpus PASSED [ 88%]
+tests/test_laps.py::TestOOVRecordSchemaValidation::test_all_five_oov_records_present PASSED [ 91%]
+tests/test_laps.py::TestOOVRecordSchemaValidation::test_oov_records_have_required_top_level_fields PASSED [ 93%]
+tests/test_laps.py::TestOOVRecordSchemaValidation::test_oov_token_schema_correct_and_no_features_cache PASSED [ 95%]
+tests/test_laps.py::TestOOVRecordSchemaValidation::test_live_feature_extraction_for_oov_tokens PASSED [ 97%]
+tests/test_laps.py::TestDatasetIntegrityAuditorSchemaResult::test_schema_valid_with_type_discriminated_validator PASSED [100%]
+
+============================== warnings summary ===============================
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:202: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(0, 7, "LAPS: Linguistic Adaptive Preservation Scoring", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:205: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(0, 5, "Token-Level Decision Audit & Explainability Report | VIT Project-I", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:211: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(0, 6, "1. RUN METADATA", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:217: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=False use new_x=XPos.RIGHT, new_y=YPos.TOP.
+    pdf.cell(90, 5, _clean_latin(f"Run ID: {meta.get('run_id')}"), ln=False)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:218: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(90, 5, _clean_latin(f"Timestamp: {meta.get('timestamp')}"), ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:219: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=False use new_x=XPos.RIGHT, new_y=YPos.TOP.
+    pdf.cell(90, 5, _clean_latin(f"Backend: {meta.get('backend_details')}"), ln=False)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:220: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(90, 5, _clean_latin(f"Register: {sent_info.get('register')}"), ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:221: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=False use new_x=XPos.RIGHT, new_y=YPos.TOP.
+    pdf.cell(90, 5, _clean_latin(f"Language Mode: {sent_info.get('cmi_mode')}"), ln=False)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:222: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(90, 5, _clean_latin(f"Code-Mixing Index (CMI): {sent_info.get('cmi_score')} %"), ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:231: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(186, 6, "2. SENTENCE REWRITING SUMMARY", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:235: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(186, 5, "Original Input:", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:244: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(186, 5, "Rewritten Output:", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:253: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=False use new_x=XPos.RIGHT, new_y=YPos.TOP.
+    pdf.cell(35, 5, "Preserved Entities:", ln=False)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:256: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(151, 5, _clean_latin(preserved_str), ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:263: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(186, 6, "3. TOKEN-LEVEL LAPS DECISION MATRIX", ln=True)
+
+tests/test_laps.py::TestAuditReportExporter::test_multi_format_exports
+  D:\Project-1-main\Project-1-main\src\laps\exporter.py:301: DeprecationWarning: The parameter "ln" is deprecated since v2.5.2. Instead of ln=True use new_x=XPos.LMARGIN, new_y=YPos.NEXT.
+    pdf.cell(186, 6, "4. EXPLANATIONS & RATIONALES", ln=True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 45 passed, 16 warnings in 27.51s =======================

@@ -41,7 +41,11 @@ try:
 except ImportError:
     wordfreq = None
 
-from sentence_transformers import SentenceTransformer, util
+try:
+    from sentence_transformers import SentenceTransformer, util
+except ImportError:
+    SentenceTransformer = None  # type: ignore[assignment, misc]
+    util = None                 # type: ignore[assignment]
 
 try:
     from src.laps.graph_engine import get_graph_engine
@@ -53,10 +57,15 @@ VOCAB_DIR = Path(__file__).resolve().parents[2] / "data" / "vocabulary"
 BF_PATH   = VOCAB_DIR / "borrowing_frequency.json"
 
 # Load SentenceTransformer model once (cached singleton)
-_MODEL: Optional[SentenceTransformer] = None
+_MODEL: Optional[Any] = None
 
-def _get_embedding_model() -> SentenceTransformer:
+def _get_embedding_model() -> Any:
     global _MODEL
+    if SentenceTransformer is None:
+        raise ImportError(
+            "sentence-transformers is required for live neural embedding extraction. "
+            "Please install it using: pip install sentence-transformers"
+        )
     if _MODEL is None:
         _MODEL = SentenceTransformer("all-MiniLM-L6-v2")
     return _MODEL

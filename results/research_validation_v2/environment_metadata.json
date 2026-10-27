@@ -1,0 +1,12 @@
+{
+  "audit_timestamp": "2026-10-13 13:40:37 UTC",
+  "os": "Windows 10",
+  "python_version": "3.10.9",
+  "torch_version": "2.11.0+cu128",
+  "cuda_available": true,
+  "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "gpu_memory_allocated_mb": 0.0,
+  "gpu_memory_total_mb": 6140.5,
+  "transformers_model": "Helsinki-NLP/opus-mt-hi-en",
+  "strict_neural_required": true
+}

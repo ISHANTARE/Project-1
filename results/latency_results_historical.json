@@ -1,0 +1,14 @@
+{
+  "n_sentences": 100,
+  "corpus": "D:\\Project-1-main\\Project-1-main\\data\\evaluation\\gold_corpus.json",
+  "mean_total_ms": 0.21,
+  "std_total_ms": 0.34,
+  "mean_preproc_ms": 0.03,
+  "std_preproc_ms": 0.01,
+  "mean_per_token_ms": 0.01,
+  "p95_total_ms": 0.36,
+  "min_total_ms": 0.12,
+  "max_total_ms": 3.16,
+  "total_corpus_wall_time_s": 0.022,
+  "note": "Wall-clock latency measured on CPU (no GPU). Includes feature extraction (MiniLM embeddings + SQLite KG queries) and XML constraint compilation. Excludes downstream NMT/LLM inference time."
+}

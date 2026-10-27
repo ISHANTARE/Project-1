@@ -1,0 +1,386 @@
+{
+  "test_split": [
+    {
+      "id": "S005",
+      "register": "business",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "laps_output": "And this is presentation, so this is equal to circum. And that is equal even to the 2th. And this becomes a problem. And the answer is positive. And we have to do that. And it's not just a negative one. And confidence",
+      "laps_constraints_satisfied": [
+        "presentation",
+        "confidence"
+      ],
+      "uncon_output": "And this isn't a problem, it's better than a third.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S055",
+      "register": "academic",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "laps_output": "Answering dataset preprocessing the data...? ! . .? . m.?? ??? a.? you can only use the information as the location of the page. You can only ask for the information. You could training",
+      "laps_constraints_satisfied": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "uncon_output": "So if you want a copy of this document, do you want to learn more about it?",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S076",
+      "register": "academic",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "laps_output": "If you can submit, assignment press, you'll have to be the one who's really scared... I'm not sure.. You're not going to be a bit too late. I can't be sure you're going to have homework",
+      "laps_constraints_satisfied": [
+        "homework",
+        "submit",
+        "assignment"
+      ],
+      "uncon_output": "So if you want to, you're going to have a good day.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S012",
+      "register": "casual",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "laps_output": "I want to do this ... I want a ji. So this is a cysa../ . .?/ I want you to . I do not want to add . So you want to understand. ? ., camera phone",
+      "laps_constraints_satisfied": [
+        "phone",
+        "camera"
+      ],
+      "uncon_output": "I want to do this by telling you how much I want you to do.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S070",
+      "register": "social",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "laps_output": "If you comment, negative contacts are present. You can use this button to check the amount of time that you want to add to your system, but you can use to check your system's configuration to check that you have a list of positive effects on your system and that you can change your section",
+      "laps_constraints_satisfied": [
+        "comment",
+        "section",
+        "negative"
+      ],
+      "uncon_output": "If you add a message, let's just try again.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S087",
+      "register": "casual",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "laps_output": "So what share available here is that? Let me draw the line... I'm going to have to do this. I want to do the same.. And I'll get to the point..... I've got to say that.. \" I're going headphones",
+      "laps_constraints_satisfied": [
+        "headphones",
+        "available",
+        "share"
+      ],
+      "uncon_output": "So what do you think is going to do with that?",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S014",
+      "register": "casual",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "laps_output": "So this isn't a problem, the office is a problem... So, what's happening? . .? ? , the school is not a problem with the world. I'm not a threat to the world today. I know you can do weather office",
+      "laps_constraints_satisfied": [
+        "weather",
+        "office"
+      ],
+      "uncon_output": "So this isn't a problem, the office is here.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S018",
+      "register": "business",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "laps_output": "So this morale motique , it's intercepted by the tesec.. ...?/ .? . , the solution to . m. .\"/ , . you can . the solution? , you can team",
+      "laps_constraints_satisfied": [
+        "team",
+        "morale"
+      ],
+      "uncon_output": "So this is the same thing as this, now let's see how this is done.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S029",
+      "register": "casual",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "laps_output": "Let's walk it's going to be a big problem. And then you're going to have to try it... And you'll have to do that.. You're not going to want to do this. You have to be an example for me.. park",
+      "laps_constraints_satisfied": [
+        "park",
+        "walk"
+      ],
+      "uncon_output": "So let's see if I want to.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S032",
+      "register": "casual",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "laps_output": "What cricket is that? ! ! What's the problem? ? . .?  .. ? m. ! I'm not sure.? I'll do it... m.?? I can't do score match",
+      "laps_constraints_satisfied": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "uncon_output": "What's the difference with the zeroet?",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S036",
+      "register": "business",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "laps_output": "Let's get the revisitor quarterly get ions, then get them all out. ..com/ sm.com .comm./m. [ . ]/ . m3 .] So targets strategy",
+      "laps_constraints_satisfied": [
+        "quarterly",
+        "targets",
+        "strategy",
+        "revisit"
+      ],
+      "uncon_output": "Let's get it all right, I'm going to get it.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S095",
+      "register": "business",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "laps_output": "Promotion quarter Im permanion ret rethahath: per s rep prom/ mor/ promot.com repro proo/ re- prommart re-de pros perfortator repose reposit review",
+      "laps_constraints_satisfied": [
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "uncon_output": "Promotion:",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S004",
+      "register": "business",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "laps_output": "The crash is just server. The debugre is an error. If you want to proceed, you need to do more than change your state. You can only move forward with a positive response. The solution is to change your way of life. You need to try to do production",
+      "laps_constraints_satisfied": [
+        "server",
+        "debug",
+        "production",
+        "crash"
+      ],
+      "uncon_output": "The server looks at a number of ways, and it's going to be different.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S015",
+      "register": "academic",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "laps_output": "Learn how to do this in a model learn how to solve ob learn from it learn how you can learn to learn about it \u00b7 Global Voices \u00b7 learning a obliquity is a real problem. You can also help your child to develop a positive attitude machine accuracy",
+      "laps_constraints_satisfied": [
+        "machine",
+        "learning",
+        "model",
+        "accuracy"
+      ],
+      "uncon_output": "Learn how to do this",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S082",
+      "register": "academic",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "laps_output": "Use researchable memory methodology to show the current location at the top of the page: %1/ s. Please specify a number of numbers at the bottom of the list. The default value is invalid. The goal is to change the number of times you want to do at the right time attendance",
+      "laps_constraints_satisfied": [
+        "research",
+        "methodology",
+        "attendance"
+      ],
+      "uncon_output": "If you would like to write a report in the configuration file, check it out.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_001",
+      "register": "business",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "gold_preserved": [
+        "cluster",
+        "controller",
+        "ingress",
+        "kubernetes",
+        "traffic"
+      ],
+      "laps_output": "If you controllernets route, you can use a single shot-out button to check the configuration. You can use this to start a call.. You need to check your settings. You want to do that. You have to start using this button. You should try to traffic",
+      "laps_constraints_satisfied": [
+        "controller",
+        "traffic",
+        "route"
+      ],
+      "uncon_output": "If you're looking at a movie, you'll find it on the right side of the page.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_002",
+      "register": "business",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "gold_preserved": [
+        "biochemistry",
+        "mri",
+        "patient",
+        "report",
+        "scan"
+      ],
+      "laps_output": "So I report to patsu patio and his blood-sirtystrologers in the first month of the year. I'm not going to be a bad person. I want you to do something about it. I just want to do it.. I don' patient",
+      "laps_constraints_satisfied": [
+        "patient",
+        "blood",
+        "report"
+      ],
+      "uncon_output": "So this isn't a good idea.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_003",
+      "register": "business",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "gold_preserved": [
+        "allocation",
+        "asset",
+        "capital",
+        "gains",
+        "portfolio",
+        "tax"
+      ],
+      "laps_output": "If you want to taxi, you can get a message from the original document. You can also change it by clicking it on the right order. If you have a message, then you can set it up as the top page. You could also change the order by saying: \" capital",
+      "laps_constraints_satisfied": [
+        "capital",
+        "tax"
+      ],
+      "uncon_output": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_004",
+      "register": "academic",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "gold_preserved": [
+        "architecture",
+        "breaker",
+        "circuit",
+        "microservices",
+        "pattern"
+      ],
+      "laps_output": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+      "laps_constraints_satisfied": [],
+      "uncon_output": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+      "mode_laps": "REAL_INFERENCE_UNCONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_005",
+      "register": "casual",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "gold_preserved": [
+        "checksum",
+        "firmware",
+        "flash",
+        "patch"
+      ],
+      "laps_output": "So they checksum flash like firms phaji. Or is it pharmacy? ! p. ms. ml p.com/ msa p.m.com.com p.? . mt p.org patch direct firm",
+      "laps_constraints_satisfied": [
+        "patch",
+        "checksum",
+        "direct",
+        "flash"
+      ],
+      "uncon_output": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+      "mode_laps": "REAL_INFERENCE_CONSTRAINED",
+      "mode_uncon": "REAL_INFERENCE_UNCONSTRAINED"
+    }
+  ]
+}

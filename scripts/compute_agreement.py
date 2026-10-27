@@ -58,6 +58,26 @@ def compute_fleiss_kappa(ratings_matrix: List[List[int]]) -> Tuple[float, Dict[s
     return round(kappa, 4), stats
 
 
+def compute_cohens_kappa(rater1: List[int], rater2: List[int]) -> float:
+    """
+    Computes Cohen's Kappa for two independent raters with binary decisions.
+    """
+    if not rater1 or len(rater1) != len(rater2):
+        return 0.0
+    N = len(rater1)
+    p_o = sum(1 for a, b in zip(rater1, rater2) if a == b) / N
+
+    p1_pos = sum(rater1) / N
+    p1_neg = 1.0 - p1_pos
+    p2_pos = sum(rater2) / N
+    p2_neg = 1.0 - p2_pos
+
+    p_e = (p1_pos * p2_pos) + (p1_neg * p2_neg)
+    if abs(1.0 - p_e) < 1e-9:
+        return 1.0
+    return (p_o - p_e) / (1.0 - p_e)
+
+
 def interpret_kappa(kappa: float) -> str:
     if kappa < 0.20:
         return "Poor Agreement"
@@ -87,6 +107,7 @@ def _load_annotation_csv(csv_path: Path) -> List[List[int]]:
     """
     import csv
     matrix = []
+    rater_columns_data: Dict[str, List[int]] = {}
     with open(csv_path, encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -96,11 +117,15 @@ def _load_annotation_csv(csv_path: Path) -> List[List[int]]:
                     f"No 'rater_*' columns found in {csv_path}. "
                     "Expected columns: sentence_id, token, rater_1, rater_2, ..."
                 )
+            for r in rater_cols:
+                if r not in rater_columns_data:
+                    rater_columns_data[r] = []
+                rater_columns_data[r].append(int(row[r]))
             votes = [int(row[r]) for r in rater_cols]
             n_preserve = sum(votes)
             n_rewrite = len(votes) - n_preserve
             matrix.append([n_rewrite, n_preserve])
-    return matrix
+    return matrix, rater_columns_data
 
 
 def main():
@@ -118,7 +143,7 @@ USAGE EXAMPLES:
 IMPORTANT:
   This script requires REAL human annotation data.
   Do NOT use synthetic or algorithmically generated ratings.
-  Fleiss' Kappa is only meaningful when computed from independent human judgements.
+  Fleiss' Kappa and Cohen's Kappa are only meaningful when computed from independent human judgements.
         """
     )
     parser.add_argument(
@@ -138,7 +163,7 @@ IMPORTANT:
         return
 
     print(f"\nLoading annotations from: {args.annotations}")
-    matrix = _load_annotation_csv(args.annotations)
+    matrix, rater_data = _load_annotation_csv(args.annotations)
 
     if len(matrix) < 10:
         print(f"[WARNING] Only {len(matrix)} tokens found. "
@@ -153,6 +178,17 @@ IMPORTANT:
     print(f"- Observed Agreement (P_bar)      : {stats['observed_agreement']:.4f}")
     print(f"- Expected Agreement (P_e)        : {stats['expected_agreement']:.4f}")
     print(f"- Fleiss Kappa                    : {stats['fleiss_kappa']:.4f}")
+
+    rater_names = list(rater_data.keys())
+    if len(rater_names) == 2:
+        cohen_k = compute_cohens_kappa(rater_data[rater_names[0]], rater_data[rater_names[1]])
+        agreed_count = sum(1 for a, b in zip(rater_data[rater_names[0]], rater_data[rater_names[1]]) if a == b)
+        disagreed_count = len(rater_data[rater_names[0]]) - agreed_count
+        print(f"- Cohen Kappa (2 Raters)          : {cohen_k:.4f}")
+        print(f"- Exact Agreements Count          : {agreed_count} / {stats['n_subjects']} ({agreed_count/stats['n_subjects']*100:.2f}%)")
+        print(f"- Disagreements Count             : {disagreed_count}")
+        print(f"- Disagreement Resolution Note    : Raw annotations preserved in CSV without synthetic consensus column.")
+
     print(f"- Gwet AC1 Agreement              : {stats['gwet_ac1']:.4f}")
     print(f"- Interpretation                  : {interpret_kappa(stats['gwet_ac1'])}")
     print("=======================================================\n")

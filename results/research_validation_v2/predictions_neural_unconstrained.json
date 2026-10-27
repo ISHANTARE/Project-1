@@ -1,0 +1,851 @@
+{
+  "metadata": {
+    "system": "Unconstrained NMT Baseline",
+    "model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda"
+  },
+  "test_split": [
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "hypothesis": "And this isn't a problem, it's better than a third.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "hypothesis": "So if you want a copy of this document, do you want to learn more about it?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "hypothesis": "So if you want to, you're going to have a good day.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "hypothesis": "I want to do this by telling you how much I want you to do.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "hypothesis": "If you add a message, let's just try again.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "hypothesis": "So what do you think is going to do with that?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "hypothesis": "So this isn't a problem, the office is here.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "hypothesis": "So this is the same thing as this, now let's see how this is done.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "hypothesis": "So let's see if I want to.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "hypothesis": "What's the difference with the zeroet?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "hypothesis": "Let's get it all right, I'm going to get it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "hypothesis": "Promotion:",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "hypothesis": "The server looks at a number of ways, and it's going to be different.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "hypothesis": "Learn how to do this",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "hypothesis": "If you would like to write a report in the configuration file, check it out.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_001",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "reference": "Configure the ingress controller in the Kubernetes cluster so traffic can be routed.",
+      "hypothesis": "If you're looking at a movie, you'll find it on the right side of the page.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_002",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "reference": "Urgently request this patient's MRI scan and blood biochemistry report.",
+      "hypothesis": "So this isn't a good idea.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_003",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "reference": "Rebalance the portfolio's asset allocation to optimize capital gains tax.",
+      "hypothesis": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_004",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "reference": "Implementing the circuit breaker pattern is essential in microservices architecture.",
+      "hypothesis": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_005",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "reference": "Bro, did you verify the checksum of the new firmware patch or directly flash it?",
+      "hypothesis": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    }
+  ],
+  "gold_corpus": [
+    {
+      "id": "S001",
+      "sentence": "hi! Kisi ke pass viva calender ki link h kya?",
+      "reference": "Hi! Does anyone have the link for the viva calendar?",
+      "hypothesis": "What happened to my dad's face?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S002",
+      "sentence": "Kal client meeting postpone ho gayi, kya hum phir se schedule karein?",
+      "reference": "Tomorrow's client meeting was postponed. Should we reschedule it?",
+      "hypothesis": "I'm going to put it on, but we're going to get it?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S003",
+      "sentence": "Report ki deadline aaj hai, submission portal pe upload karo",
+      "reference": "The report deadline is today; please upload it to the submission portal.",
+      "hypothesis": "This leads to a new line. You can add it over.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "hypothesis": "The server looks at a number of ways, and it's going to be different.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "hypothesis": "And this isn't a problem, it's better than a third.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S006",
+      "sentence": "Wi-Fi ka password kya hai?",
+      "reference": "What is the Wi-Fi password?",
+      "hypothesis": "Well, that's equal to password?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S007",
+      "sentence": "Code review ke liye PR submit karo aur Slack pe notify karo",
+      "reference": "Submit the PR for code review and notify on Slack.",
+      "hypothesis": "What if you want to add all of this to the previous one?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S008",
+      "sentence": "Aaj gym nahi gaya, workout miss ho gayi",
+      "reference": "I did not go to the gym today; I missed my workout.",
+      "hypothesis": "Aaj gym hehin, heys he's old.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S009",
+      "sentence": "Kya tumhara laptop charge hai? Battery bohot low hai",
+      "reference": "Is your laptop charged? The battery is very low.",
+      "hypothesis": "So what's the difference?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S010",
+      "sentence": "Instagram pe story daalni hai, filter kaun sa lagaun?",
+      "reference": "I need to post a story on Instagram. Which filter should I use?",
+      "hypothesis": "What do you think is going to do with this thing?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S011",
+      "sentence": "Interview ka preparation ho gayi? HR round ke liye practice karo",
+      "reference": "Is the interview preparation done? Practice for the HR round.",
+      "hypothesis": "What do you think I could do with that?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "hypothesis": "I want to do this by telling you how much I want you to do.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S013",
+      "sentence": "Database schema update karna hai before deployment",
+      "reference": "The database schema needs to be updated before deployment.",
+      "hypothesis": "First of all, the value of the new value is greater than the value shown at the beginning.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "hypothesis": "So this isn't a problem, the office is here.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "hypothesis": "Learn how to do this",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S016",
+      "sentence": "Yaar, khaana order karte hain, pizza ya burger?",
+      "reference": "Hey, let us order food -- pizza or burger?",
+      "hypothesis": "Here, let's see, pizza barter, is it?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S017",
+      "sentence": "System ka RAM upgrade karna chahiye, 8GB se 16GB karo",
+      "reference": "The system's RAM should be upgraded from 8GB to 16GB.",
+      "hypothesis": "So if you want me to do this, I want you to do something for me.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "hypothesis": "So this is the same thing as this, now let's see how this is done.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S019",
+      "sentence": "Class notes share karo WhatsApp pe",
+      "reference": "Share the class notes on WhatsApp.",
+      "hypothesis": "So share",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S020",
+      "sentence": "Seminar mein attend karna compulsory hai",
+      "reference": "Attending the seminar is compulsory.",
+      "hypothesis": "And I'm going to have to do something.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S021",
+      "sentence": "Aaj movie dekhne jaana hai, ticket book kar liya?",
+      "reference": "We are going to watch a movie today. Have you booked the ticket?",
+      "hypothesis": "What do you think is going to have to do with that?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S022",
+      "sentence": "Internship ka offer letter aaya kya?",
+      "reference": "Has the internship offer letter arrived?",
+      "hypothesis": "What's this Earth like?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S023",
+      "sentence": "Song bahut catchy hai, playlist mein add karo",
+      "reference": "The song is very catchy. Add it to the playlist.",
+      "hypothesis": "So let's just do that.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S024",
+      "sentence": "Aaj shopping mall gaye the, sale chal rahi thi",
+      "reference": "We went to the shopping mall today; there was a sale.",
+      "hypothesis": "If you want to go back to that one, you're going to have to be the last one.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S025",
+      "sentence": "Car ka tyre puncture ho gaya, mechanic ko bulao",
+      "reference": "The car tyre is punctured. Call the mechanic.",
+      "hypothesis": "So if you want to work with me, I want to do something.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S026",
+      "sentence": "Coffee peete hain aur project ka plan banate hain",
+      "reference": "Let us have coffee and plan the project.",
+      "hypothesis": "Let's see what we want to do.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S027",
+      "sentence": "Bhai, game khel raha hai? Online match hai aaj",
+      "reference": "Hey, are you playing the game? There is an online match today.",
+      "hypothesis": "So what is this game like?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S028",
+      "sentence": "Headache ho raha hai, tablet leni padegi",
+      "reference": "I have a headache; I will need to take a tablet.",
+      "hypothesis": "He's going to have this issue, and he's on the right side.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "hypothesis": "So let's see if I want to.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S030",
+      "sentence": "Recharge karo, balance khatam ho gaya",
+      "reference": "Recharge the phone; the balance has run out.",
+      "hypothesis": "So let's do it, if you want to.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S031",
+      "sentence": "Padhai mein focus karo, distraction band karo",
+      "reference": "Focus on your studies and eliminate distractions.",
+      "hypothesis": "So if I don't know how to do it, do it",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "hypothesis": "What's the difference with the zeroet?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S033",
+      "sentence": "Photo edit karke Instagram pe post karo",
+      "reference": "Edit the photo and post it on Instagram.",
+      "hypothesis": "Photo Dotke Inge",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S034",
+      "sentence": "Snacks lao aur Netflix chalao, chill karte hain",
+      "reference": "Get some snacks, turn on Netflix, and let us chill.",
+      "hypothesis": "Let's see, let's do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S035",
+      "sentence": "Bus miss ho gayi, cab book karo",
+      "reference": "I missed the bus. Book a cab.",
+      "hypothesis": "Make sure you do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "hypothesis": "Let's get it all right, I'm going to get it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S037",
+      "sentence": "Invoice approve karo, vendor payment pending hai",
+      "reference": "Approve the invoice; the vendor payment is pending.",
+      "hypothesis": "When you improve, it's going to be minus 1.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S038",
+      "sentence": "Product launch ke liye marketing campaign ready karo",
+      "reference": "Prepare the marketing campaign for the product launch.",
+      "hypothesis": "No matter how many numbers you want them to hear, they're all right.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S039",
+      "sentence": "Compliance audit ke liye documents ready rakho",
+      "reference": "Keep the documents ready for the compliance audit.",
+      "hypothesis": "If you were to write a message to me, I wouldn't have been able to read it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S040",
+      "sentence": "Sprint planning meeting kal hai, backlog review karo",
+      "reference": "Sprint planning meeting is tomorrow; review the backlog.",
+      "hypothesis": "So we're going to have a positive view of what we want to do.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S041",
+      "sentence": "Stakeholder ko update bhejo, project on track hai",
+      "reference": "Send an update to the stakeholder; the project is on track.",
+      "hypothesis": "If you want to, you have to answer the last question.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S042",
+      "sentence": "Office mein attendance compulsory hai, remote nahi chalega",
+      "reference": "Attendance in the office is compulsory; remote work will not be allowed.",
+      "hypothesis": "So I'm going to get a little bit of a second, and then I'll get a second.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S043",
+      "sentence": "ROI calculate karo aur finance team ko report karo",
+      "reference": "Calculate the ROI and report to the finance team.",
+      "hypothesis": "So if you want to do it, you can use it to do so.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S044",
+      "sentence": "Appraisal cycle shuru ho rahi hai, feedback form fill karo",
+      "reference": "The appraisal cycle is starting; fill out the feedback form.",
+      "hypothesis": "So let's just draw out what's happening here.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S045",
+      "sentence": "API ka response time slow hai, optimize karna padega",
+      "reference": "The API response time is slow; it needs to be optimized.",
+      "hypothesis": "If you want to change this equation, you need to change it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S046",
+      "sentence": "Budget exceed nahi karna, cost cutting implement karo",
+      "reference": "Do not exceed the budget; implement cost cutting.",
+      "hypothesis": "bdgeted nubonica, able to clean up",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S047",
+      "sentence": "Client ko demo dena hai, prototype ready karni padegi",
+      "reference": "We need to give the client a demo; the prototype needs to be ready.",
+      "hypothesis": "So let's just try again.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S048",
+      "sentence": "Risk assessment complete karo pehle, phir proceed karo",
+      "reference": "Complete the risk assessment first, then proceed.",
+      "hypothesis": "If you don't do that, you'll have to do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S049",
+      "sentence": "Cloud migration project ka timeline share karo",
+      "reference": "Share the timeline for the cloud migration project.",
+      "hypothesis": "Make sure you want to share the timeline",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S050",
+      "sentence": "Onboarding process streamline karo naye employees ke liye",
+      "reference": "Streamline the onboarding process for new employees.",
+      "hypothesis": "So if you want to add your process, just add it to it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S051",
+      "sentence": "Neural network ka architecture improve karna hai",
+      "reference": "The neural network architecture needs to be improved.",
+      "hypothesis": "The network is also a positive and positive area.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S052",
+      "sentence": "Research paper ka abstract 250 words mein likhna hai",
+      "reference": "The research paper abstract must be written within 250 words.",
+      "hypothesis": "So let's just do that.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S053",
+      "sentence": "Plagiarism check karo submission se pehle",
+      "reference": "Perform a plagiarism check before submission.",
+      "hypothesis": "If you want to check this option, you need to check it out.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S054",
+      "sentence": "Lab experiment ka hypothesis define karo",
+      "reference": "Define the hypothesis for the lab experiment.",
+      "hypothesis": "Reb:",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "hypothesis": "So if you want a copy of this document, do you want to learn more about it?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S056",
+      "sentence": "Citation format check karo, APA ya IEEE use karna hai?",
+      "reference": "Check the citation format -- should we use APA or IEEE?",
+      "hypothesis": "So how do you manage to figure out which is the APEEE is used?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S057",
+      "sentence": "Methodology section mein algorithm ka pseudocode daalna hai",
+      "reference": "Include the algorithm pseudocode in the methodology section.",
+      "hypothesis": "So if you want to try again, you need to do something about it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S058",
+      "sentence": "Regression analysis run karo aur p-value check karo",
+      "reference": "Run the regression analysis and check the p-value.",
+      "hypothesis": "So if you want to try again and try again",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S059",
+      "sentence": "Prototype test karo aur evaluation metrics record karo",
+      "reference": "Test the prototype and record the evaluation metrics.",
+      "hypothesis": "Let's take a look at this and see what's happening in the world.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S060",
+      "sentence": "Conference paper ka submission deadline extend hogi kya?",
+      "reference": "Will the conference paper submission deadline be extended?",
+      "hypothesis": "Do you want to do that?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S061",
+      "sentence": "Twitter pe trending topic kya hai aaj?",
+      "reference": "What is the trending topic on Twitter today?",
+      "hypothesis": "Are you sure you want to meet this problem?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S062",
+      "sentence": "YouTube pe vlog upload kiya kya? Views kitne aaye?",
+      "reference": "Have you uploaded the vlog on YouTube? How many views did it get?",
+      "hypothesis": "What do you think?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S063",
+      "sentence": "Reel viral ho gayi, followers bohot badh gaye",
+      "reference": "The reel went viral and the follower count increased significantly.",
+      "hypothesis": "I'm going to put it on the top of my head.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S064",
+      "sentence": "Facebook pe status update mat karo, LinkedIn pe post karo",
+      "reference": "Do not post a status update on Facebook; post on LinkedIn instead.",
+      "hypothesis": "Facebook...",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S065",
+      "sentence": "Podcast sun raha tha, episode bahut interesting tha",
+      "reference": "I was listening to a podcast; the episode was very interesting.",
+      "hypothesis": "Move the cursor to the left",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S066",
+      "sentence": "Meme share karo, bahut funny hai yaar",
+      "reference": "Share the meme; it is very funny.",
+      "hypothesis": "So let me do it, it's going to be the same.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S067",
+      "sentence": "Snapchat pe snap bhejo, streak maintain karna hai",
+      "reference": "Send a snap on Snapchat; we need to maintain the streak.",
+      "hypothesis": "So let's just get a draw-out, and it's going to be a drawer.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S068",
+      "sentence": "Discord pe join karo, gaming session chal raha hai",
+      "reference": "Join on Discord; the gaming session is going on.",
+      "hypothesis": "So let's get a couple of numbers, it's going to be positive.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S069",
+      "sentence": "Bio update karo Instagram pe, attractive banana hai",
+      "reference": "Update the Instagram bio; it needs to look attractive.",
+      "hypothesis": "So let's see what you're doing.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "hypothesis": "If you add a message, let's just try again.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S071",
+      "sentence": "Aaj park mein festival tha, bhot enjoy kiya",
+      "reference": "There was a festival in the park today; it was a lot of fun.",
+      "hypothesis": "Add a voice to your mouth, a voice from your mouth.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S072",
+      "sentence": "Shirt ka size medium hai, exchange karna hai",
+      "reference": "The shirt size is medium; it needs to be exchanged.",
+      "hypothesis": "The equation of this equation is to change it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S073",
+      "sentence": "Road trip pe jaana hai, petrol bharo pehle",
+      "reference": "We are going on a road trip; fill the petrol first.",
+      "hypothesis": "If you want a copy, write it over and over again.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S074",
+      "sentence": "Dinner pe kya order karein? Thai ya Italian?",
+      "reference": "What should we order for dinner -- Thai or Italian?",
+      "hypothesis": "Can you do that? Thi either or Italian?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S075",
+      "sentence": "Night shift hai aaj, extra pay milegi kya?",
+      "reference": "I have the night shift today. Will I get extra pay?",
+      "hypothesis": "So we're going to get a light.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "hypothesis": "So if you want to, you're going to have a good day.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S077",
+      "sentence": "Project guide ne feedback diya, revision karna hai",
+      "reference": "The project guide gave feedback; revision is required.",
+      "hypothesis": "The equation of this equation is not equal to the equation of the equation.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S078",
+      "sentence": "Internship report format IEEE standard mein hoga",
+      "reference": "The internship report format will follow IEEE standard.",
+      "hypothesis": "Interthe report format IEEE's standard will be displayed",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S079",
+      "sentence": "Exam mein calculator allowed hai kya?",
+      "reference": "Is a calculator allowed in the exam?",
+      "hypothesis": "And I think I'm going to get this down?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S080",
+      "sentence": "Tutorial class mein attendance compulsory hai professor ne bola",
+      "reference": "The professor said that attendance in tutorial class is compulsory.",
+      "hypothesis": "So it's equal to negative.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S081",
+      "sentence": "Software engineering ka concept clear nahi hai, doubt hai",
+      "reference": "The software engineering concept is not clear; I have a doubt.",
+      "hypothesis": "When using the software, it's going to be cool, do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "hypothesis": "If you would like to write a report in the configuration file, check it out.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S083",
+      "sentence": "Group project mein role assign karo, timeline set karo",
+      "reference": "Assign roles in the group project and set a timeline.",
+      "hypothesis": "Displays a group view as well as a response,",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S084",
+      "sentence": "Practical exam mein circuit design karna hai",
+      "reference": "We have to design a circuit in the practical exam.",
+      "hypothesis": "In order to change the equation of this equation, you need to get rid of it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S085",
+      "sentence": "Data structures ka assignment submit karna padega kal tak",
+      "reference": "The data structures assignment needs to be submitted by tomorrow.",
+      "hypothesis": "Data Data Data",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S086",
+      "sentence": "Project ka cost estimate karo, budget proposal banani hai",
+      "reference": "Estimate the project cost; a budget proposal needs to be prepared.",
+      "hypothesis": "So let's see what you can do, get out of it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "hypothesis": "So what do you think is going to do with that?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S088",
+      "sentence": "Party cancel ho gayi, plan B kya hai?",
+      "reference": "The party has been cancelled. What is plan B?",
+      "hypothesis": "So, what's the difference?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S089",
+      "sentence": "Online pizza order karo, coupon code use karo",
+      "reference": "Order pizza online and use the coupon code.",
+      "hypothesis": "Can do this on top ofline pizza, use the coupon codec",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S090",
+      "sentence": "Freelance project mil gaya, contract sign karna padega",
+      "reference": "A freelance project has been received; the contract needs to be signed.",
+      "hypothesis": "Free%",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S091",
+      "sentence": "Portfolio update karo, GitHub pe push karo",
+      "reference": "Update the portfolio and push it to GitHub.",
+      "hypothesis": "If you don't know what to do, you're going to have to do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S092",
+      "sentence": "Weekend pe hiking jaana hai, backpack pack karo",
+      "reference": "We are going hiking this weekend. Pack your backpack.",
+      "hypothesis": "Let's just get to the top of this line, then draw it out.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S093",
+      "sentence": "Salary credit nahi hui abhi, account check karo",
+      "reference": "The salary has not been credited yet; check the account.",
+      "hypothesis": "Salary Mayo Nahihihi, inatratratra",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S094",
+      "sentence": "Notice period kab khatam hoga? Relieving letter lena hai",
+      "reference": "When does the notice period end? I need the relieving letter.",
+      "hypothesis": "What do you want to do with this?",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "hypothesis": "Promotion:",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S096",
+      "sentence": "Startup idea ke baare mein mentor se discuss karo",
+      "reference": "Discuss the startup idea with the mentor.",
+      "hypothesis": "If you want to start again and you want me to do something about it",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S097",
+      "sentence": "Machine translation model ka BLEU score improve karo",
+      "reference": "Improve the BLEU score of the machine translation model.",
+      "hypothesis": "If you're a parent, you'll find out how you feel about it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S098",
+      "sentence": "Ticket book karo concert ke liye, front row chahiye",
+      "reference": "Book a ticket for the concert; I want the front row.",
+      "hypothesis": "Let's do it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S099",
+      "sentence": "Profile photo change karo LinkedIn pe, professional dikhna chahiye",
+      "reference": "Change the LinkedIn profile photo; it should look professional.",
+      "hypothesis": "Add photo",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "S100",
+      "sentence": "Workshop register karo, certificate milega baad mein",
+      "reference": "Register for the workshop; you will receive a certificate later.",
+      "hypothesis": "Let's do the work. I'll find it.",
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    }
+  ]
+}

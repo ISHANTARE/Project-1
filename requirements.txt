@@ -6,3 +6,9 @@ sentence-transformers
 pandas
 plotly
 pytest
+wordfreq
+fpdf2
+sentencepiece
+torch
+transformers
+sacrebleu

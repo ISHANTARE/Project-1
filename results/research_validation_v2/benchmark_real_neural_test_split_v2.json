@@ -1,0 +1,217 @@
+{
+  "metadata": {
+    "experiment_timestamp": "2026-10-13 18:21:24",
+    "corpus_path": "data\\evaluation\\test_split.json",
+    "corpus_size": 20,
+    "sacrebleu_version": "2.6.0",
+    "permutation_test_seed": 42,
+    "permutation_samples": 5000,
+    "backend_mode": "real_neural",
+    "require_real_neural": true,
+    "nmt_model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda",
+    "methodology_note": "Corrected benchmark separating internal classifier evaluation from output-level loanword retention. Baselines without internal classifiers report classifier metrics as N/A while their output is fully credited."
+  },
+  "systems": {
+    "LAPS (Proposed)": {
+      "n_sentences": 20,
+      "oter": 0.245,
+      "output_retention_recall": 0.755,
+      "output_f1": 0.7796,
+      "gold_uter": null,
+      "uter_status": "N/A (Lacks Gold Full-Utterance LID)",
+      "matrix_hindi_leakage_proxy": 0.0646,
+      "sentence_bleu_mean": 1.34,
+      "corpus_bleu": 0.29,
+      "sentence_chrf_mean": 26.0,
+      "corpus_chrf": 26.06,
+      "bleu": 0.0029,
+      "chrf": 0.2606,
+      "classifier_metrics": {
+        "is_applicable": true,
+        "macro_f1": 0.8494,
+        "micro_f1": 0.8413,
+        "micro_precision": 0.9138,
+        "micro_recall": 0.7794,
+        "accuracy": 0.7436,
+        "uncertainty_rate": 0.0897,
+        "confusion_matrix": {
+          "TP": 53,
+          "FP": 5,
+          "FN": 15,
+          "TN": 5
+        }
+      },
+      "token_f1": 0.8494,
+      "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+      "latency": {
+        "mean_total_ms": 2677.15,
+        "std_total_ms": 2331.74,
+        "mean_preproc_ms": 490.65,
+        "std_preproc_ms": 2118.46,
+        "mean_per_token_ms": 70.28,
+        "p95_total_ms": 11427.57,
+        "min_total_ms": 456.56,
+        "max_total_ms": 11427.57,
+        "scope": "Scoring + XML compilation on pre-cached features (excludes embedding extraction)"
+      }
+    },
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "n_sentences": 20,
+      "oter": 0.9125,
+      "output_retention_recall": 0.0875,
+      "output_f1": 0.12,
+      "gold_uter": null,
+      "uter_status": "N/A (Lacks Gold Full-Utterance LID)",
+      "matrix_hindi_leakage_proxy": 0.0,
+      "sentence_bleu_mean": 2.89,
+      "corpus_bleu": 0.62,
+      "sentence_chrf_mean": 13.04,
+      "corpus_chrf": 13.55,
+      "bleu": 0.0062,
+      "chrf": 0.1355,
+      "classifier_metrics": {
+        "is_applicable": true,
+        "macro_f1": 0.0667,
+        "micro_f1": 0.0845,
+        "micro_precision": 1.0,
+        "micro_recall": 0.0441,
+        "accuracy": 0.1667,
+        "uncertainty_rate": 0.0,
+        "confusion_matrix": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 65,
+          "TN": 10
+        }
+      },
+      "token_f1": 0.0667,
+      "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+      "latency": {
+        "mean_total_ms": 372.15,
+        "std_total_ms": 406.04,
+        "mean_preproc_ms": 0.0,
+        "std_preproc_ms": 0.0,
+        "mean_per_token_ms": 0.0,
+        "p95_total_ms": 1544.62,
+        "min_total_ms": 120.69,
+        "max_total_ms": 1544.62,
+        "scope": "Scoring + XML compilation on pre-cached features (excludes embedding extraction)"
+      }
+    },
+    "Static Dictionary Filter": {
+      "n_sentences": 20,
+      "oter": 0.9375,
+      "output_retention_recall": 0.0625,
+      "output_f1": 0.0867,
+      "gold_uter": null,
+      "uter_status": "N/A (Lacks Gold Full-Utterance LID)",
+      "matrix_hindi_leakage_proxy": 0.0,
+      "sentence_bleu_mean": 2.99,
+      "corpus_bleu": 0.71,
+      "sentence_chrf_mean": 12.55,
+      "corpus_chrf": 12.75,
+      "bleu": 0.0071,
+      "chrf": 0.1275,
+      "classifier_metrics": {
+        "is_applicable": true,
+        "macro_f1": 0.0333,
+        "micro_f1": 0.0571,
+        "micro_precision": 1.0,
+        "micro_recall": 0.0294,
+        "accuracy": 0.1538,
+        "uncertainty_rate": 0.0,
+        "confusion_matrix": {
+          "TP": 2,
+          "FP": 0,
+          "FN": 66,
+          "TN": 10
+        }
+      },
+      "token_f1": 0.0333,
+      "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+      "latency": {
+        "mean_total_ms": 307.55,
+        "std_total_ms": 315.53,
+        "mean_preproc_ms": 0.0,
+        "std_preproc_ms": 0.0,
+        "mean_per_token_ms": 0.0,
+        "p95_total_ms": 1617.94,
+        "min_total_ms": 124.74,
+        "max_total_ms": 1617.94,
+        "scope": "Scoring + XML compilation on pre-cached features (excludes embedding extraction)"
+      }
+    },
+    "Unconstrained NMT Baseline": {
+      "n_sentences": 20,
+      "oter": 0.95,
+      "output_retention_recall": 0.05,
+      "output_f1": 0.0733,
+      "gold_uter": null,
+      "uter_status": "N/A (Lacks Gold Full-Utterance LID)",
+      "matrix_hindi_leakage_proxy": 0.0,
+      "sentence_bleu_mean": 3.25,
+      "corpus_bleu": 0.85,
+      "sentence_chrf_mean": 12.84,
+      "corpus_chrf": 12.91,
+      "bleu": 0.0085,
+      "chrf": 0.1291,
+      "classifier_metrics": {
+        "is_applicable": false,
+        "macro_f1": null,
+        "micro_f1": null,
+        "micro_precision": null,
+        "micro_recall": null,
+        "accuracy": null,
+        "uncertainty_rate": null,
+        "confusion_matrix": null,
+        "note": "N/A: System has no token preservation classifier; operates strictly end-to-end"
+      },
+      "token_f1": null,
+      "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+      "latency": {
+        "mean_total_ms": 230.02,
+        "std_total_ms": 59.72,
+        "mean_preproc_ms": 0.0,
+        "std_preproc_ms": 0.0,
+        "mean_per_token_ms": 0.0,
+        "p95_total_ms": 350.97,
+        "min_total_ms": 130.65,
+        "max_total_ms": 350.97,
+        "scope": "Scoring + XML compilation on pre-cached features (excludes embedding extraction)"
+      }
+    }
+  },
+  "statistical_significance": {
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "p_value": 0.0002,
+      "delta": 0.6596,
+      "ci_lower": 0.5167,
+      "ci_upper": 0.7908,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Static Dictionary Filter": {
+      "p_value": 0.0002,
+      "delta": 0.693,
+      "ci_lower": 0.5452,
+      "ci_upper": 0.825,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    },
+    "Unconstrained NMT Baseline": {
+      "p_value": 0.0002,
+      "delta": 0.7063,
+      "ci_lower": 0.5619,
+      "ci_upper": 0.8307,
+      "num_samples": 5000,
+      "seed": 42,
+      "test_name": "Monte Carlo Paired Permutation Test (5,000 random sign-flip samples)",
+      "bonferroni_significant": true
+    }
+  }
+}

@@ -7,7 +7,7 @@
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20Transformers-orange.svg)](https://pytorch.org/)
 [![UI](https://img.shields.io/badge/UI-Streamlit-blue.svg)](https://streamlit.io/)
 [![Database](https://img.shields.io/badge/Graph_DB-SQLite-green.svg)](https://www.sqlite.org/)
-[![Tests](https://img.shields.io/badge/Tests-18%20Passed-brightgreen.svg)](tests/test_laps.py)
+[![Tests](https://img.shields.io/badge/Tests-45%20Passed-brightgreen.svg)](tests/test_laps.py)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 
@@ -117,30 +117,66 @@ The LAPS pipeline is evaluated against reproducible, transparent baselines:
 2. **Static Dictionary Filter**: Rule-based lexical constraint using a fixed glossary of frequent loanwords.
 3. **Unconstrained NMT Baseline**: Raw neural translation without preservation constraints (subject to over-translation errors).
 
-### Multi-Baseline Benchmark Comparative Results
+### Multi-Baseline Benchmark Comparative Results (Audited & Methodologically Corrected)
 
-Evaluated across $N=100$ code-mixed sentences on held-out evaluation splits:
+Evaluated across $N=100$ code-mixed sentences on the gold evaluation corpus. Internal classifier accuracy, output loanword retention, and translation quality metrics are strictly separated:
 
-| System / Configuration | OTER ($\downarrow$) | UTER ($\downarrow$) | BLEU ($\uparrow$) | chrF++ ($\uparrow$) | Token F1 ($\uparrow$) | p-value (vs LAPS) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **LAPS (Proposed Guardrail)** | **0.0108** | **0.8442** | **0.4575** | **0.4732** | **0.9567** | — |
-| **Few-Shot ICL Baseline** | 0.0485 | 0.8442 | 0.4429 | 0.4610 | 0.0973 | $p < 0.001$ |
-| **Static Dictionary Filter** | 0.0852 | 0.8442 | 0.4332 | 0.4503 | 0.0477 | $p < 0.001$ |
-| **Unconstrained NMT Baseline** | 0.1193 | 0.8482 | 0.4177 | 0.4370 | 0.0000 | $p < 0.001$ |
+#### Table 1: Output Preservation & Translation Performance (All Systems, N=100)
+| System / Configuration | OTER ($\downarrow$) | Output F1 ($\uparrow$) | SacreBLEU ($\uparrow$) | chrF++ ($\uparrow$) | Matrix Leakage Proxy ($\downarrow$) | $\Delta$ vs LAPS | p-value (Permutation) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **LAPS (Proposed Guardrail)** | **0.0108** | **0.9485** | **4.16** | **38.38** | **0.8442** | — | — |
+| **Few-Shot Vocabulary Filter (Demo)** | 0.0485 | 0.9269 | 4.03 | 37.20 | 0.8442 | +0.0217 | $0.0006^*$ |
+| **Static Dictionary Filter** | 0.0852 | 0.9041 | 3.99 | 36.29 | 0.8442 | +0.0445 | $0.0002^*$ |
+| **Unconstrained NMT Baseline** | 0.1193 | 0.8748 | 2.10 | 35.02 | 0.8482 | +0.0737 | $0.0002^*$ |
+
+*Statistically significant under Bonferroni correction ($\alpha = 0.05 / 3 = 0.0167$).  
+*Note: Multi-sentence SacreBLEU and chrF++ evaluated with SacreBLEU v2.6.0. Strict Gold UTER is formally reported as **N/A** due to the absence of full-utterance token-level LID annotations in the gold corpus; the matrix leakage proxy tracks non-loanword leakage.*
+
+#### Table 2: Token Preservation Classifier Accuracy
+| System / Configuration | Classifier Macro F1 ($\uparrow$) | Micro Precision ($\uparrow$) | Micro Recall ($\uparrow$) | Accuracy ($\uparrow$) | Uncertainty Rate | Status |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **LAPS (Proposed Guardrail)** | **0.9567** | **0.9290** | **0.9967** | **0.9266** | **0.1223** | Active Classifier |
+| **Few-Shot Vocabulary Filter (Demo)** | 0.0973 | 1.0000 | 0.0762 | 0.1468 | 0.0000 | Active Heuristic |
+| **Static Dictionary Filter** | 0.0477 | 1.0000 | 0.0397 | 0.1131 | 0.0000 | Active Lexicon |
+| **Unconstrained NMT Baseline** | **N/A** | **N/A** | **N/A** | **N/A** | **N/A** | End-to-End (No Classifier) |
 
 ### Key Comparative Findings:
-1. **Dramatic Over-Translation Reduction**: Raw unconstrained translation yields **$11.93\%$ Over-Translation Error Rate (OTER)**, corrupting common loanwords into archaic equivalents. LAPS suppresses OTER to **$1.08\%$** while preserving semantic fluency ($BLEU = 0.4575$).
-2. **Generalization Beyond Fixed Glossaries**: Static Dictionary filters score only **0.0477 Token F1** because static lists cannot adapt to unseen or domain-specific entities. Few-Shot ICL scores **0.0973 Token F1** due to prompt drift. LAPS achieves **0.9567 Token F1** through continuous neural embeddings and empirical borrowing indices ($p < 0.001$).
-3. **Contextual Homograph Disambiguation & Auto-Register**: Sequences with colliding words (*us, me, so, do, to, is*) are disambiguated in context, and communicative register ($\theta_R$) is inferred automatically from surface text metrics.
+1. **Honest Output Evaluation**: Unconstrained NMT is no longer conflated with 0.0 token F1; it receives credit for all naturally surviving loanwords (**0.8748 Output F1**). LAPS significantly outperforms all baselines on output retention (**0.9485 Output F1**, $p = 0.0002$).
+2. **Generalization Beyond Fixed Glossaries**: Static Dictionary filters score only **0.0477 Classifier F1** because static 12-word lists cannot adapt to unseen or domain-specific entities. The few-shot demo filter achieves **0.0973 Classifier F1**. LAPS achieves **0.9567 Classifier F1** through continuous neural embeddings and empirical borrowing indices ($p < 0.001$).
+3. **Statistical Significance Rigor**: Evaluated via a **Monte Carlo Paired Permutation Test** with sign-flipping ($B = 5,000$ random resamples, seed=42, finite-sample $p = (b+1)/(B+1)$, 2,000 bootstrap difference resamples) and Bonferroni adjustment ($\alpha = 0.0167$).
+4. **Contextual Homograph Disambiguation & Auto-Register**: Sequences with colliding words (*us, me, so, do, to, is*) are disambiguated in context, and communicative register ($\theta_R$) is inferred automatically from surface text metrics.
 
+### Benchmark Limitations & Methodological Disclosures
+> [!IMPORTANT]
+> **Essential Methodological Disclosures:**
+> 1. **Pre-Cached Features in Gold Corpus:** The 100-sentence benchmark evaluates the LAPS decision/scoring process on pre-cached linguistic feature dictionaries stored for all 327 candidate tokens in `data/evaluation/gold_corpus.json`. Live feature extraction (dense MiniLM embedding and SQLite queries) is bypassed during benchmark scoring; the benchmark evaluates the mathematical decision boundaries on supplied feature representations.
+> 2. **Surrogate Translation Fallback:** All four benchmark systems execute through `DETERMINISTIC_SURROGATE_FALLBACK` in `src/llm/nmt_backend.py`. The surrogate simulates neural over-translation via a 27-word dictionary and 12 colloquial Hinglish regex templates. The reported results are surrogate-benchmark results and must not be represented as real constrained-NMT performance.
+> 3. **Translation Quality Metrics:** SacreBLEU (4.16) and chrF++ (38.38) scores are computationally verified with SacreBLEU v2.6.0, measuring partial n-gram overlap between surrogate-generated hypotheses and author-written references.
+> 4. **Separation of Metrics:** We strictly distinguish (a) **Classifier Metrics** (token decision accuracy on candidate tokens), (b) **Output Retention Metrics** (presence of preserved loanwords in generated text), and (c) **Translation Quality Metrics** (SacreBLEU / chrF++ against colloquial references).
+
+### Dataset Splits & Annotation Provenance
+- **Parent Gold Corpus (`data/evaluation/gold_corpus.json`):** 100 sentences (`S001`–`S100`) spanning 327 annotated candidate loanwords across four communicative registers (Casual, Business, Academic, Social).
+- **Split Breakdown:**
+  - `train_split.json`: 70 in-distribution sentences.
+  - `val_split.json`: 15 in-distribution sentences.
+  - `test_split.json`: 20 total sentences, consisting of 15 in-distribution sentences drawn from gold plus 5 authentic out-of-corpus OOV sentences (`OOV_001`–`OOV_005`).
+  - Total entries across the three split files = 105 (70 + 15 + 20). The 100 in-distribution sentences form a strictly disjoint partition of `gold_corpus.json` ($\text{Train} \cap \text{Val} = \emptyset$, $\text{Train} \cap \text{Test} = \emptyset$, $\text{Val} \cap \text{Test} = \emptyset$); the 5 OOV sentences are an external extension.
+- **Inter-Annotator Agreement (`data/evaluation/annotations.csv`):**
+  - Two independent bilingual native raters evaluated 90 candidate tokens across sentences `S001`–`S020`.
+  - Observed agreement: 85/90 tokens (**94.44%**).
+  - Fleiss' Kappa: **$\kappa = 0.8739$**; Cohen's Kappa: **$\kappa = 0.8744$** ("Almost Perfect Agreement").
+  - 5 disagreements (`submit`, `postpone`, `free`, `raise`, `try` where Rater 1=1, Rater 2=0) are preserved in the raw CSV with no synthetic consensus column.
 
 ### Reproducing Benchmark Experiments
 ```bash
 # Ingest 16,000+ LinCE & PHINC sentences to build dynamic index:
 python scripts/build_empirical_loanword_index.py
 
-# Run multi-baseline evaluation harness:
+# Run audited multi-baseline evaluation harness:
 python scripts/benchmark.py --corpus data/evaluation/gold_corpus.json
+
+# Recompute inter-annotator agreement:
+python scripts/compute_agreement.py
 ```
 
 ---

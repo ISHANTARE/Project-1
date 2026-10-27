@@ -1,8 +1,12 @@
 {
   "description": "LAPS Gold Standard Evaluation Corpus - 100 code-mixed Hinglish sentences with human token-level preservation labels",
   "version": "2.0",
-  "annotators": 3,
-  "fleiss_kappa": 0.78,
+  "annotators": 2,
+  "annotated_tokens_sample": 90,
+  "observed_agreement": 0.9444,
+  "fleiss_kappa": 0.8739,
+  "cohen_kappa": 0.8744,
+  "annotation_provenance_note": "Inter-annotator agreement was measured across 2 independent bilingual raters on 90 candidate tokens across sentences S001-S020 (data/evaluation/annotations.csv). Observed agreement was 85/90 (94.44%), yielding Fleiss' kappa = 0.8739 and Cohen's kappa = 0.8744 ('Almost Perfect Agreement'). 5 disagreements (submit, postpone, free, raise, try; rater_1=1, rater_2=0) are preserved in the raw CSV with no synthetic final_consensus column; for gold evaluation labels, preservation was assigned according to the primary annotator's verified domain criteria.",
   "annotation_scale": "binary (1=Preserve, 0=Rewrite)",
   "register_distribution": {
     "casual": 35,

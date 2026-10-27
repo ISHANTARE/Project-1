@@ -1,0 +1,49 @@
+{
+  "LAPS (Proposed)": {
+    "oter": 0.0108,
+    "uter": 0.8442,
+    "bleu": 0.4575,
+    "chrf": 0.4732,
+    "token_f1": 0.9567,
+    "n_sentences": 100,
+    "latency": {
+      "mean_total_ms": 0.21,
+      "std_total_ms": 0.34,
+      "mean_preproc_ms": 0.03,
+      "std_preproc_ms": 0.01,
+      "mean_per_token_ms": 0.01,
+      "p95_total_ms": 0.36,
+      "min_total_ms": 0.12,
+      "max_total_ms": 3.16
+    }
+  },
+  "Few-Shot ICL Baseline": {
+    "oter": 0.0485,
+    "uter": 0.8442,
+    "bleu": 0.4429,
+    "chrf": 0.461,
+    "token_f1": 0.0973,
+    "n_sentences": 100
+  },
+  "Static Dictionary Filter": {
+    "oter": 0.0852,
+    "uter": 0.8442,
+    "bleu": 0.4332,
+    "chrf": 0.4503,
+    "token_f1": 0.0477,
+    "n_sentences": 100
+  },
+  "Unconstrained NMT Baseline": {
+    "oter": 0.1193,
+    "uter": 0.8482,
+    "bleu": 0.4177,
+    "chrf": 0.437,
+    "token_f1": 0.0,
+    "n_sentences": 100
+  },
+  "significance_p_values": {
+    "Few-Shot ICL Baseline": 0.0001,
+    "Static Dictionary Filter": 0.0001,
+    "Unconstrained NMT Baseline": 0.0001
+  }
+}

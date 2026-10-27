@@ -1,0 +1,78 @@
+{
+  "test_split_n20": {
+    "LAPS (Proposed)": {
+      "oter": 0.245,
+      "output_f1": 0.7796,
+      "bleu": 0.29,
+      "chrf": 26.06,
+      "classifier_f1": 0.8494,
+      "delta_output_f1_vs_laps": 0.0,
+      "p_value": "N/A"
+    },
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "oter": 0.9125,
+      "output_f1": 0.12,
+      "bleu": 0.62,
+      "chrf": 13.55,
+      "classifier_f1": 0.0667,
+      "delta_output_f1_vs_laps": 0.6596,
+      "p_value": 0.0002
+    },
+    "Static Dictionary Filter": {
+      "oter": 0.9375,
+      "output_f1": 0.0867,
+      "bleu": 0.71,
+      "chrf": 12.75,
+      "classifier_f1": 0.0333,
+      "delta_output_f1_vs_laps": 0.6929,
+      "p_value": 0.0002
+    },
+    "Unconstrained NMT Baseline": {
+      "oter": 0.95,
+      "output_f1": 0.0733,
+      "bleu": 0.85,
+      "chrf": 12.91,
+      "classifier_f1": "N/A",
+      "delta_output_f1_vs_laps": 0.7063,
+      "p_value": 0.0002
+    }
+  },
+  "gold_corpus_n100": {
+    "LAPS (Proposed)": {
+      "oter": 0.1603,
+      "output_f1": 0.857,
+      "bleu": 0.25,
+      "chrf": 27.21,
+      "classifier_f1": 0.9567,
+      "delta_output_f1_vs_laps": 0.0,
+      "p_value": "N/A"
+    },
+    "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+      "oter": 0.8657,
+      "output_f1": 0.1908,
+      "bleu": 0.36,
+      "chrf": 14.14,
+      "classifier_f1": 0.0973,
+      "delta_output_f1_vs_laps": 0.6662,
+      "p_value": 0.0002
+    },
+    "Static Dictionary Filter": {
+      "oter": 0.899,
+      "output_f1": 0.1445,
+      "bleu": 0.46,
+      "chrf": 13.36,
+      "classifier_f1": 0.0477,
+      "delta_output_f1_vs_laps": 0.7125,
+      "p_value": 0.0002
+    },
+    "Unconstrained NMT Baseline": {
+      "oter": 0.924,
+      "output_f1": 0.1098,
+      "bleu": 0.73,
+      "chrf": 12.77,
+      "classifier_f1": "N/A",
+      "delta_output_f1_vs_laps": 0.7472,
+      "p_value": 0.0002
+    }
+  }
+}

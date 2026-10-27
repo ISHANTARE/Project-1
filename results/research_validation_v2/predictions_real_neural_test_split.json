@@ -1,0 +1,1497 @@
+{
+  "metadata": {
+    "experiment_timestamp": "2026-10-13 18:21:24",
+    "corpus_path": "data\\evaluation\\test_split.json",
+    "corpus_size": 20,
+    "sacrebleu_version": "2.6.0",
+    "permutation_test_seed": 42,
+    "permutation_samples": 5000,
+    "backend_mode": "real_neural",
+    "require_real_neural": true,
+    "nmt_model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda",
+    "methodology_note": "Corrected benchmark separating internal classifier evaluation from output-level loanword retention. Baselines without internal classifiers report classifier metrics as N/A while their output is fully credited."
+  },
+  "records": [
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "register": "business",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "And this is presentation, so this is equal to circum. And that is equal even to the 2th. And this becomes a problem. And the answer is positive. And we have to do that. And it's not just a negative one. And confidence",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "presentation",
+            "confidence"
+          ],
+          "constraints_satisfied": [
+            "presentation",
+            "confidence"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2372.65,
+          "preserved_tokens": [
+            "confidence",
+            "presentation"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And this is the same thing as the one we're all on, we have to get a little bit more than a third. And we have a little better one. And this one is equal to the one that is equal even to the negative one. So we have the same value. presentation",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "presentation"
+          ],
+          "constraints_satisfied": [
+            "presentation"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1540.5,
+          "preserved_tokens": [
+            "presentation"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 243.15,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And this isn't a problem, it's better than a third.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 259.16,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "register": "academic",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Answering dataset preprocessing the data...? ! . .? . m.?? ??? a.? you can only use the information as the location of the page. You can only ask for the information. You could training",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "dataset",
+            "preprocessing",
+            "training"
+          ],
+          "constraints_satisfied": [
+            "dataset",
+            "preprocessing",
+            "training"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1532.94,
+          "preserved_tokens": [
+            "dataset",
+            "preprocessing",
+            "training"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 223.5,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 264.02,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want a copy of this document, do you want to learn more about it?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 239.72,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "register": "academic",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "If you can submit, assignment press, you'll have to be the one who's really scared... I'm not sure.. You're not going to be a bit too late. I can't be sure you're going to have homework",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "homework",
+            "submit",
+            "assignment"
+          ],
+          "constraints_satisfied": [
+            "homework",
+            "submit",
+            "assignment"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1645.07,
+          "preserved_tokens": [
+            "assignment",
+            "homework",
+            "submit"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 215.2,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 213.8,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So if you want to, you're going to have a good day.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 219.96,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "register": "casual",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "I want to do this ... I want a ji. So this is a cysa../ . .?/ I want you to . I do not want to add . So you want to understand. ? ., camera phone",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "phone",
+            "camera"
+          ],
+          "constraints_satisfied": [
+            "phone",
+            "camera"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1646.98,
+          "preserved_tokens": [
+            "camera",
+            "phone"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 205.5,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 243.58,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "I want to do this by telling you how much I want you to do.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 190.26,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "register": "social",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "If you comment, negative contacts are present. You can use this button to check the amount of time that you want to add to your system, but you can use to check your system's configuration to check that you have a list of positive effects on your system and that you can change your section",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "comment",
+            "section",
+            "negative"
+          ],
+          "constraints_satisfied": [
+            "comment",
+            "section",
+            "negative"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 6170.02,
+          "preserved_tokens": [
+            "comment",
+            "negative",
+            "section"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 209.52,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 186.26,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you add a message, let's just try again.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 204.87,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "register": "casual",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "So what share available here is that? Let me draw the line... I'm going to have to do this. I want to do the same.. And I'll get to the point..... I've got to say that.. \" I're going headphones",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "headphones",
+            "available",
+            "share"
+          ],
+          "constraints_satisfied": [
+            "headphones",
+            "available",
+            "share"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2786.12,
+          "preserved_tokens": [
+            "available",
+            "headphones",
+            "share"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 204.65,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 166.41,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So what do you think is going to do with that?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 165.95,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "register": "casual",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "So this isn't a problem, the office is a problem... So, what's happening? . .? ? , the school is not a problem with the world. I'm not a threat to the world today. I know you can do weather office",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "weather",
+            "office"
+          ],
+          "constraints_satisfied": [
+            "weather",
+            "office"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2521.61,
+          "preserved_tokens": [
+            "office",
+            "weather"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 373.58,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 249.86,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this isn't a problem, the office is here.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 228.1,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "register": "business",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "So this morale motique , it's intercepted by the tesec.. ...?/ .? . , the solution to . m. .\"/ , . you can . the solution? , you can team",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "team",
+            "morale",
+            "motivation"
+          ],
+          "constraints_satisfied": [
+            "team",
+            "morale"
+          ],
+          "constraint_satisfaction_rate": 0.6666666666666666,
+          "last_error": null,
+          "latency_total_ms": 3236.01,
+          "preserved_tokens": [
+            "morale",
+            "motivation",
+            "team"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 266.88,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 257.39,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this is the same thing as this, now let's see how this is done.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 305.35,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "register": "casual",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Let's walk it's going to be a big problem. And then you're going to have to try it... And you'll have to do that.. You're not going to want to do this. You have to be an example for me.. park",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "park",
+            "walk"
+          ],
+          "constraints_satisfied": [
+            "park",
+            "walk"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2075.34,
+          "preserved_tokens": [
+            "park",
+            "walk"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 120.69,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 124.74,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So let's see if I want to.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 171.61,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "register": "casual",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "What cricket is that? ! ! What's the problem? ? . .?  .. ? m. ! I'm not sure.? I'll do it... m.?? I can't do score match",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "cricket",
+            "match",
+            "score"
+          ],
+          "constraints_satisfied": [
+            "cricket",
+            "match",
+            "score"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1937.97,
+          "preserved_tokens": [
+            "cricket",
+            "match",
+            "score"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 154.92,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 187.05,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's the difference with the zeroet?",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 137.61,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "register": "business",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Let's get the revisitor quarterly get ions, then get them all out. ..com/ sm.com .comm./m. [ . ]/ . m3 .] So targets strategy",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "quarterly",
+            "targets",
+            "strategy",
+            "revisit"
+          ],
+          "constraints_satisfied": [
+            "quarterly",
+            "targets",
+            "strategy",
+            "revisit"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2616.76,
+          "preserved_tokens": [
+            "quarterly",
+            "revisit",
+            "strategy",
+            "targets"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 225.96,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 252.19,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Let's get it all right, I'm going to get it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 232.81,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "register": "business",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Promotion quarter Im permanion ret rethahath: per s rep prom/ mor/ promot.com repro proo/ re- prommart re-de pros perfortator repose reposit review",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "promotion",
+            "quarter",
+            "performance",
+            "review"
+          ],
+          "constraints_satisfied": [
+            "promotion",
+            "quarter",
+            "review"
+          ],
+          "constraint_satisfaction_rate": 0.75,
+          "last_error": null,
+          "latency_total_ms": 2237.78,
+          "preserved_tokens": [
+            "performance",
+            "promotion",
+            "quarter",
+            "review"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 196.38,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 143.81,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Promotion:",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 130.65,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "register": "business",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "The crash is just server. The debugre is an error. If you want to proceed, you need to do more than change your state. You can only move forward with a positive response. The solution is to change your way of life. You need to try to do production",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "server",
+            "debug",
+            "production",
+            "crash"
+          ],
+          "constraints_satisfied": [
+            "server",
+            "debug",
+            "production",
+            "crash"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1923.02,
+          "preserved_tokens": [
+            "crash",
+            "debug",
+            "production",
+            "server"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "debug",
+            "server"
+          ],
+          "constraints_satisfied": [
+            "debug",
+            "server"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1544.62,
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "The server is a intercept intercepted, an error, dest intercepting the Earth's data, and intercept the Earth Earth Earth. . ! .. , the distance .? . m. .\" ., . on server debug",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "debug",
+            "server"
+          ],
+          "constraints_satisfied": [
+            "debug",
+            "server"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1617.94,
+          "preserved_tokens": [
+            "debug",
+            "server"
+          ]
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "The server looks at a number of ways, and it's going to be different.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 233.06,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "register": "academic",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Learn how to do this in a model learn how to solve ob learn from it learn how you can learn to learn about it \u00b7 Global Voices \u00b7 learning a obliquity is a real problem. You can also help your child to develop a positive attitude machine accuracy",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "machine",
+            "learning",
+            "model",
+            "accuracy"
+          ],
+          "constraints_satisfied": [
+            "machine",
+            "learning",
+            "model",
+            "accuracy"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 2067.32,
+          "preserved_tokens": [
+            "accuracy",
+            "learning",
+            "machine",
+            "model"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 145.69,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 162.71,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "Learn how to do this",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 174.69,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "register": "academic",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "Use researchable memory methodology to show the current location at the top of the page: %1/ s. Please specify a number of numbers at the bottom of the list. The default value is invalid. The goal is to change the number of times you want to do at the right time attendance",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "research",
+            "methodology",
+            "attendance"
+          ],
+          "constraints_satisfied": [
+            "research",
+            "methodology",
+            "attendance"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1675.58,
+          "preserved_tokens": [
+            "attendance",
+            "methodology",
+            "research"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 297.33,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 298.96,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you would like to write a report in the configuration file, check it out.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 305.07,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_001",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "reference": "Configure the ingress controller in the Kubernetes cluster so traffic can be routed.",
+      "register": "business",
+      "gold_preserved": [
+        "cluster",
+        "controller",
+        "ingress",
+        "kubernetes",
+        "traffic"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "If you controllernets route, you can use a single shot-out button to check the configuration. You can use this to start a call.. You need to check your settings. You want to do that. You have to start using this button. You should try to traffic",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "controller",
+            "traffic",
+            "route"
+          ],
+          "constraints_satisfied": [
+            "controller",
+            "traffic",
+            "route"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 11427.57,
+          "preserved_tokens": [
+            "controller",
+            "route",
+            "traffic"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 307.3,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 321.85,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you're looking at a movie, you'll find it on the right side of the page.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 290.6,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_002",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "reference": "Urgently request this patient's MRI scan and blood biochemistry report.",
+      "register": "business",
+      "gold_preserved": [
+        "biochemistry",
+        "mri",
+        "patient",
+        "report",
+        "scan"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "So I report to patsu patio and his blood-sirtystrologers in the first month of the year. I'm not going to be a bad person. I want you to do something about it. I just want to do it.. I don' patient",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "patient",
+            "blood",
+            "report"
+          ],
+          "constraints_satisfied": [
+            "patient",
+            "blood",
+            "report"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1738.58,
+          "preserved_tokens": [
+            "blood",
+            "patient",
+            "report"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 219.54,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 209.51,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "So this isn't a good idea.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 200.04,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_003",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "reference": "Rebalance the portfolio's asset allocation to optimize capital gains tax.",
+      "register": "business",
+      "gold_preserved": [
+        "allocation",
+        "asset",
+        "capital",
+        "gains",
+        "portfolio",
+        "tax"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "If you want to taxi, you can get a message from the original document. You can also change it by clicking it on the right order. If you have a message, then you can set it up as the top page. You could also change the order by saying: \" capital",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "capital",
+            "tax"
+          ],
+          "constraints_satisfied": [
+            "capital",
+            "tax"
+          ],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 1614.85,
+          "preserved_tokens": [
+            "capital",
+            "tax"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 318.43,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 284.02,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "If you want to do this, you need to make sure you have a copy of this document in your language.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 280.24,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_004",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "reference": "Implementing the circuit breaker pattern is essential in microservices architecture.",
+      "register": "academic",
+      "gold_preserved": [
+        "architecture",
+        "breaker",
+        "circuit",
+        "microservices",
+        "pattern"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 456.56,
+          "preserved_tokens": []
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 325.52,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 359.18,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 279.62,
+          "preserved_tokens": []
+        }
+      }
+    },
+    {
+      "id": "OOV_005",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "reference": "Bro, did you verify the checksum of the new firmware patch or directly flash it?",
+      "register": "casual",
+      "gold_preserved": [
+        "checksum",
+        "firmware",
+        "flash",
+        "patch"
+      ],
+      "predictions": {
+        "LAPS (Proposed)": {
+          "rewritten": "So they checksum flash like firms phaji. Or is it pharmacy? ! p. ms. ml p.com/ msa p.m.com.com p.? . mt p.org patch direct firm",
+          "backend_execution_mode": "REAL_INFERENCE_CONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": true,
+          "constraints_requested": [
+            "firmware",
+            "patch",
+            "checksum",
+            "direct",
+            "flash"
+          ],
+          "constraints_satisfied": [
+            "patch",
+            "checksum",
+            "direct",
+            "flash"
+          ],
+          "constraint_satisfaction_rate": 0.8,
+          "last_error": null,
+          "latency_total_ms": 1860.2,
+          "preserved_tokens": [
+            "checksum",
+            "direct",
+            "firmware",
+            "flash",
+            "patch"
+          ]
+        },
+        "Few-Shot Vocabulary Filter (Demonstration Heuristic)": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 347.25,
+          "preserved_tokens": []
+        },
+        "Static Dictionary Filter": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 364.53,
+          "preserved_tokens": []
+        },
+        "Unconstrained NMT Baseline": {
+          "rewritten": "And they're going to have to check out if they'll be able to escape it. I'm going to be dead.",
+          "backend_execution_mode": "REAL_INFERENCE_UNCONSTRAINED",
+          "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+          "constraints_applied": false,
+          "constraints_requested": [],
+          "constraints_satisfied": [],
+          "constraint_satisfaction_rate": 1.0,
+          "last_error": null,
+          "latency_total_ms": 350.97,
+          "preserved_tokens": []
+        }
+      }
+    }
+  ]
+}

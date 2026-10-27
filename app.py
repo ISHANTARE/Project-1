@@ -552,6 +552,49 @@ with tab_live:
             })
         st.dataframe(pd.DataFrame(rows), use_container_width=True, height=250)
 
+        # Section 7: Multi-Format Audit Report Exports
+        st.markdown("---")
+        st.markdown("#### Audit & Research Report Exports")
+        st.caption("Download standardized, machine-readable and publication-grade audit artifacts:")
+
+        try:
+            from src.laps.exporter import format_audit_record, export_to_json, export_to_csv, export_to_pdf
+            audit_record = format_audit_record(
+                result=result,
+                backend_info=f"Downstream: {llm_backend} | Register: {register}",
+            )
+            json_data = export_to_json(audit_record)
+            csv_data = export_to_csv(audit_record)
+            pdf_bytes = export_to_pdf(audit_record)
+
+            exp_c1, exp_c2, exp_c3 = st.columns(3)
+            with exp_c1:
+                st.download_button(
+                    label="📄 Download JSON Audit Record",
+                    data=json_data,
+                    file_name="laps_audit_record.json",
+                    mime="application/json",
+                    use_container_width=True,
+                )
+            with exp_c2:
+                st.download_button(
+                    label="📊 Download CSV Decision Matrix",
+                    data=csv_data,
+                    file_name="laps_decision_matrix.csv",
+                    mime="text/csv",
+                    use_container_width=True,
+                )
+            with exp_c3:
+                st.download_button(
+                    label="📑 Download PDF Research Report",
+                    data=pdf_bytes,
+                    file_name="laps_audit_report.pdf",
+                    mime="application/pdf",
+                    use_container_width=True,
+                )
+        except Exception as e:
+            st.warning(f"Export engine error: {e}")
+
 
 # =============================================================================
 # TAB 2: LINCE & PHINC EMPIRICAL CORPUS EXPLORER
@@ -616,54 +659,95 @@ with tab_corpus:
 # TAB 3: COMPARATIVE BENCHMARK & EVALUATION
 # =============================================================================
 with tab_bench:
-    st.markdown("### Multi-Baseline Benchmark & Comparative Study")
+    st.markdown("### Multi-Baseline Benchmark & Comparative Study (Audited)")
     st.markdown(
         "Demonstrating **algorithmic feasibility**: We evaluated LAPS against transparent academic baselines "
-        "on held-out test splits. Unlike raw NMT models that over-translate, LAPS operates as a deterministic pre-generation guardrail."
+        "on the standardized gold evaluation corpus (N=100) using a corrected evaluation methodology that strictly separates "
+        "**Token Preservation Classifier Performance** from **Output Translation Quality**."
     )
 
-    # Benchmark Results Table
-    bench_table = [
-        {
-            "System": "LAPS (Proposed Guardrail)",
-            "OTER (Over-Translation Error) ↓": f"{bench_data.get('LAPS (Proposed)', {}).get('oter', 0.0108):.4f}",
-            "BLEU ↑": f"{bench_data.get('LAPS (Proposed)', {}).get('bleu', 0.4633):.4f}",
-            "chrF++ ↑": f"{bench_data.get('LAPS (Proposed)', {}).get('chrf', 0.4787):.4f}",
-            "Token Preservation F1 ↑": f"{bench_data.get('LAPS (Proposed)', {}).get('token_f1', 0.9567):.4f}",
-            "Evaluation Status": "Proposed System (Dynamic Scoring)"
-        },
-        {
-            "System": "Static Dictionary Filter",
-            "OTER (Over-Translation Error) ↓": f"{bench_data.get('Static Dictionary Filter', {}).get('oter', 0.0108):.4f}",
-            "BLEU ↑": f"{bench_data.get('Static Dictionary Filter', {}).get('bleu', 0.4633):.4f}",
-            "chrF++ ↑": f"{bench_data.get('Static Dictionary Filter', {}).get('chrf', 0.4787):.4f}",
-            "Token Preservation F1 ↑": f"{bench_data.get('Static Dictionary Filter', {}).get('token_f1', 0.0477):.4f}",
-            "Evaluation Status": "Fixed Lexicon Baseline (Fails on OOV)"
-        },
-        {
-            "System": "Unconstrained NMT Baseline",
-            "OTER (Over-Translation Error) ↓": f"{bench_data.get('Unconstrained NMT Baseline', {}).get('oter', 0.0108):.4f}",
-            "BLEU ↑": f"{bench_data.get('Unconstrained NMT Baseline', {}).get('bleu', 0.4610):.4f}",
-            "chrF++ ↑": f"{bench_data.get('Unconstrained NMT Baseline', {}).get('chrf', 0.4769):.4f}",
-            "Token Preservation F1 ↑": f"{bench_data.get('Unconstrained NMT Baseline', {}).get('token_f1', 0.0000):.4f}",
-            "Evaluation Status": "Unconstrained Translation (No Guardrail)"
-        },
+    sys_dict = bench_data.get("systems", bench_data)
+    sig_dict = bench_data.get("statistical_significance", {})
+
+    # Table 1: Output Preservation & Translation Performance
+    st.markdown("#### Table 1: Output Preservation & Translation Quality (All Systems)")
+    st.caption("Measures whether English loanwords survive in generated output, along with SacreBLEU v2.6.0 translation quality:")
+
+    bench_output_table = []
+    sys_order = [
+        ("LAPS (Proposed Guardrail)", "LAPS (Proposed)"),
+        ("Few-Shot Vocabulary Filter (Demo)", "Few-Shot Vocabulary Filter (Demonstration Heuristic)"),
+        ("Static Dictionary Filter", "Static Dictionary Filter"),
+        ("Unconstrained NMT Baseline", "Unconstrained NMT Baseline"),
     ]
 
-    st.dataframe(pd.DataFrame(bench_table), use_container_width=True)
+    for display_name, key in sys_order:
+        s_data = sys_dict.get(key, {})
+        sig = sig_dict.get(key, {})
+        delta_str = "-" if "LAPS" in key else f"+{sig.get('delta', 0.0):.4f}"
+        p_val = sig.get("p_value")
+        p_str = "-" if "LAPS" in key else (f"{p_val:.4f} *" if sig.get("bonferroni_significant") else f"{p_val:.4f}")
+
+        bench_output_table.append({
+            "System": display_name,
+            "OTER (Over-Translation) ↓": f"{s_data.get('oter', 0.0):.4f}",
+            "Output Retention F1 ↑": f"{s_data.get('output_f1', 0.0):.4f}",
+            "SacreBLEU ↑": f"{s_data.get('corpus_bleu', 0.0):.2f}",
+            "chrF++ ↑": f"{s_data.get('corpus_chrf', 0.0):.2f}",
+            "Matrix Leakage Proxy ↓": f"{s_data.get('matrix_hindi_leakage_proxy', 0.0):.4f}",
+            "Δ vs LAPS (Output F1)": delta_str,
+            "p-value (Permutation)": p_str,
+        })
+
+    st.dataframe(pd.DataFrame(bench_output_table), use_container_width=True)
+    st.caption("* Statistically significant under Bonferroni correction (α = 0.05 / 3 = 0.0167). Note: Strict Gold UTER is N/A due to lack of full-sentence LID annotations.")
+
+    # Table 2: Token Preservation Classifier Performance
+    st.markdown("#### Table 2: Token Preservation Classifier Accuracy")
+    st.caption("Evaluates internal pre-generation decisions. Systems operating purely end-to-end report N/A (not penalised with artificial zero):")
+
+    bench_cls_table = []
+    for display_name, key in sys_order:
+        s_data = sys_dict.get(key, {})
+        cls_m = s_data.get("classifier_metrics", {})
+        is_app = cls_m.get("is_applicable", False)
+
+        if is_app:
+            bench_cls_table.append({
+                "System": display_name,
+                "Classifier Macro F1 ↑": f"{cls_m.get('macro_f1', 0.0):.4f}",
+                "Precision ↑": f"{cls_m.get('micro_precision', 0.0):.4f}",
+                "Recall ↑": f"{cls_m.get('micro_recall', 0.0):.4f}",
+                "Accuracy ↑": f"{cls_m.get('accuracy', 0.0):.4f}",
+                "Uncertainty Rate": f"{cls_m.get('uncertainty_rate', 0.0):.4f}",
+                "Status": "Active Classifier",
+            })
+        else:
+            bench_cls_table.append({
+                "System": display_name,
+                "Classifier Macro F1 ↑": "N/A",
+                "Precision ↑": "N/A",
+                "Recall ↑": "N/A",
+                "Accuracy ↑": "N/A",
+                "Uncertainty Rate": "N/A",
+                "Status": "End-to-End (No Internal Classifier)",
+            })
+
+    st.dataframe(pd.DataFrame(bench_cls_table), use_container_width=True)
 
     # Comparative Visualizations
     col_f1, col_bleu = st.columns(2)
     with col_f1:
         fig_f1 = px.bar(
             pd.DataFrame([
-                {"System": "LAPS (Proposed)", "Token F1": 0.9567},
-                {"System": "Static Dictionary", "Token F1": 0.0477},
-                {"System": "Unconstrained NMT", "Token F1": 0.0000},
+                {"System": "LAPS (Proposed)", "Output Retention F1": sys_dict.get("LAPS (Proposed)", {}).get("output_f1", 0.9485)},
+                {"System": "Few-Shot Filter", "Output Retention F1": sys_dict.get("Few-Shot Vocabulary Filter (Demonstration Heuristic)", {}).get("output_f1", 0.9269)},
+                {"System": "Static Dictionary", "Output Retention F1": sys_dict.get("Static Dictionary Filter", {}).get("output_f1", 0.9041)},
+                {"System": "Unconstrained NMT", "Output Retention F1": sys_dict.get("Unconstrained NMT Baseline", {}).get("output_f1", 0.8748)},
             ]),
-            x="System", y="Token F1", color="System",
-            color_discrete_map={"LAPS (Proposed)": "#10b981", "Static Dictionary": "#f59e0b", "Unconstrained NMT": "#ef4444"},
-            title="Token Preservation F1 Comparison"
+            x="System", y="Output Retention F1", color="System",
+            color_discrete_map={"LAPS (Proposed)": "#10b981", "Few-Shot Filter": "#6366f1", "Static Dictionary": "#f59e0b", "Unconstrained NMT": "#ef4444"},
+            title="Output Loanword Retention F1 Comparison"
         )
         fig_f1.update_layout(paper_bgcolor='#090d16', plot_bgcolor='#111827', font_color='#94a3b8', height=320, showlegend=False)
         st.plotly_chart(fig_f1, use_container_width=True)
@@ -671,21 +755,31 @@ with tab_bench:
     with col_bleu:
         fig_bleu = px.bar(
             pd.DataFrame([
-                {"System": "LAPS (Proposed)", "chrF++": 0.4787, "BLEU": 0.4633},
-                {"System": "Static Dictionary", "chrF++": 0.4787, "BLEU": 0.4633},
-                {"System": "Unconstrained NMT", "chrF++": 0.4769, "BLEU": 0.4610},
+                {"System": "LAPS (Proposed)", "chrF++": sys_dict.get("LAPS (Proposed)", {}).get("corpus_chrf", 38.38), "BLEU": sys_dict.get("LAPS (Proposed)", {}).get("corpus_bleu", 4.16)},
+                {"System": "Few-Shot Filter", "chrF++": sys_dict.get("Few-Shot Vocabulary Filter (Demonstration Heuristic)", {}).get("corpus_chrf", 37.20), "BLEU": sys_dict.get("Few-Shot Vocabulary Filter (Demonstration Heuristic)", {}).get("corpus_bleu", 4.03)},
+                {"System": "Static Dictionary", "chrF++": sys_dict.get("Static Dictionary Filter", {}).get("corpus_chrf", 36.29), "BLEU": sys_dict.get("Static Dictionary Filter", {}).get("corpus_bleu", 3.99)},
+                {"System": "Unconstrained NMT", "chrF++": sys_dict.get("Unconstrained NMT Baseline", {}).get("corpus_chrf", 35.02), "BLEU": sys_dict.get("Unconstrained NMT Baseline", {}).get("corpus_bleu", 2.10)},
             ]),
             x="System", y=["BLEU", "chrF++"], barmode="group",
-            title="Translation Quality (BLEU and chrF++)"
+            title="SacreBLEU v2.6.0 & chrF++ Translation Quality"
         )
         fig_bleu.update_layout(paper_bgcolor='#090d16', plot_bgcolor='#111827', font_color='#94a3b8', height=320)
         st.plotly_chart(fig_bleu, use_container_width=True)
 
-    st.markdown("#### Key Findings from the Comparative Study:")
+    st.markdown("#### Key Audited Findings & Methodological Rigor:")
     st.markdown("""
-    1. **Dynamic Generalization**: Static Dictionary filters achieve only **0.0477 Token F1** because a static 12-word list fails on unseen entities (*dataset*, *confidence*, *algorithm*, *deadline*). LAPS achieves **0.9567 Token F1** through continuous neural embeddings and empirical frequency indices.
-    2. **Mitigating Over-Translation**: Unconstrained NMT translates every token literally, causing severe lexical over-translation. LAPS operates as an explicit pre-generation guardrail to strictly enforce lexical constraints.
-    3. **Zero Stochastic Drift**: Because LAPS computes deterministic scores and generates structured XML constraint blocks, output consistency is 100% reproducible across runs.
+    1. **Separated Evaluation**: Unconstrained NMT is credited for all naturally surviving loanwords (**0.8748 Output F1**). LAPS significantly outperforms all baselines on output retention (**0.9485 Output F1**, $p = 0.0002$).
+    2. **Algorithmic Generalization**: Static Dictionary filters achieve only **0.0477 Classifier F1** because a static 12-word list cannot generalize to out-of-vocabulary loanwords. LAPS achieves **0.9567 Classifier F1** through continuous neuro-symbolic scoring.
+    3. **Statistical Significance**: Two-tailed **Monte Carlo Paired Permutation Tests** with sign-flipping (5,000 random resamples, seed=42) demonstrate statistically significant improvements over all baselines under Bonferroni multiple-comparison correction ($\alpha = 0.0167$).
+    4. **Reproducibility**: All experiments run deterministically with explicit execution telemetry.
+    """)
+
+    st.warning("""
+    **Methodological Disclosures & Benchmark Limitations:**
+    * **Pre-Cached Features:** The 100-sentence benchmark evaluates the LAPS decision/scoring function on pre-cached linguistic feature dictionaries stored for all 327 candidate tokens in `gold_corpus.json`. Live feature extraction is bypassed during benchmark scoring; the benchmark tests decision boundaries on supplied feature representations.
+    * **Surrogate Translation Fallback:** All four benchmark systems execute through `DETERMINISTIC_SURROGATE_FALLBACK` (rule-based over-translation mapping and regex templates). These are surrogate-benchmark results and must not be represented as real constrained-NMT model performance.
+    * **Translation Quality Metrics:** SacreBLEU (4.16) and chrF++ (38.38) are computationally reproducible with SacreBLEU v2.6.0, measuring partial n-gram overlap between surrogate-generated hypotheses and author references.
+    * **Dataset Splits:** The parent gold corpus contains 100 sentences (`S001`–`S100`). Splits comprise Train (70), Val (15), and Test (15 in-distribution gold + 5 out-of-corpus OOV = 20 total entries). The 100 in-distribution sentences form a strictly disjoint partition; the 5 OOV sentences are an external extension.
     """)
 
 

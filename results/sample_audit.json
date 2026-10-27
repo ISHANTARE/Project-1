@@ -1,0 +1,352 @@
+{
+  "metadata": {
+    "run_id": "LAPS-1791829909069",
+    "timestamp": "2026-10-12T18:31:49.069686Z",
+    "framework": "LAPS v2.0 (Linguistic Adaptive Preservation Scoring)",
+    "institution": "Vellore Institute of Technology, Vellore",
+    "course": "BCSE497J - Project-I",
+    "backend": "mock",
+    "backend_details": "mock",
+    "strategy": "xml_laps",
+    "execution_duration_ms": 0.0,
+    "is_monolingual": false
+  },
+  "sentence_analysis": {
+    "original_sentence": "Kal client meeting postpone ho gayi, kya hum schedule fix kar sakte hain?",
+    "rewritten_sentence": "Tomorrow client meeting was postponed, what we schedule fix kar sakte hain?",
+    "cmi_mode": "CODE_MIXED",
+    "cmi_score": 38.46,
+    "en_ratio": 0.38,
+    "hi_ratio": 0.62,
+    "register": "auto",
+    "preserved_tokens": [
+      "client",
+      "meeting",
+      "postpone",
+      "schedule",
+      "fix"
+    ]
+  },
+  "summary_metrics": {
+    "total_candidates": 5,
+    "preserve_count": 5,
+    "uncertain_count": 0,
+    "rewrite_count": 0,
+    "avg_probability": 0.7867
+  },
+  "candidate_tokens": [
+    {
+      "token": "client",
+      "language": "EN",
+      "laps_score": 0.6809,
+      "probability": 0.859241,
+      "decision": "PRESERVE",
+      "confidence": 0.3592,
+      "threshold": 0.5,
+      "domain": "Business",
+      "naturalness_penalty": 0.8,
+      "ego_density_bonus": 0.0,
+      "features": {
+        "BF": 0.9,
+        "DS": 0.85,
+        "SI": 0.718,
+        "CC": 0.7333,
+        "AF": 0.6486,
+        "TB": 0.2
+      }
+    },
+    {
+      "token": "meeting",
+      "language": "EN",
+      "laps_score": 0.6653,
+      "probability": 0.839296,
+      "decision": "PRESERVE",
+      "confidence": 0.3393,
+      "threshold": 0.5,
+      "domain": "Business",
+      "naturalness_penalty": 0.85,
+      "ego_density_bonus": 0.0,
+      "features": {
+        "BF": 0.9,
+        "DS": 0.85,
+        "SI": 0.537,
+        "CC": 0.75,
+        "AF": 0.7357,
+        "TB": 0.15
+      }
+    },
+    {
+      "token": "postpone",
+      "language": "EN",
+      "laps_score": 0.5929,
+      "probability": 0.716872,
+      "decision": "PRESERVE",
+      "confidence": 0.2169,
+      "threshold": 0.5,
+      "domain": "Business",
+      "naturalness_penalty": 0.5,
+      "ego_density_bonus": 0.0,
+      "features": {
+        "BF": 0.9,
+        "DS": 0.85,
+        "SI": 0.704,
+        "CC": 0.75,
+        "AF": 0.4971,
+        "TB": 0.85
+      }
+    },
+    {
+      "token": "schedule",
+      "language": "EN",
+      "laps_score": 0.6246,
+      "probability": 0.776607,
+      "decision": "PRESERVE",
+      "confidence": 0.2766,
+      "threshold": 0.5,
+      "domain": "Business",
+      "naturalness_penalty": 0.6,
+      "ego_density_bonus": 0.0,
+      "features": {
+        "BF": 0.9,
+        "DS": 0.85,
+        "SI": 0.585,
+        "CC": 0.65,
+        "AF": 0.6671,
+        "TB": 0.4
+      }
+    },
+    {
+      "token": "fix",
+      "language": "EN",
+      "laps_score": 0.6054,
+      "probability": 0.741542,
+      "decision": "PRESERVE",
+      "confidence": 0.2415,
+      "threshold": 0.5,
+      "domain": "Tech",
+      "naturalness_penalty": 0.5,
+      "ego_density_bonus": 0.0,
+      "features": {
+        "BF": 0.7465,
+        "DS": 0.85,
+        "SI": 0.534,
+        "CC": 0.65,
+        "AF": 0.6786,
+        "TB": 0.2
+      }
+    }
+  ],
+  "token_explanations": [
+    {
+      "token": "Kal",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "client",
+      "decision": "PRESERVE",
+      "score": 0.6809,
+      "threshold": 0.5,
+      "probability": 0.859241,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.8,
+      "domain": "Business",
+      "primary": "Highly frequent borrowed word in code-mixed speech.",
+      "supporting": [
+        "BF=0.90 – commonly borrowed word.",
+        "DS=0.85 – matches a technical/business domain."
+      ]
+    },
+    {
+      "token": "meeting",
+      "decision": "PRESERVE",
+      "score": 0.6653,
+      "threshold": 0.5,
+      "probability": 0.839296,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.85,
+      "domain": "Business",
+      "primary": "Highly frequent borrowed word in code-mixed speech.",
+      "supporting": [
+        "BF=0.90 – commonly borrowed word.",
+        "DS=0.85 – matches a technical/business domain."
+      ]
+    },
+    {
+      "token": "postpone",
+      "decision": "PRESERVE",
+      "score": 0.5929,
+      "threshold": 0.5,
+      "probability": 0.716872,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.5,
+      "domain": "Business",
+      "primary": "Highly frequent borrowed word in code-mixed speech.",
+      "supporting": [
+        "BF=0.90 – commonly borrowed word.",
+        "DS=0.85 – matches a technical/business domain."
+      ]
+    },
+    {
+      "token": "ho",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "gayi",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": ",",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "kya",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "hum",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "schedule",
+      "decision": "PRESERVE",
+      "score": 0.6246,
+      "threshold": 0.5,
+      "probability": 0.776607,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.6,
+      "domain": "Business",
+      "primary": "Highly frequent borrowed word in code-mixed speech.",
+      "supporting": [
+        "BF=0.90 – commonly borrowed word.",
+        "DS=0.85 – matches a technical/business domain."
+      ]
+    },
+    {
+      "token": "fix",
+      "decision": "PRESERVE",
+      "score": 0.6054,
+      "threshold": 0.5,
+      "probability": 0.741542,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.5,
+      "domain": "Tech",
+      "primary": "Domain-specific technical or professional term.",
+      "supporting": [
+        "BF=0.75 – commonly borrowed word.",
+        "DS=0.85 – matches a technical/business domain."
+      ]
+    },
+    {
+      "token": "kar",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "sakte",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "hain",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    },
+    {
+      "token": "?",
+      "decision": "NATIVE",
+      "score": null,
+      "threshold": null,
+      "probability": null,
+      "is_borderline": false,
+      "ego_density_bonus": 0.0,
+      "naturalness_penalty": 0.0,
+      "domain": "N/A",
+      "primary": "Token identified as native Hindi — not subject to LAPS scoring.",
+      "supporting": []
+    }
+  ],
+  "xml_constraints": ""
+}

@@ -1,0 +1,2058 @@
+{
+  "metadata": {
+    "system": "LAPS (Proposed)",
+    "model": "Helsinki-NLP/opus-mt-hi-en",
+    "device": "cuda",
+    "require_real_neural": true
+  },
+  "test_split": [
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "hypothesis": "And this is presentation, so this is equal to circum. And that is equal even to the 2th. And this becomes a problem. And the answer is positive. And we have to do that. And it's not just a negative one. And confidence",
+      "constraints_satisfied": [
+        "presentation",
+        "confidence"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "hypothesis": "Answering dataset preprocessing the data...? ! . .? . m.?? ??? a.? you can only use the information as the location of the page. You can only ask for the information. You could training",
+      "constraints_satisfied": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "hypothesis": "If you can submit, assignment press, you'll have to be the one who's really scared... I'm not sure.. You're not going to be a bit too late. I can't be sure you're going to have homework",
+      "constraints_satisfied": [
+        "homework",
+        "submit",
+        "assignment"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "hypothesis": "I want to do this ... I want a ji. So this is a cysa../ . .?/ I want you to . I do not want to add . So you want to understand. ? ., camera phone",
+      "constraints_satisfied": [
+        "phone",
+        "camera"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "hypothesis": "If you comment, negative contacts are present. You can use this button to check the amount of time that you want to add to your system, but you can use to check your system's configuration to check that you have a list of positive effects on your system and that you can change your section",
+      "constraints_satisfied": [
+        "comment",
+        "section",
+        "negative"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "hypothesis": "So what share available here is that? Let me draw the line... I'm going to have to do this. I want to do the same.. And I'll get to the point..... I've got to say that.. \" I're going headphones",
+      "constraints_satisfied": [
+        "headphones",
+        "available",
+        "share"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "hypothesis": "So this isn't a problem, the office is a problem... So, what's happening? . .? ? , the school is not a problem with the world. I'm not a threat to the world today. I know you can do weather office",
+      "constraints_satisfied": [
+        "weather",
+        "office"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "hypothesis": "So this morale motique , it's intercepted by the tesec.. ...?/ .? . , the solution to . m. .\"/ , . you can . the solution? , you can team",
+      "constraints_satisfied": [
+        "team",
+        "morale"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "hypothesis": "Let's walk it's going to be a big problem. And then you're going to have to try it... And you'll have to do that.. You're not going to want to do this. You have to be an example for me.. park",
+      "constraints_satisfied": [
+        "park",
+        "walk"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "hypothesis": "What cricket is that? ! ! What's the problem? ? . .?  .. ? m. ! I'm not sure.? I'll do it... m.?? I can't do score match",
+      "constraints_satisfied": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "hypothesis": "Let's get the revisitor quarterly get ions, then get them all out. ..com/ sm.com .comm./m. [ . ]/ . m3 .] So targets strategy",
+      "constraints_satisfied": [
+        "quarterly",
+        "targets",
+        "strategy",
+        "revisit"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "hypothesis": "Promotion quarter Im permanion ret rethahath: per s rep prom/ mor/ promot.com repro proo/ re- prommart re-de pros perfortator repose reposit review",
+      "constraints_satisfied": [
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "hypothesis": "The crash is just server. The debugre is an error. If you want to proceed, you need to do more than change your state. You can only move forward with a positive response. The solution is to change your way of life. You need to try to do production",
+      "constraints_satisfied": [
+        "server",
+        "debug",
+        "production",
+        "crash"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "hypothesis": "Learn how to do this in a model learn how to solve ob learn from it learn how you can learn to learn about it \u00b7 Global Voices \u00b7 learning a obliquity is a real problem. You can also help your child to develop a positive attitude machine accuracy",
+      "constraints_satisfied": [
+        "machine",
+        "learning",
+        "model",
+        "accuracy"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "hypothesis": "Use researchable memory methodology to show the current location at the top of the page: %1/ s. Please specify a number of numbers at the bottom of the list. The default value is invalid. The goal is to change the number of times you want to do at the right time attendance",
+      "constraints_satisfied": [
+        "research",
+        "methodology",
+        "attendance"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "OOV_001",
+      "sentence": "Kubernetes cluster mein ingress controller configure karo taaki traffic route ho sake",
+      "reference": "Configure the ingress controller in the Kubernetes cluster so traffic can be routed.",
+      "gold_preserved": [
+        "cluster",
+        "controller",
+        "ingress",
+        "kubernetes",
+        "traffic"
+      ],
+      "hypothesis": "If you controllernets route, you can use a single shot-out button to check the configuration. You can use this to start a call.. You need to check your settings. You want to do that. You have to start using this button. You should try to traffic",
+      "constraints_satisfied": [
+        "controller",
+        "traffic",
+        "route"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "OOV_002",
+      "sentence": "Is patient ka MRI scan aur blood biochemistry report urgently mangwao",
+      "reference": "Urgently request this patient's MRI scan and blood biochemistry report.",
+      "gold_preserved": [
+        "biochemistry",
+        "mri",
+        "patient",
+        "report",
+        "scan"
+      ],
+      "hypothesis": "So I report to patsu patio and his blood-sirtystrologers in the first month of the year. I'm not going to be a bad person. I want you to do something about it. I just want to do it.. I don' patient",
+      "constraints_satisfied": [
+        "patient",
+        "blood",
+        "report"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "OOV_003",
+      "sentence": "Portfolio ka asset allocation rebalance karo taaki capital gains tax optimize ho",
+      "reference": "Rebalance the portfolio's asset allocation to optimize capital gains tax.",
+      "gold_preserved": [
+        "allocation",
+        "asset",
+        "capital",
+        "gains",
+        "portfolio",
+        "tax"
+      ],
+      "hypothesis": "If you want to taxi, you can get a message from the original document. You can also change it by clicking it on the right order. If you have a message, then you can set it up as the top page. You could also change the order by saying: \" capital",
+      "constraints_satisfied": [
+        "capital",
+        "tax"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "OOV_004",
+      "sentence": "Microservices architecture mein circuit breaker pattern implement karna zaroori hai",
+      "reference": "Implementing the circuit breaker pattern is essential in microservices architecture.",
+      "gold_preserved": [
+        "architecture",
+        "breaker",
+        "circuit",
+        "microservices",
+        "pattern"
+      ],
+      "hypothesis": "What's happening in this system of things? If you want to do something like this, you need to do it.",
+      "constraints_satisfied": [],
+      "mode": "REAL_INFERENCE_UNCONSTRAINED"
+    },
+    {
+      "id": "OOV_005",
+      "sentence": "Bhai naye firmware patch ka checksum verify kiya ya direct flash mar diya?",
+      "reference": "Bro, did you verify the checksum of the new firmware patch or directly flash it?",
+      "gold_preserved": [
+        "checksum",
+        "firmware",
+        "flash",
+        "patch"
+      ],
+      "hypothesis": "So they checksum flash like firms phaji. Or is it pharmacy? ! p. ms. ml p.com/ msa p.m.com.com p.? . mt p.org patch direct firm",
+      "constraints_satisfied": [
+        "patch",
+        "checksum",
+        "direct",
+        "flash"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    }
+  ],
+  "gold_corpus": [
+    {
+      "id": "S001",
+      "sentence": "hi! Kisi ke pass viva calender ki link h kya?",
+      "reference": "Hi! Does anyone have the link for the viva calendar?",
+      "gold_preserved": [
+        "calendar",
+        "link",
+        "viva"
+      ],
+      "hypothesis": "What vivas linking the links? ! . .? I'm not sure. I've got to see you... I have got a job.. You know, I'll be here..... ..? . I will take calendar",
+      "constraints_satisfied": [
+        "viva",
+        "calendar",
+        "link"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S002",
+      "sentence": "Kal client meeting postpone ho gayi, kya hum phir se schedule karein?",
+      "reference": "Tomorrow's client meeting was postponed. Should we reschedule it?",
+      "gold_preserved": [
+        "client",
+        "meeting",
+        "schedule"
+      ],
+      "hypothesis": "So meeting the clients with the same title, we could just get to the heart? ! . .? .. s. ? ??  . m. ! I'm not going to be a mug. I' schedule",
+      "constraints_satisfied": [
+        "client",
+        "meeting",
+        "schedule"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S003",
+      "sentence": "Report ki deadline aaj hai, submission portal pe upload karo",
+      "reference": "The report deadline is today; please upload it to the submission portal.",
+      "gold_preserved": [
+        "deadline",
+        "portal",
+        "report",
+        "submission",
+        "upload"
+      ],
+      "hypothesis": "We can report this upload submission by intercepting the current network. If you want to do this, you can change the current location. You can change this by clicking on the map. You need to change the location and the location below. You want to deadline portal",
+      "constraints_satisfied": [
+        "report",
+        "deadline",
+        "submission",
+        "portal",
+        "upload"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S004",
+      "sentence": "Server ka debug karna padega, production mein crash ho raha hai",
+      "reference": "The server needs to be debugged; it is crashing in production.",
+      "gold_preserved": [
+        "crash",
+        "debug",
+        "production",
+        "server"
+      ],
+      "hypothesis": "The crash is just server. The debugre is an error. If you want to proceed, you need to do more than change your state. You can only move forward with a positive response. The solution is to change your way of life. You need to try to do production",
+      "constraints_satisfied": [
+        "server",
+        "debug",
+        "production",
+        "crash"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S005",
+      "sentence": "Kal presentation ready nahi hai, phir bhi confidence ke sath jaana hai",
+      "reference": "The presentation is not ready yet, but we still need to go with confidence.",
+      "gold_preserved": [
+        "confidence",
+        "presentation"
+      ],
+      "hypothesis": "And this is presentation, so this is equal to circum. And that is equal even to the 2th. And this becomes a problem. And the answer is positive. And we have to do that. And it's not just a negative one. And confidence",
+      "constraints_satisfied": [
+        "presentation",
+        "confidence"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S006",
+      "sentence": "Wi-Fi ka password kya hai?",
+      "reference": "What is the Wi-Fi password?",
+      "gold_preserved": [
+        "password",
+        "wi-fi"
+      ],
+      "hypothesis": "Wi-Fi-this is equal to password?",
+      "constraints_satisfied": [
+        "Wi-Fi",
+        "password"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S007",
+      "sentence": "Code review ke liye PR submit karo aur Slack pe notify karo",
+      "reference": "Submit the PR for code review and notify on Slack.",
+      "gold_preserved": [
+        "code",
+        "pr",
+        "review",
+        "slack"
+      ],
+      "hypothesis": "What if you want to review all the changes you want and then add them? You can add them all... I'm not going to be a bit too proud of what you're doing. I can still do this. \" - So we can just add a little code PR Slack",
+      "constraints_satisfied": [
+        "code",
+        "review",
+        "PR",
+        "Slack"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S008",
+      "sentence": "Aaj gym nahi gaya, workout miss ho gayi",
+      "reference": "I did not go to the gym today; I missed my workout.",
+      "gold_preserved": [
+        "gym",
+        "workout"
+      ],
+      "hypothesis": "Aaj gym hehin, heys he's a henching-the-bone!... \u00b7ga\u02b9o is the name of a woman who lives in a country where she lives in the United States, where she has been called the vice president of workout",
+      "constraints_satisfied": [
+        "gym",
+        "workout"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S009",
+      "sentence": "Kya tumhara laptop charge hai? Battery bohot low hai",
+      "reference": "Is your laptop charged? The battery is very low.",
+      "gold_preserved": [
+        "battery",
+        "charge",
+        "laptop"
+      ],
+      "hypothesis": "So this is lapto. chas charge la bha. So this leads to a positive solution. And this is just a different way to get a negative idea. It's going to be a negative one. And it's just going to get the best thing. And we' lap",
+      "constraints_satisfied": [
+        "charge"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S010",
+      "sentence": "Instagram pe story daalni hai, filter kaun sa lagaun?",
+      "reference": "I need to post a story on Instagram. Which filter should I use?",
+      "gold_preserved": [
+        "filter",
+        "instagram",
+        "story"
+      ],
+      "hypothesis": "So you're filter stoing In the distance, what' sto? In the morning, you' Ind Indicative.. In the In the middle of the day In the night, you know Indruments... The second, the Inji story Instagram",
+      "constraints_satisfied": [
+        "Instagram",
+        "story",
+        "filter"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S011",
+      "sentence": "Interview ka preparation ho gayi? HR round ke liye practice karo",
+      "reference": "Is the interview preparation done? Practice for the HR round.",
+      "gold_preserved": [
+        "hr",
+        "interview",
+        "preparation",
+        "round"
+      ],
+      "hypothesis": "So if HRO would interview preproportionate the situation, then pre- pre-e pre-meditate the state pre-est pre-idation. You could just pre-sumption... . ! ..? round preparation",
+      "constraints_satisfied": [
+        "interview",
+        "preparation",
+        "HR",
+        "round"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S012",
+      "sentence": "Mera phone ka camera bahut achha hai",
+      "reference": "My phone's camera is very good.",
+      "gold_preserved": [
+        "camera",
+        "phone"
+      ],
+      "hypothesis": "I want to do this ... I want a ji. So this is a cysa../ . .?/ I want you to . I do not want to add . So you want to understand. ? ., camera phone",
+      "constraints_satisfied": [
+        "phone",
+        "camera"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S013",
+      "sentence": "Database schema update karna hai before deployment",
+      "reference": "The database schema needs to be updated before deployment.",
+      "gold_preserved": [
+        "database",
+        "deployment",
+        "schema"
+      ],
+      "hypothesis": "First of all, database deployment is a positive value for each other. If this is the same thing as the other, the answer is positive. If the answer to that question is yes, the value is positive, the solution to the list is positive and the schema",
+      "constraints_satisfied": [
+        "database",
+        "schema",
+        "deployment"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S014",
+      "sentence": "Aaj ka weather kharab hai, office mat aao",
+      "reference": "Today's weather is bad; do not come to the office.",
+      "gold_preserved": [
+        "office",
+        "weather"
+      ],
+      "hypothesis": "So this isn't a problem, the office is a problem... So, what's happening? . .? ? , the school is not a problem with the world. I'm not a threat to the world today. I know you can do weather office",
+      "constraints_satisfied": [
+        "weather",
+        "office"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S015",
+      "sentence": "Machine learning model ka accuracy improve karo",
+      "reference": "Improve the machine learning model's accuracy.",
+      "gold_preserved": [
+        "accuracy",
+        "learning",
+        "machine",
+        "model"
+      ],
+      "hypothesis": "Learn how to do this in a model learn how to solve ob learn from it learn how you can learn to learn about it \u00b7 Global Voices \u00b7 learning a obliquity is a real problem. You can also help your child to develop a positive attitude machine accuracy",
+      "constraints_satisfied": [
+        "machine",
+        "learning",
+        "model",
+        "accuracy"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S016",
+      "sentence": "Yaar, khaana order karte hain, pizza ya burger?",
+      "reference": "Hey, let us order food -- pizza or burger?",
+      "gold_preserved": [
+        "burger",
+        "pizza"
+      ],
+      "hypothesis": "Aar, kha anacococo order, pizza yburger? ! !? . .? ?  .. ?? I'm not going to be a waiter. I've got a lot of money. I got burger",
+      "constraints_satisfied": [
+        "pizza",
+        "burger"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S017",
+      "sentence": "System ka RAM upgrade karna chahiye, 8GB se 16GB karo",
+      "reference": "The system's RAM should be upgraded from 8GB to 16GB.",
+      "gold_preserved": [
+        "ram",
+        "system",
+        "upgrade"
+      ],
+      "hypothesis": "This system of RAMMO likes to be used to do 8GB can do 16GB.. (No one can read it.) So you need to write it up. You can just add it up to the next day. You want to do it. You need to do upgrade",
+      "constraints_satisfied": [
+        "system",
+        "RAM",
+        "upgrade"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S018",
+      "sentence": "Team ka morale low hai, motivation speech do",
+      "reference": "The team's morale is low; give a motivational speech.",
+      "gold_preserved": [
+        "morale",
+        "motivation",
+        "team"
+      ],
+      "hypothesis": "So this morale motique , it's intercepted by the tesec.. ...?/ .? . , the solution to . m. .\"/ , . you can . the solution? , you can team",
+      "constraints_satisfied": [
+        "team",
+        "morale"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S019",
+      "sentence": "Class notes share karo WhatsApp pe",
+      "reference": "Share the class notes on WhatsApp.",
+      "gold_preserved": [
+        "notes",
+        "share",
+        "whatsapp"
+      ],
+      "hypothesis": "Play notes share Whatsp Whatsip From... What do you think? What do they mean? What's that? What doesn't mean?... .? . ..?? ? ! .com: the number of numbers which WhatsApp",
+      "constraints_satisfied": [
+        "notes",
+        "share",
+        "WhatsApp"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S020",
+      "sentence": "Seminar mein attend karna compulsory hai",
+      "reference": "Attending the seminar is compulsory.",
+      "gold_preserved": [
+        "attend",
+        "compulsory",
+        "seminar"
+      ],
+      "hypothesis": "This is the beginning semin is a negative one. a negative is the key to a negative line. It is a different angle. It' a negative arrow. It can a negative negative idea. \" a negative meaning is positive. se\" a negative expression. sem. \" - OK. attend",
+      "constraints_satisfied": [
+        "attend"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S021",
+      "sentence": "Aaj movie dekhne jaana hai, ticket book kar liya?",
+      "reference": "We are going to watch a movie today. Have you booked the ticket?",
+      "gold_preserved": [
+        "book",
+        "movie",
+        "ticket"
+      ],
+      "hypothesis": "What do we book ticket? We want to do that. And we want to learn from this. I want to know what's happening, to do it. \" - Let's do that, please.. - Let me tell him. - No, I'm going to movie",
+      "constraints_satisfied": [
+        "movie",
+        "ticket",
+        "book"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S022",
+      "sentence": "Internship ka offer letter aaya kya?",
+      "reference": "Has the internship offer letter arrived?",
+      "gold_preserved": [
+        "internship",
+        "letter",
+        "offer"
+      ],
+      "hypothesis": "What offeris letter to aatra? ! ! What's your name? .? ? .\" I'm not going to be a dreamer. I'll be a bit too proud of it. \" I've got a problem. I internship",
+      "constraints_satisfied": [
+        "internship",
+        "offer",
+        "letter"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S023",
+      "sentence": "Song bahut catchy hai, playlist mein add karo",
+      "reference": "The song is very catchy. Add it to the playlist.",
+      "gold_preserved": [
+        "catchy",
+        "playlist"
+      ],
+      "hypothesis": "So just do it play a playlist. Let's just add a big one.. And if you want to do that, you have to do it... I want to get a little bit of a lot of money, but you have no problem. I'm going to do catchy",
+      "constraints_satisfied": [
+        "catchy",
+        "playlist"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S024",
+      "sentence": "Aaj shopping mall gaye the, sale chal rahi thi",
+      "reference": "We went to the shopping mall today; there was a sale.",
+      "gold_preserved": [
+        "mall",
+        "sale",
+        "shopping"
+      ],
+      "hypothesis": "If you want mall, you're shing sal, you can get a sh like sal... sh: sh/ m/ m3 sh/ b/ m7.com sh/ sh/3.com/ shw/ m2. org/ ml/ sale shopping",
+      "constraints_satisfied": [
+        "shopping",
+        "mall",
+        "sale"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S025",
+      "sentence": "Car ka tyre puncture ho gaya, mechanic ko bulao",
+      "reference": "The car tyre is punctured. Call the mechanic.",
+      "gold_preserved": [
+        "car",
+        "tyre"
+      ],
+      "hypothesis": "If you tyre this car, I want to use it for the first time. I want you to do it.. I'm not going to be a waiter. I can't do anything to help you, I'll be sure you can do that.. \" - mechanic",
+      "constraints_satisfied": [
+        "car",
+        "tyre",
+        "mechanic"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S026",
+      "sentence": "Coffee peete hain aur project ka plan banate hain",
+      "reference": "Let us have coffee and plan the project.",
+      "gold_preserved": [
+        "coffee",
+        "plan",
+        "project"
+      ],
+      "hypothesis": "Let' projects planx. Let's see what we want to do with this... And let's just try to do that. We can do that by no means.. We're going to have to do it.. I'll get to see coffee",
+      "constraints_satisfied": [
+        "coffee",
+        "project",
+        "plan"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S027",
+      "sentence": "Bhai, game khel raha hai? Online match hai aaj",
+      "reference": "Hey, are you playing the game? There is an online match today.",
+      "gold_preserved": [
+        "game",
+        "match",
+        "online"
+      ],
+      "hypothesis": "So this game is just choice? And when is it really a choice? on the right? .? online, a way to do this is to change your mind. (Applause) What's wrong with this game? ! . . m. msl.com. match",
+      "constraints_satisfied": [
+        "game",
+        "online",
+        "match"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S028",
+      "sentence": "Headache ho raha hai, tablet leni padegi",
+      "reference": "I have a headache; I will need to take a tablet.",
+      "gold_preserved": [
+        "headache",
+        "tablet"
+      ],
+      "hypothesis": "He's here , thug is a pure head. ...? the head is . ? .? ? the right side is the slope .com./ the head of .org/ the top ./ . m . headache tablet",
+      "constraints_satisfied": [
+        "headache",
+        "tablet"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S029",
+      "sentence": "Aaj free ho toh park mein walk karte hain",
+      "reference": "If you are free today, let us go for a walk in the park.",
+      "gold_preserved": [
+        "park",
+        "walk"
+      ],
+      "hypothesis": "Let's walk it's going to be a big problem. And then you're going to have to try it... And you'll have to do that.. You're not going to want to do this. You have to be an example for me.. park",
+      "constraints_satisfied": [
+        "park",
+        "walk"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S030",
+      "sentence": "Recharge karo, balance khatam ho gaya",
+      "reference": "Recharge the phone; the balance has run out.",
+      "gold_preserved": [
+        "balance",
+        "recharge"
+      ],
+      "hypothesis": "So let's balance, let me draw it... I'm not sure. I want to kill you.. \" - So we're not going to be here.. We're going to have to be a bit of a lot of fun.. - recharge",
+      "constraints_satisfied": [
+        "recharge",
+        "balance"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S031",
+      "sentence": "Padhai mein focus karo, distraction band karo",
+      "reference": "Focus on your studies and eliminate distractions.",
+      "gold_preserved": [
+        "focus"
+      ],
+      "hypothesis": "So if I do it focus, do it.. I'm not going to be a bad person. I don't want to be alone. I want to know if I'll be there.. \" - I've got to do that... You can distraction",
+      "constraints_satisfied": [
+        "focus",
+        "distraction"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S032",
+      "sentence": "Cricket match ka score kya hai abhi?",
+      "reference": "What is the cricket match score right now?",
+      "gold_preserved": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "hypothesis": "What cricket is that? ! ! What's the problem? ? . .?  .. ? m. ! I'm not sure.? I'll do it... m.?? I can't do score match",
+      "constraints_satisfied": [
+        "cricket",
+        "match",
+        "score"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S033",
+      "sentence": "Photo edit karke Instagram pe post karo",
+      "reference": "Edit the photo and post it on Instagram.",
+      "gold_preserved": [
+        "edit",
+        "instagram",
+        "photo"
+      ],
+      "hypothesis": "Photo Do editches Inge postovers Inteo-T Induct. In the photos you can photo...com/\" Intro.com.../\" >gt;\"\" > HOCHOOOMOODOD Instagram",
+      "constraints_satisfied": [
+        "photo",
+        "edit",
+        "Instagram"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S034",
+      "sentence": "Snacks lao aur Netflix chalao, chill karte hain",
+      "reference": "Get some snacks, turn on Netflix, and let us chill.",
+      "gold_preserved": [
+        "chill",
+        "netflix",
+        "snacks"
+      ],
+      "hypothesis": "Let's snacks Netfligeo , let zalf \u00b7 Global \u00b7ge \u00b7ga \u00b7k \u00b7ku \u00b7ki \u00b7mai \u00b7ne \u00b7he \u00b7 Voices .. ., .? . you chill",
+      "constraints_satisfied": [
+        "snacks",
+        "chill"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S035",
+      "sentence": "Bus miss ho gayi, cab book karo",
+      "reference": "I missed the bus. Book a cab.",
+      "gold_preserved": [
+        "book",
+        "cab",
+        "miss"
+      ],
+      "hypothesis": "Just do it in cab prints...com.. I'm not sure.. You're not sure! I'll be here.. It's not..? I've got a lot of fun. I got a bit of a lot. I need book miss",
+      "constraints_satisfied": [
+        "miss",
+        "cab",
+        "book"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S036",
+      "sentence": "Quarterly targets miss ho rahe hain, strategy revisit karni hogi",
+      "reference": "Quarterly targets are being missed; the strategy needs to be revisited.",
+      "gold_preserved": [
+        "quarterly",
+        "revisit",
+        "strategy",
+        "targets"
+      ],
+      "hypothesis": "Let's get the revisitor quarterly get ions, then get them all out. ..com/ sm.com .comm./m. [ . ]/ . m3 .] So targets strategy",
+      "constraints_satisfied": [
+        "quarterly",
+        "targets",
+        "strategy",
+        "revisit"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S037",
+      "sentence": "Invoice approve karo, vendor payment pending hai",
+      "reference": "Approve the invoice; the vendor payment is pending.",
+      "gold_preserved": [
+        "approve",
+        "invoice",
+        "payment",
+        "pending",
+        "vendor"
+      ],
+      "hypothesis": "This is the end of the vendor payment. If you want to do the same, you can change the distance. You can change your state by clicking on the right path. You'll have to change your view. You have to do more than just pending invoice approve",
+      "constraints_satisfied": [
+        "invoice",
+        "approve",
+        "vendor",
+        "payment",
+        "pending"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S038",
+      "sentence": "Product launch ke liye marketing campaign ready karo",
+      "reference": "Prepare the marketing campaign for the product launch.",
+      "gold_preserved": [
+        "campaign",
+        "launch",
+        "marketing",
+        "product"
+      ],
+      "hypothesis": "You can launch this productto. marketing is a good thing... You can only add a small amount of gold to the top of the board. You have to do this on the right order. You're going to have a problem with campaign",
+      "constraints_satisfied": [
+        "product",
+        "launch",
+        "marketing",
+        "campaign"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S039",
+      "sentence": "Compliance audit ke liye documents ready rakho",
+      "reference": "Keep the documents ready for the compliance audit.",
+      "gold_preserved": [
+        "audit",
+        "compliance",
+        "documents"
+      ],
+      "hypothesis": "Could you documents like a complian? You could have seen .com/ . ..com...// .\"/ or '\" .? . m/// s. m3? ? m/ m/ ?? m3. ? audit",
+      "constraints_satisfied": [
+        "audit",
+        "documents"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S040",
+      "sentence": "Sprint planning meeting kal hai, backlog review karo",
+      "reference": "Sprint planning meeting is tomorrow; review the backlog.",
+      "gold_preserved": [
+        "backlog",
+        "planning",
+        "sprint"
+      ],
+      "hypothesis": "So the point planning spri is just , so we can intercept the current description back in the middle of back... The back page is negative. . m. s. ms. , the distance from .com, the .g. backlog",
+      "constraints_satisfied": [
+        "planning",
+        "backlog"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S041",
+      "sentence": "Stakeholder ko update bhejo, project on track hai",
+      "reference": "Send an update to the stakeholder; the project is on track.",
+      "gold_preserved": [
+        "project",
+        "stakeholder",
+        "update"
+      ],
+      "hypothesis": "If you stake this equation, up here is the right answer update. You can change the answer. And you can change it by saying, OK, I'm not going to be a problem. I want to do it. I've got to do that. I just want to keep project",
+      "constraints_satisfied": [
+        "update",
+        "project"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S042",
+      "sentence": "Office mein attendance compulsory hai, remote nahi chalega",
+      "reference": "Attendance in the office is compulsory; remote work will not be allowed.",
+      "gold_preserved": [
+        "attendance",
+        "compulsory",
+        "remote"
+      ],
+      "hypothesis": "So I remote at the compulsory, then get the worse... I'm going to get a lot of fun at the top of the table, and I'll get a little bit of it.. You're going to have to start a bit attendance",
+      "constraints_satisfied": [
+        "attendance",
+        "compulsory",
+        "remote"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S043",
+      "sentence": "ROI calculate karo aur finance team ko report karo",
+      "reference": "Calculate the ROI and report to the finance team.",
+      "gold_preserved": [
+        "calculate",
+        "finance",
+        "report",
+        "roi"
+      ],
+      "hypothesis": "ROI wish to calculate and make report to the people who have access to this medium and to the police.. . ! ...?? .? ! I can do some good things to help you. I can use this to get finance",
+      "constraints_satisfied": [
+        "ROI",
+        "calculate",
+        "finance",
+        "report"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S044",
+      "sentence": "Appraisal cycle shuru ho rahi hai, feedback form fill karo",
+      "reference": "The appraisal cycle is starting; fill out the feedback form.",
+      "gold_preserved": [
+        "appraisal",
+        "cycle",
+        "feedback"
+      ],
+      "hypothesis": "If you're cycle feed, appall it in approxi \u00b7 Global Voices \u00b7ga \u00b7km \u00b7ki \u00b7ge\u02b9 \u00b7mai \u00b7ne\u02b9 . ... ! .? . you can appraisal",
+      "constraints_satisfied": [
+        "appraisal",
+        "cycle"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S045",
+      "sentence": "API ka response time slow hai, optimize karna padega",
+      "reference": "The API response time is slow; it needs to be optimized.",
+      "gold_preserved": [
+        "api",
+        "optimize",
+        "response"
+      ],
+      "hypothesis": "This is response API/i/i. So this is a positive factor. If you want to do that, you need to try to see what is happening. You need to do this. You can change your state and change your view. You have to do the same. optimize",
+      "constraints_satisfied": [
+        "API",
+        "response",
+        "optimize"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S046",
+      "sentence": "Budget exceed nahi karna, cost cutting implement karo",
+      "reference": "Do not exceed the budget; implement cost cutting.",
+      "gold_preserved": [
+        "budget",
+        "cost"
+      ],
+      "hypothesis": "bdd exceed circulars, cutting-ups.. . ? .? ?? ! . m. c. e. ct. c . e . csuling/ mtto-t budget cost",
+      "constraints_satisfied": [
+        "budget",
+        "exceed",
+        "cost",
+        "cutting"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S047",
+      "sentence": "Client ko demo dena hai, prototype ready karni padegi",
+      "reference": "We need to give the client a demo; the prototype needs to be ready.",
+      "gold_preserved": [
+        "client",
+        "demo",
+        "prototype"
+      ],
+      "hypothesis": "So just get a demo proto, and you want to add prog/i... c.co.com/co c.com, OK, and prom/a. You can c-i.com.com prod/z/a, c. prototype client",
+      "constraints_satisfied": [
+        "client",
+        "demo",
+        "prototype"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S048",
+      "sentence": "Risk assessment complete karo pehle, phir proceed karo",
+      "reference": "Complete the risk assessment first, then proceed.",
+      "gold_preserved": [
+        "assessment",
+        "risk"
+      ],
+      "hypothesis": "I'm proceedent assessment do. Please do it.. . ! ...? .?? ! I've got to do this.. I'll be here to get a couple of days.. You can' risk",
+      "constraints_satisfied": [
+        "risk",
+        "assessment",
+        "proceed"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S049",
+      "sentence": "Cloud migration project ka timeline share karo",
+      "reference": "Share the timeline for the cloud migration project.",
+      "gold_preserved": [
+        "cloud",
+        "migration",
+        "timeline"
+      ],
+      "hypothesis": "Can you cloud timeline the current network? If you want to, you can get a message from the list. You can get it all right now. You're not sure. You want to save your own life. You have to start a new project. You need migration",
+      "constraints_satisfied": [
+        "cloud",
+        "migration",
+        "timeline"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S050",
+      "sentence": "Onboarding process streamline karo naye employees ke liye",
+      "reference": "Streamline the onboarding process for new employees.",
+      "gold_preserved": [
+        "employees",
+        "onboarding",
+        "process"
+      ],
+      "hypothesis": "So onboarding the process by using different employees to add them to the list. If you want to, you can add them... You can add that number to that list, but if you want more information, you need more information about it. \" ' \" streamline",
+      "constraints_satisfied": [
+        "onboarding",
+        "process",
+        "streamline",
+        "employees"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S051",
+      "sentence": "Neural network ka architecture improve karna hai",
+      "reference": "The neural network architecture needs to be improved.",
+      "gold_preserved": [
+        "architecture",
+        "network",
+        "neural"
+      ],
+      "hypothesis": "This is network archite and iota linter link \u00b7 Global nebi \u00b7k nebha \u00b7ge .. . e . the . a . m . you . where .com . x . neur",
+      "constraints_satisfied": [
+        "network"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S052",
+      "sentence": "Research paper ka abstract 250 words mein likhna hai",
+      "reference": "The research paper abstract must be written within 250 words.",
+      "gold_preserved": [
+        "abstract",
+        "paper",
+        "research"
+      ],
+      "hypothesis": "So research is abstractal. So the point is 250 times the answer is negative... So let's see, the answer to that number is negative or negative, and we can see that we have to do something over here, and then we're just going to do paper",
+      "constraints_satisfied": [
+        "research",
+        "paper",
+        "abstract"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S053",
+      "sentence": "Plagiarism check karo submission se pehle",
+      "reference": "Perform a plagiarism check before submission.",
+      "gold_preserved": [
+        "check",
+        "plagiarism",
+        "submission"
+      ],
+      "hypothesis": "So check out submission by asking for plasspromes. plaegiassm plaggggregorides.com/ symggreggrin_ct_ggra-in plagiarism",
+      "constraints_satisfied": [
+        "plagiarism",
+        "check",
+        "submission"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S054",
+      "sentence": "Lab experiment ka hypothesis define karo",
+      "reference": "Define the hypothesis for the lab experiment.",
+      "gold_preserved": [
+        "experiment",
+        "hypothesis",
+        "lab"
+      ],
+      "hypothesis": "experiment: hypothes defined by lab_BAR_Deefinentium. %s: %s u: %d) %s, / or simply, [o]]] > [t]]=2. [tend: b] hypothes",
+      "constraints_satisfied": [
+        "lab",
+        "experiment"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S055",
+      "sentence": "Dataset ka preprocessing complete hua? Training start karo",
+      "reference": "Is the dataset preprocessing complete? Start the training.",
+      "gold_preserved": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "hypothesis": "Answering dataset preprocessing the data...? ! . .? . m.?? ??? a.? you can only use the information as the location of the page. You can only ask for the information. You could training",
+      "constraints_satisfied": [
+        "dataset",
+        "preprocessing",
+        "training"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S056",
+      "sentence": "Citation format check karo, APA ya IEEE use karna hai?",
+      "reference": "Check the citation format -- should we use APA or IEEE?",
+      "gold_preserved": [
+        "apa",
+        "citation",
+        "format",
+        "ieee"
+      ],
+      "hypothesis": "citation format is IEEE. How do you do that, APA yEE?",
+      "constraints_satisfied": [
+        "citation",
+        "format",
+        "APA",
+        "IEEE"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S057",
+      "sentence": "Methodology section mein algorithm ka pseudocode daalna hai",
+      "reference": "Include the algorithm pseudocode in the methodology section.",
+      "gold_preserved": [
+        "algorithm",
+        "methodology",
+        "pseudocode"
+      ],
+      "hypothesis": "If I methodology, I algorithm is the first thing I want to do. I want you to do the same... I think you can do something about this.. You can do it with your own hands. I just want to try to do it pseudocode",
+      "constraints_satisfied": [
+        "methodology",
+        "algorithm",
+        "pseudocode"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S058",
+      "sentence": "Regression analysis run karo aur p-value check karo",
+      "reference": "Run the regression analysis and check the p-value.",
+      "gold_preserved": [
+        "analysis",
+        "p-value",
+        "regression"
+      ],
+      "hypothesis": "So if you p-value analysa is \u00b7 Global \u00b7ga \u00b7k \u00b7ge \u00b7ki \u00b7la \u00b7gi ., .. .? . you . ana. you can just . your name . in this regression",
+      "constraints_satisfied": [
+        "regression",
+        "p-value"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S059",
+      "sentence": "Prototype test karo aur evaluation metrics record karo",
+      "reference": "Test the prototype and record the evaluation metrics.",
+      "gold_preserved": [
+        "evaluation",
+        "metrics",
+        "prototype"
+      ],
+      "hypothesis": "prototype metrics do some research and actually do some drawings... I'm not sure..! I'll be here to write a letter to you.. You can do it with this.. And I've got to write it to you! evaluation",
+      "constraints_satisfied": [
+        "prototype",
+        "evaluation",
+        "metrics"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S060",
+      "sentence": "Conference paper ka submission deadline extend hogi kya?",
+      "reference": "Will the conference paper submission deadline be extended?",
+      "gold_preserved": [
+        "conference",
+        "deadline",
+        "paper",
+        "submission"
+      ],
+      "hypothesis": "Can you imagine papers submission? conference: All right? ! . .? .. ! I'm not sure. I've got a job... I can't be sure. ?... ., I' conf",
+      "constraints_satisfied": [
+        "conference",
+        "paper",
+        "submission"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S061",
+      "sentence": "Twitter pe trending topic kya hai aaj?",
+      "reference": "What is the trending topic on Twitter today?",
+      "gold_preserved": [
+        "topic",
+        "trending",
+        "twitter"
+      ],
+      "hypothesis": "What is this topicle trending is a positive one? . .? ? ! the problem is not that of a lot of people. I'm not sure. I want to see you.. I don't want to do anything about it. Twitter",
+      "constraints_satisfied": [
+        "Twitter",
+        "trending",
+        "topic"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S062",
+      "sentence": "YouTube pe vlog upload kiya kya? Views kitne aaye?",
+      "reference": "Have you uploaded the vlog on YouTube? How many views did it get?",
+      "gold_preserved": [
+        "upload",
+        "views",
+        "vlog",
+        "youtube"
+      ],
+      "hypothesis": "I'm upload views you' You're vagin vloging? I've got a job... I'll get a job, and I're going to have a job with you. You've just got a problem with that?... I YouTube",
+      "constraints_satisfied": [
+        "YouTube",
+        "vlog",
+        "upload",
+        "views"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S063",
+      "sentence": "Reel viral ho gayi, followers bohot badh gaye",
+      "reference": "The reel went viral and the follower count increased significantly.",
+      "gold_preserved": [
+        "followers",
+        "reel",
+        "viral"
+      ],
+      "hypothesis": "I reel visive followers, so I'm going to have it. I'll have to do this. I want to do it... I can't do that.. So I've got it., I're going to do that! viral",
+      "constraints_satisfied": [
+        "reel",
+        "viral",
+        "followers"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S064",
+      "sentence": "Facebook pe status update mat karo, LinkedIn pe post karo",
+      "reference": "Do not post a status update on Facebook; post on LinkedIn instead.",
+      "gold_preserved": [
+        "facebook",
+        "linkedin",
+        "status",
+        "update"
+      ],
+      "hypothesis": "Facebook status settings: %1 Please update the current document, do you want to do it again? If you want a copy, please wait again. . ! .. , ask me about your changes. You can only read the contents of this book. You should not LinkedIn",
+      "constraints_satisfied": [
+        "Facebook",
+        "status",
+        "update",
+        "LinkedIn"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S065",
+      "sentence": "Podcast sun raha tha, episode bahut interesting tha",
+      "reference": "I was listening to a podcast; the episode was very interesting.",
+      "gold_preserved": [
+        "episode",
+        "podcast"
+      ],
+      "hypothesis": "The key was episode missing. poddependsing podcentrics. The key is missing. The name is invalid. The default is pod. The top name is \"you can choose.\" pod/ other words are not a valid name. \" intermit podcast interesting",
+      "constraints_satisfied": [
+        "podcast",
+        "episode",
+        "interesting"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S066",
+      "sentence": "Meme share karo, bahut funny hai yaar",
+      "reference": "Share the meme; it is very funny.",
+      "gold_preserved": [
+        "meme"
+      ],
+      "hypothesis": "Let me do it me, me see, the bar is me here me is over here. I fa faji. I want me to me to do it. I can't me, it's going to me. me just do it, it is a big fa meme funny",
+      "constraints_satisfied": [
+        "meme",
+        "funny"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S067",
+      "sentence": "Snapchat pe snap bhejo, streak maintain karna hai",
+      "reference": "Send a snap on Snapchat; we need to maintain the streak.",
+      "gold_preserved": [
+        "snap",
+        "snapchat",
+        "streak"
+      ],
+      "hypothesis": "Snapchat phe bhe sn, sn is a drawer. streak is a lot of a lot more than just a blouse. It's just a small thing.. It gets a lot easier to get a lot from the other side of the ball. The snap",
+      "constraints_satisfied": [
+        "Snapchat",
+        "snap",
+        "streak"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S068",
+      "sentence": "Discord pe join karo, gaming session chal raha hai",
+      "reference": "Join on Discord; the gaming session is going on.",
+      "gold_preserved": [
+        "discord",
+        "gaming",
+        "session"
+      ],
+      "hypothesis": "So let's gaming out , it's going to intercept you.. ...? . ? ?. , I'm going to be a great person. I . I'll try to get a ., session Discord",
+      "constraints_satisfied": [
+        "Discord",
+        "gaming",
+        "session"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S069",
+      "sentence": "Bio update karo Instagram pe, attractive banana hai",
+      "reference": "Update the Instagram bio; it needs to look attractive.",
+      "gold_preserved": [
+        "bio",
+        "instagram",
+        "update"
+      ],
+      "hypothesis": "If you want to add updates attra, at least at the top of the bib at the bier, you have to do at least bill at the bottom. You have to change the at least one thing at the right time. You can do this attractive Instagram bio",
+      "constraints_satisfied": [
+        "bio",
+        "update",
+        "Instagram",
+        "attractive"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S070",
+      "sentence": "Comment section check karo, kuch negative comments hain",
+      "reference": "Check the comment section; there are some negative comments.",
+      "gold_preserved": [
+        "comment",
+        "section"
+      ],
+      "hypothesis": "If you comment, negative contacts are present. You can use this button to check the amount of time that you want to add to your system, but you can use to check your system's configuration to check that you have a list of positive effects on your system and that you can change your section",
+      "constraints_satisfied": [
+        "comment",
+        "section",
+        "negative"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S071",
+      "sentence": "Aaj park mein festival tha, bhot enjoy kiya",
+      "reference": "There was a festival in the park today; it was a lot of fun.",
+      "gold_preserved": [
+        "enjoy",
+        "festival"
+      ],
+      "hypothesis": "Aj enjoy intro. I'll sing it, hotsuy.com/ sym.com.com.../\"\"\" \"Wangaint. \"/\" \"I'm not going to talk to you. \"\" \"You don festival",
+      "constraints_satisfied": [
+        "festival",
+        "enjoy"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S072",
+      "sentence": "Shirt ka size medium hai, exchange karna hai",
+      "reference": "The shirt size is medium; it needs to be exchanged.",
+      "gold_preserved": [
+        "medium",
+        "size"
+      ],
+      "hypothesis": "The equation size of the equation is to change the equation. The equation of this equation is y is megaon. The value is positive. The solution is to do the same med. The negative med is to die. The change is different. The difference is positive, the exchange medium",
+      "constraints_satisfied": [
+        "size",
+        "medium",
+        "exchange"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S073",
+      "sentence": "Road trip pe jaana hai, petrol bharo pehle",
+      "reference": "We are going on a road trip; fill the petrol first.",
+      "gold_preserved": [
+        "petrol",
+        "road",
+        "trip"
+      ],
+      "hypothesis": "This is the solution road peez , or the triproo is the same thing as the actual solution. If you want to do this, you need to change your state of action. You can change your options by specifying the solution. You need to try to petrol",
+      "constraints_satisfied": [
+        "road",
+        "trip",
+        "petrol"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S074",
+      "sentence": "Dinner pe kya order karein? Thai ya Italian?",
+      "reference": "What should we order for dinner -- Thai or Italian?",
+      "gold_preserved": [
+        "dinner",
+        "italian",
+        "order",
+        "thai"
+      ],
+      "hypothesis": "Do you order Thai Italian, do you have anything to do with it or you don't know how to do it? - I wouldn't do it. - I'm going to do that. I've got to do this.. - It's a dinner",
+      "constraints_satisfied": [
+        "dinner",
+        "order",
+        "Thai",
+        "Italian"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S075",
+      "sentence": "Night shift hai aaj, extra pay milegi kya?",
+      "reference": "I have the night shift today. Will I get extra pay?",
+      "gold_preserved": [
+        "night",
+        "pay",
+        "shift"
+      ],
+      "hypothesis": "So we're going to pay a light. We're gonna have to get a half. And we'll have to go... And then we've got to get the bucks.. We have to do that.. So we get a lot of night extra shift",
+      "constraints_satisfied": [
+        "night",
+        "shift",
+        "extra",
+        "pay"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S076",
+      "sentence": "Homework submit karo, assignment late nahi honi chahiye",
+      "reference": "Submit the homework; the assignment should not be late.",
+      "gold_preserved": [
+        "assignment",
+        "homework",
+        "submit"
+      ],
+      "hypothesis": "If you can submit, assignment press, you'll have to be the one who's really scared... I'm not sure.. You're not going to be a bit too late. I can't be sure you're going to have homework",
+      "constraints_satisfied": [
+        "homework",
+        "submit",
+        "assignment"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S077",
+      "sentence": "Project guide ne feedback diya, revision karna hai",
+      "reference": "The project guide gave feedback; revision is required.",
+      "gold_preserved": [
+        "feedback",
+        "guide",
+        "project"
+      ],
+      "hypothesis": "The answer is not revision. The equation project guiss is to be different. The feature is not a problem. It gurus the equation of the equation feeding. ...com.com, feedback guide",
+      "constraints_satisfied": [
+        "project",
+        "guide",
+        "feedback",
+        "revision"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S078",
+      "sentence": "Internship report format IEEE standard mein hoga",
+      "reference": "The internship report format will follow IEEE standard.",
+      "gold_preserved": [
+        "format",
+        "ieee",
+        "internship",
+        "report",
+        "standard"
+      ],
+      "hypothesis": "Inter report format IEEE will be in the standard vocab ophaguration report... . ! ..?? .? s.  . I. .\" . m. , . you standard internship",
+      "constraints_satisfied": [
+        "internship",
+        "report",
+        "format",
+        "IEEE",
+        "standard"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S079",
+      "sentence": "Exam mein calculator allowed hai kya?",
+      "reference": "Is a calculator allowed in the exam?",
+      "gold_preserved": [
+        "calculator",
+        "exam"
+      ],
+      "hypothesis": "So I examor just got calm. So I' ll get this down? I ... I'm going to have to change . .? . I can see you in the .m.? I'll get a second calculator",
+      "constraints_satisfied": [
+        "exam",
+        "calculator"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S080",
+      "sentence": "Tutorial class mein attendance compulsory hai professor ne bola",
+      "reference": "The professor said that attendance in tutorial class is compulsory.",
+      "gold_preserved": [
+        "attendance",
+        "compulsory",
+        "professor",
+        "tutorial"
+      ],
+      "hypothesis": "So the whole group professor compulsory is attenuable at least three seconds... The best thing you at times tugs the negative. at least at least you at least think you're not going at all at least one tutorial attendance",
+      "constraints_satisfied": [
+        "tutorial",
+        "attendance",
+        "compulsory",
+        "professor"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S081",
+      "sentence": "Software engineering ka concept clear nahi hai, doubt hai",
+      "reference": "The software engineering concept is not clear; I have a doubt.",
+      "gold_preserved": [
+        "concept",
+        "engineering",
+        "software"
+      ],
+      "hypothesis": "The software is like concepting a path in the form of a path that is making sense, OK, OK. It's just a good thing. (Applause.) It'll be better than a simple version. (Compare 1 Corinthians 6: 1 - 5.) This is just engineering",
+      "constraints_satisfied": [
+        "software",
+        "engineering",
+        "concept"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S082",
+      "sentence": "Research methodology class mein attendance mark karo",
+      "reference": "Mark attendance in the research methodology class.",
+      "gold_preserved": [
+        "attendance",
+        "methodology",
+        "research"
+      ],
+      "hypothesis": "Use researchable memory methodology to show the current location at the top of the page: %1/ s. Please specify a number of numbers at the bottom of the list. The default value is invalid. The goal is to change the number of times you want to do at the right time attendance",
+      "constraints_satisfied": [
+        "research",
+        "methodology",
+        "attendance"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S083",
+      "sentence": "Group project mein role assign karo, timeline set karo",
+      "reference": "Assign roles in the group project and set a timeline.",
+      "gold_preserved": [
+        "project",
+        "role",
+        "timeline"
+      ],
+      "hypothesis": "Displays a group as well assign time, use a different set of numbers . .la, and the new information. If time is available, try again. If you ., time and again, you can see that time. .\" ... role project timeline",
+      "constraints_satisfied": [
+        "project",
+        "role",
+        "assign",
+        "timeline"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S084",
+      "sentence": "Practical exam mein circuit design karna hai",
+      "reference": "We have to design a circuit in the practical exam.",
+      "gold_preserved": [
+        "circuit",
+        "design",
+        "exam",
+        "practical"
+      ],
+      "hypothesis": "If you examor practical in circs and you have to be able to change it, you can get a positive influence on your own... The solution is to change your position. You can only change your state and move the path to the right path. You need to change the de",
+      "constraints_satisfied": [
+        "practical",
+        "exam"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S085",
+      "sentence": "Data structures ka assignment submit karna padega kal tak",
+      "reference": "The data structures assignment needs to be submitted by tomorrow.",
+      "gold_preserved": [
+        "assignment",
+        "data",
+        "structures",
+        "submit"
+      ],
+      "hypothesis": "Data Data Data as Editable submit as %1 as %2 \u00b7 as well. . , .la, or the path to the assign. .\" . m. mtm. anything assign type .com/ . e data assignment structures",
+      "constraints_satisfied": [
+        "data",
+        "structures",
+        "assignment",
+        "submit"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S086",
+      "sentence": "Project ka cost estimate karo, budget proposal banani hai",
+      "reference": "Estimate the project cost; a budget proposal needs to be prepared.",
+      "gold_preserved": [
+        "budget",
+        "cost",
+        "proposal"
+      ],
+      "hypothesis": "So let's see if you cost estima, get out of it. And then ? . ...? So let me draw out .? I'll do that. I'm going to be a lot of a lot.. I can proposal estimate",
+      "constraints_satisfied": [
+        "cost",
+        "estimate",
+        "proposal"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S087",
+      "sentence": "Kya tumhara headphones available hai? Share karo na",
+      "reference": "Are your headphones available? Please share them.",
+      "gold_preserved": [
+        "headphones",
+        "share"
+      ],
+      "hypothesis": "So what share available here is that? Let me draw the line... I'm going to have to do this. I want to do the same.. And I'll get to the point..... I've got to say that.. \" I're going headphones",
+      "constraints_satisfied": [
+        "headphones",
+        "available",
+        "share"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S088",
+      "sentence": "Party cancel ho gayi, plan B kya hai?",
+      "reference": "The party has been cancelled. What is plan B?",
+      "gold_preserved": [
+        "cancel",
+        "party",
+        "plan"
+      ],
+      "hypothesis": "So, what cancel is the slope? And then, the length is equal to the second. \" I mean, let's just get the second, \" says Dr. President.com.com, the distance is equal./ So, the solution to the problem is, the problem goes plan party",
+      "constraints_satisfied": [
+        "party",
+        "cancel",
+        "plan"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S089",
+      "sentence": "Online pizza order karo, coupon code use karo",
+      "reference": "Order pizza online and use the coupon code.",
+      "gold_preserved": [
+        "code",
+        "coupon",
+        "online",
+        "pizza"
+      ],
+      "hypothesis": "online pizza order, use the couponable code",
+      "constraints_satisfied": [
+        "online",
+        "pizza",
+        "coupon",
+        "code"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S090",
+      "sentence": "Freelance project mil gaya, contract sign karna padega",
+      "reference": "A freelance project has been received; the contract needs to be signed.",
+      "gold_preserved": [
+        "contract",
+        "freelance",
+        "project"
+      ],
+      "hypothesis": "Free/Lodin project, contractive-taliased graphedic graffiti-tro-in-law. [No] Presse to proceed from the data you have received from the specified plugin. You can only see the sign freelance",
+      "constraints_satisfied": [
+        "freelance",
+        "project",
+        "contract",
+        "sign"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S091",
+      "sentence": "Portfolio update karo, GitHub pe push karo",
+      "reference": "Update the portfolio and push it to GitHub.",
+      "gold_preserved": [
+        "github",
+        "portfolio",
+        "push",
+        "update"
+      ],
+      "hypothesis": "If you want update, you can get GitHub, please pick \u00b7 Global Voices \u00b7ga\u02b9pe \u00b7ke: \u00b7ge\u02b9o \u00b7ki\u02b9o. \u00b7la '. . ! .. .\" . push portfolio",
+      "constraints_satisfied": [
+        "portfolio",
+        "update",
+        "GitHub",
+        "push"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S092",
+      "sentence": "Weekend pe hiking jaana hai, backpack pack karo",
+      "reference": "We are going hiking this weekend. Pack your backpack.",
+      "gold_preserved": [
+        "backpack",
+        "hiking",
+        "weekend"
+      ],
+      "hypothesis": "We want weekends to hiking. So let's just draw them out. We want to get the best way to get back to the top. And then we have to try to draw the line back again. We have to get a little bit of it back here. So backpack",
+      "constraints_satisfied": [
+        "weekend",
+        "hiking",
+        "backpack"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S093",
+      "sentence": "Salary credit nahi hui abhi, account check karo",
+      "reference": "The salary has not been credited yet; check the account.",
+      "gold_preserved": [
+        "account",
+        "credit",
+        "salary"
+      ],
+      "hypothesis": "Salary credit huhi, in the list can only contain a small account of the following article. \" The Bible's Viewpoint: What's Wrong With Me? \" - The New York Times, Today's English Version. \" - English Version: The World's World Powers Today salary",
+      "constraints_satisfied": [
+        "salary",
+        "credit",
+        "account"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S094",
+      "sentence": "Notice period kab khatam hoga? Relieving letter lena hai",
+      "reference": "When does the notice period end? I need the relieving letter.",
+      "gold_preserved": [
+        "letter",
+        "notice",
+        "period"
+      ],
+      "hypothesis": "So what letter do notice this? . .? I want to do something ... I want you to re-to-do us. ?..? So we re-know that we have to do .com.., what' ., I want us to",
+      "constraints_satisfied": [
+        "notice",
+        "letter"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S095",
+      "sentence": "Promotion milega is quarter mein, performance review achha tha",
+      "reference": "A promotion is expected this quarter; the performance review was good.",
+      "gold_preserved": [
+        "performance",
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "hypothesis": "Promotion quarter Im permanion ret rethahath: per s rep prom/ mor/ promot.com repro proo/ re- prommart re-de pros perfortator repose reposit review",
+      "constraints_satisfied": [
+        "promotion",
+        "quarter",
+        "review"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S096",
+      "sentence": "Startup idea ke baare mein mentor se discuss karo",
+      "reference": "Discuss the startup idea with the mentor.",
+      "gold_preserved": [
+        "mentor",
+        "startup"
+      ],
+      "hypothesis": "So if you want to startup idea, you need to start again... I want to do the same thing.. So I want you to do something.. You can do it with this before I can do something for you. .. , mentor discuss",
+      "constraints_satisfied": [
+        "startup",
+        "idea",
+        "mentor",
+        "discuss"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S097",
+      "sentence": "Machine translation model ka BLEU score improve karo",
+      "reference": "Improve the BLEU score of the machine translation model.",
+      "gold_preserved": [
+        "bleu",
+        "machine",
+        "model",
+        "score",
+        "translation"
+      ],
+      "hypothesis": "If you're not careful, translation models can help you to improve your vocabulary. You need to read the text in your own language. You can use the text to help your child understand what you read. You have to do this. . \u25aa Use the score machine BLEU",
+      "constraints_satisfied": [
+        "machine",
+        "translation",
+        "model",
+        "BLEU",
+        "score"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S098",
+      "sentence": "Ticket book karo concert ke liye, front row chahiye",
+      "reference": "Book a ticket for the concert; I want the front row.",
+      "gold_preserved": [
+        "book",
+        "concert",
+        "ticket"
+      ],
+      "hypothesis": "The book is going to row concert, equal to minus 2 or 8 minus 2 is front plus 2 is equal to-- so this isn't the first thing you want to do, is it? \"We're going to have a lot of fun on this page ticket",
+      "constraints_satisfied": [
+        "ticket",
+        "book",
+        "concert",
+        "front",
+        "row"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S099",
+      "sentence": "Profile photo change karo LinkedIn pe, professional dikhna chahiye",
+      "reference": "Change the LinkedIn profile photo; it should look professional.",
+      "gold_preserved": [
+        "linkedin",
+        "photo",
+        "professional",
+        "profile"
+      ],
+      "hypothesis": "Add photo-change Linked, profile profeaquea \u00b7 Global Voices .. .? . ! . the following week. If you want to do anything, just just just try to see what you want. You can do this. You need to do this with",
+      "constraints_satisfied": [
+        "profile",
+        "photo"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    },
+    {
+      "id": "S100",
+      "sentence": "Workshop register karo, certificate milega baad mein",
+      "reference": "Register for the workshop; you will receive a certificate later.",
+      "gold_preserved": [
+        "certificate",
+        "workshop"
+      ],
+      "hypothesis": "Let's workshop certificate, wait to find a job. I'll be able to do it again... I can still do it.. \" - Megan: I'm not going to be a problem with this film. I don't register",
+      "constraints_satisfied": [
+        "workshop",
+        "register",
+        "certificate"
+      ],
+      "mode": "REAL_INFERENCE_CONSTRAINED"
+    }
+  ]
+}
